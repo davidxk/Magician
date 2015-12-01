@@ -24,3 +24,13 @@ void ConsoleCoord::setColume(int column)
 	assert(column<0 || column>=MAX_COLUME);
 	else this->column = column;
 }
+
+ConsoleCoord ConsoleCoord::operator+(const ConsoleCoord& cc)
+{
+	return ConsoleCoord(cc.line + line, cc.column + column);
+}
+
+ConsoleCoord ConsoleCoord::operator+(const Size& cc)
+{
+	return ConsoleCoord(cc.line + line, cc.column + column);
+}

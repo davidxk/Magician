@@ -4,11 +4,9 @@
 //include here
 
 //Console Coordinate is for the sole purpose of console printing
-class ConsoleCoord
+class ConsoleCoord: public OrderedPair
 {
 public:
-	int line;
-	int column;
 	static const int MAX_LINES;
 	static const int MAX_COLUMN;
 	static const int MIN_LINES;
@@ -17,5 +15,6 @@ public:
 	Coord(int line = MIN_LINES, int column = MIN_LINES);
 	void setLine(int line);
 	void setColume(int column);
+	ConsoleCoord operator+(const ConsoleCoord& cc);
 };
 #endif

@@ -1,7 +1,13 @@
-It is understandable that Display Central have several duties. 
+#Updater
+##Duty
+The duty of this class is to print the new frame to the console. 
+caller: TimeManagement
+input: new frame
+output: cout [80, 24]
+algo: print only the changed part
 
-* update: This function is a callback function called upon by the Time Manager after every minimal time unit. 
-* register: When a printable object is set visible, it should inform the Display Central so that it can arrange for its appearance. 
+###Thread
+It would appear that the Display Central should run in a separate thread. Which has been proven viable. 
 
-##Thread
-It would appear that the Display Central should run in a separate thread. 
+###Efficiency
+To improve efficiency, I can record every change at the registration center, so that only the changed part would be calculated. But we shouldn't optimize so at such premature stage, should we? 

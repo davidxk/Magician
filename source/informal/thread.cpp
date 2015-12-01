@@ -3,6 +3,7 @@
 #include <iostream>
 #include <thread>
 #include <queue>
+#include <curses.h>
 using namespace std;
 
 void print(queue<char>* list)
@@ -13,11 +14,15 @@ void print(queue<char>* list)
 		for(const auto& it: str)
 		{
 			if(list->empty())
+			{
 				cout<<it<<" ";
+				cout.flush();
+			}
 			else 
 			{
 				cnt++;
-				cout<<list->front();
+				cout<<'\b';
+				cout<<list->front()<<' ';
 				list->pop();
 			}
 			this_thread::sleep_for (std::chrono::seconds(1));
@@ -33,9 +38,7 @@ int main()
 	go.detach();
 
 	while( (ch = cin.get()) != 'z' )
-	{
 		printList->push(ch);
-	}
 	delete printList;
 	return 0;
 }

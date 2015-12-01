@@ -8,8 +8,8 @@ class PrintJob
 {
 public:
 	ConsoleCoord cCoord;
-	char graph;
+	string graph;
 	PrintJob() { }
-	PrintJob(ConsoleCoord aCCoord, char aGraph);
+	PrintJob(ConsoleCoord aCCoord, string aGraph);
 };
 #endif

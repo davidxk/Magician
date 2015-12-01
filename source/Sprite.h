@@ -5,5 +5,6 @@ class Sprite: public: VisibleObject
 {
 public:
 	Sprite();
-	Sprite(string fileName);
+	Sprite(const string& fileName);
+	bool isInAction;
 };

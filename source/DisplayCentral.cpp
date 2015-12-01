@@ -1,5 +1,11 @@
 #include "display/DisplayCentral.h"
 
+DisplayCentral::DisplayCentral()
+{
+	for(int i=0; i<CONSOLE_HEIGHT; i++)
+		prev[i]=string(CONSOLE_WIDTH, ' ');
+}
+
 void DisplayCentral::paint(const vector<PrintJob>& jobList)
 {
 	for(const auto& it: jobList)

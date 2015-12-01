@@ -27,3 +27,7 @@ Actions has to be registered at a Action Control center, where the sprite, type 
 
 ###Time Central
 Time Central in charge of managing the time steps and invoking Display Central to update the frame. 
+
+
+##Main Loop
+Waits for user keyboard input. Not sure how the input flow is managed yet. 

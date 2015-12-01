@@ -9,3 +9,13 @@ Coord Coord::operator+(const Coord& cc)
 {
 	return Coord(cc.line + line, cc.column + column);
 }
+
+Coord Coord::operator-(const Coord& cc)
+{
+	return Coord(cc.line - line, cc.column - column);
+}
+
+bool Coord::operator==(const Coord& cc)
+{
+	return cc.line==line && cc.column==column;
+}

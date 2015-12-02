@@ -3,6 +3,7 @@
 Sprite::Sprite(const string& fileName)
 {
 	image = ImageLoader::load(fileName);
+	size = Size( image.size(), image[0].size() );
 	verify();
 }
 

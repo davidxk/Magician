@@ -10,6 +10,7 @@ public:
 	int zOrder;
 	bool isVisible;
 	//bool isColored;
+	VisibleObject();
 	void verify();
 	void setPos(const Coord& cc);
 };

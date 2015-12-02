@@ -1,9 +1,9 @@
-#include "Coord.h"
+#include "basic/Coord.h"
 
-Coord::Coord(): line(0), column(0) { }
+Coord::Coord(): OrderedPair(0, 0) { }
 
 Coord::Coord(int aLine, int aColumn):
-        line(aLine), column(aColumn) { }
+        OrderedPair(aLine, aColumn) { }
 
 Coord Coord::CoordXY(int xx, int yy)
 {
@@ -27,12 +27,12 @@ Coord Coord::operator-(const Coord& cc)
 
 Coord Coord::operator*(int nn)
 {
-	return Coord(cc.line * nn, cc.column * nn);
+	return Coord(line * nn, column * nn);
 }
 
 Coord Coord::operator/(int nn)
 {
-	return Coord(cc.line / nn, cc.column / nn);
+	return Coord(line / nn, column / nn);
 }
 
 bool Coord::operator==(const Coord& cc)

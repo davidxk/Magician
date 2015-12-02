@@ -1,9 +1,13 @@
-#include "display/PrintJob.h"
+#include "Printer.h"
 
-//Prints char on a specified position
-//If to implement on other platform, make this a base class 
-class Printer
+Printer::Printer()
 {
-public:
-	void print(PrintJob pj);
-};
+	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+}
+
+void Printer::print(PrintJob pj)
+{
+      COORD pos={ pj.cCoord.column, pj.cCoord.line };
+      SetConsoleCursorPosition( hOut, pos );
+	  cout<<pj.graph;
+}

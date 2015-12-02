@@ -4,7 +4,7 @@
 class Sprite: public: VisibleObject
 {
 public:
-	Sprite();
+	static Sprite& create(const string& fileName);
+private:
 	Sprite(const string& fileName);
-	bool isInAction;
 };

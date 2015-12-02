@@ -1,4 +1,5 @@
 #include "ConsoleCoord.h"
+#include <vector>
 
 class VisibleObject
 {
@@ -8,6 +9,7 @@ public:
 	vector<string> image;
 	int zOrder;
 	bool isVisible;
-	//color
+	//bool isColored;
 	void verify();
+	void setPos(const Coord& cc);
 };

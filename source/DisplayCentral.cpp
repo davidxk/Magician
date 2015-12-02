@@ -1,20 +1,26 @@
 #include "display/DisplayCentral.h"
+#include "VisibleObjManger.h"
 
 DisplayCentral::DisplayCentral()
 {
-	for(int i=0; i<CONSOLE_HEIGHT; i++)
-		prev[i]=string(CONSOLE_WIDTH, ' ');
-}
-
-void DisplayCentral::paint(const vector<PrintJob>& jobList)
-{
-	for(const auto& it: jobList)
-		printer.print(it);
+	for(int i=0; i<ConsoleCoord::MAX_LINES+1; i++)
+		prev[i]=string(ConsoleCoord::MAX_COLUME+1, ' ');
 }
 
 void DisplayCentral::update()
 {
+	setThisFrame( vManager->getFrame() );
+	paint( getDiff() );
+}
 
+
+
+
+
+void DisplayCentral::setThisFrame(vector<string> frameThis)
+{
+	this->frameLast = this->frameThis
+	this->frameThis = frameThis;
 }
 
 vector<PrintJob> DisplayCentral::getDiff()
@@ -25,18 +31,12 @@ vector<PrintJob> DisplayCentral::getDiff()
 		for(int j=0; j<frameLast[0].size(); j++)
 			if(frameLast[i][j] != frameThis[i][j])
 				pjList.push_back(PrintJob(ConsoleCoord(i,j), frameThis[i][j]));
+	//else if(colorLast[i][j] != colorThis[i][j])
 	return pjList;
 }
 
-vector<string> DisplayCentral::getThisFrame()
+void DisplayCentral::paint(const vector<PrintJob>& jobList)
 {
-	// deal with static object
-	// deal with actions
-}
-
-bool isInBox(ConsoleCoord upperLeft, ConsoleSize size)
-{
-	//pending: operator + overload
-	ConsoleCoord bottomRight = upperLeft + size;
-	//rectangle overlap algorithm 
+	for(const auto& it: jobList)
+		printer.print(it);
 }

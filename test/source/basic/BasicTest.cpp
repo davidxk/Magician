@@ -25,13 +25,13 @@ void BasicTest::run()
 	//ConsoleCoord(25, 2);
 	PrintJob( ConsoleCoord(23, 50), 'a');
 
-	vector<string> image = ImageLoader::load("graph/moon.txt");
+	vector<wstring> image = ImageLoader::load("graph/moon.txt");
 	assert( image.size() == 2 );
-	assert( image[0] == "1234" && image[1] == "4321" );
+	assert( image[0] == L"1234" && image[1] == L"4321" );
 
-	vector<vector<string> > batch = ImageLoader::
+	vector<vector<wstring> > batch = ImageLoader::
 		loadBatch("batch/moon_batch.txt");
 	assert( batch.size() == 3 );
 	assert( batch[0].size()==1 && batch[1].size()==1 && batch[2].size()==1);
-	assert(batch[0][0]=="1234"&&batch[1][0]=="4444"&&batch[2][0]=="4321");
+	assert(batch[0][0]==L"1234"&&batch[1][0]==L"4444"&&batch[2][0]==L"4321");
 }

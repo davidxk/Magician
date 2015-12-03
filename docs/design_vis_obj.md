@@ -6,3 +6,6 @@ A Visible Object is always rectangular in shape, but it may contain transparent 
 The rectangular shape is guaranteed by asserting all strings in the vector should have the same length. 
 
 Different Visible Object may be initiated in different ways. A image may be read from a file while a box's outline and content is filled by the program. 
+
+##UTF-8 Trouble
+Apparently you just replace string with wstring, char with wchar_t and it's done. Over too easy. 

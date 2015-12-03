@@ -4,7 +4,7 @@
 #include "basic/ConsoleCoord.h"
 #include "basic/Coord.h"
 #include <vector>
-#include <iostream>
+#include <string>
 using namespace std;
 
 class VisibleObject
@@ -12,7 +12,7 @@ class VisibleObject
 public:
 	Coord pos;
 	Size size;
-	vector<string> image;
+	vector<wstring> image;
 	int zOrder;
 	bool isVisible;
 	//bool isColored;

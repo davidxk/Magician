@@ -9,7 +9,7 @@ class ImageLoader
 {
 public:
 	//It adds the resources/ path automatically
-	static vector<string> load(const string& fileName);
-	static vector<vector<string> > loadBatch(const string& fileName);
+	static vector<wstring> load(const string& fileName);
+	static vector<vector<wstring> > loadBatch(const string& fileName);
 };
 #endif

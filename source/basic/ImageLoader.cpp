@@ -3,31 +3,31 @@
 #include <iostream>
 #include <string>
 
-vector<string> ImageLoader::load(const string& fileName)
+vector<wstring> ImageLoader::load(const string& fileName)
 {
 	string path = "../resources/";
 	path += fileName;
-	ifstream fin(path);
+	wifstream fin(path);
 	if( fin.bad() ) cout<<"Error: File read fail! \n";
 	
-	string line;
-	vector<string> image;
+	wstring line;
+	vector<wstring> image;
 
 	while( getline(fin, line) )
 		image.push_back( line );
 	return image;
 }
 
-vector<vector<string> > ImageLoader::loadBatch(const string& fileName)
+vector<vector<wstring> > ImageLoader::loadBatch(const string& fileName)
 {
 	string path = "../resources/";
 	path += fileName;
-	ifstream fin(path);
+	wifstream fin(path);
 	if( fin.bad() ) cout<<"Error: File read fail! \n";
 
-	string line;
-	vector<string> image;
-	vector<vector<string> > frames;
+	wstring line;
+	vector<wstring> image;
+	vector<vector<wstring> > frames;
 
 	int nFrame = 0, nLine = 0;
 	fin>>nFrame>>nLine; fin.get();

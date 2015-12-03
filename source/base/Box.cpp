@@ -22,30 +22,26 @@ void Box::getOutline()
 	//paint the outline
 	for(int i=0; i<height; i++)
 	{
-		string& line=image[i];
+		wstring& line=image[i];
 		for(int j=0; j<width; j++)
 			if(j == 0)
 			{
-				if( i==0 ) line += "╔";
-				else if( i==height-1 ) line += "╰";
-				else line += "│";
+				if( i==0 ) line += L"╔";
+				else if( i==height-1 ) line += L"╰";
+				else line += L"│";
 			}
 			else if(j == width-1)
 			{
-				if( i==0 ) line += "┐";
-				else if( i==height-1 ) line += "╯";
-				else line += "│";
+				if( i==0 ) line += L"┐";
+				else if( i==height-1 ) line += L"╯";
+				else line += L"│";
 			}
 			else
 			{
-				if( i==0 || i==height-1 ) line += "─";
-				else line += "  ";
+				if( i==0 || i==height-1 ) line += L"─";
+				else line += L"  ";
 			}
 	} 
 	assert( image.size()==size.line);
-	for(const auto& line: image)
-	{
-		cout<<line.size()<<endl;
-	}
-		//assert( line.size()==size.column/2 );
+	//assert( line.size()==size.column/2 );
 }

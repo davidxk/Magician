@@ -15,11 +15,11 @@ void BaseTest::run()
 
 	Box box(Size(3, 6));
 	for(auto& it: box.image)
-		cout<<it<<endl;
+		cout<<it.size()<<endl;
 	assert(box.image.size()==3 && box.image[0].size()==6);
-	assert(box.image[0]== "╔─┐");
-	assert(box.image[1]== "│   │");
-	assert(box.image[2]== "╰─╯");
+	assert(box.image[0]== L"╔─┐");
+	assert(box.image[1]== L"│   │");
+	assert(box.image[2]== L"╰─╯");
 
 	Command cmd( Coord(10, 30) );
 	vo.setPos( Coord(1, 2) );

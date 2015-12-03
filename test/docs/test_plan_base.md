@@ -14,8 +14,8 @@ Action::Action(VisibleObject\* aHost, int aDuration, bool aIsRepeat):
 
 ##Box
 Box::Box(const Size& size)
-* input: Size(3, 4)
-* output: "╔─┐", "│   │", "╰─╯"
+* input: Size(3, 6)
+* output: " ----.", "|    |", "`---- "
 
 void Box::setSize(Size size)
 *test internally*

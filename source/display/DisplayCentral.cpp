@@ -1,10 +1,12 @@
 #include "display/DisplayCentral.h"
-#include "VisibleObjManger.h"
+#include <cassert>
+#include "display/VisibleObjManager.h"
 
 DisplayCentral::DisplayCentral()
 {
+	frameThis.resize( ConsoleCoord::MAX_LINES+1 );
 	for(int i=0; i<ConsoleCoord::MAX_LINES+1; i++)
-		prev[i]=string(ConsoleCoord::MAX_COLUME+1, ' ');
+		frameThis[i]=wstring(ConsoleCoord::MAX_COLUMN+1, L' ');
 }
 
 void DisplayCentral::update()
@@ -17,18 +19,20 @@ void DisplayCentral::update()
 
 
 
-void DisplayCentral::setThisFrame(vector<string> frameThis)
+void DisplayCentral::setThisFrame(const vector<wstring>& frameNext)
 {
-	this->frameLast = this->frameThis
-	this->frameThis = frameThis;
+	verify(frameNext);
+	frameLast = frameThis;
+	frameThis = frameNext;
 }
 
 vector<PrintJob> DisplayCentral::getDiff()
 {
+	verify(frameThis);
 	//get frame last and frame this
 	vector<PrintJob> pjList;
-	for(int i=0; i<frameLast.size(); i++)
-		for(int j=0; j<frameLast[0].size(); j++)
+	for(int i=0; i<frameThis.size(); i++)
+		for(int j=0; j<frameThis[i].size(); j++)
 			if(frameLast[i][j] != frameThis[i][j])
 				pjList.push_back(PrintJob(ConsoleCoord(i,j), frameThis[i][j]));
 	//else if(colorLast[i][j] != colorThis[i][j])
@@ -37,6 +41,13 @@ vector<PrintJob> DisplayCentral::getDiff()
 
 void DisplayCentral::paint(const vector<PrintJob>& jobList)
 {
-	for(const auto& it: jobList)
-		printer.print(it);
+	//for(const auto& it: jobList)
+		//printer.print(it);
+}
+
+void DisplayCentral::verify(const vector<wstring>& frame)
+{
+	assert( frame.size()==ConsoleCoord::MAX_LINES+1 );
+	for(const auto& line: frame)
+		assert( line.size()==ConsoleCoord::MAX_COLUMN+1 );
 }

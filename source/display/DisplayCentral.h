@@ -1,21 +1,25 @@
 #ifndef _DISPLAY_CENTRAL_H_
 #define _DISPLAY_CENTRAL_H_
 
-#include "PrintJob.h"
-#include "Printer.h"
+#include "basic/PrintJob.h"
+//#include "display/Printer.h"
+#include <string>
 #include <vector>
+using namespace std;
 
 //description of the class here
 class DisplayCentral
 {
 public:
 	DisplayCentral();
+	void update();
 	void paint(const vector<PrintJob>& jobList);
 	vector<PrintJob> getDiff();
-	void setThisFrame(vector<string> frameThis);
+	void setThisFrame(const vector<wstring>& frameThis);
+	void verify(const vector<wstring>& frame);
 public:
-	Printer printer;
-	vector<string> frameLast;
-	vector<string> frameThis;
+	//Printer printer;
+	vector<wstring> frameLast;
+	vector<wstring> frameThis;
 };
 #endif

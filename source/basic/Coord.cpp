@@ -22,7 +22,7 @@ Coord Coord::operator+(const Coord& cc)
 
 Coord Coord::operator-(const Coord& cc)
 {
-	return Coord(cc.line - line, cc.column - column);
+	return Coord(line - cc.line, column - cc.column);
 }
 
 Coord Coord::operator*(int nn)

@@ -1,4 +1,5 @@
-#include "Sprite.h"
+#include "user/Sprite.h"
+#include "basic/ImageLoader.h"
 
 Sprite::Sprite(const string& fileName)
 {
@@ -7,9 +8,10 @@ Sprite::Sprite(const string& fileName)
 	verify();
 }
 
-static Sprite& Sprite::create(const string& fileName)
+Sprite* Sprite::create(const string& fileName)
 {
-	vector<VisibleObject>& list = vManager->objList;
-	list.emplace_back( Sprite(fileName) );
-	return list.back();
+	//vector<VisibleObject*>& list = vManager->objList;
+	//list.push_back( sp );
+	Sprite* sp = new Sprite(fileName);
+	return sp;
 }

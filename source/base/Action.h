@@ -15,7 +15,6 @@ public:
 
 	//static Action* create(VisibleObject* aHost, int dur, bool isRep = false) 
 	Action(VisibleObject* aHost, int aDuration, bool aIsRepeat = false);
-private:
 	//Called within constructor
 	virtual void getCmdQueue() { };
 };

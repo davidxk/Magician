@@ -10,3 +10,8 @@ void Size::verify()
 {
 	assert( line>=0 && column>=0 );
 }
+
+bool Size::operator==(const Size& cc)
+{
+	return line==cc.line && column==cc.column;
+}

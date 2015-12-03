@@ -14,6 +14,7 @@ void Command::apply(VisibleObject* vo)
 			vo->setPos( pos );
 			break;
 		case CHANGE_IMG:
+			//assert vo is AnimSprite* type
 			//AnimSprite* as = (AnimSprite* vo);
 			//as->putOn( index );
 			break;

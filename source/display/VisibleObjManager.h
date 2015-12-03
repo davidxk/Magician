@@ -1,14 +1,19 @@
+#ifndef _VISIBLE_OBJ_MANGER_H_
+#define _VISIBLE_OBJ_MANGER_H_
 
-#include "Singleton.hpp"
-#include "VisibleObject.h"
+#include "base/Singleton.cpp"
+#include "base/VisibleObject.h"
 #include <vector>
+#include <string>
 
 //VisibleObjManger manages a list of all visible objects
 class VisibleObjManger
 {
 public:
-	vector<VisibleObject> objList;
-	vector<string> getFrame();
+	void addObject(VisibleObject* object);
+	vector<VisibleObject*> objList;
+	vector<wstring> getFrame();
 };
 typedef Singleton<VisibleObjManger> sVisibleObjManger;
 #define vManager sVisibleObjManger::instance()
+#endif

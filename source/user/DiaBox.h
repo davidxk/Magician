@@ -1,5 +1,5 @@
 
-
+#include "base/Box.h"
 
 class DiaBox: public Box
 {

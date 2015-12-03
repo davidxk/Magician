@@ -1,6 +1,8 @@
 #include "MainLoop.h"
+#include <thread>
+#include "basic/MagicianMacros.h"
 
-const int MainLoop::TIME_UNIT = 50;
+const int MainLoop::TIME_UNIT = magician::TIME_UNIT;
 
 void MainLoop::readyGo()
 {

@@ -3,6 +3,7 @@
 
 #include "display/PrintJob.h"
 #include <conio.h>
+#include <string>
 #include <windows.h>
 
 //Prints char on a specified position

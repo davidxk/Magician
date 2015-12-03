@@ -9,5 +9,5 @@ void Printer::print(PrintJob pj)
 {
       COORD pos={ pj.cCoord.column, pj.cCoord.line };
       SetConsoleCursorPosition( hOut, pos );
-	  cout<<pj.graph;
+	  wcout<<pj.graph;
 }

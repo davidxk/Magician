@@ -1,5 +1,7 @@
+#ifndef _MAIN_LOOP_H_
+#define _MAIN_LOOP_H_
 
-#include "DisplayCentral.h"
+#include "display/DisplayCentral.h"
 
 class MainLoop
 {
@@ -9,3 +11,4 @@ public:
 	static const int TIME_UNIT;
 	DisplayCentral dc;
 };
+#endif

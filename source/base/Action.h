@@ -1,6 +1,8 @@
+#ifndef _ACTION_H_
+#define _ACTION_H_
 
-#include "Command.h"
-#include "VisibleObject.h"
+#include "base/Command.h"
+#include "base/VisibleObject.h"
 #include <queue>
 
 class Action
@@ -9,11 +11,12 @@ public:
 	VisibleObject* host;
 	int duration;
 	bool isRepeat;
-	queue<Command> cmdQueue;
+	std::queue<Command> cmdQueue;
 
-	virtual Action& create();
-private:
+	//static Action* create(VisibleObject* aHost, int dur, bool isRep = false) 
 	Action(VisibleObject* aHost, int aDuration, bool aIsRepeat = false);
+private:
 	//Called within constructor
-	virtual getCmdQueue();
+	virtual void getCmdQueue() { };
 };
+#endif

@@ -1,13 +1,19 @@
+#ifndef _COMMAND_H_
+#define _COMMAND_H_
 
-#include "VisibleObject.h"
+#include "base/VisibleObject.h"
+#include "basic/Coord.h"
 
 class Command
 {
 public:
 	enum CmdType { CHANGE_POS, CHANGE_IMG };
 	CmdType type;
-	union delta{ Coord pos; int index; } next;
+	Coord pos; 
+	int index; 
 public:
-	Command(CmdType aType, delta aNext);
+	Command(Coord pos);
+	Command(int index);
 	void apply(VisibleObject* vo);
 };
+#endif

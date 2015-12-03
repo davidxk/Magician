@@ -1,5 +1,11 @@
-#include "ConsoleCoord.h"
+#ifndef _VISIBLE_OBJECT_H_
+#define _VISIBLE_OBJECT_H_
+
+#include "basic/ConsoleCoord.h"
+#include "basic/Coord.h"
 #include <vector>
+#include <iostream>
+using namespace std;
 
 class VisibleObject
 {
@@ -10,7 +16,7 @@ public:
 	int zOrder;
 	bool isVisible;
 	//bool isColored;
-	VisibleObject();
 	void verify();
 	void setPos(const Coord& cc);
 };
+#endif

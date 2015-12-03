@@ -10,6 +10,6 @@ Sprite::Sprite(const string& fileName)
 static Sprite& Sprite::create(const string& fileName)
 {
 	vector<VisibleObject>& list = vManager->objList;
-	list.emplace_back( fileName );
+	list.emplace_back( Sprite(fileName) );
 	return list.back();
 }

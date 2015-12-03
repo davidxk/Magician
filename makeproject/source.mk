@@ -16,15 +16,14 @@ ImageLoader.cpp \
 OrderedPair.cpp \
 PrintJob.cpp \
 Size.cpp \
-#MainLoop.cpp \
-#Action.cpp \
-#Box.cpp \
-#Command.cpp \
-#Singleton.hpp \
+Action.cpp \
+Box.cpp \
+Command.cpp \
+Singleton.cpp \
 VisibleObject.cpp \
+#MainLoop.cpp \
  \
 #ActionManager.cpp \
-#ConsoleCoord.cpp \
 #DisplayCentral.cpp \
 #Printer.cpp \
 #VisibleObjManager.cpp \

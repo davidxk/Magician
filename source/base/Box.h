@@ -1,8 +1,16 @@
+#ifndef _BOX_H_
+#define _BOX_H_
 
+#include "base/VisibleObject.h"
+#include "basic/Size.h"
 
 //A Box is a interactive window on terminal with outline
 class Box: public VisibleObject
 {
 public:
-	setSize(Size size);
+	Box(const Size& size);
+	void setSize(const Size& size);
+private:
+	void getOutline();
 };
+#endif

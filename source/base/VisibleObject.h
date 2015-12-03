@@ -17,6 +17,6 @@ public:
 	bool isVisible;
 	//bool isColored;
 	void verify();
-	void setPos(const Coord& cc);
+	void setPos(const Coord cc);
 };
 #endif

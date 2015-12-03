@@ -10,12 +10,12 @@ Box::Box(const Size& size)
 void Box::setSize(const Size& size)
 {
 	this->size = size;
-	getOutline();
+	getAsciiOutline();
 }
 
-void Box::getOutline()
+void Box::getAsciiOutline()
 {
-	int width  = size.column/2;
+	int width  = size.column;
 	int height = size.line;
 	image.resize( height );
 	
@@ -26,22 +26,22 @@ void Box::getOutline()
 		for(int j=0; j<width; j++)
 			if(j == 0)
 			{
-				if( i==0 ) line += L"╔";
-				else if( i==height-1 ) line += L"╰";
-				else line += L"│";
+				if( i==0 ) line += L" ";	//upper left 
+				else if( i==height-1 ) line += L"`";	//lower left
+				else line += L"|";	//left
 			}
 			else if(j == width-1)
 			{
-				if( i==0 ) line += L"┐";
-				else if( i==height-1 ) line += L"╯";
-				else line += L"│";
+				if( i==0 ) line += L".";	//upper right
+				else if( i==height-1 ) line += L" ";	//lower right
+				else line += L"|";	//right
 			}
 			else
 			{
-				if( i==0 || i==height-1 ) line += L"─";
-				else line += L"  ";
+				if( i==0 || i==height-1 ) line += L"-";	//upper and lower
+				else line += L" ";	//middle
 			}
 	} 
 	assert( image.size()==size.line);
-	//assert( line.size()==size.column/2 );
+	assert( image[0].size()==size.column );
 }

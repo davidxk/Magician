@@ -11,6 +11,6 @@ public:
 	Box(const Size& size);
 	void setSize(const Size& size);
 private:
-	void getOutline();
+	void getAsciiOutline();
 };
 #endif

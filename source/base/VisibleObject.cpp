@@ -16,7 +16,7 @@ void VisibleObject::verify()
 		assert(it.length() == column);
 }
 
-void VisibleObject::setPos(const Coord& cc)
+void VisibleObject::setPos(const Coord cc)
 {
-	this->pos = pos;
+	this->pos = cc;
 }

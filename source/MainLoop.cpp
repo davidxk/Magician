@@ -1,9 +1,11 @@
 #include "MainLoop.h"
+
 #include <chrono>
 #include <thread>
+#include "basic/MagicianMacros.h"
 #include "display/ActionManager.h"
 
-const int MainLoop::TIME_UNIT = 50;
+const int MainLoop::TIME_UNIT = magician::TIME_UNIT;
 
 void MainLoop::readyGo()
 {

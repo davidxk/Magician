@@ -14,6 +14,7 @@ vector<wstring> VisibleObjManger::getFrame()
 	map.resize( ConsoleCoord::MAX_LINES+1 );
 	for(int i=0; i<map.size(); i++)
 		map[i]=wstring(ConsoleCoord::MAX_COLUMN+1, L' ');
+	verify( map );
 
 	for(const auto& obj: objList)
 	{
@@ -24,9 +25,18 @@ vector<wstring> VisibleObjManger::getFrame()
 		int colLower = (int)fmax( ConsoleCoord::MIN_COLUMN, lower.column );
 		int colUpper = (int)fmin( ConsoleCoord::MAX_COLUMN, upper.column );
 
-		for(int i=lineLower; i<=lineUpper; i++)
-			for(int j=colLower; j<=colUpper; j++)
+		obj->verify();
+		for(int i=lineLower; i<lineUpper; i++)
+			for(int j=colLower; j<colUpper; j++)
 				map[i][j] = obj->image[ i-lineLower ][ j-colLower ];
 	}
+	verify( map );
 	return map;
+}
+
+void VisibleObjManger::verify(vector<wstring>& frame)
+{
+	assert( frame.size()==ConsoleCoord::MAX_LINES+1 );
+	for(const auto& line: frame)
+		assert( line.size()==ConsoleCoord::MAX_COLUMN+1 );
 }

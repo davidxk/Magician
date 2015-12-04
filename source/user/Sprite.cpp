@@ -1,7 +1,7 @@
 #include "user/Sprite.h"
 #include "basic/ImageLoader.h"
 
-Sprite::Sprite(const string& fileName)
+Sprite::Sprite(const string& fileName): VisibleObject()
 {
 	image = ImageLoader::load(fileName);
 	size = Size( image.size(), image[0].size() );

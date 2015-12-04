@@ -2,7 +2,7 @@
 #define _DISPLAY_CENTRAL_H_
 
 #include "basic/PrintJob.h"
-//#include "display/Printer.h"
+#include "display/Printer.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -18,7 +18,7 @@ public:
 	void setThisFrame(const vector<wstring>& frameThis);
 	void verify(const vector<wstring>& frame);
 public:
-	//Printer printer;
+	Printer printer;
 	vector<wstring> frameLast;
 	vector<wstring> frameThis;
 };

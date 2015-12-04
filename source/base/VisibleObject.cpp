@@ -2,6 +2,9 @@
 
 #include <cassert>
 
+VisibleObject::VisibleObject():
+	zOrder(0), isVisible(true), inAction(false) { }
+
 void VisibleObject::verify()
 {
 	//A visible object should be verified before being registered 
@@ -9,11 +12,9 @@ void VisibleObject::verify()
 	assert(size.line > 0);
 	assert(size.column > 0);
 
-	int column = image[0].length();
 	assert(size.line == image.size());
-	assert(size.column == column);
 	for(const auto& it: image)
-		assert(it.length() == column);
+		assert(size.column == it.size());
 }
 
 void VisibleObject::setPos(const Coord cc)

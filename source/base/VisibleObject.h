@@ -15,7 +15,9 @@ public:
 	vector<wstring> image;
 	int zOrder;
 	bool isVisible;
+	bool inAction;
 	//bool isColored;
+	VisibleObject();
 	void verify();
 	void setPos(const Coord cc);
 };

@@ -27,6 +27,6 @@ VisibleObjManager.cpp \
 AnimSprite.cpp \
 MoveTo.cpp \
 Sprite.cpp \
-#MainLoop.cpp \
-#Printer.cpp \
+MainLoop.cpp \
+Printer.cpp \
  \

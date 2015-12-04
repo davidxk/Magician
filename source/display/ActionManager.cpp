@@ -5,6 +5,7 @@ void ActionManager::addAction(Action* action)
 {
 	assert( action != NULL );
 	actionList.push_back( action );
+	action->host->inAction = true;
 }
 
 void ActionManager::update()
@@ -18,6 +19,9 @@ void ActionManager::update()
 		action->cmdQueue.pop();
 
 		if(action->cmdQueue.empty())
+		{
 			actionList.remove(action);
+			action->host->inAction = false;
+		}
 	}
 }

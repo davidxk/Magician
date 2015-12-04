@@ -1,13 +1,15 @@
 #include "display/Printer.h"
+#include <iostream>
+using namespace std;
 
 Printer::Printer()
 {
-	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
 void Printer::print(PrintJob pj)
 {
-      COORD pos={ pj.cCoord.column, pj.cCoord.line };
-      SetConsoleCursorPosition( hOut, pos );
-	  cout<<pj.graph;
+	COORD pos={ (short)pj.cCoord.column, (short)pj.cCoord.line };
+	SetConsoleCursorPosition( hOut, pos );
+	wcout<<pj.graph;
 }

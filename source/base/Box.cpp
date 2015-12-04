@@ -2,7 +2,7 @@
 #include <cassert>
 #include <iostream>
 
-Box::Box(const Size& size)
+Box::Box(const Size& size): VisibleObject()
 {
 	setSize(size);
 }

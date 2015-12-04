@@ -1,7 +1,7 @@
 #ifndef _PRINTER_H_
 #define _PRINTER_H_
 
-#include "display/PrintJob.h"
+#include "basic/PrintJob.h"
 #include <conio.h>
 #include <windows.h>
 

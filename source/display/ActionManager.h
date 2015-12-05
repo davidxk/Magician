@@ -14,6 +14,7 @@ public:
 	//void removeAction(Action* action);
 	//updates sprites' attributes in vManager
 	void update();
+	~ActionManager();
 };
 typedef Singleton<ActionManager> sActionManager;
 #define aManager sActionManager::instance()

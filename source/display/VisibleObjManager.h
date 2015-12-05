@@ -14,6 +14,7 @@ public:
 	vector<VisibleObject*> objList;
 	vector<wstring> getFrame();
 	void verify(vector<wstring>& frame);
+	~VisibleObjManger();
 };
 typedef Singleton<VisibleObjManger> sVisibleObjManger;
 #define vManager sVisibleObjManger::instance()

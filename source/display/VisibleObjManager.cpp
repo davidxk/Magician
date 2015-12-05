@@ -40,3 +40,9 @@ void VisibleObjManger::verify(vector<wstring>& frame)
 	for(const auto& line: frame)
 		assert( line.size()==ConsoleCoord::MAX_COLUMN+1 );
 }
+
+VisibleObjManger::~VisibleObjManger()
+{
+	for(auto& object: objList)
+		delete object;
+}

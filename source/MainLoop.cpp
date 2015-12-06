@@ -4,6 +4,7 @@
 #include <thread>
 #include "basic/MagicianMacros.h"
 #include "display/ActionManager.h"
+#include "display/VisibleObjManager.h"
 
 const int MainLoop::TIME_UNIT = magician::TIME_UNIT;
 
@@ -21,4 +22,10 @@ void MainLoop::update()
 {
 	aManager->update();
 	dc.update();
+}
+
+MainLoop::~MainLoop()
+{
+	sVisibleObjManager::release();
+	sActionManager::release();
 }

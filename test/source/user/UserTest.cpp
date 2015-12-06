@@ -13,7 +13,7 @@ void UserTest::run()
 	Sprite* sp = Sprite::create("graph/moon.txt");
 	vManager->addObject( sp );
 
-	MoveTo* mt = MoveTo::create(sp, 10, Coord(23, 79), true);
+	MoveTo* mt = MoveTo::create(sp, 1000, Coord(23, 79), true);
 	aManager->addAction( mt );
 
 	std::thread refresh( &MainLoop::readyGo, std::ref( ml ) );

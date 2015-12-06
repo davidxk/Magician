@@ -10,15 +10,16 @@ void ActionManager::addAction(Action* action)
 
 void ActionManager::update()
 {
-	for(const auto& action: actionList)
+	for(auto& action: actionList)
 	{
 		if(action->isPause) continue;
 
 		if(action->cmdQueue.empty())
 		{
-			actionList.remove(action);
 			action->host->inAction = false;
 			delete action;
+			action = NULL;
+			continue;
 		}
 
 		action->cmdQueue.front().apply( action->host );
@@ -27,6 +28,7 @@ void ActionManager::update()
 			action->cmdQueue.push( action->cmdQueue.front() );
 		action->cmdQueue.pop();
 	}
+	actionList.remove(NULL);
 }
 
 ActionManager::~ActionManager()

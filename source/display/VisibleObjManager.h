@@ -6,9 +6,9 @@
 #include <vector>
 #include <string>
 
-//Visible ObjManger maintains a list of all visible objects
+//Visible ObjManager maintains a list of all visible objects
 //In each update, it generates a frame accoring to the list
-class VisibleObjManger
+class VisibleObjManager
 {
 public:
 	void addObject(VisibleObject* object);
@@ -16,8 +16,8 @@ public:
 	vector<wstring> getFrame();
 	//in future versions, a frame will know how to verify itself
 	void verify(vector<wstring>& frame);
-	~VisibleObjManger();
+	~VisibleObjManager();
 };
-typedef Singleton<VisibleObjManger> sVisibleObjManger;
-#define vManager sVisibleObjManger::instance()
+typedef Singleton<VisibleObjManager> sVisibleObjManager;
+#define vManager sVisibleObjManager::instance()
 #endif

@@ -8,6 +8,7 @@ class MainLoop
 public:
 	void readyGo();
 	void update();
+	~MainLoop();
 	static const int TIME_UNIT;
 	DisplayCentral dc;
 };

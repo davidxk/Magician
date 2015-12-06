@@ -33,7 +33,7 @@ void BasicTest::testCoord()
 {
 	//XY stlye initialize
 	Coord coxy = Coord::CoordXY(75, -25);
-	assert( coxy.line==-25 coxy.column==75 );
+	assert( coxy.line==-25 && coxy.column==75 );
 
 	//add Size
 	Coord lowerRight = Coord(75, -25) + Size(100, 50);
@@ -57,8 +57,8 @@ void BasicTest::testCoord()
 	prod *= 2;
 	assert( prod == Coord(1000, 500) );
 
-	Coord diff = Coord(100, 50) / 5;
-	assert( diff == Coord(20, 10) );
+	Coord quot = Coord(100, 50) / 5;
+	assert( quot == Coord(20, 10) );
 }
 
 void BasicTest::testImageLoader()

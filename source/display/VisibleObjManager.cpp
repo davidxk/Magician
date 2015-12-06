@@ -2,14 +2,14 @@
 #include <cassert>
 #include <cmath>
 
-void VisibleObjManger::addObject(VisibleObject* object)
+void VisibleObjManager::addObject(VisibleObject* object)
 {
 	assert( object != NULL );
 	object->verify();
 	objList.push_back( object );
 }
 
-vector<wstring> VisibleObjManger::getFrame()
+vector<wstring> VisibleObjManager::getFrame()
 {
 	vector<wstring> map;
 	map.resize( ConsoleCoord::MAX_LINES+1 );
@@ -34,14 +34,14 @@ vector<wstring> VisibleObjManger::getFrame()
 	return map;
 }
 
-void VisibleObjManger::verify(vector<wstring>& frame)
+void VisibleObjManager::verify(vector<wstring>& frame)
 {
 	assert( frame.size()==ConsoleCoord::MAX_LINES+1 );
 	for(const auto& line: frame)
 		assert( line.size()==ConsoleCoord::MAX_COLUMN+1 );
 }
 
-VisibleObjManger::~VisibleObjManger()
+VisibleObjManager::~VisibleObjManager()
 {
 	for(auto& object: objList)
 		delete object;

@@ -15,10 +15,10 @@ void Action::resume()
 
 void Action::stop()
 {
-	cmdQueue.clear();
+	while( !cmdQueue.empty() )
+		cmdQueue.pop();
 }
 
-void Action::
 /*
 Action& Action::create(VisibleObject* aHost, int aDuration, bool aIsRepeat)
 {

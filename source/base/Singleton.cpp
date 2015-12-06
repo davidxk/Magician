@@ -7,7 +7,7 @@ class Singleton
 {
 public:
 	static T* instance();
-	void release();
+	static void release();
 protected:
 	static T* _instance;
 };

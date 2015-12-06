@@ -7,5 +7,9 @@ class BasicTest: public TestCase
 {
 public:
 	virtual void run();
+private:
+	void testSize();
+	void testCoord();
+	void testImageLoader();
 };
 #endif

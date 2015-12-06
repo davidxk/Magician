@@ -10,11 +10,12 @@ class Command
 {
 public:
 	//Should more type emerge, use polymorphic behaviour instead of switch case
-	enum CmdType { CHANGE_POS, CHANGE_IMG };
+	enum CmdType { CHANGE_POS, CHANGE_IMG, SLEEP };
 	CmdType type;
 	Coord pos; 
 	int index; 
 public:
+	Command();
 	Command(Coord pos);
 	Command(int index);
 	void apply(VisibleObject* vo);

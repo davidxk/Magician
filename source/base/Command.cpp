@@ -1,5 +1,7 @@
 #include "base/Command.h"
 
+Command::Command(): type(SLEEP) { }
+
 Command::Command(Coord aPos):
 	type(CHANGE_POS), pos(aPos) { }
 	
@@ -17,6 +19,8 @@ void Command::apply(VisibleObject* vo)
 			//assert vo is AnimSprite* type
 			//AnimSprite* as = (AnimSprite* vo);
 			//as->putOn( index );
+			break;
+		case SLEEP:
 			break;
 		default:
 			//cout<<"not yet supported";

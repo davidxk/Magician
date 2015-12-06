@@ -8,5 +8,10 @@ class DisplayTest: public TestCase
 {
 public:
 	virtual void run() override;
+private:
+	void testSprite();
+	void testVManager();
+	void testMoveTo();
+	void testDisplay();
 };
 #endif

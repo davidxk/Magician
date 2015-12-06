@@ -11,9 +11,13 @@ using namespace std;
 
 void BasicTest::run()
 {
+	testSize();
+	testCoord();
+	testImageLoader();
 
 	//ConsoleCoord(-1, 2);
 	//ConsoleCoord(25, 2);
+	ConsoleCoord(20, 30);
 	PrintJob( ConsoleCoord(23, 50), L'a');
 }
 

@@ -5,6 +5,8 @@
 #include <vector>
 #include <string>
 
+//Animation Sprite is initialized with a batch of images
+//It changes image on the commands of AnimAction
 class AnimSprite: public Sprite
 {
 public:

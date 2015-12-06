@@ -5,6 +5,7 @@
 #include "base/VisibleObject.h"
 #include "basic/Coord.h"
 
+//Move To action moves an object to the specified coordinate within duration
 class MoveTo: public Action
 {
 public:

@@ -15,3 +15,8 @@ bool Size::operator==(const Size& cc)
 {
 	return line==cc.line && column==cc.column;
 }
+
+bool Size::operator!=(const Size& cc)
+{
+	return !(line==cc.line && column==cc.column);
+}

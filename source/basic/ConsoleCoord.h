@@ -5,6 +5,7 @@
 #include "basic/Size.h"
 
 //Console Coordinate is for the sole purpose of console printing
+//It guarantees that the coordinate is within the screen
 class ConsoleCoord: public OrderedPair
 {
 public:

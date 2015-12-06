@@ -4,7 +4,7 @@
 #include "basic/ConsoleCoord.h"
 #include <cwchar>
 
-//description of the class here
+//A Print Job specifies a character to be printed at a specific coordinate
 class PrintJob
 {
 public:

@@ -12,6 +12,8 @@ void ActionManager::update()
 {
 	for(const auto& action: actionList)
 	{
+		if(action->isPause) continue;
+
 		if(action->cmdQueue.empty())
 		{
 			actionList.remove(action);

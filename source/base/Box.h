@@ -4,7 +4,7 @@
 #include "base/VisibleObject.h"
 #include "basic/Size.h"
 
-//A Box is a interactive window on terminal with outline
+//A Box is the visible part of an interactive window on terminal with outline
 class Box: public VisibleObject
 {
 public:

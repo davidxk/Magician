@@ -3,7 +3,7 @@
 
 #include "base/VisibleObject.h"
 
-//Sprite is initiated from file by default
+//A Sprite is a Visible Object that's initialized with an image
 class Sprite: public VisibleObject
 {
 public:

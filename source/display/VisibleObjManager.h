@@ -6,13 +6,15 @@
 #include <vector>
 #include <string>
 
-//VisibleObjManger manages a list of all visible objects
+//Visible ObjManger maintains a list of all visible objects
+//In each update, it generates a frame accoring to the list
 class VisibleObjManger
 {
 public:
 	void addObject(VisibleObject* object);
 	vector<VisibleObject*> objList;
 	vector<wstring> getFrame();
+	//in future versions, a frame will know how to verify itself
 	void verify(vector<wstring>& frame);
 	~VisibleObjManger();
 };

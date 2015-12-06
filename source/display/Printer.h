@@ -6,8 +6,8 @@
 #include <string>
 #include <windows.h>
 
-//Prints char on a specified position
-//If to implement on other platform, make this a base class 
+//Printer prints chars to a specified position
+//To implement it on another platform, make this a base class 
 class Printer
 {
 public:

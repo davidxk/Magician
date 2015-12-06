@@ -1,7 +1,7 @@
 ##Intro
 Menus are controllers that reads the keystroke from the keyboard and responds in accordance. The thing about Menus is that only one box can be in charge at a given point of time, so we must come up with a way to arrange for the cooperation of the Menus. Here is my solution. 
 A Controller should be a Controller and have a VisibleObject, usually a Box. Box is a VisibleObject in charge of the re-painting of the image while Controller is a input processor that responds to the user's input. 
-For clarity, we refer to the modification of image as printing and the actual wcout output as painting. 
+For clarity, we refer to the modification of image as painting and the actual wcout output as printing. 
 
 ##CentralControl
 public:
@@ -21,8 +21,8 @@ public:
 * DiaBox(vector<wstring> aText): text(aText) { }
 * vector<wstring> text;
 * int index = 0;
-* void printNext();	//{ print( text[index++] ); }
-* void print();		//{ for(1~<size.line) for(1~<size.column) [cnt++];\>\>} 
+* void paintNext();	//{ paint( text[index++] ); }
+* void paint();		//{ for(1~<size.line) for(1~<size.column) [cnt++];\>\>} 
 
 ##ListBox: public Box
 * vector<wstring> item;
@@ -30,7 +30,7 @@ public:
 * enum Style { FORE_COLOR, BACK_COLOR, CHAR_MARK }; 
 * char marker;
 * Color color;
-* void print();
+* void paint();
 * void highLightNext();	//{ 	if( index + 1 < item.size() )
 				lowLight(index), highLight( item[ ++index ] ); }
 * void highLightPrev();	//{ 	if( index - 1 >= 0 )
@@ -41,14 +41,14 @@ public:
 ##HorizonBox: public ListBox
 * HorizonBox(vector<wstring> item, wstring aText): ListBox(item), text(aText){}
 * wstring text;
-* void print();
+* void paint();
 
 ##DiaMenu: public Controller
 // To be directly instantiated
 * DiaMenu(vector<wstring> text): diabox(text) { }
 * DiaBox\* diabox;
 * string respond(char keyStroke) { next(); return L"";}
-* void next() { diabox->printNext; }
+* void next() { diabox->paintNext; }
 
 ##ListMenu: public Controller
 // To be inherited

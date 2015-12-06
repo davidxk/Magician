@@ -1,6 +1,7 @@
 #ifndef _ORDERED_PAIR_
 #define _ORDERED_PAIR_
 
+//Base to all Size and Coords
 class OrderedPair
 {
 public:

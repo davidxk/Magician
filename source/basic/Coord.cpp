@@ -1,4 +1,5 @@
 #include "basic/Coord.h"
+#include <cassert>
 
 Coord::Coord(): OrderedPair(0, 0) { }
 
@@ -12,12 +13,17 @@ Coord Coord::CoordXY(int xx, int yy)
 
 Coord Coord::operator+(const Size& cc)
 {
-	return Coord(cc.line + line, cc.column + column);
+	return Coord(line + cc.line, column + cc.column);
 }
 
 Coord Coord::operator+(const Coord& cc)
 {
-	return Coord(cc.line + line, cc.column + column);
+	return Coord(line + cc.line, column + cc.column);
+}
+
+Coord Coord::operator+=(const Coord& cc);
+{
+	return Coord(line += cc.line, column += cc.column);
 }
 
 Coord Coord::operator-(const Coord& cc)
@@ -25,17 +31,37 @@ Coord Coord::operator-(const Coord& cc)
 	return Coord(line - cc.line, column - cc.column);
 }
 
+Coord Coord::operator-=(const Coord& cc)
+{
+	return Coord(line -= cc.line, column -= cc.column);
+}
+
+
+
+
+
 Coord Coord::operator*(int nn)
 {
 	return Coord(line * nn, column * nn);
 }
 
+Coord Coord::operator*=(int nn)
+{
+	return Coord(line *= nn, column *= nn);
+}
+
 Coord Coord::operator/(int nn)
 {
+	assert( nn != 0 );
 	return Coord(line / nn, column / nn);
 }
 
 bool Coord::operator==(const Coord& cc)
 {
 	return cc.line==line && cc.column==column;
+}
+
+bool Coord::operator!=(const Coord& cc)
+{
+	return !(cc.line==line && cc.column==column);
 }

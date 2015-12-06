@@ -12,7 +12,7 @@ DisplayCentral::DisplayCentral()
 void DisplayCentral::update()
 {
 	setThisFrame( vManager->getFrame() );
-	paint( getDiff() );
+	print( getDiff() );
 }
 
 
@@ -39,7 +39,7 @@ vector<PrintJob> DisplayCentral::getDiff()
 	return pjList;
 }
 
-void DisplayCentral::paint(const vector<PrintJob>& jobList)
+void DisplayCentral::print(const vector<PrintJob>& jobList)
 {
 	for(const auto& it: jobList)
 		printer.print(it);

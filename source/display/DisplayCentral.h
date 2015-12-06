@@ -7,13 +7,14 @@
 #include <vector>
 using namespace std;
 
-//description of the class here
+//Display Central takes in a frame and from it calculates a print job list
+//It then calls on the Printer to print it 
 class DisplayCentral
 {
 public:
 	DisplayCentral();
 	void update();
-	void paint(const vector<PrintJob>& jobList);
+	void print(const vector<PrintJob>& jobList);
 	vector<PrintJob> getDiff();
 	void setThisFrame(const vector<wstring>& frameThis);
 	void verify(const vector<wstring>& frame);

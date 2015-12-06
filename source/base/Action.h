@@ -11,11 +11,15 @@ public:
 	VisibleObject* host;
 	int duration;
 	bool isRepeat;
+	bool isPause;
 	std::queue<Command> cmdQueue;
 
 	//static Action* create(VisibleObject* aHost, int dur, bool isRep = false) 
 	Action(VisibleObject* aHost, int aDuration, bool aIsRepeat = false);
 	//Called within constructor
 	virtual void getCmdQueue() { };
+	void pause();
+	void resume();
+	void stop();
 };
 #endif

@@ -5,7 +5,8 @@
 #include "base/Singleton.cpp"
 #include <list>
 
-//Action Manager can be globally accessed
+//Action Manager maintains a list of running actions
+//In each update, it executes commands which alters the attributes of objects 
 class ActionManager
 {
 public:

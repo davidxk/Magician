@@ -1,0 +1,19 @@
+box design i
+ __________________________________
+| this is the first line of a box  |
+| this is the second line o lala   |
+|__________________________________|
+
+box design ii
+
+ ----------------------------------.
+| this is the first line of a box  |
+| this is the second line o lala   |
+`---------------------------------- 
+
+box design ii+
+
+,----------------------------------.
+| this is the first line of a box  |
+| this is the second line o lala   |
+`----------------------------------'

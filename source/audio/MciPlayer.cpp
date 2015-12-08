@@ -1,4 +1,6 @@
 #include "audio/MciPlayer.h"
+#include <mmsystem.h>  
+#pragma comment(lib , "winmm.lib") 
 
 static MCIERROR s_mciError;
 
@@ -11,7 +13,7 @@ void MciPlayer::open(const string& fileName)
 	WCHAR* fileNameWideChar = str2wchar( fullPath );
 
 	MCI_OPEN_PARMS mciOpen = { 0 };
-	mciOpen.lpstrElementName = fileNameWideChar;
+	mciOpen.lpstrElementName = fullPath.c_str();
 	s_mciError = mciSendCommand(0, MCI_OPEN,
 			MCI_OPEN_ELEMENT, (DWORD_PTR)&mciOpen);
 
@@ -32,7 +34,7 @@ void MciPlayer::play()
 
 void MciPlayer::close()
 {
-	Stop();
+	stop();
     if( device ) sendGenCommand(MCI_CLOSE);
 
     device = 0;
@@ -53,15 +55,6 @@ void MciPlayer::stop()
     sendGenCommand(MCI_STOP);
 }
 
-void MciPlayer::rewind()
-{
-    if ( !device ) return;
-    mciSendCommand(device, MCI_SEEK, MCI_SEEK_TO_START, 0);
-
-    MCI_PLAY_PARMS mciPlay = { 0 };
-    mciPlay.dwCallback = (DWORD_PTR)wnd;
-    mciSendCommand(device, MCI_PLAY, MCI_NOTIFY, (DWORD_PTR)&mciPlay);
-}
 
 
 

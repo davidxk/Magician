@@ -1,6 +1,7 @@
 #ifndef _MCI_PLAYER_H_
 #define _MCI_PLAYER_H_
 
+#include <windows.h>
 #include <digitalv.h> 
 #include <mmsystem.h>  
 #include <iostream>
@@ -17,10 +18,9 @@ public:
 	void pause();
 	void resume();
 	void stop();
-	void rewind();
 private:
 	MCIDEVICEID device;
-	void sendGenCommand(int nCommand, DWORD_PTR param1, DWORD_PTR parma2);
+	void sendGenCommand(int nCommand, DWORD_PTR param1=0, DWORD_PTR parma2=0);
 	WCHAR* str2wchar(const string& str);
 };
 #endif

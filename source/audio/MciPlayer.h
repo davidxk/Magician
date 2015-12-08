@@ -1,0 +1,26 @@
+#ifndef _MCI_PLAYER_H_
+#define _MCI_PLAYER_H_
+
+#include <digitalv.h> 
+#include <mmsystem.h>  
+#include <iostream>
+using namespace std;
+#pragma comment(lib , "winmm.lib") 
+
+//description of the class here
+class MciPlayer
+{
+public:
+	void open(const string& fileName);
+	void play();
+	void close();
+	void pause();
+	void resume();
+	void stop();
+	void rewind();
+private:
+	MCIDEVICEID device;
+	void sendGenCommand(int nCommand, DWORD_PTR param1, DWORD_PTR parma2);
+	WCHAR* str2wchar(const string& str);
+};
+#endif

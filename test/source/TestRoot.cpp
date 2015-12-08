@@ -4,6 +4,7 @@
 #include "base/BaseSuite.h"
 #include "display/DisplaySuite.h"
 #include "user/UserSuite.h"
+#include "audio/AudioSuite.h"
 
 TestRoot::TestRoot()
 {
@@ -11,6 +12,7 @@ TestRoot::TestRoot()
 	testSuites.push_back(new BaseSuite);
 	testSuites.push_back(new DisplaySuite);
 	testSuites.push_back(new UserSuite);
+	testSuites.push_back(new AudioSuite);
 }
 
 void TestRoot::runAll()

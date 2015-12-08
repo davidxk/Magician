@@ -10,18 +10,28 @@ void MciPlayer::open(const string& fileName)
 
 	string fullPath = "../resources/";
 	fullPath += fileName;
-	WCHAR* fileNameWideChar = str2wchar( fullPath );
+	//WCHAR* fileNameWideChar = str2wchar( fullPath );
 
 	MCI_OPEN_PARMS mciOpen = { 0 };
 	mciOpen.lpstrElementName = fullPath.c_str();
 	s_mciError = mciSendCommand(0, MCI_OPEN,
 			MCI_OPEN_ELEMENT, (DWORD_PTR)&mciOpen);
 
-	if( s_mciError ) cout<<"Error: BGM load fail!\n";
+	if( s_mciError ) 
+	{
+		cout<<"Error: BGM load fail!\n";
+		char buf[200];
+		mciGetErrorString(s_mciError, buf, sizeof(buf));
+		cout<<buf<<endl;
+	}
 
-    //MCIDEVICEID _dev;
 	device = mciOpen.wDeviceID;
-	delete[] fileNameWideChar;
+	//delete[] fileNameWideChar;
+
+	MCI_STATUS_PARMS mciStatus;
+    mciStatus.dwItem = MCI_STATUS_LENGTH;
+	mciSendCommand(device, MCI_STATUS, MCI_STATUS_ITEM, (DWORD_PTR)&mciStatus);
+    miliLength = mciStatus.dwReturn; 
 }
 
 void MciPlayer::play()
@@ -29,7 +39,14 @@ void MciPlayer::play()
     MCI_PLAY_PARMS mciPlay = { 0 };
 	s_mciError = mciSendCommand(device, MCI_PLAY,
 			MCI_DGV_PLAY_REPEAT, (DWORD_PTR)&mciPlay);
-	if( s_mciError ) cout<<"Error: BGM play fail!\n";
+
+	if( s_mciError ) 
+	{
+		cout<<"Error: BGM play fail!\n";
+		char buf[200];
+		mciGetErrorString(s_mciError, buf, sizeof(buf));
+		cout<<buf<<endl;
+	}
 }
 
 void MciPlayer::close()

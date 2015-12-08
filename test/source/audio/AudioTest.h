@@ -8,5 +8,7 @@ class AudioTest: public TestCase
 {
 public:
 	void run();
+private:
+	void go();
 };
 #endif

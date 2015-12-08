@@ -18,6 +18,7 @@ public:
 	void pause();
 	void resume();
 	void stop();
+	DWORD miliLength;
 private:
 	MCIDEVICEID device;
 	void sendGenCommand(int nCommand, DWORD_PTR param1=0, DWORD_PTR parma2=0);

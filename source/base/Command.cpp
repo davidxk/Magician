@@ -1,4 +1,5 @@
 #include "base/Command.h"
+#include "user/AnimSprite.h"
 
 Command::Command(): type(SLEEP) { }
 
@@ -17,8 +18,10 @@ void Command::apply(VisibleObject* vo)
 			break;
 		case CHANGE_IMG:
 			//assert vo is AnimSprite* type
-			//AnimSprite* as = (AnimSprite* vo);
-			//as->putOn( index );
+			{
+				AnimSprite* as = (AnimSprite*) vo;
+				as->putOn( index );
+			}
 			break;
 		case SLEEP:
 			break;

@@ -18,9 +18,9 @@ void UserTest::run()
 	aManager->addAction( mt );
 
 	AnimSprite* asp = AnimSprite::create("batch/moon_batch.txt");
-	vManager->addAction( asp );
+	vManager->addObject( asp );
 	Animation* anim = Animation::create(asp, 1000, true);
-	aManager->addAction( asp );
+	aManager->addAction( anim );
 
 	std::thread refresh( &MainLoop::readyGo, std::ref( ml ) );
 	refresh.join();

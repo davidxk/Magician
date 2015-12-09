@@ -1,5 +1,6 @@
 #include "user/Animation.h"
 #include <cassert>
+#include "basic/MagicianMacros.h"
 #include "user/AnimSprite.h"
 
 Animation::Animation(VisibleObject* host, int duration, bool isRepeat):

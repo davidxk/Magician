@@ -32,6 +32,5 @@ Sprite.cpp \
 MainLoop.cpp \
 Printer.cpp \
 MciPlayer.cpp \
-AnimSprite.cpp \
 Animation.cpp \
  \

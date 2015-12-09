@@ -11,7 +11,7 @@ TestRoot::TestRoot()
 	testSuites.push_back(new BasicSuite);
 	testSuites.push_back(new BaseSuite);
 	testSuites.push_back(new DisplaySuite);
-	//testSuites.push_back(new UserSuite);
+	testSuites.push_back(new UserSuite);
 	testSuites.push_back(new AudioSuite);
 }
 

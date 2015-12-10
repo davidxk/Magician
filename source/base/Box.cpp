@@ -10,6 +10,7 @@ Box::Box(const Size& size): VisibleObject()
 void Box::setSize(const Size& size)
 {
 	this->size = size;
+	updateCenter();
 	getAsciiOutline();
 }
 

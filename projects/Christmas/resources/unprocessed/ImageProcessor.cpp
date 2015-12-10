@@ -20,27 +20,27 @@ int ImageProcessor::leftMargin(const string& line)
 
 vector<string> ImageProcessor::start(const vector<string>& image)
 {
-	int maxMargin = 0;
+	int minMargin = leftMargin( image[0] );
 	int maxLength = 0;
 	for(const auto& line: image)
 	{
 		int margin = leftMargin( line );
-		if( maxMargin<margin )
-			maxMargin = margin;
+		if( minMargin>margin )
+			minMargin = margin;
 		if( maxLength<line.size() )
 			maxLength = line.size();
 	}
-	int length = maxLength - maxMargin;
+	int length = maxLength - minMargin;
 
 	vector<string> processed;
 	for(const auto& line: image)
 	{
-		int actualLen = line.size() - maxMargin;
+		int actualLen = line.size() - minMargin;
 		int rightMargin = length - actualLen;
 		string spaces(rightMargin, ' ');
 		string right;
-		if( line.size()<maxMargin ) right = line;
-		else right = line.substr( maxMargin, actualLen );
+		if( line.size()<minMargin ) right = line;
+		else right = line.substr( minMargin, actualLen );
 		processed.push_back( right + spaces );
 	}
 	return processed;
@@ -51,7 +51,8 @@ int main()
 	string line;
 	vector<string> image;
 	while( getline(cin, line) )
-		image.push_back( line );
+		if (!line.empty()) 
+			image.push_back( line );
 
 	ImageProcessor ip;
 	vector<string> processed = ip.start( image );

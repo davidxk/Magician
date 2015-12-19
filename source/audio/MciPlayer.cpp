@@ -1,14 +1,19 @@
 #include "audio/MciPlayer.h"
 #include <mmsystem.h>  
-#pragma comment(lib , "winmm.lib") 
+#include <thread>
 
 static MCIERROR s_mciError;
 
+void MciPlayer::start(const string& fileName)
+{
+	std::thread bgm( &MciPlayer::go, this, fileName );
+	bgm.detach();
+}
+
 void MciPlayer::go(const string& fileName)
 {
-	mp.open(fileName);
-	std::thread bgm( &AudioTest::play, this );
-	bgm.detach();
+	open(fileName);
+	play();
 }
 
 void MciPlayer::open(const string& fileName)

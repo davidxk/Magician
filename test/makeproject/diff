@@ -1,0 +1,2425 @@
+diff --git a/docs/design_actions.md b/docs/design_actions.md
+deleted file mode 100644
+index 57db9c8..0000000
+--- a/docs/design_actions.md
++++ /dev/null
+@@ -1,8 +0,0 @@
+-While actions of the simplest form are designed, the more complex ones are yet to be designed. 
+-
+-##Sequence
+-##Repeat
+-Both are implemented as a longer sequence of commands. 
+-
+-##Layer
+-It appears that this is still necessary, for the situation where an action on a scene as a whole is required. 
+diff --git a/makeproject/source.mk b/makeproject/source.mk
+index 1d4c67b..91ac734 100644
+--- a/makeproject/source.mk
++++ b/makeproject/source.mk
+@@ -26,13 +26,11 @@ VisibleObject.cpp \
+ ActionManager.cpp \
+ DisplayCentral.cpp \
+ VisibleObjManager.cpp \
++AnimSprite.cpp \
+ MoveTo.cpp \
+ Sprite.cpp \
+-AnimSprite.cpp \
+ MainLoop.cpp \
+ Printer.cpp \
+ MciPlayer.cpp \
+ Animation.cpp \
+-Sequence.cpp \
+-Repeat.cpp \
+  \
+diff --git a/projects/Christmas/resources/christmas_snow.txt b/projects/Christmas/resources/christmas_snow.txt
+new file mode 100644
+index 0000000..8384c66
+--- /dev/null
++++ b/projects/Christmas/resources/christmas_snow.txt
+@@ -0,0 +1,22 @@
++      *             ,                       
++                  _/^\_                     
++                 <     >                    
++*                 /.-.\         *           
++         *        `/&\`                   * 
++                 ,@.*;@,                    
++                /_o.I %_\    *              
++   *           (`'--:o(_@;                  
++              /`;--.,__ `')             *   
++             ;@`o % O,*`'`&\                
++       *    (`'--)_@ ;o %'()\      *        
++            /`;--._`''--._O'@;              
++           /&*,()~o`;-.,_ `""`)             
++*          /`,@ ;+& () o*`;-';\             
++          (`""--.,_0o*`;-' &()\             
++          /-.,_    ``''--....-'`)  *        
++     *    /@%;o`:;'--,.__   __.'\           
++         ;*,&(); @ % &^;~`"`o;@();         *
++         /()Emily & ().o@Robin%O\           
++         `"="==""==,,,.,="=="==="`          
++      __.----.(\-''#####---...___...-----._ 
++                   #####                    
+diff --git a/projects/Christmas/resources/christmas_tree.txt b/projects/Christmas/resources/christmas_tree.txt
+new file mode 100644
+index 0000000..ce07e7e
+--- /dev/null
++++ b/projects/Christmas/resources/christmas_tree.txt
+@@ -0,0 +1,22 @@
++                    ,                       
++                  _/^\_                     
++                 <     >                    
++                  /.-.\                     
++                  `/&\`                     
++                 ,@.*;@,                    
++                /_o.I %_\                   
++               (`'--:o(_@;                  
++              /`;--.,__ `')                 
++             ;@`o % O,*`'`&\                
++            (`'--)_@ ;o %'()\               
++            /`;--._`''--._O'@;              
++           /&*,()~o`;-.,_ `""`)             
++           /`,@ ;+& () o*`;-';\             
++          (`""--.,_0o*`;-' &()\             
++          /-.,_    ``''--....-'`)           
++          /@%;o`:;'--,.__   __.'\           
++         ;*,&(); @ % &^;~`"`o;@();          
++         /()Emily & ().o@Robin%O\           
++         `"="==""==,,,.,="=="==="`          
++      __.----.(\-''#####---...___...-----._ 
++                   #####                    
+diff --git a/projects/Christmas/resources/present.txt b/projects/Christmas/resources/present.txt
+new file mode 100644
+index 0000000..b926a51
+--- /dev/null
++++ b/projects/Christmas/resources/present.txt
+@@ -0,0 +1,8 @@
++      _   _      
++     ((\o/))     
++.-----//^\\-----.
++|    /`| |`\    |
++|      | |      |
++|      | |      |
++|      | |      |
++'------===------'
+diff --git a/projects/Christmas/resources/rabbit.txt b/projects/Christmas/resources/rabbit.txt
+new file mode 100644
+index 0000000..e7d0982
+--- /dev/null
++++ b/projects/Christmas/resources/rabbit.txt
+@@ -0,0 +1,16 @@
++ __                 
++/ \`\          __   
++|  \ `\      /`/ \  
++\_/`\  \-"-/` /\  \ 
++     |       |  \  |
++     (d     b)   \_/
++     /       \      
++ ,".| - \_/ - |.",  
++/   /\  _|_  /\   \ 
++|  /  '-`"`-'  \  | 
++| |             | | 
++| \    \   /    / | 
++ \ \    \ /    / /  
++  `"`\   :   /'"`   
++      `""`""`       
++
+diff --git a/projects/Christmas/resources/reindeer.txt b/projects/Christmas/resources/reindeer.txt
+new file mode 100644
+index 0000000..e53c716
+--- /dev/null
++++ b/projects/Christmas/resources/reindeer.txt
+@@ -0,0 +1,16 @@
++|\ .             . /| 
++_\\/             \//_.
++ ',\_,         ,_/,'  
++   \.'         './    
++   _\\/       \//_    
++   '-.\,     ,/.-'    
++      \\     //       
++     _.-`"""`-._      
++  ,-'-' _   _ '-'-,   
++   '--\ o   o /'-'    
++      |       |       
++      |       |       
++      /       \       
++      |  \_/  |       
++       \ _|_ /        
++        '---'         
+diff --git a/projects/Christmas/resources/snow_man.txt b/projects/Christmas/resources/snow_man.txt
+new file mode 100644
+index 0000000..7806627
+--- /dev/null
++++ b/projects/Christmas/resources/snow_man.txt
+@@ -0,0 +1,11 @@
++                          
++           ___            
++         _|___|_          
++        '=/a a\='         
++          \~_ /           
++     _\__/ '-' \__/_      
++      /  \  o  /  \       
++        / '---' \         
++       |    o    |        
++ ---.---\   o   /-----.---
++         '-----'`         
+diff --git a/projects/Christmas/resources/snow_snow.txt b/projects/Christmas/resources/snow_snow.txt
+new file mode 100644
+index 0000000..c83dd18
+--- /dev/null
++++ b/projects/Christmas/resources/snow_snow.txt
+@@ -0,0 +1,11 @@
++     *     *              
++           ___   *        
++     *   _|___|_      *   
++*       '=/a a\='  *      
++    *     \~_ /        *  
++  *  _\__/ '-' \__/_      
++      /  \  o  /  \       
++*       / '---' \   *     
++       |    o    |      * 
++ ---.---\   o   /-----.---
++         '-----'`         
+diff --git a/projects/xmas/docs/res_design/3d_present.txt b/projects/xmas/docs/res_design/3d_present.txt
+deleted file mode 100644
+index 3f7aff0..0000000
+--- a/projects/xmas/docs/res_design/3d_present.txt
++++ /dev/null
+@@ -1,19 +0,0 @@
+-                _.-,.____                        
+-             .-'   .--._ ```--.-----.___         
+-          ._"""-- (`-...`-. _/,----. )  ````---=.
+-     _.-''  ````-- `.___.-.) (---==''       .-' |
+- _.-'                 _.-. )(`.-._``--.._ .'    |
+-|`---..__          .-'.-'.' )\ \_ ``--...`.     |
+-|        ``--.._ ,'.-'   ( (  `-.`-.  .'| +     |
+-|               | | --.._`. \    `. `.  | :     |
+-|               | |       / (-.._.') )  ) :     |
+-|               | |      (  |   | ( (   ) |     |
+-|               ) |       \.'   |  `.\  | :    .'
+-|               | |             |   L/  | :  .'  
+-(__             | |             |       | (.'    
+-   `-.._        | |             |       | |      
+-        `-.._   ) |             |       |/       
+-             `--`_|_            |     .'         
+-                    `._         |   .'           
+-                       ``-.__   | .'             
+-                             `--`'               
+diff --git a/projects/xmas/docs/res_design/9_reindeer.txt b/projects/xmas/docs/res_design/9_reindeer.txt
+deleted file mode 100644
+index 9f3a76a..0000000
+--- a/projects/xmas/docs/res_design/9_reindeer.txt
++++ /dev/null
+@@ -1,30 +0,0 @@
+-\         /   \         /   \         /   \         /
+-_\/     \/_   _\/     \/_   _\/     \/_   _\/     \/_
+- _\-'"'-/_     _\-'"'-/_     _\-'"'-/_     _\-'"'-/_ 
+-(_,     ,_)   (_,     ,_)   (_,     ,_)   (_,     ,_)
+-  | ^ ^ |       | o o |       | a a |       | 6 6 |  
+-  |     |       |     |       |     |       |     |  
+-  |     |       |     |       |     |       |     |  
+-  |  Y  |       |  @  |       |  O  |       |  V  |  
+-  `._|_.'       `._|_.'       `._|_.'       `._|_.'  
+-   Dasher        Dancer       Prancer        Vixen   
+-\         /   \         /   \         /   \         /
+-_\/     \/_   _\/     \/_   _\/     \/_   _\/     \/_
+- _\-'"'-/_     _\-'"'-/_     _\-'"'-/_     _\-'"'-/_ 
+-(_,     ,_)   (_,     ,_)   (_,     ,_)   (_,     ,_)
+-  | q p |       | @ @ |       | 9 9 |       | d b |  
+-  |     |       |     |       |     |       |     |  
+-  |     |       |     |       |  _  |       |     |  
+-  | \_/ |       |  V  |       | (_) |       |  0  |  
+-  `._|_.'       `._|_.'       `._|_.'       `._|_.'  
+-   Comet         Cupid         Donder       Blitzen  
+-                     \         /                     
+-                     _\/     \/_                     
+-                      _\-'"'-/_                      
+-                     (_,     ,_)                     
+-                       | e e |                       
+-                       |     |                       
+-                  '-.  |  _  |  .-'                  
+-                 --=   |((@))|   =--                 
+-                  .-'  `._|_.'  '-.                  
+-                       Rudolph                       
+diff --git a/projects/xmas/docs/res_design/big_present.txt b/projects/xmas/docs/res_design/big_present.txt
+deleted file mode 100644
+index d499bf8..0000000
+--- a/projects/xmas/docs/res_design/big_present.txt
++++ /dev/null
+@@ -1,14 +0,0 @@
+-       .__.      .==========.
+-     .(\\//).  .-[ for you! ]
+-    .(\\()//)./  '=========='
+-.----(\)\/(/)----.           
+-|     ///\\\     |           
+-|    ///||\\\    |           
+-|   //`||||`\\   |           
+-|      ||||      |           
+-|      ||||      |           
+-|      ||||      |           
+-|      ||||      |           
+-|      ||||      |           
+-|      ||||      |           
+-'------====------'           
+diff --git a/projects/xmas/docs/res_design/gift.txt b/projects/xmas/docs/res_design/gift.txt
+deleted file mode 100644
+index 1376da9..0000000
+--- a/projects/xmas/docs/res_design/gift.txt
++++ /dev/null
+@@ -1,7 +0,0 @@
+-     \*/      
+- ___\\U//___  
+- |\\ | | \\|  
+- | \\| |\ \|  
+- |\ \| |\\ |  
+- |\\_|_|_\\|  
+-~~~~~~~~~~~~~ 
+diff --git a/projects/xmas/docs/res_design/logo/Logo_Design_colossal.txt b/projects/xmas/docs/res_design/logo/Logo_Design_colossal.txt
+deleted file mode 100644
+index 0aa490d..0000000
+--- a/projects/xmas/docs/res_design/logo/Logo_Design_colossal.txt
++++ /dev/null
+@@ -1,12 +0,0 @@
+-888b     d888                   d8b          d8b                   
+-8888b   d8888                   Y8P          Y8P                   
+-88888b.d88888                                                      
+-888Y88888P888  8888b.   .d88b.  888  .d8888b 888  8888b.  88888b.  
+-888 Y888P 888     "88b d88P"88b 888 d88P"    888     "88b 888 "88b 
+-888  Y8P  888 .d888888 888  888 888 888      888 .d888888 888  888 
+-888   "   888 888  888 Y88b 888 888 Y88b.    888 888  888 888  888 
+-888       888 "Y888888  "Y88888 888  "Y8888P 888 "Y888888 888  888 
+-                            888                                    
+-                       Y8b d88P                                    
+-                        "Y88P"                                     
+-
+diff --git a/projects/xmas/docs/res_design/logo/design_wand_effect.txt b/projects/xmas/docs/res_design/logo/design_wand_effect.txt
+deleted file mode 100644
+index 059f39d..0000000
+--- a/projects/xmas/docs/res_design/logo/design_wand_effect.txt
++++ /dev/null
+@@ -1,80 +0,0 @@
+-  
+-             
+-                   
+-       //||\\
+-      // || \\
+-     //  ||  \\
+-    //   ||   \\
+-   //    ||    \\
+-   `     ''     `
+- ___________________ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-  
+-         //  
+-       (  )        
+-       //      
+-      //       
+-     //        
+-    //         
+-   //            
+-   `             
+- ___________________ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-
+-         || 
+-        (  )       
+-         ||
+-         ||   
+-         ||    
+-         ||     
+-         ||      
+-         ''      
+- ___________________ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-
+-         \\  
+-         (  )        
+-           \\
+-            \\
+-             \\
+-              \\
+-               \\
+-                `
+- ___________________ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+diff --git a/projects/xmas/docs/res_design/logo/gt80/logo_design_amc_slider.txt b/projects/xmas/docs/res_design/logo/gt80/logo_design_amc_slider.txt
+deleted file mode 100644
+index fc62279..0000000
+--- a/projects/xmas/docs/res_design/logo/gt80/logo_design_amc_slider.txt
++++ /dev/null
+@@ -1,6 +0,0 @@
+-                                        _____         ______                                    
+-      .'. .`.             .'.        .-~     ~.  |  .~      ~. |       .'.       |..          | 
+-    .'   `   `.         .''```.     :            | |           |     .''```.     |  ``..      | 
+-  .'           `.     .'       `.   :     _____  | |           |   .'       `.   |      ``..  | 
+-.'               `. .'           `.  `-._____.'| |  `.______.' | .'           `. |          ``| 
+-                                                                                                
+diff --git a/projects/xmas/docs/res_design/logo/gt80/logo_design_nv_script.txt b/projects/xmas/docs/res_design/logo/gt80/logo_design_nv_script.txt
+deleted file mode 100644
+index 2ca1767..0000000
+--- a/projects/xmas/docs/res_design/logo/gt80/logo_design_nv_script.txt
++++ /dev/null
+@@ -1,16 +0,0 @@
+- ,ggg, ,ggg,_,ggg,                                                                          
+-dP""Y8dP""Y88P""Y8b                                                                         
+-Yb, `88'  `88'  `88                                                                         
+- `"  88    88    88                           gg              gg                            
+-     88    88    88                           ""              ""                            
+-     88    88    88    ,gggg,gg    ,gggg,gg   gg     ,gggg,   gg     ,gggg,gg   ,ggg,,ggg,  
+-     88    88    88   dP"  "Y8I   dP"  "Y8I   88    dP"  "Yb  88    dP"  "Y8I  ,8" "8P" "8, 
+-     88    88    88  i8'    ,8I  i8'    ,8I   88   i8'        88   i8'    ,8I  I8   8I   8I 
+-     88    88    Y8,,d8,   ,d8b,,d8,   ,d8I _,88,_,d8,_    __,88,_,d8,   ,d8b,,dP   8I   Yb,
+-     88    88    `Y8P"Y8888P"`Y8P"Y8888P"8888P""Y8P""Y8888PP8P""Y8P"Y8888P"`Y88P'   8I   `Y8
+-                                       ,d8I'                                                
+-                                     ,dP'8I                                                 
+-                                    ,8"  8I                                                 
+-                                    I8   8I                                                 
+-                                    `8, ,8I                                                 
+-                                     `Y8P"                                                  
+diff --git a/projects/xmas/docs/res_design/logo/gt80/logo_design_roman.txt b/projects/xmas/docs/res_design/logo/gt80/logo_design_roman.txt
+deleted file mode 100644
+index 4156b61..0000000
+--- a/projects/xmas/docs/res_design/logo/gt80/logo_design_roman.txt
++++ /dev/null
+@@ -1,10 +0,0 @@
+-ooo        ooooo                       o8o             o8o                        
+-`88.       .888'                       `"'             `"'                        
+- 888b     d'888   .oooo.    .oooooooo oooo   .ooooo.  oooo   .oooo.   ooo. .oo.   
+- 8 Y88. .P  888  `P  )88b  888' `88b  `888  d88' `"Y8 `888  `P  )88b  `888P"Y88b  
+- 8  `888'   888   .oP"888  888   888   888  888        888   .oP"888   888   888  
+- 8    Y     888  d8(  888  `88bod8P'   888  888   .o8  888  d8(  888   888   888  
+-o8o        o888o `Y888""8o `8oooooo.  o888o `Y8bod8P' o888o `Y888""8o o888o o888o 
+-                           d"     YD                                              
+-                           "Y88888P'                                              
+-                                                                                  
+diff --git a/projects/xmas/docs/res_design/logo/gt80/logo_design_univers.txt b/projects/xmas/docs/res_design/logo/gt80/logo_design_univers.txt
+deleted file mode 100644
+index 63c5284..0000000
+--- a/projects/xmas/docs/res_design/logo/gt80/logo_design_univers.txt
++++ /dev/null
+@@ -1,11 +0,0 @@
+-                                                                                         
+-88b           d88                           88              88                           
+-888b         d888                           ""              ""                           
+-88`8b       d8'88                                                                        
+-88 `8b     d8' 88  ,adPPYYba,   ,adPPYb,d8  88   ,adPPYba,  88  ,adPPYYba,  8b,dPPYba,   
+-88  `8b   d8'  88  ""     `Y8  a8"    `Y88  88  a8"     ""  88  ""     `Y8  88P'   `"8a  
+-88   `8b d8'   88  ,adPPPPP88  8b       88  88  8b          88  ,adPPPPP88  88       88  
+-88    `888'    88  88,    ,88  "8a,   ,d88  88  "8a,   ,aa  88  88,    ,88  88       88  
+-88     `8'     88  `"8bbdP"Y8   `"YbbdP"Y8  88   `"Ybbd8"'  88  `"8bbdP"Y8  88       88  
+-                                aa,    ,88                                               
+-                                 "Y8bbdP"                                                
+diff --git a/projects/xmas/docs/res_design/logo/hat.txt b/projects/xmas/docs/res_design/logo/hat.txt
+deleted file mode 100644
+index e0a8cc6..0000000
+--- a/projects/xmas/docs/res_design/logo/hat.txt
++++ /dev/null
+@@ -1,11 +0,0 @@
+- ___________________ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+diff --git a/projects/xmas/docs/res_design/logo/logo_design_georgia11.txt b/projects/xmas/docs/res_design/logo/logo_design_georgia11.txt
+deleted file mode 100644
+index ec78d2f..0000000
+--- a/projects/xmas/docs/res_design/logo/logo_design_georgia11.txt
++++ /dev/null
+@@ -1,12 +0,0 @@
+-                                                                          
+-                                    ,,           ,,                       
+-`7MMM.     ,MMF'                    db           db                       
+-  MMMb    dPMM                                                            
+-  M YM   ,M MM   ,6"Yb.  .P"Ybmmm `7MM  ,p6"bo `7MM   ,6"Yb.  `7MMpMMMb.  
+-  M  Mb  M' MM  8)   MM :MI  I8     MM 6M'  OO   MM  8)   MM    MM    MM  
+-  M  YM.P'  MM   ,pm9MM  WmmmP"     MM 8M        MM   ,pm9MM    MM    MM  
+-  M  `YM'   MM  8M   MM 8M          MM YM.    ,  MM  8M   MM    MM    MM  
+-.JML. `'  .JMML.`Moo9^Yo.YMMMMMb  .JMML.YMbmd' .JMML.`Moo9^Yo..JMML  JMML.
+-                        6'     dP                                         
+-                        Ybmmmd'                                           
+-
+diff --git a/projects/xmas/docs/res_design/logo/not_choosen/logo_design_big.txt b/projects/xmas/docs/res_design/logo/not_choosen/logo_design_big.txt
+deleted file mode 100644
+index 8026b61..0000000
+--- a/projects/xmas/docs/res_design/logo/not_choosen/logo_design_big.txt
++++ /dev/null
+@@ -1,7 +0,0 @@
+- |  \/  |           (_)    (_)            
+- | \  / | __ _  __ _ _  ___ _  __ _ _ __  
+- | |\/| |/ _` |/ _` | |/ __| |/ _` | '_ \ 
+- | |  | | (_| | (_| | | (__| | (_| | | | |
+- |_|  |_|\__,_|\__, |_|\___|_|\__,_|_| |_|
+-                __/ |                     
+-               |___/                      
+diff --git a/projects/xmas/docs/res_design/logo/not_choosen/logo_design_standard.txt b/projects/xmas/docs/res_design/logo/not_choosen/logo_design_standard.txt
+deleted file mode 100644
+index 7bdf722..0000000
+--- a/projects/xmas/docs/res_design/logo/not_choosen/logo_design_standard.txt
++++ /dev/null
+@@ -1,6 +0,0 @@
+-  __  __             _      _             
+- |  \/  | __ _  __ _(_) ___(_) __ _ _ __  
+- | |\/| |/ _` |/ _` | |/ __| |/ _` | '_ \ 
+- | |  | | (_| | (_| | | (__| | (_| | | | |
+- |_|  |_|\__,_|\__, |_|\___|_|\__,_|_| |_|
+-               |___/                      
+diff --git a/projects/xmas/docs/res_design/logo/not_choosen/logo_design_star_wars.txt b/projects/xmas/docs/res_design/logo/not_choosen/logo_design_star_wars.txt
+deleted file mode 100644
+index 1ea6fe8..0000000
+--- a/projects/xmas/docs/res_design/logo/not_choosen/logo_design_star_wars.txt
++++ /dev/null
+@@ -1,7 +0,0 @@
+-.___  ___.      ___       _______  __    ______  __       ___      .__   __. 
+-|   \/   |     /   \     /  _____||  |  /      ||  |     /   \     |  \ |  | 
+-|  \  /  |    /  ^  \   |  |  __  |  | |  ,----'|  |    /  ^  \    |   \|  | 
+-|  |\/|  |   /  /_\  \  |  | |_ | |  | |  |     |  |   /  /_\  \   |  . `  | 
+-|  |  |  |  /  _____  \ |  |__| | |  | |  `----.|  |  /  _____  \  |  |\   | 
+-|__|  |__| /__/     \__\ \______| |__|  \______||__| /__/     \__\ |__| \__| 
+-                                                                            
+diff --git a/projects/xmas/docs/res_design/logo/not_choosen/logo_design_stick_letters.txt b/projects/xmas/docs/res_design/logo/not_choosen/logo_design_stick_letters.txt
+deleted file mode 100644
+index 4917f18..0000000
+--- a/projects/xmas/docs/res_design/logo/not_choosen/logo_design_stick_letters.txt
++++ /dev/null
+@@ -1,4 +0,0 @@
+-            __     __              
+- |\/|  /\  / _` | /  ` |  /\  |\ | 
+- |  | /~~\ \__> | \__, | /~~\ | \| 
+-                                   
+diff --git a/projects/xmas/docs/res_design/logo/rabbit_batch.txt b/projects/xmas/docs/res_design/logo/rabbit_batch.txt
+deleted file mode 100644
+index a736bb5..0000000
+--- a/projects/xmas/docs/res_design/logo/rabbit_batch.txt
++++ /dev/null
+@@ -1,241 +0,0 @@
+-12	20
+-                      
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+- ___________________ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+- ___/\______________  
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-    /\                
+- __//\\_______/\____ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-    /\                
+-   //\\       /\     
+- _/'__\\_____//\\__  
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-                     
+-                     
+-                     
+-                     
+-                     
+-                     
+-    /\                
+-   //\\       /\     
+-  /'  \\     //\\    
+- ______\\___//__`\__ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-                     
+-                     
+-                     
+-                     
+-                     
+-    /\                
+-   //\\       /\     
+-  /'  \\     //\\    
+-       \\   //  `\   
+- _______\\_//_______ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-                     
+-                     
+-                     
+-                     
+-    /\                
+-   //\\       /\     
+-  /'  \\     //\\    
+-       \\   //  `\   
+-        \\ //        
+- ______.-'^'-.______ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-                     
+-                     
+-                     
+-    /\                
+-   //\\       /\     
+-  /'  \\     //\\    
+-       \\   //  `\   
+-        \\ //        
+-       .-'^'-.       
+- _____'_a___a_'_____ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-                     
+-                     
+-    /\                
+-   //\\       /\     
+-  /'  \\     //\\    
+-       \\   //  `\   
+-        \\ //        
+-       .-'^'-.       
+-     .' a___a `.     
+- ___==__(___)__==___ 
+-[###################]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-                     
+-    /\                
+-   //\\       /\     
+-  /'  \\     //\\    
+-       \\   //  `\   
+-        \\ //        
+-       .-'^'-.       
+-     .' a___a `.     
+-    ==  (___)  ==    
+- ____'. ._I_. .'____ 
+-[###(__)#####(__)###]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+-    /\                
+-   //\\       /\     
+-  /'  \\     //\\    
+-       \\   //  `\   
+-        \\ //        
+-       .-'^'-.       
+-     .' a___a `.     
+-    ==  (___)  ==    
+-     '. ._I_. .'     
+- ____/.`-----'.\____ 
+-[###(__)#####(__)###]
+- ~~|#############|~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   ~~~~~~~~~~~~~~~   
+-    /\                
+-   //\\       /\     
+-  /'  \\     //\\    
+-       \\   //  `\   
+-        \\ //        
+-       .-'^'-.       
+-     .' a___a `.     
+-    ==  (___)  ==    
+-     '. \_|_/ .'     
+- ____/.`-----'.\____ 
+-[###(__)#####(__)###]
+- ~~~~~~~~~~~~~~~~~~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-    -------------    
+diff --git a/projects/xmas/docs/res_design/logo/wand_batch_1.txt b/projects/xmas/docs/res_design/logo/wand_batch_1.txt
+deleted file mode 100644
+index 04f6c2f..0000000
+--- a/projects/xmas/docs/res_design/logo/wand_batch_1.txt
++++ /dev/null
+@@ -1,24 +0,0 @@
+-         //         
+-       (  )         
+-       //           
+-      //            
+-     //             
+-    //              
+-   //               
+-   `                
+-         ||         
+-        (  )        
+-         ||         
+-         ||         
+-         ||         
+-         ||         
+-         ||         
+-         ''         
+-         \\         
+-         (  )       
+-           \\       
+-            \\      
+-             \\     
+-              \\    
+-               \\   
+-                `   
+diff --git a/projects/xmas/docs/res_design/merry_christmas.txt b/projects/xmas/docs/res_design/merry_christmas.txt
+deleted file mode 100644
+index e6e3dd5..0000000
+--- a/projects/xmas/docs/res_design/merry_christmas.txt
++++ /dev/null
+@@ -1,23 +0,0 @@
+- ####################""N########NN#############################################
+- ################N@" _, #######F  0############################################
+- ###############@" _g# j#@FN#@ _  0############################################
+- #############NF _g##F 0" _ " j# j#############################################
+- #############F g#### - _g   g@ q####@" "N##F""9N##N"P"N###@"3#@"0#############
+- #############NJ####   g#"  d@  0###F g@ g#P _  0##' , j##@ j0# j##############
+- ##################"  d#F  0#  J###" +"_d#@ J" g##F 0  0##  ##  0##############
+- ################NF _0#@ _0## j##NF  _g##F gF j#N"_A  0##  0#  J###############
+- ###############N" _0#@  d##  0N@"  d##@"_d# qNF _#F J@"   @  jPT##############
+- ###############F _0##_ d###p ""_g#_`""_g###p  jg###_ _g0k _p F_A##############
+- ################g#####N#####pgg####Ngg######NN#####NNN###N#  j################
+- ##########################################################  j#################
+- ######N@" "N#####NN######################################F j##################
+- ####NF  ___ ##### j######################################L 0##################
+- ###@   gN# j###@ j#############@"N########################N###################
+- ##F  a0"jF d##N" ###############g0#########" B################################
+- #F  j##   j###F N######NNNN####N#####F"2NNF dN###N#####N@0#####@@N#####@""####
+- #  j###pgg###@ g@""###@    ###F J###" j#E, ,_0#@ j@""0@  j##N@"_, j###@  d####
+- F  #########@     d##@ jF J##F j### j d##' 0##@   _f ", j###  g#  ###@ p #####
+- F j########P   d j##@ jF j##@ j##@ gP 0#F j##P   d@  g' ###  0#  d##F d  #####
+- # 3#####@F   _#F 0N@ g@ j##"  0N@  #  N"  N#"_ _0# _0# jN@  g#" j#@" t@ j@####
+- #L_""""" _g" 0#_ P"_d#& 9" ap F"_p " ` arJ@ a' 0# _0## ?"__ " j_`F g_ ' "_####
+- ##Np___gg##pg###_jg####L_g0##__g##p_ag0##_jg#Ld##m0###p_g##p_g##_a0##__gg#####
+diff --git a/projects/xmas/docs/res_design/present.txt b/projects/xmas/docs/res_design/present.txt
+deleted file mode 100644
+index b926a51..0000000
+--- a/projects/xmas/docs/res_design/present.txt
++++ /dev/null
+@@ -1,8 +0,0 @@
+-      _   _      
+-     ((\o/))     
+-.-----//^\\-----.
+-|    /`| |`\    |
+-|      | |      |
+-|      | |      |
+-|      | |      |
+-'------===------'
+diff --git a/projects/xmas/docs/res_design/rabbit_cute.txt b/projects/xmas/docs/res_design/rabbit_cute.txt
+deleted file mode 100644
+index 68fba4e..0000000
+--- a/projects/xmas/docs/res_design/rabbit_cute.txt
++++ /dev/null
+@@ -1,18 +0,0 @@
+-                   .".
+-                  /  |
+-                 /  / 
+-                / ,"  
+-    .-------.--- /    
+-   "._ __.-/ o. o\    
+-      "   (    Y  )   
+-           )     /    
+-          /     (     
+-         /       Y    
+-     .-"         |    
+-    /  _     \    \   
+-   /    `. ". ) /' )  
+-  Y       )( / /(,/   
+- ,|      /     )      
+-( |     /     /       
+- " \_  (__   (__      
+-     "-._,)--._,)     
+diff --git a/projects/xmas/docs/res_design/reindeer.txt b/projects/xmas/docs/res_design/reindeer.txt
+deleted file mode 100644
+index e53c716..0000000
+--- a/projects/xmas/docs/res_design/reindeer.txt
++++ /dev/null
+@@ -1,16 +0,0 @@
+-|\ .             . /| 
+-_\\/             \//_.
+- ',\_,         ,_/,'  
+-   \.'         './    
+-   _\\/       \//_    
+-   '-.\,     ,/.-'    
+-      \\     //       
+-     _.-`"""`-._      
+-  ,-'-' _   _ '-'-,   
+-   '--\ o   o /'-'    
+-      |       |       
+-      |       |       
+-      /       \       
+-      |  \_/  |       
+-       \ _|_ /        
+-        '---'         
+diff --git a/projects/xmas/docs/res_design/santa.txt b/projects/xmas/docs/res_design/santa.txt
+deleted file mode 100644
+index be5dac6..0000000
+--- a/projects/xmas/docs/res_design/santa.txt
++++ /dev/null
+@@ -1,18 +0,0 @@
+-        _        
+-       {_}       
+-       / \       
+-      /   \      
+-     /_____\     
+-   {`_______`}   
+-    // . . \\    
+-   (/(__7__)\)   
+-   |'-' = `-'|   
+-   |         |   
+-   /\       /\   
+-  /  '.   .'  \  
+- /_/   `"`   \_\ 
+-{__}###[_]###{__}
+-(_/\_________/\_)
+-    |___|___|    
+-     |--|--|     
+-    (__)`(__)    
+diff --git a/projects/xmas/docs/res_design/santa_sleigh.txt b/projects/xmas/docs/res_design/santa_sleigh.txt
+deleted file mode 100644
+index 65ae80a..0000000
+--- a/projects/xmas/docs/res_design/santa_sleigh.txt
++++ /dev/null
+@@ -1,29 +0,0 @@
+-                                                 *       
+-               *        /)___________/)                  
+-                       / ,--o ______/ /       *         *
+-                      / /__\       / |               *   
+-   *                 /  {''}]     /  |                   
+-                     .--{~`/--.   )  \__              *  
+-                    /   { }    \ /     /                 
+-         *         /_/   ~   /_//'  / /                  
+-                 .-""==="==="" |   / /                   
+-                /  |-(__)(__)/__| /_/                    
+-               /   | \  |\  |__ ) /                      
+-              /   / //_/ /_/   / /                       
+-             /  _/_/________  / /                        
+-            /  (            (/ /                         
+-           /    \==========   /                          
+-          /      (___________/                           
+-         /      _/ /     _/ /                            
+- |\/|   /      \\_/     \\_/                             
+- 00 | _/________ |\/|    /                               
+-/_/|_\/          00 |  _/                                
+- __/ )|         /_/|_\//                                 
+-VV--   \         __/ )|                                  
+-   |_   |       VV--   \                                 
+-  / / / )          |_   |                                
+- |_|_/\_ \____    / / / )                                
+-  ////  '-----`  |_|_/\_ \____                           
+- ////             ////  '-----`                          
+- " "             ////                                    
+-                 " "                                     
+diff --git a/projects/xmas/docs/res_design/santa_sleigh_2.txt b/projects/xmas/docs/res_design/santa_sleigh_2.txt
+deleted file mode 100644
+index d86b1b0..0000000
+--- a/projects/xmas/docs/res_design/santa_sleigh_2.txt
++++ /dev/null
+@@ -1,12 +0,0 @@
+-                                                     *                  
+-  *                                                          *          
+-                               *                  *        .--.         
+-   \/ \/  \/  \/                                        ./   /=*        
+-     \/     \/      *            *                ...  (_____)          
+-      \ ^ ^/                                       \ \_((^o^))-.     *  
+-      (o)(O)--)--------\.                           \   (   ) \  \._.   
+-      |    |  ||================((~~~~~~~~~~~~~~~~~))|   ( )   |     \  
+-       \__/             ,|        \. * * * * * * ./  (~~~~~~~~~~~)    \ 
+-*        ||^||\.____./|| |          \___________/     ~||~~~~|~'\____/ *
+-         || ||     || || A            ||    ||          ||    |         
+-  *      <> <>     <> <>          (___||____||_____)   ((~~~~~|   *     
+diff --git a/projects/xmas/docs/res_design/small_christmas_tree.txt b/projects/xmas/docs/res_design/small_christmas_tree.txt
+deleted file mode 100644
+index 8933ab6..0000000
+--- a/projects/xmas/docs/res_design/small_christmas_tree.txt
++++ /dev/null
+@@ -1,8 +0,0 @@
+-          *          
+-         /.\         
+-        /..'\        
+-        /'.'\        
+-       /.''.'\       
+-       /.'.'.\       
+-"'""""/'.''.'.\""'"'"
+-      ^^^[_]^^^      
+diff --git a/projects/xmas/docs/res_design/small_wreath.txt b/projects/xmas/docs/res_design/small_wreath.txt
+deleted file mode 100644
+index 28fc1aa..0000000
+--- a/projects/xmas/docs/res_design/small_wreath.txt
++++ /dev/null
+@@ -1,8 +0,0 @@
+-   _...._       
+- .::o:::::.     
+-.:::'''':o:.    
+-:o:_    _:::    
+-`:(_>()<_):'    
+-  `'//\\''      
+-   //  \\       
+-  /'    `\      
+diff --git a/projects/xmas/docs/res_design/snow_flake.txt b/projects/xmas/docs/res_design/snow_flake.txt
+deleted file mode 100644
+index 7200815..0000000
+--- a/projects/xmas/docs/res_design/snow_flake.txt
++++ /dev/null
+@@ -1,8 +0,0 @@
+-   .      .   
+-   _\/  \/_   
+-    _\/\/_    
+-_\_\_\/\/_/_/_
+- / /_/\/\_\ \ 
+-    _/\/\_    
+-    /\  /\    
+-   '      '   
+diff --git a/projects/xmas/docs/res_design/snowy/christmas_tree.txt b/projects/xmas/docs/res_design/snowy/christmas_tree.txt
+deleted file mode 100644
+index ce07e7e..0000000
+--- a/projects/xmas/docs/res_design/snowy/christmas_tree.txt
++++ /dev/null
+@@ -1,22 +0,0 @@
+-                    ,                       
+-                  _/^\_                     
+-                 <     >                    
+-                  /.-.\                     
+-                  `/&\`                     
+-                 ,@.*;@,                    
+-                /_o.I %_\                   
+-               (`'--:o(_@;                  
+-              /`;--.,__ `')                 
+-             ;@`o % O,*`'`&\                
+-            (`'--)_@ ;o %'()\               
+-            /`;--._`''--._O'@;              
+-           /&*,()~o`;-.,_ `""`)             
+-           /`,@ ;+& () o*`;-';\             
+-          (`""--.,_0o*`;-' &()\             
+-          /-.,_    ``''--....-'`)           
+-          /@%;o`:;'--,.__   __.'\           
+-         ;*,&(); @ % &^;~`"`o;@();          
+-         /()Emily & ().o@Robin%O\           
+-         `"="==""==,,,.,="=="==="`          
+-      __.----.(\-''#####---...___...-----._ 
+-                   #####                    
+diff --git a/projects/xmas/docs/res_design/snowy/scene_design_snowy.txt b/projects/xmas/docs/res_design/snowy/scene_design_snowy.txt
+deleted file mode 100644
+index d588f2b..0000000
+--- a/projects/xmas/docs/res_design/snowy/scene_design_snowy.txt
++++ /dev/null
+@@ -1,24 +0,0 @@
+-                  _/^\_                       *         *             
+-                 <     >                                              
+-*                 /.-.\         *                                *    
+-         *        `/&\`                   *                           
+-                 ,@.*;@,                            *        *        
+-                /_o.I %_\    *                                        
+-   *           (`'--:o(_@;                                           *
+-              /`;--.,__ `')             *                             
+-             ;@`o % O,*`'`&\                               *          
+-       *    (`'--)_@ ;o %'()\      *                                  
+-            /`;--._`''--._O'@;               *                    *   
+-           /&*,()~o`;-.,_ `""`)                        ___            
+-*          /`,@ ;+& () o*`;-';\                      _|___|_          
+-          (`""--.,_0 +% @' &()\                     '=/a a\='         
+-          /-.,_    ``''--....-'`)  *                  \~_ /           
+-     *    /@%;o`:;'--,.__   __.'\                _\__/ '-' \__/_      
+-         ;*,&(); @ % &^;~`"`o;@();         *      /  \  o  /  \       
+-         /(); o^~; & ().o@*&`;&%O\                  / '---' \         
+-         `"="==""==,,,.,="=="==="`                 |    o    |        
+-      __.----.(\-''#####---...___...-----.__.---.---\   o   /-----.---
+-    '`         \)_`"""""`                            '-----'`         
+-            .--' ')                                                   
+-          o(  )_-\                                                    
+-            `"""` `                                                   
+diff --git a/projects/xmas/docs/res_design/snowy/smaller_christmas_tree.txt b/projects/xmas/docs/res_design/snowy/smaller_christmas_tree.txt
+deleted file mode 100644
+index bc416a2..0000000
+--- a/projects/xmas/docs/res_design/snowy/smaller_christmas_tree.txt
++++ /dev/null
+@@ -1,25 +0,0 @@
+-      *             ,                       
+-                  _/^\_                     
+-                 <     >                    
+-*                 /.-.\         *           
+-         *        `/&\`                   * 
+-                 ,@.*;@,                    
+-                /_o.I %_\    *              
+-   *           (`'--:o(_@;                  
+-              /`;--.,__ `')             *   
+-             ;@`o % O,*`'`&\                
+-       *    (`'--)_@ ;o %'()\      *        
+-            /`;--._`''--._O'@;              
+-           /&*,()~o`;-.,_ `""`)             
+-*          /`,@ ;+& () o*`;-';\             
+-          (`""--.,_0 +% @' &()\             
+-          /-.,_    ``''--....-'`)  *        
+-     *    /@%;o`:;'--,.__   __.'\           
+-         ;*,&(); @ % &^;~`"`o;@();         *
+-         /(); o^~; & ().o@*&`;&%O\          
+-         `"="==""==,,,.,="=="==="`          
+-      __.----.(\-''#####---...___...-----._ 
+-    '`         \)_`"""""`                   
+-            .--' ')                         
+-          o(  )_-\                          
+-            `"""` `                         
+diff --git a/projects/xmas/docs/res_design/snowy/snow_man copy.txt b/projects/xmas/docs/res_design/snowy/snow_man copy.txt
+deleted file mode 100644
+index f573d1b..0000000
+--- a/projects/xmas/docs/res_design/snowy/snow_man copy.txt	
++++ /dev/null
+@@ -1,10 +0,0 @@
+-           ___            
+-         _|___|_          
+-        '=/a a\='         
+-          \~_ /           
+-     _\__/ '-' \__/_      
+-      /  \  o  /  \       
+-        / '---' \         
+-       |    o    |        
+- ---.---\   o   /-----.---
+-         '-----'`         
+diff --git a/projects/xmas/docs/res_design/snowy/snow_man.txt b/projects/xmas/docs/res_design/snowy/snow_man.txt
+deleted file mode 100644
+index f573d1b..0000000
+--- a/projects/xmas/docs/res_design/snowy/snow_man.txt
++++ /dev/null
+@@ -1,10 +0,0 @@
+-           ___            
+-         _|___|_          
+-        '=/a a\='         
+-          \~_ /           
+-     _\__/ '-' \__/_      
+-      /  \  o  /  \       
+-        / '---' \         
+-       |    o    |        
+- ---.---\   o   /-----.---
+-         '-----'`         
+diff --git a/projects/xmas/docs/res_design/snowy/snow_man_batch.txt b/projects/xmas/docs/res_design/snowy/snow_man_batch.txt
+deleted file mode 100644
+index 3655722..0000000
+--- a/projects/xmas/docs/res_design/snowy/snow_man_batch.txt
++++ /dev/null
+@@ -1,21 +0,0 @@
+-           ___            
+-         _|___|_          
+-        '=/a a\='         
+-          \~_ /           
+-     _\__/ '-' \__/_      
+-      /  \  o  /  \       
+-        / '---' \         
+-       |    o    |        
+- ---.---\   o   /-----.---
+-         '-----'`         
+-           ___            
+-         _|___|_          
+-        '=/a a\='         
+-          \~_ /  \/_       
+-     _\__/ '-' \_/         
+-      /  \  o  /          
+-        / '---' \         
+-       |    o    |        
+- ---.---\   o   /-----.---
+-         '-----'`         
+-2	10
+diff --git a/projects/xmas/docs/res_design/snowy/snow_man_snow.txt b/projects/xmas/docs/res_design/snowy/snow_man_snow.txt
+deleted file mode 100644
+index c83dd18..0000000
+--- a/projects/xmas/docs/res_design/snowy/snow_man_snow.txt
++++ /dev/null
+@@ -1,11 +0,0 @@
+-     *     *              
+-           ___   *        
+-     *   _|___|_      *   
+-*       '=/a a\='  *      
+-    *     \~_ /        *  
+-  *  _\__/ '-' \__/_      
+-      /  \  o  /  \       
+-*       / '---' \   *     
+-       |    o    |      * 
+- ---.---\   o   /-----.---
+-         '-----'`         
+diff --git a/projects/xmas/docs/res_design/snowy/tree_batch.txt b/projects/xmas/docs/res_design/snowy/tree_batch.txt
+deleted file mode 100644
+index 102f869..0000000
+--- a/projects/xmas/docs/res_design/snowy/tree_batch.txt
++++ /dev/null
+@@ -1,76 +0,0 @@
+-                                            
+-                   / \                      
+-                 <     >                    
+-                  / - \                     
+-                  `/&\`                     
+-                 ,@.*;@,                    
+-                /_o.I %_\                   
+-               (`'--:o(_@;                  
+-              /`;--.,__ `')                 
+-             ;@`o % O,*`'`&\                
+-            (`'--)_@ ;o %'()\               
+-            /`;--._`''--._O'@;              
+-           /&*,()~o`;-.,_ `""`)             
+-           /`,@ ;+& () o*`;-';\             
+-          (`""--.,_0 +% @' &()\             
+-          /-.,_    ``''--....-'`)           
+-          /@%;o`:;'--,.__   __.'\           
+-         ;*,&(); @ % &^;~`"`o;@();          
+-         /(); o^~; & ().o@*&`;&%O\          
+-         `"="==""==,,,.,="=="==="`          
+-      __.----.(\-''#####---...___...-----._ 
+-    '`         \)_`"""""`                   
+-            .--' ')                         
+-          o(  )_-\                          
+-            `"""` `                         
+-                    .                       
+-                  ./ \.                     
+-                 <     >                    
+-                  /.-.\                     
+-                  `/&\`                     
+-                 ,@.*;@,                    
+-                /_o.I %_\                   
+-               (`'--:o(_@;                  
+-              /`;--.,__ `')                 
+-             ;@`o % O,*`'`&\                
+-            (`'--)_@ ;o %'()\               
+-            /`;--._`''--._O'@;              
+-           /&*,()~o`;-.,_ `""`)             
+-           /`,@ ;+& () o*`;-';\             
+-          (`""--.,_0 +% @' &()\             
+-          /-.,_    ``''--....-'`)           
+-          /@%;o`:;'--,.__   __.'\           
+-         ;*,&(); @ % &^;~`"`o;@();          
+-         /(); o^~; & ().o@*&`;&%O\          
+-         `"="==""==,,,.,="=="==="`          
+-      __.----.(\-''#####---...___...-----._ 
+-    '`         \)_`"""""`                   
+-            .--' ')                         
+-          o(  )_-\                          
+-            `"""` `                         
+-                    ^                       
+-                  '/ \'                     
+-                `<     >'                   
+-                  /.-.\                     
+-                  `/&\`                     
+-                 ,@.*;@,                    
+-                /_o.I %_\                   
+-               (`'--:o(_@;                  
+-              /`;--.,__ `')                 
+-             ;@`o % O,*`'`&\                
+-            (`'--)_@ ;o %'()\               
+-            /`;--._`''--._O'@;              
+-           /&*,()~o`;-.,_ `""`)             
+-           /`,@ ;+& () o*`;-';\             
+-          (`""--.,_0 +% @' &()\             
+-          /-.,_    ``''--....-'`)           
+-          /@%;o`:;'--,.__   __.'\           
+-         ;*,&(); @ % &^;~`"`o;@();          
+-         /(); o^~; & ().o@*&`;&%O\          
+-         `"="==""==,,,.,="=="==="`          
+-      __.----.(\-''#####---...___...-----._ 
+-    '`         \)_`"""""`                   
+-            .--' ')                         
+-          o(  )_-\                          
+-            `"""` `                         
+-3	25
+diff --git a/projects/xmas/docs/res_design/tiny_snow_man.txt b/projects/xmas/docs/res_design/tiny_snow_man.txt
+deleted file mode 100644
+index 2d28bf6..0000000
+--- a/projects/xmas/docs/res_design/tiny_snow_man.txt
++++ /dev/null
+@@ -1,6 +0,0 @@
+-     _      
+-   _[_]_    
+-    (")     
+-`--( : )--' 
+-  (  :  )   
+-""`-...-'"" 
+diff --git a/projects/xmas/docs/res_design/unchoosen/christmas_tree_no_snow.txt b/projects/xmas/docs/res_design/unchoosen/christmas_tree_no_snow.txt
+deleted file mode 100644
+index ce07e7e..0000000
+--- a/projects/xmas/docs/res_design/unchoosen/christmas_tree_no_snow.txt
++++ /dev/null
+@@ -1,22 +0,0 @@
+-                    ,                       
+-                  _/^\_                     
+-                 <     >                    
+-                  /.-.\                     
+-                  `/&\`                     
+-                 ,@.*;@,                    
+-                /_o.I %_\                   
+-               (`'--:o(_@;                  
+-              /`;--.,__ `')                 
+-             ;@`o % O,*`'`&\                
+-            (`'--)_@ ;o %'()\               
+-            /`;--._`''--._O'@;              
+-           /&*,()~o`;-.,_ `""`)             
+-           /`,@ ;+& () o*`;-';\             
+-          (`""--.,_0o*`;-' &()\             
+-          /-.,_    ``''--....-'`)           
+-          /@%;o`:;'--,.__   __.'\           
+-         ;*,&(); @ % &^;~`"`o;@();          
+-         /()Emily & ().o@Robin%O\           
+-         `"="==""==,,,.,="=="==="`          
+-      __.----.(\-''#####---...___...-----._ 
+-                   #####                    
+diff --git a/projects/xmas/docs/res_design/unchoosen/christmas_tree_raw.txt b/projects/xmas/docs/res_design/unchoosen/christmas_tree_raw.txt
+deleted file mode 100644
+index 8384c66..0000000
+--- a/projects/xmas/docs/res_design/unchoosen/christmas_tree_raw.txt
++++ /dev/null
+@@ -1,22 +0,0 @@
+-      *             ,                       
+-                  _/^\_                     
+-                 <     >                    
+-*                 /.-.\         *           
+-         *        `/&\`                   * 
+-                 ,@.*;@,                    
+-                /_o.I %_\    *              
+-   *           (`'--:o(_@;                  
+-              /`;--.,__ `')             *   
+-             ;@`o % O,*`'`&\                
+-       *    (`'--)_@ ;o %'()\      *        
+-            /`;--._`''--._O'@;              
+-           /&*,()~o`;-.,_ `""`)             
+-*          /`,@ ;+& () o*`;-';\             
+-          (`""--.,_0o*`;-' &()\             
+-          /-.,_    ``''--....-'`)  *        
+-     *    /@%;o`:;'--,.__   __.'\           
+-         ;*,&(); @ % &^;~`"`o;@();         *
+-         /()Emily & ().o@Robin%O\           
+-         `"="==""==,,,.,="=="==="`          
+-      __.----.(\-''#####---...___...-----._ 
+-                   #####                    
+diff --git a/projects/xmas/docs/res_design/unchoosen/holly.txt b/projects/xmas/docs/res_design/unchoosen/holly.txt
+deleted file mode 100644
+index f0e3502..0000000
+--- a/projects/xmas/docs/res_design/unchoosen/holly.txt
++++ /dev/null
+@@ -1,8 +0,0 @@
+-_/\_     __/\__
+-)   (_  _) .' (
+-`) '.( ) .'  (`
+- `-._\()/__(~` 
+-     ()()      
+-    / |`\      
+-    ) : (      
+-    `)_/`      
+diff --git a/projects/xmas/docs/res_design/unchoosen/rabbit.txt b/projects/xmas/docs/res_design/unchoosen/rabbit.txt
+deleted file mode 100644
+index e7d0982..0000000
+--- a/projects/xmas/docs/res_design/unchoosen/rabbit.txt
++++ /dev/null
+@@ -1,16 +0,0 @@
+- __                 
+-/ \`\          __   
+-|  \ `\      /`/ \  
+-\_/`\  \-"-/` /\  \ 
+-     |       |  \  |
+-     (d     b)   \_/
+-     /       \      
+- ,".| - \_/ - |.",  
+-/   /\  _|_  /\   \ 
+-|  /  '-`"`-'  \  | 
+-| |             | | 
+-| \    \   /    / | 
+- \ \    \ /    / /  
+-  `"`\   :   /'"`   
+-      `""`""`       
+-
+diff --git a/projects/xmas/docs/res_design/unchoosen/rabbit_hat.txt b/projects/xmas/docs/res_design/unchoosen/rabbit_hat.txt
+deleted file mode 100644
+index 6295529..0000000
+--- a/projects/xmas/docs/res_design/unchoosen/rabbit_hat.txt
++++ /dev/null
+@@ -1,20 +0,0 @@
+-    /\                
+-   //\\       /\     
+-  /'  \\     //\\    
+-       \\   //  `\   
+-        \\ //        
+-       .-'^'-.       
+-     .' a___a `.     
+-    ==  (___)  ==    
+-     '. ._I_. .'     
+- ____/.`-----'.\____ 
+-[###(__)#####(__)###]
+- ~~|#############|~~ 
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   |#############|   
+-   ~~~~~~~~~~~~~~~   
+diff --git a/projects/xmas/docs/res_design/unchoosen/rabbit_lovely.txt b/projects/xmas/docs/res_design/unchoosen/rabbit_lovely.txt
+deleted file mode 100644
+index 7ff3ba6..0000000
+--- a/projects/xmas/docs/res_design/unchoosen/rabbit_lovely.txt
++++ /dev/null
+@@ -1,20 +0,0 @@
+-             ,            
+-            /|      __    
+-           / |   ,-~ /    
+-          Y :|  //  /     
+-          | jj /( .^      
+-          >-"~"-v"        
+-         /       Y        
+-        jo  o    |        
+-       ( ~T~     j        
+-        >._-' _./         
+-       /   "~"  |         
+-      Y     _,  |         
+-     /| ;-"~ _  l         
+-    / l/ ,-"~    \        
+-    \//\/      .- \       
+-     Y        /    Y      
+-     l       I     !      
+-     ]\      _\    /"\    
+-    (" ~----( ~   Y.  )   
+-~~~~~~~~~~~~~~~~~~~~~~~~~~
+diff --git a/projects/xmas/docs/res_design/unchoosen/rabbit_moon.txt b/projects/xmas/docs/res_design/unchoosen/rabbit_moon.txt
+deleted file mode 100644
+index ad4d2f6..0000000
+--- a/projects/xmas/docs/res_design/unchoosen/rabbit_moon.txt
++++ /dev/null
+@@ -1,15 +0,0 @@
+-        .--,_               
+-       / ,/ /               
+-      / // /                
+-     / // /                 
+-   .'  ' (                  
+-  /       \.-"""-._         
+- / a   ' .    '    `-.      
+-(       .  '      "   `.    
+- `-.-'       "       '  ;   
+-     `.'  "  .  .-'    " ;  
+-      : .     .'          ; 
+-      `.   ' :     '   '  ; 
+-        )  _.". "     .  "; 
+-      .'_.'   .'   '  __.,`.
+-     '"      ""''---'`    "'
+diff --git a/projects/xmas/docs/res_design/unchoosen/rabbit_stand.txt b/projects/xmas/docs/res_design/unchoosen/rabbit_stand.txt
+deleted file mode 100644
+index ac76df4..0000000
+--- a/projects/xmas/docs/res_design/unchoosen/rabbit_stand.txt
++++ /dev/null
+@@ -1,18 +0,0 @@
+-             /`\   
+-            / : |  
+-   _.._     | '/   
+- /`    \    | /    
+-|  .-._ '-"` (     
+-|_/   /   o  o\    
+-      |  =  () )=  
+-       \  '--`/    
+-       / ---<`     
+-      | ,    \\    
+-      | |     \\__ 
+-      / ;     |.__)
+-     (_/.-.   ;    
+-    { `|   \_/     
+-     '-\   / |     
+-        | /  |     
+-       /  \  '-.   
+-       \__|----'   
+diff --git a/projects/xmas/docs/res_design/unchoosen/snow_man_snow.txt b/projects/xmas/docs/res_design/unchoosen/snow_man_snow.txt
+deleted file mode 100644
+index c83dd18..0000000
+--- a/projects/xmas/docs/res_design/unchoosen/snow_man_snow.txt
++++ /dev/null
+@@ -1,11 +0,0 @@
+-     *     *              
+-           ___   *        
+-     *   _|___|_      *   
+-*       '=/a a\='  *      
+-    *     \~_ /        *  
+-  *  _\__/ '-' \__/_      
+-      /  \  o  /  \       
+-*       / '---' \   *     
+-       |    o    |      * 
+- ---.---\   o   /-----.---
+-         '-----'`         
+diff --git a/projects/xmas/docs/res_design/unprocessed/ImageProcessor.cpp b/projects/xmas/docs/res_design/unprocessed/ImageProcessor.cpp
+deleted file mode 100644
+index ae717b1..0000000
+--- a/projects/xmas/docs/res_design/unprocessed/ImageProcessor.cpp
++++ /dev/null
+@@ -1,62 +0,0 @@
+-#include <iostream>
+-#include <string>
+-#include <vector>
+-using namespace std;
+-
+-class ImageProcessor
+-{
+-public:
+-	vector<string> start(const vector<string>& image);
+-private:
+-	int leftMargin(const string& line);
+-};
+-
+-int ImageProcessor::leftMargin(const string& line)
+-{
+-	for(int i=0; i<line.size(); i++)
+-		if( line[i]!=' ')
+-			return i;
+-}
+-
+-vector<string> ImageProcessor::start(const vector<string>& image)
+-{
+-	int minMargin = leftMargin( image[0] );
+-	int maxLength = 0;
+-	for(const auto& line: image)
+-	{
+-		int margin = leftMargin( line );
+-		if( minMargin>margin )
+-			minMargin = margin;
+-		if( maxLength<line.size() )
+-			maxLength = line.size();
+-	}
+-	int length = maxLength - minMargin;
+-
+-	vector<string> processed;
+-	for(const auto& line: image)
+-	{
+-		int actualLen = line.size() - minMargin;
+-		int rightMargin = length - actualLen;
+-		string spaces(rightMargin, ' ');
+-		string right;
+-		if( line.size()<minMargin ) right = line;
+-		else right = line.substr( minMargin, actualLen );
+-		processed.push_back( right + spaces );
+-	}
+-	return processed;
+-}
+-
+-int main()
+-{
+-	string line;
+-	vector<string> image;
+-	while( getline(cin, line) )
+-		if (!line.empty()) 
+-			image.push_back( line );
+-
+-	ImageProcessor ip;
+-	vector<string> processed = ip.start( image );
+-	for(const auto& line: processed)
+-		cout<<line<<endl;
+-	return 0;
+-}
+diff --git a/projects/xmas/docs/res_design/unprocessed/bells.txt b/projects/xmas/docs/res_design/unprocessed/bells.txt
+deleted file mode 100644
+index c75cb27..0000000
+--- a/projects/xmas/docs/res_design/unprocessed/bells.txt
++++ /dev/null
+@@ -1,14 +0,0 @@
+-                     ___
+-                    / __'.     .-"""-.
+-              .-""-| |  '.'.  / .---. \
+-             / .--. \ \___\ \/ /____| |
+-            / /    \ `-.-;-(`_)_____.-'._
+-           ; ;      `.-" "-:_,(o:==..`-. '.         .-"-,
+-           | |      /       \ /      `\ `. \       / .-. \
+-           \ \     |         Y    __...\  \ \     / /   \/
+-     /\     | |    | .--""--.| .-'      \  '.`---' /
+-     \ \   / /     |`        \'   _...--.;   '---'`
+-      \ '-' /      /_..---.._ \ .'\\_     `.
+-       `--'`      .'    (_)  `'/   (_)     /
+-                  `._       _.'|         .'
+-                     ```````    '-...--'`
+diff --git a/projects/xmas/docs/res_design/unprocessed/go b/projects/xmas/docs/res_design/unprocessed/go
+deleted file mode 100755
+index 0fa72de..0000000
+Binary files a/projects/xmas/docs/res_design/unprocessed/go and /dev/null differ
+diff --git a/projects/xmas/docs/res_design/unprocessed/house.txt b/projects/xmas/docs/res_design/unprocessed/house.txt
+deleted file mode 100644
+index c8580f3..0000000
+--- a/projects/xmas/docs/res_design/unprocessed/house.txt
++++ /dev/null
+@@ -1,19 +0,0 @@
+-                           (   )
+-                          (    )
+-                           (    )
+-                          (    )
+-                            )  )
+-                           (  (                    
+-                            (_)                         
+-                    ________[_]________      
+-                   /\        ______    \    
+-                  //_\       \    /\    \  
+-                 //___\       \__/  \    \
+-                //_____\       \ |[]|     \
+-               //_______\       \|__|      \
+-              /XXXXXXXXXX\                  \
+-             /_I_II  I__I_\__________________\
+-               I_I|  I__I_____[]_|_[]_____I
+-               I_II  I__I_____[]_|_[]_____I
+-               I II__I  I     XXXXXXX     I
+-            ~~~~~"   "~~~~~~~~~~~~~~~~~~~~~~~~               
+diff --git a/projects/xmas/docs/res_design/unprocessed/house_raw.txt b/projects/xmas/docs/res_design/unprocessed/house_raw.txt
+deleted file mode 100644
+index c4a7d06..0000000
+--- a/projects/xmas/docs/res_design/unprocessed/house_raw.txt
++++ /dev/null
+@@ -1,19 +0,0 @@
+-                           (   )
+-                          (    )
+-                           (    )
+-                          (    )
+-                            )  )
+-                           (  (                  /\
+-                            (_)                 /  \  /\
+-                    ________[_]________      /\/    \/  \
+-           /\      /\        ______    \    /   /\/\  /\/\
+-          /  \    //_\       \    /\    \  /\/\/    \/    \
+-   /\    / /\/\  //___\       \__/  \    \/
+-  /  \  /\/    \//_____\       \ |[]|     \
+- /\/\/\/       //_______\       \|__|      \
+-/      \      /XXXXXXXXXX\                  \
+-        \    /_I_II  I__I_\__________________\
+-               I_I|  I__I_____[]_|_[]_____I
+-               I_II  I__I_____[]_|_[]_____I
+-               I II__I  I     XXXXXXX     I
+-            ~~~~~"   "~~~~~~~~~~~~~~~~~~~~~~~~               
+diff --git a/projects/xmas/docs/res_design/unprocessed/larger_house copy 2.txt b/projects/xmas/docs/res_design/unprocessed/larger_house copy 2.txt
+deleted file mode 100644
+index 0262e96..0000000
+--- a/projects/xmas/docs/res_design/unprocessed/larger_house copy 2.txt	
++++ /dev/null
+@@ -1,24 +0,0 @@
+-                                (   )
+-                               (    )
+-                                (    )
+-                               (    )
+-                                 )  )
+-                                (  (                    
+-                                 (_)                         
+-                    _____________[_]________________      
+-                   /\               _______         \    
+-                  // \              \     /\         \  
+-                 //___\              \___/  \         \
+-                //     \              \  |[]|          \
+-               //_______\              \ |  |           \
+-              /XXXXXXXXXX\              \|__|            \
+-             /_I_II  I__I \_______________________________\
+-               I I|  I  I__________[]   |   []_________I 
+-               I_II  I__I          []___|___[]         I
+-               I II  I  I__________[]   |   []_________I 
+-               I_II  I__I          []___|___[]         I
+-               I II  I  I__________XXXXXXXXXXX_________I 
+-               I_II  I__I                              I
+-               I II  I  I______________________________I
+-               I II__I__I                              I
+-            ~~~~~"   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+diff --git a/projects/xmas/docs/res_design/unprocessed/larger_house copy.txt b/projects/xmas/docs/res_design/unprocessed/larger_house copy.txt
+deleted file mode 100644
+index f4b5d0f..0000000
+--- a/projects/xmas/docs/res_design/unprocessed/larger_house copy.txt	
++++ /dev/null
+@@ -1,24 +0,0 @@
+-                                (   )
+-                               (    )
+-                                (    )
+-                               (    )
+-                                 )  )
+-                                (  (                    
+-                                 (_)                         
+-                    _____________[_]________________      
+-                   /\               _______         \    
+-                  // \              \     /\         \  
+-                 //___\              \___/  \         \
+-                //     \              \  |[]|          \
+-               //_______\              \ |  |           \
+-              /XXXXXXXXXX\              \|__|            \
+-             /_I_II  I__I_\_______________________________\
+-               I I|  I  I          []   |   []         I 
+-               I_II  I__I__________[]___|___[]_________I
+-               I II  I  I          []   |   []         I 
+-               I_II  I__I__________[]___|___[]_________I
+-               I II  I  I          XXXXXXXXXXX         I 
+-               I_II  I__I______________________________I
+-               I II  I  I                              I
+-               I II__I__I                              I
+-            ~~~~~"   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+diff --git a/projects/xmas/docs/res_design/unprocessed/larger_house.txt b/projects/xmas/docs/res_design/unprocessed/larger_house.txt
+deleted file mode 100644
+index 734ae04..0000000
+--- a/projects/xmas/docs/res_design/unprocessed/larger_house.txt
++++ /dev/null
+@@ -1,24 +0,0 @@
+-                                (   )
+-                               (    )
+-                                (    )
+-                               (    )
+-                                 )  )
+-                                (  (                    
+-                                 (_)                         
+-                    _____________[_]________________      
+-                   /\               ______          \    
+-                  //_\              \    /\          \  
+-                 //___\              \__/  \          \
+-                //_____\              \ |[]|           \
+-               //_______\              \|__|            \
+-              /XXXXXXXXXX\                               \
+-             /_I_II  I__I_\_______________________________\
+-               I_I|  I__I__________[]   |   []_________I
+-               I_II  I__I__________[]___|___[]_________I
+-               I_II  I__I__________[]   |   []_________I
+-               I_II  I__I__________[]___|___[]_________I
+-               I II  I__I__________XXXXXXXXXXX_________I
+-               I II  I__I______________________________I
+-               I II  I__I______________________________I
+-               I II__I__I______________________________I
+-            ~~~~~"   "~~I~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~I~~~
+diff --git a/projects/xmas/docs/res_design/unprocessed/ls_process.sh b/projects/xmas/docs/res_design/unprocessed/ls_process.sh
+deleted file mode 100755
+index 0ab58a5..0000000
+--- a/projects/xmas/docs/res_design/unprocessed/ls_process.sh
++++ /dev/null
+@@ -1,5 +0,0 @@
+-
+-for each in $(ls | grep "txt"); do
+-	mv $each $each.bak
+-	./go < $each.bak > $each
+-done
+diff --git a/projects/xmas/docs/res_design/unprocessed/snow_house_scene.txt b/projects/xmas/docs/res_design/unprocessed/snow_house_scene.txt
+deleted file mode 100644
+index 79e4d5b..0000000
+--- a/projects/xmas/docs/res_design/unprocessed/snow_house_scene.txt
++++ /dev/null
+@@ -1,18 +0,0 @@
+-    ~6_.___,`P_,`P_,`P_,`P                                     |
+- *  |___)  /^\ /^\ /^\ /^\      *         *   ,     *        \   /
+-    ='='=`    *                      *        )            --  *   --
+-                   *           .-----------. ((              /   \
+-        *                *     )`'`'`'`'`'`( ||     *          |
+-                              /`'`'`'`'`'`'`\||                     *
+-    *         *      *       /`'`'`'`'`'`'`'`\| *        *
+-                    ,,,,,,, /`'`'`'`'`'`'`'`'`\      ,
+-       *           .-------.`|```````````````|`  .   )       *    *
+-   *        *     / ,^, ,^, \|  ,^^,   ,^^,  |  / \ ((
+-                 /  |_| |_|  \  |__|   |__|  | /   \||   *
+-    *       *   /_____________\ |  |   |  |  |/     \|           *
+-                 |  __   __  |  '=='   '=='  /.......\     *
+-  *     *        | (  ) (  ) |  //`_```_`\\  |,^, ,^,|     _    *
+-   ___,.,___     | |--| |--| |  ||(O)|(O)||  ||_| |_||   _|-|_
+-  (  (("))  ) *  | |__| |__| |  || " | " ||  ||_| |_|| *  (")       *
+-   \_('@')_/     |           |  ||   |   ||  |       |  --(_)--  *
+- ***/_____\******'==========='==''==='===''=='======='***(___)*******
+diff --git a/projects/xmas/docs/res_design/unprocessed/snow_man_sign.txt b/projects/xmas/docs/res_design/unprocessed/snow_man_sign.txt
+deleted file mode 100644
+index ddccf52..0000000
+--- a/projects/xmas/docs/res_design/unprocessed/snow_man_sign.txt
++++ /dev/null
+@@ -1,19 +0,0 @@
+-    ||::|:||   .--------,
+-    |:||:|:|   |_______ /        .-.
+-    ||::|:|| ."`  ___  `".    {\('v')/}
+-    \\\/\///:  .'`   `'.  ;____`(   )'____
+-     \====/ './  o   o  \|~     ^" "^   //
+-      \\//   |   ())) .  |   Season's    \
+-       ||     \ `.__.'  /|              //
+-       ||   _{``-.___.-'\|   Greetings   \
+-       || _." `-.____.-'`|    ___       //
+-       ||`        __ \   |___/   \_______\
+-     ."||        (__) \    \|     /
+-    /   `\/       __   vvvvv'\___/
+-    |     |      (__)        |
+-     \___/\                 /
+-       ||  |     .___.     |
+-       ||  |       |       |
+-       ||.-'       |       '-.
+-       ||          |          )
+-       ||----------'---------'
+diff --git a/projects/xmas/docs/res_design/wreath.txt b/projects/xmas/docs/res_design/wreath.txt
+deleted file mode 100644
+index f28ce59..0000000
+--- a/projects/xmas/docs/res_design/wreath.txt
++++ /dev/null
+@@ -1,12 +0,0 @@
+-      ,....,      
+-   ,;;:o;;;o;;,   
+- ,;;o;'''''';;;;, 
+-,;:;;        ;;o;,
+-;o;;          ;;;;
+-;;o;          ;;o;
+-';;;,  _  _  ,;;;'
+- ';o;;/_\/_\;;o;' 
+-   ';;\_\/_/;;'   
+-      '//\\'      
+-      //  \\      
+-     |/    \|     
+diff --git a/projects/xmas/makeproject/game.mk b/projects/xmas/makeproject/game.mk
+deleted file mode 100644
+index 82d5a04..0000000
+--- a/projects/xmas/makeproject/game.mk
++++ /dev/null
+@@ -1,12 +0,0 @@
+-## Const Path Variable
+-xmas_src=$(proj_path)projects/xmas/source
+-
+-## Implicit Variable
+-VPATH+=$(xmas_src);
+-CXXFLAGS+=-I $(xmas_src);	# End 
+-
+-## Source List
+-src_list_1=HelloWorld.cpp\
+-	   \
+-
+-sources+=$(src_list_1)
+diff --git a/projects/xmas/makeproject/last.mk b/projects/xmas/makeproject/last.mk
+deleted file mode 100644
+index 2e6bb34..0000000
+--- a/projects/xmas/makeproject/last.mk
++++ /dev/null
+@@ -1,20 +0,0 @@
+-## Implicit Variable
+-CXX=g++
+-CXXFLAGS+=-m32 -std=c++11 -I"C:\Program Files\Dev-Cpp\MinGW64\include" -I"C:\Program Files\Dev-Cpp\MinGW64\x86_64-w64-mingw32\include" -I"C:\Program Files\Dev-Cpp\MinGW64\lib\gcc\x86_64-w64-mingw32\4.8.1\include" -I"C:\Program Files\Dev-Cpp\MinGW64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\c++" -L"C:\Program Files\Dev-Cpp\MinGW64\lib32" -L"C:\Program Files\Dev-Cpp\MinGW64\x86_64-w64-mingw32\lib32" -static-libgcc -lwinmm -m32 -g3 
+-
+-
+-## .o & .d List
+-objects=$(subst .cpp,.o,$(sources))
+-mkfiles=$(subst .cpp,.d,$(sources))
+-
+-## Target
+-$(exec): $(objects)
+-	$(CXX) $(objects) -o $(exec) $(CXXFLAGS) 
+-
+-## Includes
+-include makefile.include 
+-
+-##Clean
+-.PHONY: clean
+-clean: 
+-	rm -f $(objects) $(mkfiles) $(exec) *.d.*
+diff --git a/projects/xmas/makeproject/makefile b/projects/xmas/makeproject/makefile
+deleted file mode 100644
+index a275951..0000000
+--- a/projects/xmas/makeproject/makefile
++++ /dev/null
+@@ -1,12 +0,0 @@
+-## Provide project path
+-proj_path=$(shell pwd)/../../..
+-makeproj_path=$(proj_path)/makeproject
+-include $(makeproj_path)/source.mk
+-include game.mk
+-
+-## Add main Entrance
+-main=main.cpp 
+-sources+=$(main)
+-exec=game
+-
+-include last.mk
+diff --git a/projects/xmas/makeproject/makefile.include b/projects/xmas/makeproject/makefile.include
+deleted file mode 100644
+index d50312b..0000000
+--- a/projects/xmas/makeproject/makefile.include
++++ /dev/null
+@@ -1,6 +0,0 @@
+-%.d: %.cpp
+-	# Start making dot d files
+-	@set -e; rm -f $@; \
+-	$(CXX) -MM $(CXXFLAGS) $< > $@.$$$$; \
+-	sed 's#\($*\)\.o[ :]*#\1.o $@ : #g' < $@.$$$$ > $@; \
+-	rm -f $@.$$$$
+diff --git a/projects/xmas/resources/snowy/tree_batch.txt b/projects/xmas/resources/snowy/tree_batch.txt
+deleted file mode 100644
+index 102f869..0000000
+--- a/projects/xmas/resources/snowy/tree_batch.txt
++++ /dev/null
+@@ -1,76 +0,0 @@
+-                                            
+-                   / \                      
+-                 <     >                    
+-                  / - \                     
+-                  `/&\`                     
+-                 ,@.*;@,                    
+-                /_o.I %_\                   
+-               (`'--:o(_@;                  
+-              /`;--.,__ `')                 
+-             ;@`o % O,*`'`&\                
+-            (`'--)_@ ;o %'()\               
+-            /`;--._`''--._O'@;              
+-           /&*,()~o`;-.,_ `""`)             
+-           /`,@ ;+& () o*`;-';\             
+-          (`""--.,_0 +% @' &()\             
+-          /-.,_    ``''--....-'`)           
+-          /@%;o`:;'--,.__   __.'\           
+-         ;*,&(); @ % &^;~`"`o;@();          
+-         /(); o^~; & ().o@*&`;&%O\          
+-         `"="==""==,,,.,="=="==="`          
+-      __.----.(\-''#####---...___...-----._ 
+-    '`         \)_`"""""`                   
+-            .--' ')                         
+-          o(  )_-\                          
+-            `"""` `                         
+-                    .                       
+-                  ./ \.                     
+-                 <     >                    
+-                  /.-.\                     
+-                  `/&\`                     
+-                 ,@.*;@,                    
+-                /_o.I %_\                   
+-               (`'--:o(_@;                  
+-              /`;--.,__ `')                 
+-             ;@`o % O,*`'`&\                
+-            (`'--)_@ ;o %'()\               
+-            /`;--._`''--._O'@;              
+-           /&*,()~o`;-.,_ `""`)             
+-           /`,@ ;+& () o*`;-';\             
+-          (`""--.,_0 +% @' &()\             
+-          /-.,_    ``''--....-'`)           
+-          /@%;o`:;'--,.__   __.'\           
+-         ;*,&(); @ % &^;~`"`o;@();          
+-         /(); o^~; & ().o@*&`;&%O\          
+-         `"="==""==,,,.,="=="==="`          
+-      __.----.(\-''#####---...___...-----._ 
+-    '`         \)_`"""""`                   
+-            .--' ')                         
+-          o(  )_-\                          
+-            `"""` `                         
+-                    ^                       
+-                  '/ \'                     
+-                `<     >'                   
+-                  /.-.\                     
+-                  `/&\`                     
+-                 ,@.*;@,                    
+-                /_o.I %_\                   
+-               (`'--:o(_@;                  
+-              /`;--.,__ `')                 
+-             ;@`o % O,*`'`&\                
+-            (`'--)_@ ;o %'()\               
+-            /`;--._`''--._O'@;              
+-           /&*,()~o`;-.,_ `""`)             
+-           /`,@ ;+& () o*`;-';\             
+-          (`""--.,_0 +% @' &()\             
+-          /-.,_    ``''--....-'`)           
+-          /@%;o`:;'--,.__   __.'\           
+-         ;*,&(); @ % &^;~`"`o;@();          
+-         /(); o^~; & ().o@*&`;&%O\          
+-         `"="==""==,,,.,="=="==="`          
+-      __.----.(\-''#####---...___...-----._ 
+-    '`         \)_`"""""`                   
+-            .--' ')                         
+-          o(  )_-\                          
+-            `"""` `                         
+-3	25
+diff --git a/projects/xmas/source/HelloWorld.cpp b/projects/xmas/source/HelloWorld.cpp
+deleted file mode 100644
+index 6ef11b5..0000000
+--- a/projects/xmas/source/HelloWorld.cpp
++++ /dev/null
+@@ -1,14 +0,0 @@
+-#include "HelloWorld.h"
+-
+-HelloWorld::HelloWorld()
+-{
+-	AnimSprite* asp = AnimSprite::create("snowy/tree_batch.txt");
+-	vManager->addSprite( asp );
+-	Animation* anim = Animation::create( asp, 1000, true );
+-	aManager->addAction( anim );
+-}
+-
+-HelloWorld::~HelloWorld()
+-{
+-
+-}
+diff --git a/projects/xmas/source/HelloWorld.h b/projects/xmas/source/HelloWorld.h
+deleted file mode 100644
+index 5d69583..0000000
+--- a/projects/xmas/source/HelloWorld.h
++++ /dev/null
+@@ -1,13 +0,0 @@
+-#ifndef _HELLO_WORLD_H_
+-#define _HELLO_WORLD_H_
+-
+-#include "Magician.h"
+-
+-//description of the class here
+-class HelloWorld
+-{
+-public:
+-	HelloWorld();
+-	~HelloWorld();
+-};
+-#endif
+diff --git a/source/Magician.h b/source/Magician.h
+deleted file mode 100644
+index df2615e..0000000
+--- a/source/Magician.h
++++ /dev/null
+@@ -1,14 +0,0 @@
+-#include "basic/MagicianMacros.h"
+-
+-#include "audio/MciPlayer.h"
+-
+-#include "user/DiaBox.h"
+-#include "user/Sprite.h"
+-#include "user/AnimSprite.h"
+-#include "user/Animation.h"
+-#include "user/MoveTo.h"
+-#include "user/Sequence.h"
+-#include "user/Repeat.h"
+-
+-#include "display/ActionManager.h"
+-#include "display/VisibleObjManager.h"
+diff --git a/source/audio/MciPlayer.cpp b/source/audio/MciPlayer.cpp
+index 4f9ddf7..fa0f3a3 100644
+--- a/source/audio/MciPlayer.cpp
++++ b/source/audio/MciPlayer.cpp
+@@ -4,13 +4,6 @@
+ 
+ static MCIERROR s_mciError;
+ 
+-void MciPlayer::go(const string& fileName)
+-{
+-	mp.open(fileName);
+-	std::thread bgm( &AudioTest::play, this );
+-	bgm.detach();
+-}
+-
+ void MciPlayer::open(const string& fileName)
+ {
+ 	if( fileName.empty() ) return;
+diff --git a/source/audio/MciPlayer.h b/source/audio/MciPlayer.h
+index b536560..b684d07 100644
+--- a/source/audio/MciPlayer.h
++++ b/source/audio/MciPlayer.h
+@@ -12,7 +12,6 @@ using namespace std;
+ class MciPlayer
+ {
+ public:
+-	void go(const string& fileName);
+ 	void open(const string& fileName);
+ 	void play();
+ 	void close();
+diff --git a/source/base/Box.cpp b/source/base/Box.cpp
+index fa34675..ab9b88d 100644
+--- a/source/base/Box.cpp
++++ b/source/base/Box.cpp
+@@ -10,7 +10,6 @@ Box::Box(const Size& size): VisibleObject()
+ void Box::setSize(const Size& size)
+ {
+ 	this->size = size;
+-	updateCenter();
+ 	getAsciiOutline();
+ }
+ 
+diff --git a/source/base/VisibleObject.cpp b/source/base/VisibleObject.cpp
+index f14e6ac..2d26522 100644
+--- a/source/base/VisibleObject.cpp
++++ b/source/base/VisibleObject.cpp
+@@ -11,7 +11,6 @@ void VisibleObject::verify()
+ 	//Only registered objects are printed
+ 	assert(size.line > 0);
+ 	assert(size.column > 0);
+-	assert( center==( pos + size )/2 );
+ 
+ 	assert(size.line == image.size());
+ 	for(const auto& it: image)
+@@ -22,13 +21,3 @@ void VisibleObject::setPos(const Coord cc)
+ {
+ 	this->pos = cc;
+ }
+-
+-void VisibleObject::setCenterPos(const Coord cc)
+-{
+-	setPos( cc - center );
+-}
+-
+-void VisibleObject::updateCenter()
+-{
+-	center = ( pos + size )/2;
+-}
+diff --git a/source/base/VisibleObject.h b/source/base/VisibleObject.h
+index 5b91543..adb3323 100644
+--- a/source/base/VisibleObject.h
++++ b/source/base/VisibleObject.h
+@@ -11,7 +11,6 @@ class VisibleObject
+ {
+ public:
+ 	Coord pos;
+-	Coord center;
+ 	Size size;
+ 	vector<wstring> image;
+ 	int zOrder;
+@@ -21,7 +20,5 @@ public:
+ 	VisibleObject();
+ 	void verify();
+ 	void setPos(const Coord cc);
+-	void setCenterPos(const Coord cc);
+-	void updateCenter();
+ };
+ #endif
+diff --git a/source/display/ActionManager.cpp b/source/display/ActionManager.cpp
+index 301028d..b330183 100644
+--- a/source/display/ActionManager.cpp
++++ b/source/display/ActionManager.cpp
+@@ -4,7 +4,6 @@
+ void ActionManager::addAction(Action* action)
+ {
+ 	assert( action != NULL );
+-	assert( action->host != NULL );
+ 	actionList.push_back( action );
+ 	action->host->inAction = true;
+ }
+diff --git a/source/main.cpp b/source/main.cpp
+index 443d60a..b36ab3f 100644
+--- a/source/main.cpp
++++ b/source/main.cpp
+@@ -1,5 +1,4 @@
+ #include "MainLoop.h"
+-#include "HelloWorld.h"
+ #include <thread>
+ 
+ int main()
+@@ -8,7 +7,11 @@ int main()
+ 	std::thread refresh( &MainLoop::readyGo(), std::ref( ml ) );
+ 	refresh.detach();
+ 
+-	HelloWorld hello;
++	Sprite* sp = Sprite::create("graph/moon.txt");
++	vManager.addObject( sp );
++
++	MoveTo* mt = MoveTo::create(sp, 10, Coord(23, 79), true);
++	aManager->addAction( mt );
+ 
+ 	return 0;
+ }
+diff --git a/source/user/Repeat.cpp b/source/user/Repeat.cpp
+deleted file mode 100644
+index d16c678..0000000
+--- a/source/user/Repeat.cpp
++++ /dev/null
+@@ -1,18 +0,0 @@
+-#include "user/Repeat.h"
+-#include <cassert>
+-
+-Repeat::Repeat(Action* action, int nTimes):
+-	Action(action->host, action->duration * nTimes, false)
+-{
+-	for(int i=0; i<nTimes; i++)
+-		for(const auto& it: action->cmdQueue)
+-			cmdQueue.push( it );
+-
+-	delete action, action = NULL;
+-}
+-
+-Repeat* Repeat::create(Action* action, int nTimes)
+-{
+-	assert( action != NULL );
+-	return new Repeat(action, nTimes);
+-}
+diff --git a/source/user/Repeat.h b/source/user/Repeat.h
+deleted file mode 100644
+index 0e70bd9..0000000
+--- a/source/user/Repeat.h
++++ /dev/null
+@@ -1,13 +0,0 @@
+-#ifndef _REPEAT_H_
+-#define _REPEAT_H_
+-
+-#include "base/Action.h"
+-
+-//description of the class here
+-class Repeat: public Action
+-{
+-public:
+-	Repeat(Action* action, int nTimes);
+-	Repeat* create(Action* action, int nTimes);
+-};
+-#endif
+diff --git a/source/user/Sequence.cpp b/source/user/Sequence.cpp
+deleted file mode 100644
+index 3f3fe82..0000000
+--- a/source/user/Sequence.cpp
++++ /dev/null
+@@ -1,23 +0,0 @@
+-#include "user/Sequence.h"
+-#include <cassert>
+-
+-Sequence::Sequence(Action* action_a, Action* action_b): 
+-	Action(action_a->host, action_a->duration+action_b->duration, false)
+-{
+-	cmdQueue = action_a->cmdQueue;
+-	while( !action_b->empty() )
+-	{
+-		cmdQueue.push( action_b->front() );
+-		action_b.pop();
+-	}
+-
+-	delete action_a, action_a = NULL;
+-	delete action_b, action_b = NULL;
+-}
+-
+-Sequence* Sequence::create(Action* action_a, Action* action_b)
+-{
+-	assert(action_a && action_b) ;
+-	assert(action_a->cmdQueue && action_b->cmdQueue);
+-	return new Sequence(action_a, action_b);
+-}
+diff --git a/source/user/Sequence.h b/source/user/Sequence.h
+deleted file mode 100644
+index 8863994..0000000
+--- a/source/user/Sequence.h
++++ /dev/null
+@@ -1,13 +0,0 @@
+-#ifndef _SEQUENCE_H_
+-#define _SEQUENCE_H_
+-
+-#include "base/Action.h"
+-
+-//description of the class here
+-class Sequence: public Action
+-{
+-public:
+-	Sequence(Action* action_a, Action* action_b);
+-	static Sequence* create(Action* action_a, Action* action_b);
+-};
+-#endif
+diff --git a/source/user/Sprite.cpp b/source/user/Sprite.cpp
+index f113081..be6d5de 100644
+--- a/source/user/Sprite.cpp
++++ b/source/user/Sprite.cpp
+@@ -5,7 +5,6 @@ Sprite::Sprite(const string& fileName): VisibleObject()
+ {
+ 	image = ImageLoader::load(fileName);
+ 	size = Size( image.size(), image[0].size() );
+-	updateCenter();
+ 	verify();
+ }
+ 
+diff --git a/test/makeproject/last.mk b/test/makeproject/last.mk
+index 7005c0c..6cdb2a2 100644
+--- a/test/makeproject/last.mk
++++ b/test/makeproject/last.mk
+@@ -2,6 +2,9 @@
+ CXX=g++
+ #CXXFLAGS+=-Wall -Wno-sign-compare -g -std=c++11 
+ CXXFLAGS+=-m32 -std=c++11 -I"C:\Program Files\Dev-Cpp\MinGW64\include" -I"C:\Program Files\Dev-Cpp\MinGW64\x86_64-w64-mingw32\include" -I"C:\Program Files\Dev-Cpp\MinGW64\lib\gcc\x86_64-w64-mingw32\4.8.1\include" -I"C:\Program Files\Dev-Cpp\MinGW64\lib\gcc\x86_64-w64-mingw32\4.8.1\include\c++" -L"C:\Program Files\Dev-Cpp\MinGW64\lib32" -L"C:\Program Files\Dev-Cpp\MinGW64\x86_64-w64-mingw32\lib32" -static-libgcc -lwinmm -m32 -g3 
++ 
++#lwinmm
++
+ 
+ ## .o & .d List
+ objects=$(subst .cpp,.o,$(sources))
+diff --git a/test/makeproject/tests.mk b/test/makeproject/tests.mk
+index fc28f6e..9baf84e 100644
+--- a/test/makeproject/tests.mk
++++ b/test/makeproject/tests.mk
+@@ -28,7 +28,6 @@ test_cases=BasicTest.cpp \
+ 	   BaseTest.cpp \
+ 	   DisplayTest.cpp \
+ 	   UserTest.cpp \
+-	   ActionTest.cpp \
+ 	   AudioTest.cpp \
+ 
+ sources+=$(test_base) $(test_suites) $(test_cases)
+diff --git a/test/source/audio/AudioTest.cpp b/test/source/audio/AudioTest.cpp
+index 4d81aa6..0803332 100644
+--- a/test/source/audio/AudioTest.cpp
++++ b/test/source/audio/AudioTest.cpp
+@@ -7,11 +7,8 @@
+ 
+ void AudioTest::run()
+ {
+-	MciPlayer mp;
+-	mp.go("bgm/humours_of_glendart.mp3");
+-	std::this_thread::sleep_for (std::chrono::milliseconds( 2*mp.miliLength ));
+-	//std::thread bgm( &AudioTest::go, this );
+-	//bgm.join();
++	std::thread bgm( &AudioTest::go, this );
++	bgm.join();
+ }
+ 
+ void AudioTest::go()
+diff --git a/test/source/display/DisplayTest.cpp b/test/source/display/DisplayTest.cpp
+index 6b3ab57..f0595dc 100644
+--- a/test/source/display/DisplayTest.cpp
++++ b/test/source/display/DisplayTest.cpp
+@@ -34,11 +34,6 @@ void DisplayTest::testSprite()
+ 
+ void DisplayTest::testVManager()
+ {
+-	Sprite* sp = Sprite::create("graph/moon.txt");
+-	vManager->addObject( sp );
+-	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79), false);
+-	aManager->addAction( mt );
+-
+ 	vector<wstring> frame = vManager->getFrame();
+ 	const wregex patLine0(L"(1234)( *)");
+ 	const wregex patLine1(L"(4321)( *)");
+@@ -50,6 +45,18 @@ void DisplayTest::testVManager()
+ 	//assert( regex_match( frame[1].begin(), frame[1].end(), patLine1 ) );
+ }
+ 
++void DisplayTest::testMoveTo()
++{
++	Sprite* sp = Sprite::create("graph/moon.txt");
++	sp->setPos( Coord(0, 0) );
++	vManager->addObject( sp );
++
++	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79), false);
++	assert( mt->cmdQueue.size() == 100/magician::TIME_UNIT );
++	aManager->addAction( mt );
++	assert( aManager->actionList.size()==1 );
++}
++
+ void DisplayTest::testDisplay()
+ {
+ 	//test frame First init
+diff --git a/test/source/display/DisplayTest.h b/test/source/display/DisplayTest.h
+index 89362d4..4cef144 100644
+--- a/test/source/display/DisplayTest.h
++++ b/test/source/display/DisplayTest.h
+@@ -11,6 +11,7 @@ public:
+ private:
+ 	void testSprite();
+ 	void testVManager();
++	void testMoveTo();
+ 	void testDisplay();
+ };
+ #endif
+diff --git a/test/source/user/ActionTest.cpp b/test/source/user/ActionTest.cpp
+deleted file mode 100644
+index d1e3bbd..0000000
+--- a/test/source/user/ActionTest.cpp
++++ /dev/null
+@@ -1,47 +0,0 @@
+-#include "user/ActionTest.h"
+-#include <cassert>
+-
+-void ActionTest::run()
+-{
+-	sp = Sprite::create("graph/moon.txt");
+-	testMoveTo();
+-	testAnimation();
+-	testSequence();
+-	testRepeat();
+-	delete sp;
+-}
+-
+-void ActionTest::testMoveTo()
+-{
+-	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79), false);
+-	assert( mt->cmdQueue.size() == 100/magician::TIME_UNIT );
+-	delete mt;
+-}
+-
+-void ActionTest::testAnimation()
+-{
+-
+-}
+-
+-void ActionTest::testSequence()
+-{
+-	MoveTo* rush = MoveTo::create(sp, 100, Coord(23, 79), false);
+-	MoveTo* back = MoveTo::create(sp, 400, Coord(12, 30), false);
+-	int cmdLen = rush->cmdQueue.size() + back->cmdQueue.size();
+-	Sequence* seq = Sequence::create(rush, back);
+-
+-	assert( seq->duration == 500 );
+-	assert( seq->cmdQueue.size == cmdLen );
+-	delete seq;
+-}
+-
+-void ActionTest::testRepeat()
+-{
+-	MoveTo* rush = MoveTo::create(sp, 100, Coord(23, 79), false);
+-	int cmdLen = rush->cmdQueue.size() * 5;
+-	Repeat* repe = Repeat::create(rush, 5);
+-	
+-	assert( repe->duration == 500 );
+-	assert( repe->cmdQueue == cmdLen);
+-	delete rush;
+-}
+diff --git a/test/source/user/ActionTest.h b/test/source/user/ActionTest.h
+deleted file mode 100644
+index 1e41c8e..0000000
+--- a/test/source/user/ActionTest.h
++++ /dev/null
+@@ -1,19 +0,0 @@
+-#ifndef _ACTION_TEST_H_
+-#define _ACTION_TEST_H_
+-
+-#include "TestCase.h"
+-#include "user/Sprite.h"
+-
+-//description of the class here
+-class ActionTest: public TestCase
+-{
+-public:
+-	void run();
+-private:
+-	void testMoveTo();
+-	void testAnimation();
+-	void testSequence();
+-	void testRepeat();
+-	Sprite* sp;
+-};
+-#endif
+diff --git a/test/source/user/UserSuite.cpp b/test/source/user/UserSuite.cpp
+index 01d3712..f8e88dd 100644
+--- a/test/source/user/UserSuite.cpp
++++ b/test/source/user/UserSuite.cpp
+@@ -1,9 +1,7 @@
+ #include "user/UserSuite.h"
+ #include "user/UserTest.h"
+-#include "user/ActionTest.h"
+ 
+ UserSuite::UserSuite()
+ {
+-	addTestCase( new ActionTest );
+ 	addTestCase( new UserTest );
+ }
+diff --git a/test/source/user/UserTest.h b/test/source/user/UserTest.h
+index 0d9ac15..b29ca78 100644
+--- a/test/source/user/UserTest.h
++++ b/test/source/user/UserTest.h
+@@ -2,7 +2,6 @@
+ #define _USER_TEST_H_
+ 
+ #include "TestCase.h"
+-#include "user/Sprite.h"
+ 
+ //description of the class here
+ class UserTest: public TestCase

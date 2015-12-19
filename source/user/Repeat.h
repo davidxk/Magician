@@ -8,6 +8,8 @@ class Repeat: public Action
 {
 public:
 	Repeat(Action* action, int nTimes);
-	Repeat* create(Action* action, int nTimes);
+	static Repeat* create(Action* action, int nTimes);
+	void count();
+	int counter;
 };
 #endif

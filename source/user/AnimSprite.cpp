@@ -6,6 +6,7 @@ AnimSprite::AnimSprite(const string& fileName)
 	batch = ImageLoader::loadBatch(fileName);
 	image = batch[ 0 ];
 	size = Size( image.size(), image[0].size() );
+	updateCenter();
 	verify();
 }
 

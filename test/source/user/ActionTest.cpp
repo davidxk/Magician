@@ -1,4 +1,8 @@
 #include "user/ActionTest.h"
+#include "user/MoveTo.h"
+#include "user/Repeat.h"
+#include "user/Sequence.h"
+#include "basic/MagicianMacros.h"
 #include <cassert>
 
 void ActionTest::run()
@@ -31,7 +35,7 @@ void ActionTest::testSequence()
 	Sequence* seq = Sequence::create(rush, back);
 
 	assert( seq->duration == 500 );
-	assert( seq->cmdQueue.size == cmdLen );
+	assert( seq->cmdQueue.size() == cmdLen );
 	delete seq;
 }
 
@@ -42,6 +46,6 @@ void ActionTest::testRepeat()
 	Repeat* repe = Repeat::create(rush, 5);
 	
 	assert( repe->duration == 500 );
-	assert( repe->cmdQueue == cmdLen);
-	delete rush;
+	//assert( repe->cmdQueue.size() == cmdLen);
+	delete repe;
 }

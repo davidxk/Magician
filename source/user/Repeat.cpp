@@ -2,11 +2,11 @@
 #include <cassert>
 
 Repeat::Repeat(Action* action, int nTimes):
-	Action(action->host, action->duration * nTimes, false)
+	Action(action->host, action->duration * nTimes, true)
 {
-	for(int i=0; i<nTimes; i++)
-		for(const auto& it: action->cmdQueue)
-			cmdQueue.push( it );
+	cmdQueue = action->cmdQueue;
+	counter = nTimes;
+	//add function here perhaps
 
 	delete action, action = NULL;
 }
@@ -15,4 +15,11 @@ Repeat* Repeat::create(Action* action, int nTimes)
 {
 	assert( action != NULL );
 	return new Repeat(action, nTimes);
+}
+
+void Repeat::count()
+{
+	if( counter==0 )
+		isRepeat = false;
+	else counter--; 
 }

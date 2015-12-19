@@ -5,7 +5,7 @@
 void VisibleObjManager::addObject(VisibleObject* object)
 {
 	assert( object != NULL );
-	object->verify();
+	//object->verify();
 	objList.push_back( object );
 	//for(auto it=objList.end(); it!=objList.begin(); it--)
 		//if( (*it)->zOrder == object->zOrder )

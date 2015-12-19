@@ -15,7 +15,6 @@ void DisplayTest::run()
 {
 	testSprite();
 	testVManager();
-	testMoveTo();
 	testDisplay();
 }
 

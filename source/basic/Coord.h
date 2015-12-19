@@ -11,16 +11,16 @@ public:
 	Coord(int aLine, int aColumn);
 	static Coord CoordXY(int xx, int yy);
 
-	Coord operator+(const Size& cc);
-	Coord operator+(const Coord& cc);
+	Coord operator+(const Size& cc) const;
+	Coord operator+(const Coord& cc) const;
 	Coord operator+=(const Coord& cc);
-	Coord operator-(const Coord& cc);
+	Coord operator-(const Coord& cc) const;
 	Coord operator-=(const Coord& cc);
 
-	Coord operator*(int nn);
+	Coord operator*(int nn) const;
 	Coord operator*=(int nn);
-	Coord operator/(int nn);
-	bool operator==(const Coord& cc);
-	bool operator!=(const Coord& cc);
+	Coord operator/(int nn) const;
+	bool operator==(const Coord& cc) const;
+	bool operator!=(const Coord& cc) const;
 };
 #endif

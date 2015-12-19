@@ -8,7 +8,7 @@ vector<wstring> ImageLoader::load(const string& fileName)
 	string path = "../resources/";
 	path += fileName;
 	wifstream fin(path.c_str());
-	if( fin.bad() ) cout<<"Error: File read fail! \n";
+	if( fin.bad() ) cout<<"Error: File read fail! "<<endl;
 	
 	wstring line;
 	vector<wstring> image;
@@ -23,7 +23,7 @@ vector<vector<wstring> > ImageLoader::loadBatch(const string& fileName)
 	string path = "../resources/";
 	path += fileName;
 	wifstream fin(path);
-	if( fin.bad() ) cout<<"Error: File read fail! \n";
+	if( fin.bad() ) cout<<"Error: File read fail! "<<endl;
 
 	wstring line;
 	vector<wstring> image;

@@ -24,6 +24,7 @@ void Animation::getCmdQueue()
 	int cycle = steps / frames;
 	for(int i=0; i<steps; i++)
 	{
+		if( i/cycle == frames ) break;
 		if( i % cycle == 0 )
 			cmdQueue.push( Command( i/cycle ) );
 		else 

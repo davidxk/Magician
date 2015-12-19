@@ -1,9 +1,11 @@
 #include "user/AnimSprite.h"
+#include <cassert>
 #include "basic/ImageLoader.h"
 
 AnimSprite::AnimSprite(const string& fileName)
 {
 	batch = ImageLoader::loadBatch(fileName);
+	assert( batch.size() > 0 );
 	image = batch[ 0 ];
 	size = Size( image.size(), image[0].size() );
 	updateCenter();

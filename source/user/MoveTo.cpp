@@ -19,6 +19,7 @@ void MoveTo::getCmdQueue()
 	//get vector segments from a whole vector
 	//(next-from) / (dest-from) = i / (duration / time_unit)
 	int steps = duration/magician::TIME_UNIT;
+	cmdQueue.push( Command(from) );
 	for(int i=1; i<=steps; i++)
 	{
 		Coord next = (dest-from) * i / steps + from;

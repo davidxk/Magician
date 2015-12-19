@@ -31,9 +31,9 @@ vector<wstring> VisibleObjManager::getFrame()
 		Coord lower = obj->pos;
 		Coord upper = obj->pos + obj->size;
 		int lineLower = (int)fmax( ConsoleCoord::MIN_LINES, lower.line );
-		int lineUpper = (int)fmin( ConsoleCoord::MAX_LINES, upper.line );
+		int lineUpper = (int)fmin( ConsoleCoord::MAX_LINES+1, upper.line );
 		int colLower = (int)fmax( ConsoleCoord::MIN_COLUMN, lower.column );
-		int colUpper = (int)fmin( ConsoleCoord::MAX_COLUMN, upper.column );
+		int colUpper = (int)fmin( ConsoleCoord::MAX_COLUMN+1, upper.column );
 
 		for(int i=lineLower; i<lineUpper; i++)
 			for(int j=colLower; j<colUpper; j++)

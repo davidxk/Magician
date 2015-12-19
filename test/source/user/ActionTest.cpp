@@ -18,7 +18,7 @@ void ActionTest::run()
 void ActionTest::testMoveTo()
 {
 	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79), false);
-	assert( mt->cmdQueue.size() == 100/magician::TIME_UNIT );
+	assert( mt->cmdQueue.size() == 100/magician::TIME_UNIT+1 );
 	delete mt;
 }
 

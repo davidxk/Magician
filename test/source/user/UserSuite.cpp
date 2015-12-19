@@ -5,5 +5,5 @@
 UserSuite::UserSuite()
 {
 	addTestCase( new ActionTest );
-	//addTestCase( new UserTest );
+	addTestCase( new UserTest );
 }

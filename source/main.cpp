@@ -1,5 +1,5 @@
 #include "MainLoop.h"
-//#include "HelloWorld.h"
+#include "HelloWorld.h"
 #include <thread>
 
 int main()
@@ -8,7 +8,7 @@ int main()
 	std::thread refresh( &MainLoop::readyGo(), std::ref( ml ) );
 	refresh.detach();
 
-	//HelloWorld hello;
+	HelloWorld hello;
 
 	return 0;
 }

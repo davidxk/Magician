@@ -4,6 +4,13 @@
 
 static MCIERROR s_mciError;
 
+void MciPlayer::go(const string& fileName)
+{
+	mp.open(fileName);
+	std::thread bgm( &AudioTest::play, this );
+	bgm.detach();
+}
+
 void MciPlayer::open(const string& fileName)
 {
 	if( fileName.empty() ) return;

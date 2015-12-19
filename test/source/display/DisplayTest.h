@@ -11,7 +11,6 @@ public:
 private:
 	void testSprite();
 	void testVManager();
-	void testMoveTo();
 	void testDisplay();
 };
 #endif

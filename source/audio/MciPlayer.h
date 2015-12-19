@@ -12,6 +12,7 @@ using namespace std;
 class MciPlayer
 {
 public:
+	void go(const string& fileName);
 	void open(const string& fileName);
 	void play();
 	void close();

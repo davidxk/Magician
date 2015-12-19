@@ -26,11 +26,13 @@ VisibleObject.cpp \
 ActionManager.cpp \
 DisplayCentral.cpp \
 VisibleObjManager.cpp \
-AnimSprite.cpp \
 MoveTo.cpp \
 Sprite.cpp \
+AnimSprite.cpp \
 MainLoop.cpp \
 Printer.cpp \
 MciPlayer.cpp \
 Animation.cpp \
+Sequence.cpp \
+Repeat.cpp \
  \

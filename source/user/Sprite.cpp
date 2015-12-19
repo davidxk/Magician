@@ -5,6 +5,7 @@ Sprite::Sprite(const string& fileName): VisibleObject()
 {
 	image = ImageLoader::load(fileName);
 	size = Size( image.size(), image[0].size() );
+	updateCenter();
 	verify();
 }
 

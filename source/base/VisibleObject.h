@@ -11,6 +11,7 @@ class VisibleObject
 {
 public:
 	Coord pos;
+	Coord center;
 	Size size;
 	vector<wstring> image;
 	int zOrder;
@@ -20,5 +21,7 @@ public:
 	VisibleObject();
 	void verify();
 	void setPos(const Coord cc);
+	void setCenterPos(const Coord cc);
+	void updateCenter();
 };
 #endif

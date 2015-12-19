@@ -4,6 +4,7 @@
 void ActionManager::addAction(Action* action)
 {
 	assert( action != NULL );
+	assert( action->host != NULL );
 	actionList.push_back( action );
 	action->host->inAction = true;
 }

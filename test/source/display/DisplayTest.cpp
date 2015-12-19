@@ -34,6 +34,11 @@ void DisplayTest::testSprite()
 
 void DisplayTest::testVManager()
 {
+	Sprite* sp = Sprite::create("graph/moon.txt");
+	vManager->addObject( sp );
+	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79), false);
+	aManager->addAction( mt );
+
 	vector<wstring> frame = vManager->getFrame();
 	const wregex patLine0(L"(1234)( *)");
 	const wregex patLine1(L"(4321)( *)");
@@ -43,18 +48,6 @@ void DisplayTest::testVManager()
 
 	//assert( regex_match( frame[0].begin(), frame[0].end(), patLine0 ) );
 	//assert( regex_match( frame[1].begin(), frame[1].end(), patLine1 ) );
-}
-
-void DisplayTest::testMoveTo()
-{
-	Sprite* sp = Sprite::create("graph/moon.txt");
-	sp->setPos( Coord(0, 0) );
-	vManager->addObject( sp );
-
-	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79), false);
-	assert( mt->cmdQueue.size() == 100/magician::TIME_UNIT );
-	aManager->addAction( mt );
-	assert( aManager->actionList.size()==1 );
 }
 
 void DisplayTest::testDisplay()

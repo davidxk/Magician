@@ -13,11 +13,11 @@ class DisplayCentral
 {
 public:
 	DisplayCentral();
-	void update();
-	void print(const vector<PrintJob>& jobList);
-	vector<PrintJob> getDiff();
+	void update(const vector<wstring>& frameThis);
 	void setThisFrame(const vector<wstring>& frameThis);
-	void verify(const vector<wstring>& frame);
+	void verifyFrame(const vector<wstring>& frame);
+	vector<PrintJob> getDiff();
+	void print(const vector<PrintJob>& jobList);
 public:
 	Printer printer;
 	vector<wstring> frameLast;

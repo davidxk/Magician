@@ -10,15 +10,22 @@
 class ActionManager
 {
 public:
-	list<Action*> actionList;
+	ActionManager();
 	void addAction(Action* action);
 	void addAction(Action* action, VisibleObject* host);
+	void schedule(Action* action, int time);
 	//void removeAction(Action* action);
 	//updates sprites' attributes in vManager
 	void update();
 	void pauseHost(VisibleObject* host);
 	void resumeHost(VisibleObject* host);
 	~ActionManager();
+
+	list<Action*> actionList;
+	unordered_map<vector<Action*> > scheduleList;
+	int cntCycle;
+private:
+	void checkSchedule();
 };
 typedef Singleton<ActionManager> sActionManager;
 #define aManager sActionManager::instance()

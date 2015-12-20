@@ -1,5 +1,8 @@
 #include "ActionManager.h"
 #include <cassert>
+#include "basic/MagicianMacros.h"
+
+ActionManager::ActionManager(): cntCycle(0) { }
 
 void ActionManager::addAction(Action* action)
 {
@@ -18,8 +21,22 @@ void ActionManager::addAction(Action* action, VisibleObject* host)
 	action->host->inAction = true;
 }
 
+void ActionManager::schedule(Action* action, int time)
+{
+	int cycle = time / magician::TIME_UNIT;
+	if (scheduleList.find(cycle) != scheduleList.end())
+		scheduleList[ cycle ].push_back( action );
+	else 
+	{
+		vector<Action*> tmp;
+		tmp.push_back( action );
+		scheduleList.emplace( cycle, tmp );
+	}
+}
+
 void ActionManager::update()
 {
+	checkSchedule();
 	for(auto& action: actionList)
 	{
 		if(action->isPause) continue;
@@ -39,6 +56,17 @@ void ActionManager::update()
 		action->cmdQueue.pop();
 	}
 	actionList.remove(NULL);
+}
+
+void ActionManager::checkSchedule()
+{
+	cntCycle++;
+	if(scheduleList.find(cntCycle) != scheduleList.end())
+	{
+		for(const auto& action: scheduleList[cntCycle])
+			addAction( action );
+		scheduleList.erase( cntCycle );
+	}
 }
 
 

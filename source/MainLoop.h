@@ -6,10 +6,16 @@
 class MainLoop
 {
 public:
+	MainLoop();
 	void readyGo();
 	void update();
 	~MainLoop();
+
 	static const int TIME_UNIT;
 	DisplayCentral dc;
+private:
+	void checkMsg();
+	bool exit;
+	bool transitionReady;
 };
 #endif

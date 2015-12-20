@@ -8,8 +8,8 @@
 class Sleep: public Action
 {
 public:
-	Sleep(Action* host, int duration);
-	Sleep* create(VisibleObject* host, int duration);
+	Sleep(VisibleObject* host, int duration);
+	static Sleep* create(VisibleObject* host, int duration);
 	void getCmdQueue();
 };
 #endif

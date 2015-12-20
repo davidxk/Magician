@@ -28,6 +28,8 @@ vector<wstring> VisibleObjManager::getFrame()
 
 	for(const auto& obj: objList)
 	{
+		if( !obj->isVisible ) continue;
+
 		Coord lower = obj->pos;
 		Coord upper = obj->pos + obj->size;
 		int lineLower = (int)fmax( ConsoleCoord::MIN_LINES, lower.line );

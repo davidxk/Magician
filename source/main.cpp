@@ -1,10 +1,12 @@
 #include "MainLoop.h"
+#include "Logo.h"
 #include "HelloWorld.h"
 #include <thread>
 
 int main()
 {
-	HelloWorld hello;
+	Logo logo;
+	//HelloWorld hello;
 
 	MainLoop ml;
 	std::thread refresh( &MainLoop::readyGo, std::ref( ml ) );

@@ -1,11 +1,12 @@
 #include "user/Sleep.h"
+#include "basic/MagicianMacros.h"
 
 Sleep::Sleep(VisibleObject* host, int duration): Action(host, duration, false)
 {
 	getCmdQueue();
 }
 
-Sleep* Sleep::create(Action* host, int duration)
+Sleep* Sleep::create(VisibleObject* host, int duration)
 {
 	return new Sleep(host, duration);
 }

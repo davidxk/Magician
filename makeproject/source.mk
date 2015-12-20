@@ -37,3 +37,5 @@ Sequence.cpp \
 Repeat.cpp \
 Layer.cpp \
 Sleep.cpp \
+Vanish.cpp \
+Logo.cpp \

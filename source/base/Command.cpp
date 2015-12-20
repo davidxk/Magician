@@ -3,6 +3,9 @@
 
 Command::Command(): type(SLEEP) { }
 
+Command::Command(CmdType aType): 
+	type(aType) { }
+
 Command::Command(Coord aPos):
 	type(CHANGE_POS), pos(aPos) { }
 	
@@ -24,6 +27,12 @@ void Command::apply(VisibleObject* vo)
 			}
 			break;
 		case SLEEP:
+			break;
+		case VANISH:
+			vo->isVisible = false;
+			break;
+		case APPEAR:
+			vo->isVisible = true;
 			break;
 		default:
 			//cout<<"not yet supported";

@@ -35,4 +35,5 @@ MciPlayer.cpp \
 Animation.cpp \
 Sequence.cpp \
 Repeat.cpp \
- \
+Layer.cpp \
+Sleep.cpp \

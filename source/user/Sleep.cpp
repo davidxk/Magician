@@ -1,6 +1,6 @@
 #include "user/Sleep.h"
 
-Sleep::Sleep(Action* host, int duration): Action(host, duration, false)
+Sleep::Sleep(VisibleObject* host, int duration): Action(host, duration, false)
 {
 	getCmdQueue();
 }

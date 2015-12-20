@@ -12,9 +12,12 @@ class ActionManager
 public:
 	list<Action*> actionList;
 	void addAction(Action* action);
+	void addAction(Action* action, VisibleObject* host);
 	//void removeAction(Action* action);
 	//updates sprites' attributes in vManager
 	void update();
+	void pauseHost(VisibleObject* host);
+	void resumeHost(VisibleObject* host);
 	~ActionManager();
 };
 typedef Singleton<ActionManager> sActionManager;

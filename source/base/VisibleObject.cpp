@@ -1,6 +1,7 @@
 #include "base/VisibleObject.h"
 
 #include <cassert>
+#include "display/ActionManager.h"
 
 VisibleObject::VisibleObject():
 	zOrder(0), isVisible(true), inAction(false) { }
@@ -31,4 +32,22 @@ void VisibleObject::setCenterPos(const Coord cc)
 void VisibleObject::updateCenter()
 {
 	center = ( pos + size )/2;
+}
+
+
+
+
+void VisibleObject::runAction(Action* action)
+{
+	aManager->addAction( action, this );
+}
+
+void VisibleObject::pauseActions()
+{
+	aManager->pauseHost( this );
+}
+
+void VisibleObject::resumeActions()
+{
+	aManager->resumeHost( this );
 }

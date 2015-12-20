@@ -11,6 +11,8 @@ public:
 	void addObject(VisibleObject* object);
 	//void addObject(VisibleObject* object, ...);
 	void runAction(Action* action);
+	void pauseActions();
+	void remumeActions();
 	vector<VisibleObject*> objList;
 };
 #endif

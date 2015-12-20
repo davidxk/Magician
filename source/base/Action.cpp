@@ -19,6 +19,15 @@ void Action::stop()
 		cmdQueue.pop();
 }
 
+
+
+
+
+void Action::setHost(VisibleObject* host)
+{
+	this->host = host;
+}
+
 /*
 Action& Action::create(VisibleObject* aHost, int aDuration, bool aIsRepeat)
 {

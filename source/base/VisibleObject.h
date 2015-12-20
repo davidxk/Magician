@@ -7,6 +7,8 @@
 #include <string>
 using namespace std;
 
+class Action;
+
 class VisibleObject
 {
 public:
@@ -23,5 +25,9 @@ public:
 	void setPos(const Coord cc);
 	void setCenterPos(const Coord cc);
 	void updateCenter();
+
+	void runAction(Action* action);
+	void pauseActions();
+	void resumeActions();
 };
 #endif

@@ -9,6 +9,15 @@ void ActionManager::addAction(Action* action)
 	action->host->inAction = true;
 }
 
+void ActionManager::addAction(Action* action, VisibleObject* host)
+{
+	assert( action != NULL );
+	assert( host != NULL );
+	action->setHost( host );
+	actionList.push_back( action );
+	action->host->inAction = true;
+}
+
 void ActionManager::update()
 {
 	for(auto& action: actionList)
@@ -30,6 +39,24 @@ void ActionManager::update()
 		action->cmdQueue.pop();
 	}
 	actionList.remove(NULL);
+}
+
+
+
+
+
+void ActionManager::pauseHost(VisibleObject* host)
+{
+	for(auto& action: actionList)
+		if( action->host == host )
+			action->isPause = true;
+}
+
+void ActionManager::resumeHost(VisibleObject* host)
+{
+	for(auto& action: actionList)
+		if( action->host == host )
+			action->isPause = false;
 }
 
 ActionManager::~ActionManager()

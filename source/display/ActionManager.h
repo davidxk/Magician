@@ -23,7 +23,6 @@ public:
 
 	list<Action*> actionList;
 	unordered_map<vector<Action*> > scheduleList;
-	int cntCycle;
 private:
 	void checkSchedule();
 };

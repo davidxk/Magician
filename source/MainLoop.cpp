@@ -23,8 +23,10 @@ void MainLoop::readyGo()
 
 void MainLoop::update()
 {
+	gScheduler->checkSchedule();
 	aManager->update();
 	dc.update( vManager->getFrame() );
+	TimeService::updateTime();
 }
 
 void MainLoop::checkMsg()

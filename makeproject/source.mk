@@ -17,7 +17,6 @@ CXXFLAGS+=-I $(src_path)
 #g/\.h$/d
 sources+= Logo.cpp \
 MainLoop.cpp \
-main.cpp
 MciPlayer.cpp \
 Action.cpp \
 Box.cpp \

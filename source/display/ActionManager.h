@@ -7,6 +7,7 @@
 #include <list>
 #include <unordered_map>
 #include <vector>
+using namespace std;
 
 //Action Manager maintains a list of running actions
 //In each update, it executes commands which alters the attributes of objects 
@@ -25,7 +26,7 @@ public:
 	~ActionManager();
 
 	list<Action*> actionList;
-	unordered_map<vector<Action*> > scheduleList;
+	unordered_map<int,vector<Action*> > scheduleList;
 private:
 	void checkSchedule();
 };

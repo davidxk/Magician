@@ -12,6 +12,14 @@ HelloWorld::HelloWorld()
 	Animation* wave = Animation::create( snowMan, 1000, true );
 	aManager->addAction( wave );
 	snowMan->setPos( Coord(12, 42) );
+
+	//snow flakes here
+
+	//MoveBy* move = MoveTo::create( NULL, 1000, Coord(-40, 0), false)
+	Layer mainLayer;
+	mainLayer.addObject( xmasTree );
+	mainLayer.addObject( snowMan );
+	//mainLayer.schedule(move, 4000);
 }
 
 HelloWorld::~HelloWorld()

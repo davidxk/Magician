@@ -22,4 +22,7 @@ Logo::Logo()
 
 	vManager->addObject( rabbit );
 	vManager->addObject( wand );
+
+	//schedule set end = true at the endding time point of this scene
+	//while( !end ) this_thread::sleep_for( chrono::milliseconds(50) );
 }

@@ -2,7 +2,7 @@
 #include <cassert>
 #include "basic/TimeService.h"
 
-ActionManager::ActionManager(): { }
+ActionManager::ActionManager() { }
 
 void ActionManager::addAction(Action* action)
 {
@@ -93,6 +93,6 @@ ActionManager::~ActionManager()
 		delete action;
 
 	for(const auto& list: scheduleList)
-		for(const auto& action: list)
+		for(const auto& action: list.second)
 			delete action;
 }

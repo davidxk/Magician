@@ -5,6 +5,6 @@
 
 void Transition::releasePrev()
 {
-	aManager->release();
-	vManager->release();
+	sVisibleObjManager::release();
+	sActionManager::release();
 }

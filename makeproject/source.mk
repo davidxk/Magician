@@ -12,30 +12,37 @@ VPATH+=$(src_path) $(basic_path) $(base_path) $(user_path) \
 CXXFLAGS+=-I $(src_path) 
 
 ## Source List
-sources+= ConsoleCoord.cpp \
-Coord.cpp \
-ImageLoader.cpp \
-OrderedPair.cpp \
-PrintJob.cpp \
-Size.cpp \
+#ls -R | perl ls_r_parse.pl
+#s/.*\/\([A-Z].\)$/\1 \\/
+#g/\.h$/d
+sources+= Logo.cpp \
+MainLoop.cpp \
+main.cpp
+MciPlayer.cpp \
 Action.cpp \
 Box.cpp \
 Command.cpp \
 Singleton.cpp \
 VisibleObject.cpp \
+ConsoleCoord.cpp \
+Coord.cpp \
+ImageLoader.cpp \
+OrderedPair.cpp \
+PrintJob.cpp \
+Size.cpp \
+TimeService.cpp \
+Transition.cpp \
 ActionManager.cpp \
 DisplayCentral.cpp \
-VisibleObjManager.cpp \
-MoveTo.cpp \
-Sprite.cpp \
-AnimSprite.cpp \
-MainLoop.cpp \
 Printer.cpp \
-MciPlayer.cpp \
+VisibleObjManager.cpp \
+AnimSprite.cpp \
 Animation.cpp \
-Sequence.cpp \
-Repeat.cpp \
 Layer.cpp \
+MoveTo.cpp \
+Repeat.cpp \
+Scheduler.cpp \
+Sequence.cpp \
 Sleep.cpp \
+Sprite.cpp \
 Vanish.cpp \
-Logo.cpp \

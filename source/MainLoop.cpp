@@ -3,10 +3,12 @@
 #include <chrono>
 #include <thread>
 #include "basic/MagicianMacros.h"
+#include "basic/TimeService.h"
 #include "display/ActionManager.h"
 #include "display/VisibleObjManager.h"
+#include "user/Scheduler.h"
 
-const int MainLoop::TIME_UNIT = magician::TIME_UNIT;
+const int MainLoop::TIME_UNIT = TimeService::TIME_UNIT;
 
 MainLoop::MainLoop():
 	exit( false ), transitionReady( false ) { }

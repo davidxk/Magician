@@ -1,4 +1,5 @@
 #include "user/Scheduler.h"
+#include "basic/TimeService.h"
 
 void Scheduler::schedule(function<void()>& func, int time)
 {
@@ -7,7 +8,7 @@ void Scheduler::schedule(function<void()>& func, int time)
 		scheduleList[ cycle ].push_back( func );
 	else 
 	{
-		vector<function<void()> tmp;
+		vector<function<void()> > tmp;
 		tmp.push_back( func );
 		scheduleList.emplace( cycle, tmp );
 	}

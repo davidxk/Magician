@@ -27,3 +27,8 @@ int TimeService::getCycle()
 {
 	return cntCycle;
 }
+
+int TimeService::getTimeUnit()
+{
+	return TIME_UNIT;
+}

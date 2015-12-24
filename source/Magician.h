@@ -15,6 +15,7 @@
 #include "user/Vanish.h"
 //Layer
 #include "user/Layer.h"
+#include "user/Scheduler.h"
 
 #include "display/ActionManager.h"
 #include "display/VisibleObjManager.h"

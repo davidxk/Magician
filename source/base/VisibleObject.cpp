@@ -39,7 +39,14 @@ void VisibleObject::updateCenter()
 
 void VisibleObject::runAction(Action* action)
 {
-	aManager->addAction( action, this );
+	action->setHost( this );
+	aManager->addAction( action );
+}
+
+void VisibleObject::scheduleAction(Action* action, int timepoint)
+{
+	action->setHost( this );
+	aManager->schedule( action, timepoint );
 }
 
 void VisibleObject::pauseActions()

@@ -22,6 +22,19 @@ void Layer::runAction(Action* action)
 	delete action;
 }
 
+void Layer::scheduleAction(Action* action, int timepoint)
+{
+	for(const auto& obj: objList)
+	{
+		//get a copy of the action
+		Action* copy = new Action( *action );
+		//obj->schedule( copy, timepoint );
+		copy->setHost( obj );
+		aManager->schedule( copy, timepoint );
+	}
+	delete action;
+}
+
 void Layer::pauseActions()
 {
 	for(const auto& obj: objList)

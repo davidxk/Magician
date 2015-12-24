@@ -5,12 +5,13 @@
 
 int main()
 {
-	Logo logo;
-	//HelloWorld hello;
-
 	MainLoop ml;
 	std::thread refresh( &MainLoop::readyGo, std::ref( ml ) );
-	refresh.join();
+	refresh.detach();
+
+	Logo logo;
+
+	HelloWorld hello;
 
 	return 0;
 }

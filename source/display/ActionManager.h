@@ -17,7 +17,7 @@ public:
 	ActionManager();
 	void addAction(Action* action);
 	void addAction(Action* action, VisibleObject* host);
-	void schedule(Action* action, int time);
+	void schedule(Action* action, int timepoint);
 	//void removeAction(Action* action);
 	//updates sprites' attributes in vManager
 	void update();
@@ -29,6 +29,7 @@ public:
 	unordered_map<int,vector<Action*> > scheduleList;
 private:
 	void checkSchedule();
+	void verifyAction(Action* action);
 };
 typedef Singleton<ActionManager> sActionManager;
 #define aManager sActionManager::instance()

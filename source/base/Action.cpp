@@ -29,6 +29,7 @@ void Action::setHost(VisibleObject* host)
 }
 
 /*
+//demo create method
 Action& Action::create(VisibleObject* aHost, int aDuration, bool aIsRepeat)
 {
 	list<Action>& actionList = aManager->actionList;

@@ -6,24 +6,15 @@ ActionManager::ActionManager() { }
 
 void ActionManager::addAction(Action* action)
 {
-	assert( action != NULL );
-	assert( action->host != NULL );
+	verifyAction( action );
 	actionList.push_back( action );
 	action->host->inAction = true;
 }
 
-void ActionManager::addAction(Action* action, VisibleObject* host)
+void ActionManager::schedule(Action* action, int timepoint)
 {
-	assert( action != NULL );
-	assert( host != NULL );
-	action->setHost( host );
-	actionList.push_back( action );
-	action->host->inAction = true;
-}
-
-void ActionManager::schedule(Action* action, int time)
-{
-	int cycle = time / TimeService::TIME_UNIT;
+	verifyAction( action );
+	int cycle = timepoint / TimeService::TIME_UNIT;
 	if (scheduleList.find(cycle) != scheduleList.end())
 		scheduleList[ cycle ].push_back( action );
 	else 
@@ -69,7 +60,11 @@ void ActionManager::checkSchedule()
 	}
 }
 
-
+void ActionManager::verifyAction(Action* action)
+{
+	assert( action != NULL );
+	assert( action->host != NULL );
+}
 
 
 

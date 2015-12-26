@@ -9,5 +9,7 @@ class HelloWorld
 public:
 	HelloWorld();
 	~HelloWorld();
+private:
+	void addSnowFlake();
 };
 #endif

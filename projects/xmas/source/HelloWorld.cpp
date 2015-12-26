@@ -1,4 +1,6 @@
 #include "HelloWorld.h"
+#include <chrono>
+#include <thread>
 
 HelloWorld::HelloWorld()
 {
@@ -18,13 +20,34 @@ HelloWorld::HelloWorld()
 	aManager->addAction( wave );
 	snowMan->setPos( Coord(12, 42) );
 
+	std::this_thread::sleep_for(std::chrono::seconds( 5 ));
 	//snow flakes here
+	const int N_SNOW_FLAKES = 20;
+	for(int i=0; i<N_SNOW_FLAKES; i++)
+		addSnowFlake();
 
-	//MoveBy* move = MoveTo::create( NULL, 1000, Coord(-40, 0), false)
+	//MoveBy* move = MoveBy::create( NULL, 1000, Coord(-40, 0), false)
 	Layer mainLayer;
 	mainLayer.addObject( xmasTree );
 	mainLayer.addObject( snowMan );
 	//mainLayer.schedule(move, 4000);
+}
+
+void HelloWorld::addSnowFlake()
+{
+	Sprite* snowFlake = Sprite::create("snowy/snow_flake.txt");
+	vManager->addObject( snowFlake );
+
+	int xx = Random::randomPositive( ConsoleCoord::MAX_COLUMN+1 );
+	int yy = Random::randomNegative( -2 * (ConsoleCoord::MAX_LINES+1) );
+	snowFlake->setPos( Coord::CoordXY(xx, yy) );
+
+	const int stdDure = 4000;
+	const int num24 = ConsoleCoord::MAX_LINES + 1;
+	const int distance = Random::randomRange(num24 * 2, num24 * 3.0);
+	MoveBy* mb = MoveBy::create( snowFlake, stdDure/num24*distance, 
+		Coord::CoordXY( 0, distance ), true);
+	snowFlake->runAction( mb );
 }
 
 HelloWorld::~HelloWorld()

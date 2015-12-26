@@ -8,6 +8,6 @@ class MoveBy: public MoveTo
 {
 public:
 	MoveBy(VisibleObject* host, int duration, Coord vect, bool isRepeat);
-	MoveBy* create(VisibleObject* host, int duration, Coord vect, bool isRepeat);
+	static MoveBy* create(VisibleObject* host, int duration, Coord vect, bool isRepeat);
 };
 #endif

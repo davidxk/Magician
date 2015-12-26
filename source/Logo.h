@@ -17,6 +17,6 @@ private:
 	const int DURE_WAVE = 400;
 	const int N_WAVE = 3;
 	const int DURE_JUMP = 500;
-	const int PAUSE_TIME = 3000;
+	const int PAUSE_TIME = 2000;
 };
 #endif

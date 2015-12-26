@@ -22,15 +22,16 @@ Action.cpp \
 Box.cpp \
 Command.cpp \
 Singleton.cpp \
+Transition.cpp \
 VisibleObject.cpp \
 ConsoleCoord.cpp \
 Coord.cpp \
 ImageLoader.cpp \
 OrderedPair.cpp \
 PrintJob.cpp \
+Random.cpp \
 Size.cpp \
 TimeService.cpp \
-Transition.cpp \
 ActionManager.cpp \
 DisplayCentral.cpp \
 Printer.cpp \

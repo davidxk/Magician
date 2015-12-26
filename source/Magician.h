@@ -1,4 +1,5 @@
 #include "basic/MagicianMacros.h"
+#include "basic/Random.h"
 
 #include "base/Transition.h"
 

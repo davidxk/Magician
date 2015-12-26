@@ -13,7 +13,7 @@ public:
 	MoveTo(VisibleObject* host, int duration, Coord aDest, bool isRepeat=false);
 	static MoveTo* create(VisibleObject* host, int duration, Coord aDest, bool isRepeat=false);
 	virtual void getCmdQueue() override;
-private:
+protected:
 	Coord from;
 	Coord dest;
 };

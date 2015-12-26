@@ -11,6 +11,7 @@
 //Actions
 #include "user/Animation.h"
 #include "user/MoveTo.h"
+#include "user/MoveBy.h"
 #include "user/Repeat.h"
 #include "user/Sequence.h"
 #include "user/Sleep.h"

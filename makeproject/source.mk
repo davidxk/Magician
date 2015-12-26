@@ -38,6 +38,7 @@ VisibleObjManager.cpp \
 AnimSprite.cpp \
 Animation.cpp \
 Layer.cpp \
+MoveBy.cpp \
 MoveTo.cpp \
 Repeat.cpp \
 Scheduler.cpp \

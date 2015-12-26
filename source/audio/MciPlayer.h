@@ -6,7 +6,6 @@
 #include <mmsystem.h>  
 #include <iostream>
 using namespace std;
-#pragma comment(lib , "winmm.lib") 
 
 //description of the class here
 class MciPlayer

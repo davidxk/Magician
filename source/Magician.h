@@ -1,5 +1,7 @@
 #include "basic/MagicianMacros.h"
 
+#include "base/Transition.h"
+
 #include "audio/MciPlayer.h"
 
 //Sprites

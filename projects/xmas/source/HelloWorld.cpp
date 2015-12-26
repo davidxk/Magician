@@ -2,6 +2,11 @@
 
 HelloWorld::HelloWorld()
 {
+	//Music here
+	MciPlayer mci;
+	mci.start("bgm/we_wish_you_a_merry_christmas_12.mp3");
+	
+	//Sprites with Animation
 	AnimSprite* xmasTree = AnimSprite::create("snowy/tree_batch.txt");
 	vManager->addObject( xmasTree );
 	Animation* blink = Animation::create( xmasTree, 1000, true );

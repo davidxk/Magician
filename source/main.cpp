@@ -2,6 +2,7 @@
 #include "Logo.h"
 #include "HelloWorld.h"
 #include <thread>
+#include <chrono>
 
 int main()
 {
@@ -11,7 +12,10 @@ int main()
 
 	Logo logo;
 
+	//std::this_thread::sleep_for( std::chrono::seconds( 3 ) );
 	HelloWorld hello;
+	while(1)
+		std::this_thread::sleep_for( std::chrono::minutes( 1 ) );
 
 	return 0;
 }

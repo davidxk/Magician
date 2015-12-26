@@ -5,7 +5,7 @@
 #include <thread>
 #include "Magician.h"
 
-Logo::Logo(): isEnd( false )
+Logo::Logo()
 {
 	initAnim();
 	scheduleTransition();
@@ -13,7 +13,7 @@ Logo::Logo(): isEnd( false )
 
 int Logo::getTotalTime()
 {
-	return N_WAVE * DURE_WAVE + DURE_JUMP;
+	return N_WAVE * DURE_WAVE + DURE_JUMP + PAUSE_TIME;
 }
 
 void Logo::initAnim()
@@ -46,15 +46,7 @@ void Logo::initAnim()
 
 void Logo::scheduleTransition()
 {
-	//schedule set end = true at the endding time point of this scene
-	const int totalTime = getTotalTime();
-	//auto func = std::bind( &Logo::setEnd, this );
-	//gScheduler->schedule( func, totalTime );
-	//while not end, block this thread
-	std::this_thread::sleep_for( std::chrono::milliseconds(totalTime) );
-}
-
-void Logo::setEnd()
-{
-	isEnd = true;
+	int sleepTime = getTotalTime();
+	std::this_thread::sleep_for( std::chrono::milliseconds(sleepTime) );
+	Transition::releasePrev();
 }

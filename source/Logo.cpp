@@ -47,7 +47,7 @@ void Logo::initAnim()
 void Logo::scheduleTransition()
 {
 	//schedule set end = true at the endding time point of this scene
-	const int totalTime = 2 * getTotalTime();
+	const int totalTime = getTotalTime();
 	//auto func = std::bind( &Logo::setEnd, this );
 	//gScheduler->schedule( func, totalTime );
 	//while not end, block this thread

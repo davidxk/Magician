@@ -15,11 +15,13 @@ MainLoop::MainLoop():
 
 void MainLoop::readyGo()
 {
+	TimeService::gameBegin();
 	while( !exit )
 	{
 		checkMsg();
 		update();
-		std::this_thread::sleep_for (std::chrono::milliseconds( TIME_UNIT ));
+		TimeService::updateTime();
+		std::this_thread::sleep_until( TimeService::getNextFrameTime() );
 	}
 }
 
@@ -28,7 +30,6 @@ void MainLoop::update()
 	gScheduler->checkSchedule();
 	aManager->update();
 	dc.update( vManager->getFrame() );
-	TimeService::updateTime();
 }
 
 void MainLoop::checkMsg()

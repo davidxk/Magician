@@ -1,7 +1,7 @@
 #include "user/Scheduler.h"
 #include "basic/TimeService.h"
 
-void Scheduler::schedule(function<void()>& func, int timepoint)
+void Scheduler::schedule(function<void ()> func, int timepoint)
 {
 	int cycle = timepoint / TimeService::TIME_UNIT;
 	if (scheduleList.find(cycle) != scheduleList.end())

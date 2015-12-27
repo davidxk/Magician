@@ -1,11 +1,7 @@
 #include "user/MoveBy.h"
 
 MoveBy::MoveBy(VisibleObject* host, int duration, Coord vect, bool isRepeat):
-	MoveTo(host, duration, host->pos+vect, isRepeat)
-{
-	this->from = host->pos;
-	getCmdQueue();
-}
+	MoveTo(host, duration, host->pos+vect, isRepeat) { }
 
 MoveBy* MoveBy::create(VisibleObject* host, int duration, Coord vect, bool isRepeat)
 {

@@ -1,4 +1,5 @@
 #include "base/Action.h"
+#include <cassert>
 
 Action::Action(VisibleObject* aHost, int aDuration, bool aIsRepeat):
 	host(aHost), duration(aDuration), isRepeat(aIsRepeat), isPause(false) { }
@@ -25,6 +26,7 @@ void Action::stop()
 
 void Action::setHost(VisibleObject* host)
 {
+	assert( host );
 	this->host = host;
 }
 

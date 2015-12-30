@@ -14,6 +14,11 @@ void Scheduler::schedule(function<void ()> func, int timepoint)
 	}
 }
 
+void Scheduler::scheduleAfter(function<void ()> func, int period)
+{
+	schedule( func, period + TimeService::getTime() );
+}
+
 void Scheduler::checkSchedule()
 {
 	int cntCycle = TimeService::getCycle();

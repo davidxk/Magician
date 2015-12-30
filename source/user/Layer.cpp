@@ -1,6 +1,7 @@
 #include "user/Layer.h"
 #include <cassert>
 //delete if runAction succeed
+#include "basic/TimeService.h"
 #include "display/ActionManager.h"
 
 void Layer::addObject(VisibleObject* object)
@@ -33,6 +34,11 @@ void Layer::scheduleAction(Action* action, int timepoint)
 		aManager->schedule( copy, timepoint );
 	}
 	delete action;
+}
+
+void Layer::scheduleActionAfter(Action* action, int period)
+{
+	scheduleAction( action, period + TimeService::getTime() );
 }
 
 void Layer::pauseActions()

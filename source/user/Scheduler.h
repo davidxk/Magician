@@ -11,7 +11,8 @@ using namespace std;
 class Scheduler
 {
 public:
-	void schedule(function<void()> func, int time);
+	void schedule(function<void()> func, int timepoint);
+	void scheduleAfter(function<void()> func, int period);
 	void checkSchedule();
 
 	unordered_map<int,vector<function<void()> > > scheduleList;

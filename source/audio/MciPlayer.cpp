@@ -1,6 +1,7 @@
 #include "audio/MciPlayer.h"
 #include <mmsystem.h>  
 #include <thread>
+#include "basic/MagicianMacros.h"
 
 static MCIERROR s_mciError;
 
@@ -20,7 +21,7 @@ void MciPlayer::open(const string& fileName)
 {
 	if( fileName.empty() ) return;
 
-	string fullPath = "../resources/";
+	string fullPath = magician::RES_PATH;
 	fullPath += fileName;
 	//WCHAR* fileNameWideChar = str2wchar( fullPath );
 

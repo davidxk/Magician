@@ -2,10 +2,11 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "basic/MagicianMacros.h"
 
 vector<wstring> ImageLoader::load(const string& fileName)
 {
-	string path = "../resources/";
+	string path = magician::RES_PATH;
 	path += fileName;
 	wifstream fin(path.c_str());
 	if( fin.bad() ) cout<<"Error: File read fail! "<<endl;
@@ -20,7 +21,7 @@ vector<wstring> ImageLoader::load(const string& fileName)
 
 vector<vector<wstring> > ImageLoader::loadBatch(const string& fileName)
 {
-	string path = "../resources/";
+	string path = magician::RES_PATH;
 	path += fileName;
 	wifstream fin(path);
 	if( fin.bad() ) cout<<"Error: File read fail! "<<endl;

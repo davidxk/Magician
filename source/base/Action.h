@@ -21,6 +21,6 @@ public:
 	void pause();
 	void resume();
 	void stop();
-	void setHost(VisibleObject* host);
+	virtual void setHost(VisibleObject* host);
 };
 #endif

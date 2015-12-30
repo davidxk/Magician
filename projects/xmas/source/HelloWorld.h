@@ -11,5 +11,7 @@ public:
 	~HelloWorld();
 private:
 	void addSnowFlake();
+	void addSnowScreen();
+	const int stdDure = 4000;
 };
 #endif

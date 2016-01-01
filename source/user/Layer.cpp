@@ -32,6 +32,7 @@ void Layer::scheduleAction(Action* action, int timepoint)
 		Action* copy = new Action( *action );
 		//obj->schedule( copy, timepoint );
 		copy->setHost( obj );
+		copy->initWithHost( obj );
 		aManager->schedule( copy, timepoint );
 	}
 	delete action;

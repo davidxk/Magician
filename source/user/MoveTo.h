@@ -10,8 +10,10 @@ class MoveTo: public Action
 {
 public:
 	//It figures out Coord from from host pointer
-	MoveTo(VisibleObject* host, int duration, Coord aDest, bool isRepeat=false);
+	MoveTo(VisibleObject* host, int duration, Coord aFrom, Coord aDest, bool isRepeat=false);
+	static MoveTo* create(int duration, Coord aFrom, Coord aDest, bool isRepeat=false);
 	static MoveTo* create(VisibleObject* host, int duration, Coord aDest, bool isRepeat=false);
+	virtual void setHost(VisibleObject* host) override;
 	virtual void getCmdQueue() override;
 protected:
 	Coord from;

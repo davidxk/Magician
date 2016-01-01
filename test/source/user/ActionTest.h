@@ -13,6 +13,7 @@ public:
 	virtual std::string testName() override { return "Action Test"; }
 private:
 	void testMoveTo();
+	void testMoveBy();
 	void testAnimation();
 	void testSequence();
 	void testRepeat();

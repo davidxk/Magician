@@ -1,17 +1,30 @@
 #include "user/MoveTo.h"
+#include <cassert>
 #include "base/Command.h"
 #include "basic/MagicianMacros.h"
 
-MoveTo::MoveTo(VisibleObject* host, int duration, Coord aDest, 
-		bool isRepeat): Action(host, duration, isRepeat), dest(aDest) 
+MoveTo::MoveTo(VisibleObject* host, int duration, Coord aFrom, Coord aDest, 
+	bool isRepeat): Action(host, duration, isRepeat), from(aFrom), dest(aDest) 
 { 
-	this->from = host->pos;
-	getCmdQueue();
+	if( host ) getCmdQueue();
 }
 
 MoveTo* MoveTo::create(VisibleObject* host, int duration, Coord aDest, bool isRepeat)
 {
-	return new MoveTo(host, duration, aDest, isRepeat);
+	assert( host );
+	return new MoveTo(host, duration, host->pos, aDest, isRepeat);
+}
+
+MoveTo* MoveTo::create(int duration, Coord aFrom, Coord aDest, bool isRepeat)
+{
+	return new MoveTo(NULL, duration, aFrom, aDest, isRepeat);
+}
+
+void MoveTo::setHost(VisibleObject* host)
+{
+	assert( host );
+	this->host = host, this->from = host->pos;
+	getCmdQueue();
 }
 
 void MoveTo::getCmdQueue()

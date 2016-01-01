@@ -30,5 +30,6 @@ test_cases=BasicTest.cpp \
 	   DisplayTest.cpp \
 	   UserTest.cpp \
 	   ActionTest.cpp \
+	   BoxTest.cpp \
 
 sources+=$(test_base) $(test_suites) $(test_cases)

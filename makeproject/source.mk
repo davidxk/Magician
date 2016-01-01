@@ -38,6 +38,7 @@ Printer.cpp \
 VisibleObjManager.cpp \
 AnimSprite.cpp \
 Animation.cpp \
+DiaBox.cpp \
 Layer.cpp \
 MoveBy.cpp \
 MoveTo.cpp \

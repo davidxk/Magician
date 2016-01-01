@@ -25,6 +25,11 @@ void ActionManager::schedule(Action* action, int timepoint)
 	}
 }
 
+void ActionManager::scheduleAfter(Action* action, int period)
+{
+	schedule( action, period + TimeService::getTime() );
+}
+
 void ActionManager::update()
 {
 	checkSchedule();

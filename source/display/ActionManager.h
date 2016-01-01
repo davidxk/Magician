@@ -18,6 +18,7 @@ public:
 	void addAction(Action* action);
 	void addAction(Action* action, VisibleObject* host);
 	void schedule(Action* action, int timepoint);
+	void scheduleAfter(Action* action, int period);
 	//void removeAction(Action* action);
 	//updates sprites' attributes in vManager
 	void update();

@@ -1,7 +1,7 @@
 #include "user/MoveTo.h"
 #include <cassert>
 #include "base/Command.h"
-#include "basic/MagicianMacros.h"
+#include "basic/TimeService.h"
 
 MoveTo::MoveTo(VisibleObject* host, int duration, Coord aFrom, Coord aDest, 
 	bool isRepeat): Action(host, duration, isRepeat), from(aFrom), dest(aDest) 
@@ -37,7 +37,7 @@ void MoveTo::getCmdQueue()
 {
 	//get vector segments from a whole vector
 	//(next-from) / (dest-from) = i / (duration / time_unit)
-	int steps = duration/magician::TIME_UNIT;
+	int steps = duration / TimeService::TIME_UNIT;
 	cmdQueue.push( Command(from) );
 	for(int i=1; i<=steps; i++)
 	{

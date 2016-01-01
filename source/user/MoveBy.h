@@ -4,13 +4,15 @@
 #include "user/MoveTo.h"
 
 //description of the class here
-class MoveBy: public MoveTo
+class MoveBy: public Action
 {
 public:
-	MoveBy(VisibleObject* host, int duration, Coord aFrom, Coord aDest, bool isRepeat);
+	MoveBy(VisibleObject* host, int duration, Coord aVect, bool isRepeat);
 	virtual MoveBy* clone() const override;
-	static MoveBy* create(VisibleObject* host, int duration, Coord vect, bool isRepeat=false);
-	static MoveBy* create(int duration, Coord vect, bool isRepeat=false);
-	virtual void initWithHost(VisibleObject* host) override;
+	static MoveBy* create(VisibleObject* host, int duration, Coord aVect, bool isRepeat=false);
+	static MoveBy* create(int duration, Coord aVect, bool isRepeat=false);
+	virtual void getCmdQueue() override;
+private:
+	Coord vect;
 };
 #endif

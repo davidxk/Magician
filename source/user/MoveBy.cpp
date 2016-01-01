@@ -1,30 +1,36 @@
 #include "user/MoveBy.h"
 #include <cassert>
+#include "base/Command.h"
+#include "basic/TimeService.h"
 
-MoveBy::MoveBy(VisibleObject* host, int duration, Coord aFrome, Coord aDest, bool isRepeat):
-	MoveTo(host, duration, aFrome, aDest, isRepeat) { }
+MoveBy::MoveBy(VisibleObject* host, int duration, Coord aVect, bool isRepeat):
+	Action(host, duration, isRepeat), vect(aVect)
+{
+	getCmdQueue();
+}
 
 MoveBy* MoveBy::clone() const
 {
 	return new MoveBy(*this);
 }
 
-MoveBy* MoveBy::create(VisibleObject* host, int duration, Coord vect, bool isRepeat)
+MoveBy* MoveBy::create(VisibleObject* host, int duration, Coord aVect, bool isRepeat)
 {
-	assert( host );
-	return new MoveBy(host, duration, host->pos, host->pos+vect, isRepeat);
+	return new MoveBy(host, duration, aVect, isRepeat);
 }
 
-MoveBy* MoveBy::create(int duration, Coord vect, bool isRepeat)
+MoveBy* MoveBy::create(int duration, Coord aVect, bool isRepeat)
 {
-	return new MoveBy(NULL, duration, Coord(0, 0), vect, isRepeat);
+	return new MoveBy(NULL, duration, aVect, isRepeat);
 }
 
-void MoveBy::initWithHost(VisibleObject* host)
+void MoveBy::getCmdQueue()
 {
-	assert( host );
-	this->from = host->pos;
-	this->dest = this->from + this->dest;
-	while( !cmdQueue.empty() ) cmdQueue.pop();
-	getCmdQueue();
+	int steps = duration / TimeService::TIME_UNIT;
+	cmdQueue.push( Command( Coord(0, 0), Command::MOVE_BY ) );
+	for(int i=1; i<=steps; i++)
+	{
+		Coord next = vect * i / steps;
+		cmdQueue.push( Command(next, Command::MOVE_BY) );
+	}
 }

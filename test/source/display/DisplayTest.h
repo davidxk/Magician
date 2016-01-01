@@ -2,12 +2,14 @@
 #define _DISPLAY_TEST_H_
 
 #include "TestCase.h"
+#include <iostream>
 
 //description of the class here
 class DisplayTest: public TestCase
 {
 public:
 	virtual void run() override;
+	virtual std::string testName() override { return "Display Test"; }
 private:
 	void testSprite();
 	void testVManager();

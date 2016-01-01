@@ -17,8 +17,14 @@ void ActionTest::run()
 
 void ActionTest::testMoveTo()
 {
-	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79), false);
+	MoveTo* mt = MoveTo::create(sp, 100, Coord(21, 70), false);
 	assert( mt->cmdQueue.size() == 100/magician::TIME_UNIT+1 );
+	assert( mt->cmdQueue.front().pos == Coord(0, 0) );
+	mt->cmdQueue.pop();
+	assert( mt->cmdQueue.front().pos == Coord(10, 35) );
+	mt->cmdQueue.pop();
+	assert( mt->cmdQueue.front().pos == Coord(21, 70) );
+	mt->cmdQueue.pop();
 	delete mt;
 }
 

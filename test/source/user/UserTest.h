@@ -3,11 +3,13 @@
 
 #include "TestCase.h"
 #include "user/Sprite.h"
+#include <iostream>
 
 //description of the class here
 class UserTest: public TestCase
 {
 public:
-	void run();
+	virtual void run() override;
+	virtual std::string testName() override { return "User Test"; }
 };
 #endif

@@ -20,6 +20,11 @@ MoveTo* MoveTo::create(int duration, Coord aFrom, Coord aDest, bool isRepeat)
 	return new MoveTo(NULL, duration, aFrom, aDest, isRepeat);
 }
 
+MoveTo* MoveTo::clone() const
+{
+	return new MoveTo(*this);
+}
+
 void MoveTo::initWithHost(VisibleObject* host)
 {
 	assert( host );

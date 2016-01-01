@@ -14,15 +14,16 @@ public:
 	bool isPause;
 	std::queue<Command> cmdQueue;
 
-	//static Action* create(VisibleObject* aHost, int dur, bool isRep = false) 
 	Action(VisibleObject* aHost, int aDuration, bool aIsRepeat = false);
-	//Called within constructor
-	virtual void getCmdQueue() { };
+	virtual Action* clone() const { return NULL; };
 	void pause();
 	void resume();
 	void stop();
 	void setHost(VisibleObject* host);
 	virtual void initWithHost(VisibleObject* host) { }
 	//virtual ~Action() { }
+protected:
+	//Called within constructor
+	virtual void getCmdQueue() { };
 };
 #endif

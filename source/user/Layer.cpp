@@ -14,8 +14,7 @@ void Layer::runAction(Action* action)
 {
 	for(const auto& obj: objList)
 	{
-		//get a copy of the action
-		Action* copy = new Action( *action );
+		Action* copy = action->clone();
 		//obj->runAction( copy );
 		copy->setHost( obj );
 		copy->initWithHost( obj );
@@ -28,8 +27,7 @@ void Layer::scheduleAction(Action* action, int timepoint)
 {
 	for(const auto& obj: objList)
 	{
-		//get a copy of the action
-		Action* copy = new Action( *action );
+		Action* copy = action->clone();
 		//obj->schedule( copy, timepoint );
 		copy->setHost( obj );
 		copy->initWithHost( obj );

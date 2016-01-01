@@ -4,6 +4,11 @@
 MoveBy::MoveBy(VisibleObject* host, int duration, Coord aFrome, Coord aDest, bool isRepeat):
 	MoveTo(host, duration, aFrome, aDest, isRepeat) { }
 
+MoveBy* MoveBy::clone() const
+{
+	return new MoveBy(*this);
+}
+
 MoveBy* MoveBy::create(VisibleObject* host, int duration, Coord vect, bool isRepeat)
 {
 	assert( host );

@@ -39,8 +39,8 @@ vector<wstring> VisibleObjManager::getFrame()
 
 		for(int i=lineLower; i<lineUpper; i++)
 			for(int j=colLower; j<colUpper; j++)
-				map[i][j] = obj->image[ i-lineLower-lower.line ]
-					[ j-colLower-lower.column ];
+				map[i][j] = obj->image[ i-lower.line ]
+					[ j-lower.column ];
 	}
 	verify( map );
 	return map;

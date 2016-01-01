@@ -29,6 +29,7 @@ void DisplayTest::testSprite()
 	sp->setPos( Coord(23, 79) );
 	vManager->addObject( sp );
 	assert( vManager->objList.size()==1 );
+	sp->isVisible = false;
 }
 
 void DisplayTest::testVManager()
@@ -48,6 +49,10 @@ void DisplayTest::testVManager()
 	const wregex patLine1(L"(321)( *)");
 	assert( regex_match( frame[0].begin(), frame[0].end(), patLine0 ) );
 	assert( regex_match( frame[1].begin(), frame[1].end(), patLine1 ) );
+
+	sp->setPos( Coord::CoordXY(-1, 23) );
+	vector<wstring> frame_2 = vManager->getFrame();
+	assert( regex_match( frame_2[23].begin(), frame_2[23].end(), patLine0 ) );
 }
 
 void DisplayTest::testDisplay()

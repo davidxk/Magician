@@ -53,7 +53,7 @@ void ActionTest::testMoveBy()
 	mb->cmdQueue.pop();
 	assert( mb->cmdQueue.front().pos == Coord(15, 1) );
 	mb->cmdQueue.pop();
-	assert( mb->cmdQueue.front().pos == Coord(30, 2) );
+	assert( mb->cmdQueue.front().pos == Coord(15, 1) );
 	mb->cmdQueue.pop();
 
 	delete mb, delete mb_2;

@@ -7,7 +7,7 @@
 class Sequence: public Action
 {
 public:
-	Sequence(Action* action_a, Action* action_b);
-	static Sequence* create(Action* action_a, Action* action_b);
+	Sequence(Action* action_a, Action* action_b, bool isRepeat);
+	static Sequence* create(Action* action_a, Action* action_b, bool isRepeat = false);
 };
 #endif

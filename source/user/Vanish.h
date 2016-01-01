@@ -11,4 +11,12 @@ public:
 	static Vanish* create(VisibleObject* host);
 	void getCmdQueue();
 };
+
+class Appear: public Action
+{
+public:
+	Appear(VisibleObject* host);
+	static Appear* create(VisibleObject* host);
+	void getCmdQueue();
+};
 #endif

@@ -28,9 +28,11 @@ void MoveBy::getCmdQueue()
 {
 	int steps = duration / TimeService::TIME_UNIT;
 	cmdQueue.push( Command( Coord(0, 0), Command::MOVE_BY ) );
+	Coord prev(0, 0);
 	for(int i=1; i<=steps; i++)
 	{
 		Coord next = vect * i / steps;
-		cmdQueue.push( Command(next, Command::MOVE_BY) );
+		cmdQueue.push( Command(next-prev, Command::MOVE_BY) );
+		prev = next;
 	}
 }

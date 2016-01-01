@@ -15,3 +15,22 @@ void Vanish::getCmdQueue()
 {
 	cmdQueue.push( Command(Command::VANISH) );
 }
+
+
+
+
+
+Appear::Appear(VisibleObject* host): Action(host, 0, false)
+{
+	getCmdQueue();
+}
+
+Appear* Appear::create(VisibleObject* host)
+{
+	return new Appear( host );
+}
+
+void Appear::getCmdQueue()
+{
+	cmdQueue.push( Command(Command::APPEAR) );
+}

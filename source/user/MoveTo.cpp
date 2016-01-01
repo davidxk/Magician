@@ -39,9 +39,11 @@ void MoveTo::getCmdQueue()
 	//(next-from) / (dest-from) = i / (duration / time_unit)
 	int steps = duration / TimeService::TIME_UNIT;
 	cmdQueue.push( Command(from) );
+	Coord prev = from;
 	for(int i=1; i<=steps; i++)
 	{
 		Coord next = (dest-from) * i / steps + from;
-		cmdQueue.push( Command(next) );
+		cmdQueue.push( Command( (next-prev), Command::MOVE_BY ) );
+		prev = next;
 	}
 }

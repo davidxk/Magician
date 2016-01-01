@@ -10,7 +10,7 @@ int main()
 	std::thread refresh( &MainLoop::readyGo, std::ref( ml ) );
 	refresh.detach();
 
-	Logo logo;
+	//Logo logo;
 
 	//std::this_thread::sleep_for( std::chrono::seconds( 3 ) );
 	HelloWorld hello;

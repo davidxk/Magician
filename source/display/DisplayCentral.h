@@ -2,7 +2,7 @@
 #define _DISPLAY_CENTRAL_H_
 
 #include "basic/PrintJob.h"
-#include "display/Printer.h"
+#include "display/PsudoPrinter.h"
 #include <string>
 #include <vector>
 using namespace std;

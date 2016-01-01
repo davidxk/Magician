@@ -22,6 +22,6 @@ void UserTest::run()
 	Animation* anim = Animation::create(asp, 1000, true);
 	aManager->addAction( anim );
 
-	std::thread refresh( &MainLoop::readyGo, std::ref( ml ) );
+	std::thread refresh( &MainLoop::readyGo, &ml );
 	refresh.join();
 }

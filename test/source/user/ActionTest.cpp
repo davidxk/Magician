@@ -46,6 +46,6 @@ void ActionTest::testRepeat()
 	Repeat* repe = Repeat::create(rush, 5);
 	
 	assert( repe->duration == 500 );
-	//assert( repe->cmdQueue.size() == cmdLen);
+	assert( repe->cmdQueue.size() == cmdLen);
 	delete repe;
 }

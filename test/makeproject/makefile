@@ -1,3 +1,5 @@
+TESTING=true
+
 proj_path=$(shell pwd)/../..
 makeproj_path=$(proj_path)/makeproject
 include $(makeproj_path)/source.mk

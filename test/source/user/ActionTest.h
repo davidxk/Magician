@@ -9,7 +9,7 @@
 class ActionTest: public TestCase
 {
 public:
-	void run();
+	virtual void run() override;
 	virtual std::string testName() override { return "Action Test"; }
 private:
 	void testMoveTo();

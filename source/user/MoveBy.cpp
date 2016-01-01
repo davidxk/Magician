@@ -15,10 +15,11 @@ MoveBy* MoveBy::create(int duration, Coord vect, bool isRepeat)
 	return new MoveBy(NULL, duration, Coord(0, 0), vect, isRepeat);
 }
 
-void MoveBy::setHost(VisibleObject* host)
+void MoveBy::initWithHost(VisibleObject* host)
 {
 	assert( host );
-	this->host = host, this->from = host->pos;
+	this->from = host->pos;
 	this->dest = this->from + this->dest;
+	while( !cmdQueue.empty() ) cmdQueue.pop();
 	getCmdQueue();
 }

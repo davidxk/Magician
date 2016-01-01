@@ -20,10 +20,11 @@ MoveTo* MoveTo::create(int duration, Coord aFrom, Coord aDest, bool isRepeat)
 	return new MoveTo(NULL, duration, aFrom, aDest, isRepeat);
 }
 
-void MoveTo::setHost(VisibleObject* host)
+void MoveTo::initWithHost(VisibleObject* host)
 {
 	assert( host );
-	this->host = host, this->from = host->pos;
+	this->from = host->pos;
+	while( !cmdQueue.empty() ) cmdQueue.pop();
 	getCmdQueue();
 }
 

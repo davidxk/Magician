@@ -21,7 +21,8 @@ public:
 	void pause();
 	void resume();
 	void stop();
-	virtual void setHost(VisibleObject* host);
+	void setHost(VisibleObject* host);
+	virtual void initWithHost(VisibleObject* host) { }
 	//virtual ~Action() { }
 };
 #endif

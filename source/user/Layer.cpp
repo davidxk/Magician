@@ -18,6 +18,7 @@ void Layer::runAction(Action* action)
 		Action* copy = new Action( *action );
 		//obj->runAction( copy );
 		copy->setHost( obj );
+		copy->initWithHost( obj );
 		aManager->addAction( copy );
 	}
 	delete action;

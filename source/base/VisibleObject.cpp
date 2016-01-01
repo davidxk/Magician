@@ -40,6 +40,8 @@ void VisibleObject::updateCenter()
 void VisibleObject::runAction(Action* action)
 {
 	action->setHost( this );
+	if( action->host != this ) 
+		action->initWithHost( this );
 	aManager->addAction( action );
 }
 

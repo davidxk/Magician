@@ -1,0 +1,11 @@
+A Transition manager takes in a transition object and outputs the resulting list of frames for Display Central to print. A Transition knows the current frame(from vManager), the upcoming scene and frame(from initiating argument and vManager). 
+
+I am not sure if a transition manager is necessary. The process of obtaining the frames takes the collaboration of MainLoop and user thread already. Transition must notify MainLoop to switch to the transition loop before initiating the next scene and obtaining the next frame. There is, however another way involving buffering in VisibleObjManager. This way, I find more compelling since buffering sounds like a necessary function. 
+
+So here is how it works. First transition obtains the current frame from vManager. Then it notifies the MainLoop to switch to the transition loop. Then it starts to load objects to the vManager buffer list. When MainLoop has switched to the transition loop, it notifies the vManager that it is good to switch the buffer list to the working list. When this is done, transition can obtain the next frame. 
+With the two frames, now transition can generate the transition frames. When it is ready, MainLoop can play it in transition loop. 
+
+To avoid sync problem, we can arrange transtion manager to work in the main loop thread by providing it only through a scheduler interface. 
+
+##Try Again
+Once again, here is how it works. A transition is declares a method for making the frames given the past and future frame and holds the constructor of the next scene. First, A transition is declared in the user thread. It is then attached to the transition manager throught a scheduling interface. When the scheduled timepoint comes, the transition manager will ask the main loop to switch to the transition loop. And within the same thread, in the transition loop, central control(MainLoop) will obtain the current frame, release the vManager and aManager, and inits the next scene. It then extracts the next frame from the vManager and provide it to the transition manager who in turn gives it with the last playing frame to the registered transition. Transition manager calls on the transition to make the transition frames and provide the frames to the transition loop which autonomously gives back control power to the main loop when it is done. 

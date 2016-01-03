@@ -19,7 +19,6 @@ public:
 	static void gameBegin();
 	static void updateTime();
 	static chrono::system_clock::time_point getNextFrameTime();
-	static void clear();
 
 	static int getTime();
 	static int getCycle();

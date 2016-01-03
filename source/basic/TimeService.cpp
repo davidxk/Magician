@@ -25,11 +25,6 @@ chrono::system_clock::time_point TimeService::getNextFrameTime()
 	return begin + chrono::milliseconds( cntTime );
 }
 
-void TimeService::clear()
-{
-	cntCycle = 0;
-	cntTime = 0;
-}
 
 
 

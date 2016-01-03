@@ -1,7 +1,6 @@
 #include "Logo.h"
 
 #include <chrono>
-#include <functional>
 #include <thread>
 
 Logo::Logo()
@@ -29,7 +28,8 @@ void Logo::initHat()
 {
 	//create rabbit sprite
 	rabbit = AnimSprite::create("logo/rabbit_batch.txt");
-	rabbit->setCenterPos( Coord(11, 39) );
+	rabbit->setCenterPos( Coord(ConsoleCoord::MAX_LINES/2,
+			   	ConsoleCoord::MAX_COLUMN/2) );
 	vManager->addObject( rabbit );
 }
 
@@ -37,7 +37,7 @@ void Logo::initAnim()
 {
 	//create wand sprite
 	AnimSprite* wand = AnimSprite::create("logo/wand_batch_1.txt");
-	wand->setCenterPos( Coord(6, 39) );
+	wand->setCenterPos( Coord(6, ConsoleCoord::MAX_COLUMN/2) );
 	vManager->addObject( wand );
 	//wand actions
 	Animation* wave = Animation::create( wand, DURE_WAVE);

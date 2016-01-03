@@ -1,5 +1,6 @@
 #include "basic/MagicianMacros.h"
 #include "basic/Random.h"
+#include "basic/ImageLoader.h"
 
 #include "base/Transition.h"
 
@@ -9,6 +10,7 @@
 #include "user/DiaBox.h"
 #include "user/Sprite.h"
 #include "user/AnimSprite.h"
+#include "user/TextField.h"
 //Actions
 #include "user/Animation.h"
 #include "user/MoveTo.h"

@@ -3,17 +3,18 @@
 
 #include "base/Singleton.cpp"
 #include "base/VisibleObject.h"
-#include <vector>
 #include <string>
+#include <vector>
 
 //Visible ObjManager maintains a list of all visible objects
 //In each update, it generates a frame accoring to the list
 class VisibleObjManager
 {
-public:
-	void addObject(VisibleObject* object);
+private:
 	vector<VisibleObject*> objList;
+public:
 	vector<wstring> getFrame();
+	void addObject(VisibleObject* object);
 	//in future versions, a frame will know how to verify itself
 	void verify(vector<wstring>& frame);
 	~VisibleObjManager();

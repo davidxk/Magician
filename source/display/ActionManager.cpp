@@ -1,11 +1,13 @@
 #include "ActionManager.h"
 #include <cassert>
+#include <mutex>
 #include "basic/TimeService.h"
 
 ActionManager::ActionManager() { }
 
 void ActionManager::addAction(Action* action)
 {
+	lock_guard<mutex> lock(mutex);
 	verifyAction( action );
 	actionList.push_back( action );
 	action->host->inAction = true;
@@ -13,6 +15,7 @@ void ActionManager::addAction(Action* action)
 
 void ActionManager::schedule(Action* action, int timepoint)
 {
+	lock_guard<mutex> lock(mutex);
 	verifyAction( action );
 	int cycle = timepoint / TimeService::TIME_UNIT;
 	if (scheduleList.find(cycle) != scheduleList.end())
@@ -32,6 +35,7 @@ void ActionManager::scheduleAfter(Action* action, int period)
 
 void ActionManager::update()
 {
+	lock_guard<mutex> lock(mutex);
 	checkSchedule();
 	for(auto& action: actionList)
 	{
@@ -75,6 +79,7 @@ void ActionManager::verifyAction(Action* action)
 
 void ActionManager::pauseHost(VisibleObject* host)
 {
+	lock_guard<mutex> lock(mutex);
 	for(auto& action: actionList)
 		if( action->host == host )
 			action->isPause = true;
@@ -82,6 +87,7 @@ void ActionManager::pauseHost(VisibleObject* host)
 
 void ActionManager::resumeHost(VisibleObject* host)
 {
+	lock_guard<mutex> lock(mutex);
 	for(auto& action: actionList)
 		if( action->host == host )
 			action->isPause = false;

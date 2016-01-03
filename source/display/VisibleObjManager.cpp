@@ -1,25 +1,28 @@
 #include "display/VisibleObjManager.h"
 #include <cassert>
 #include <cmath>
+#include <mutex>
 
 void VisibleObjManager::addObject(VisibleObject* object)
 {
+	lock_guard<mutex> lock(mutex);
 	assert( object != NULL );
 	//object->verify();
 	objList.push_back( object );
-	//for(auto it=objList.end(); it!=objList.begin(); it--)
-		//if( (*it)->zOrder == object->zOrder )
-		//{
-			//if( it==objList.end() ) 
-				//objList.push_back( object );
-			//else
-				//objList.insert(it+1, object);	//insert = insert_before
-			//break;
-		//}
+	/*for(auto it=objList.end(); it!=objList.begin(); it--)
+		if( (*it)->zOrder == object->zOrder )
+		{
+			if( it==objList.end() ) 
+				objList.push_back( object );
+			else
+				objList.insert(it+1, object);	//insert = insert_before
+			break;
+		}*/
 }
 
 vector<wstring> VisibleObjManager::getFrame()
 {
+	lock_guard<mutex> lock(mutex);
 	vector<wstring> map;
 	map.resize( ConsoleCoord::MAX_LINES+1 );
 	for(int i=0; i<map.size(); i++)

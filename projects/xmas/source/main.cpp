@@ -1,5 +1,7 @@
 #include "MainLoop.h"
 #include "Logo.h"
+#include "CoverScene.h"
+#include "BackScene.h"
 #include "HelloWorld.h"
 #include <thread>
 #include <chrono>
@@ -10,10 +12,11 @@ int main()
 	std::thread refresh( &MainLoop::readyGo, std::ref( ml ) );
 	refresh.detach();
 
-	//Logo logo;
-
-	//std::this_thread::sleep_for( std::chrono::seconds( 3 ) );
+	Logo logo;
+	CoverScene cover;
 	HelloWorld hello;
+	BackScene back;
+
 	while(1)
 		std::this_thread::sleep_for( std::chrono::minutes( 1 ) );
 

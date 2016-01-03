@@ -8,5 +8,4 @@ void Transition::releasePrev()
 {
 	sVisibleObjManager::release();
 	sActionManager::release();
-	TimeService::clear();
 }

@@ -1,4 +1,5 @@
 #include "basic/ImageLoader.h"
+#include <cassert>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -16,6 +17,7 @@ vector<wstring> ImageLoader::load(const string& fileName)
 
 	while( getline(fin, line) )
 		image.push_back( line );
+	assert( image.size() );
 	return image;
 }
 

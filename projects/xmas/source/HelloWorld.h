@@ -20,8 +20,9 @@ private:
 	void addSnowFlake();
 	void addSnowScreen();
 	const int stdDure = 4000;
-	const int lookRightPoint = 4000;
-	const int lookUpPoint = 12000;
+	const int lookRightPoint = 9300;
+	const int lookUpPoint = 18700;
+	const int goOutPoint = 37000;
 	Layer mainLayer;
 };
 #endif

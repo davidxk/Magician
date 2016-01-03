@@ -14,6 +14,9 @@ HelloWorld::HelloWorld()
 	initSnow();
 
 	initLayerAction();
+
+	std::this_thread::sleep_for( std::chrono::milliseconds(goOutPoint) );
+	Transition::releasePrev();
 }
 
 void HelloWorld::playBGM()
@@ -39,6 +42,11 @@ void HelloWorld::initSnowMan()
 	Animation* wave = Animation::create( snowMan, 1000, true );
 	aManager->addAction( wave );
 	snowMan->setPos( Coord(12, 42) );
+
+	Sprite* snowLine = Sprite::create("snowy/snow_line.txt");
+	snowLine->setPos( snowMan->pos + snowMan->size - Coord(2,0) );
+	vManager->addObject( snowLine );
+	mainLayer.addObject( snowLine );
 }
 
 void HelloWorld::initShack()
@@ -49,7 +57,7 @@ void HelloWorld::initShack()
 	mainLayer.addObject( shack );
 
 	AnimSprite* smoke = AnimSprite::create("snowy/smoke_batch.txt");
-	smoke->setPos( Coord(-3,101) );
+	smoke->setPos( Coord(-3,102) );
 	vManager->addObject( smoke );
 	mainLayer.addObject( smoke );
 
@@ -88,7 +96,7 @@ void HelloWorld::initSanta()
 
 	Animation* blink = Animation::create(eye, 250);
 	Repeat* rep = Repeat::create( blink, 2 );
-	Sequence* seq = Sequence::create( rep, Sleep::create(eye,4000), true );
+	Sequence* seq = Sequence::create( rep, Sleep::create(eye,3200), true );
 	aManager->addAction( seq );
 
 	AnimSprite* arm = AnimSprite::create("snowy/arm_batch.txt");
@@ -100,7 +108,7 @@ void HelloWorld::initSanta()
 	Repeat* re = Repeat::create( wave, 5 );
 	Sequence* se_0 = Sequence::create( Appear::create(arm), re );
    	Sequence* se_1 = Sequence::create( se_0, Vanish::create( arm ) );
-	Sequence* sequ = Sequence::create( se_1, Sleep::create(arm,6000),true );
+	Sequence* sequ = Sequence::create( se_1, Sleep::create(arm,6500),true );
 	aManager->addAction( sequ );
 }
 

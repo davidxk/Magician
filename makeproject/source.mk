@@ -47,4 +47,5 @@ Scheduler.cpp \
 Sequence.cpp \
 Sleep.cpp \
 Sprite.cpp \
+TextField.cpp \
 Vanish.cpp \

@@ -10,5 +10,8 @@ class BoxTest: public TestCase
 public:
 	virtual void run() override;
 	virtual std::string testName() override { return "Box Test"; }
+private:
+	void testDiaBox();
+	void testTextField();
 };
 #endif

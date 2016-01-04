@@ -22,6 +22,7 @@ public:
 	//bool isColored;
 	VisibleObject();
 	void verify();
+	void addToManager();
 	void setPos(const Coord cc);
 	void setCenterPos(const Coord cc);
 	void updateCenter();

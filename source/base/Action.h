@@ -19,6 +19,7 @@ public:
 	void pause();
 	void resume();
 	void stop();
+	void addToManager();
 	void setHost(VisibleObject* host);
 	virtual void initWithHost(VisibleObject* host) { }
 	//virtual ~Action() { }

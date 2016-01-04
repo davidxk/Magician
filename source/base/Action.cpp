@@ -1,5 +1,6 @@
 #include "base/Action.h"
 #include <cassert>
+#include "display/ActionManager.h"
 
 Action::Action(VisibleObject* aHost, int aDuration, bool aIsRepeat):
 	host(aHost), duration(aDuration), isRepeat(aIsRepeat), isPause(false) { }
@@ -24,18 +25,13 @@ void Action::stop()
 
 
 
+void Action::addToManager()
+{
+	aManager->addAction( this );
+}
+
 void Action::setHost(VisibleObject* host)
 {
 	assert( host );
 	this->host = host;
 }
-
-/*
-//demo create method
-Action& Action::create(VisibleObject* aHost, int aDuration, bool aIsRepeat)
-{
-	list<Action>& actionList = aManager->actionList;
-	actionList.emplace_back( Action(aHost, aDuration, aIsRepeat) );
-	return actionList.back();
-}
-*/

@@ -10,5 +10,6 @@ CXXFLAGS+=-I $(xmas_src)	# End
 src_list_1=HelloWorld.cpp\
 	   CoverScene.cpp\
 	   BackScene.cpp \
+	   LetterScene.cpp \
 
 sources+=$(src_list_1)

@@ -3,6 +3,7 @@
 #include "CoverScene.h"
 #include "BackScene.h"
 #include "HelloWorld.h"
+#include "LetterScene.h"
 #include <thread>
 #include <chrono>
 
@@ -16,6 +17,7 @@ int main()
 	CoverScene cover;
 	HelloWorld hello;
 	BackScene back;
+	LetterScene letter;
 
 	while(1)
 		std::this_thread::sleep_for( std::chrono::minutes( 1 ) );

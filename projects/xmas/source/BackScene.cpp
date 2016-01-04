@@ -12,11 +12,11 @@ BackScene::BackScene()
 
 	const int sleepTime = 7000;
 	std::this_thread::sleep_for( std::chrono::milliseconds(sleepTime) );
-	//Transition::releasePrev();
+	Transition::releasePrev();
 
-	const int num39 = ConsoleCoord::MAX_COLUMN / 2;
-	const int num11 = ConsoleCoord::MAX_LINES / 2;
-	Sprite* word = Sprite::create("cover/the_end.txt");
-	word->setCenterPos( Coord(num11 + 2, num39) );
-	vManager->addObject( word );
+	//const int num39 = ConsoleCoord::MAX_COLUMN / 2;
+	//const int num11 = ConsoleCoord::MAX_LINES / 2;
+	//Sprite* word = Sprite::create("cover/the_end.txt");
+	//word->setCenterPos( Coord(num11, num39) );
+	//vManager->addObject( word );
 }

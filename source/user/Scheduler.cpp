@@ -3,6 +3,7 @@
 
 void Scheduler::schedule(function<void ()> func, int timepoint)
 {
+	lock_guard<mutex> lock(mtx);
 	int cycle = timepoint / TimeService::TIME_UNIT;
 	if (scheduleList.find(cycle) != scheduleList.end())
 		scheduleList[ cycle ].push_back( func );
@@ -21,6 +22,7 @@ void Scheduler::scheduleAfter(function<void ()> func, int period)
 
 void Scheduler::checkSchedule()
 {
+	lock_guard<mutex> lock(mtx);
 	int cntCycle = TimeService::getCycle();
 	if(scheduleList.find(cntCycle) != scheduleList.end())
 	{

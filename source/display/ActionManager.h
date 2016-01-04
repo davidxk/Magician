@@ -5,6 +5,7 @@
 #include "base/Singleton.cpp"
 #include "base/VisibleObject.h"
 #include <list>
+#include <mutex>
 #include <unordered_map>
 #include <vector>
 using namespace std;
@@ -26,11 +27,13 @@ public:
 	void resumeHost(VisibleObject* host);
 	~ActionManager();
 
-	list<Action*> actionList;
-	unordered_map<int,vector<Action*> > scheduleList;
 private:
 	void checkSchedule();
 	void verifyAction(Action* action);
+	list<Action*> actionList;
+	unordered_map<int,vector<Action*> > scheduleList;
+	mutex mtx;
+	mutex schedule_mtx;
 };
 typedef Singleton<ActionManager> sActionManager;
 #define aManager sActionManager::instance()

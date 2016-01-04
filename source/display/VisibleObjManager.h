@@ -3,6 +3,7 @@
 
 #include "base/Singleton.cpp"
 #include "base/VisibleObject.h"
+#include <mutex>
 #include <string>
 #include <vector>
 
@@ -12,6 +13,7 @@ class VisibleObjManager
 {
 private:
 	vector<VisibleObject*> objList;
+	mutex mtx;
 public:
 	vector<wstring> getFrame();
 	void addObject(VisibleObject* object);

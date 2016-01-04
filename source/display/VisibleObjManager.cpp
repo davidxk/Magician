@@ -1,11 +1,10 @@
 #include "display/VisibleObjManager.h"
 #include <cassert>
 #include <cmath>
-#include <mutex>
 
 void VisibleObjManager::addObject(VisibleObject* object)
 {
-	lock_guard<mutex> lock(mutex);
+	lock_guard<mutex> lock(mtx);
 	assert( object != NULL );
 	//object->verify();
 	objList.push_back( object );
@@ -22,7 +21,7 @@ void VisibleObjManager::addObject(VisibleObject* object)
 
 vector<wstring> VisibleObjManager::getFrame()
 {
-	lock_guard<mutex> lock(mutex);
+	lock_guard<mutex> lock(mtx);
 	vector<wstring> map;
 	map.resize( ConsoleCoord::MAX_LINES+1 );
 	for(int i=0; i<map.size(); i++)

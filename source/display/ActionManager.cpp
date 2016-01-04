@@ -1,13 +1,12 @@
 #include "ActionManager.h"
 #include <cassert>
-#include <mutex>
 #include "basic/TimeService.h"
 
 ActionManager::ActionManager() { }
 
 void ActionManager::addAction(Action* action)
 {
-	lock_guard<mutex> lock(mutex);
+	lock_guard<mutex> lock(mtx);
 	verifyAction( action );
 	actionList.push_back( action );
 	action->host->inAction = true;
@@ -15,7 +14,7 @@ void ActionManager::addAction(Action* action)
 
 void ActionManager::schedule(Action* action, int timepoint)
 {
-	lock_guard<mutex> lock(mutex);
+	lock_guard<mutex> lock(schedule_mtx);
 	verifyAction( action );
 	int cycle = timepoint / TimeService::TIME_UNIT;
 	if (scheduleList.find(cycle) != scheduleList.end())
@@ -35,8 +34,8 @@ void ActionManager::scheduleAfter(Action* action, int period)
 
 void ActionManager::update()
 {
-	lock_guard<mutex> lock(mutex);
 	checkSchedule();
+	lock_guard<mutex> lock(mtx);
 	for(auto& action: actionList)
 	{
 		if(action->isPause) continue;
@@ -60,6 +59,7 @@ void ActionManager::update()
 
 void ActionManager::checkSchedule()
 {
+	lock_guard<mutex> lock(schedule_mtx);
 	int cntCycle = TimeService::getCycle();
 	if(scheduleList.find(cntCycle) != scheduleList.end())
 	{
@@ -79,7 +79,7 @@ void ActionManager::verifyAction(Action* action)
 
 void ActionManager::pauseHost(VisibleObject* host)
 {
-	lock_guard<mutex> lock(mutex);
+	lock_guard<mutex> lock(mtx);
 	for(auto& action: actionList)
 		if( action->host == host )
 			action->isPause = true;
@@ -87,7 +87,7 @@ void ActionManager::pauseHost(VisibleObject* host)
 
 void ActionManager::resumeHost(VisibleObject* host)
 {
-	lock_guard<mutex> lock(mutex);
+	lock_guard<mutex> lock(mtx);
 	for(auto& action: actionList)
 		if( action->host == host )
 			action->isPause = false;

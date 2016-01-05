@@ -10,6 +10,7 @@ class DisplayTest: public TestCase
 public:
 	virtual void run() override;
 	virtual std::string testName() override { return "Display Test"; }
+	~DisplayTest();
 private:
 	void testSprite();
 	void testVManager();

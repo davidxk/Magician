@@ -69,3 +69,9 @@ void DisplayTest::testDisplay()
 	dc.setThisFrame( frameNext );
 	//assert( dc.getDiff().size()==15 );
 }
+
+DisplayTest::~DisplayTest()
+{
+	sVisibleObjManager::release();
+	sActionManager::release();
+}

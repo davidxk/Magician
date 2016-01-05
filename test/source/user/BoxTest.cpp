@@ -21,6 +21,7 @@ void BoxTest::testDiaBox()
 	assert( dbox->image[1] == L"| this is the first line of a box  |");
 	assert( dbox->image[2] == L"| this is the second line o lala   |");
 	assert( dbox->image[3] == L"`---------------------------------- ");
+	delete dbox;
 }
 
 void BoxTest::testTextField()
@@ -37,4 +38,5 @@ void BoxTest::testTextField()
 	assert( ttf->image[1] == L"    Merry Chri");
 	assert( ttf->image[2] == L"stmas!        ");
 	assert( ttf->image[3] == L"Yours,        ");
+	delete ttf, delete ttf_2, delete ttf_3;
 }

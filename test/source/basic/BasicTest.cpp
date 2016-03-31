@@ -64,14 +64,17 @@ void BasicTest::testCoord()
 void BasicTest::testImageLoader()
 {
 	//load image
-	vector<string> image = ImageLoader::load("graph/moon.txt");
+	Image image = ImageLoader::load("graph/moon.txt");
 	assert( image.size() == 2 );
-	assert( image[0] == "1234" && image[1] == "4321" );
+	assert( ImageUtil::ImageLine2str( image[0] ) == "1234" &&
+			ImageUtil::ImageLine2str( image[1] ) == "4321" );
 
 	//load animation batch
-	vector<vector<string> > batch = ImageLoader::
+	vector<Image> batch = ImageLoader::
 		loadBatch("batch/moon_batch.txt");
 	assert( batch.size() == 3 );
 	assert( batch[0].size()==1 && batch[1].size()==1 && batch[2].size()==1);
-	assert(batch[0][0]=="1234"&&batch[1][0]=="4444"&&batch[2][0]=="4321");
+	assert( ImageUtil::ImageLine2str( batch[0][0] ) == "1234" &&
+			ImageUtil::ImageLine2str( batch[1][0] ) == "4444" &&
+			ImageUtil::ImageLine2str( batch[2][0] ) == "4321" );
 }

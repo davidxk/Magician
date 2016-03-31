@@ -5,10 +5,11 @@ DisplayCentral::DisplayCentral()
 {
 	frameThis.resize( ConsoleCoord::MAX_LINES+1 );
 	for(int i=0; i<ConsoleCoord::MAX_LINES+1; i++)
-		frameThis[i]=string(ConsoleCoord::MAX_COLUMN+1, L' ');
+		frameThis[i] = ImageUtil::str2ImageLine( string(ConsoleCoord::
+					MAX_COLUMN+1, ' ') );
 }
 
-void DisplayCentral::update(const vector<string>& frameNext)
+void DisplayCentral::update(const Image& frameNext)
 {
 	setThisFrame( frameNext );
 	print( getDiff() );
@@ -18,7 +19,7 @@ void DisplayCentral::update(const vector<string>& frameNext)
 
 
 
-void DisplayCentral::setThisFrame(const vector<string>& frameNext)
+void DisplayCentral::setThisFrame(const Image& frameNext)
 {
 	verifyFrame(frameNext);
 	frameLast = frameThis;
@@ -44,7 +45,7 @@ void DisplayCentral::print(const vector<PrintJob>& jobList)
 		printer.print(it);
 }
 
-void DisplayCentral::verifyFrame(const vector<string>& frame)
+void DisplayCentral::verifyFrame(const Image& frame)
 {
 	assert( frame.size()==ConsoleCoord::MAX_LINES+1 );
 	for(const auto& line: frame)

@@ -1,6 +1,7 @@
 #ifndef _VISIBLE_OBJECT_H_
 #define _VISIBLE_OBJECT_H_
 
+#include "basic/ColoredChar.h"
 #include "basic/ConsoleCoord.h"
 #include "basic/Coord.h"
 #include <vector>
@@ -15,7 +16,7 @@ public:
 	Coord pos;
 	Coord center;
 	Size size;
-	vector<string> image;
+	Image image;
 	int zOrder;
 	bool isVisible;
 	bool inAction;

@@ -17,10 +17,14 @@ void BoxTest::testDiaBox()
 			"this is the first line of a box this is the second line o lala");
 
 	assert( dbox->image.size() == 4 );
-	assert( dbox->image[0] == " ----------------------------------.");
-	assert( dbox->image[1] == "| this is the first line of a box  |");
-	assert( dbox->image[2] == "| this is the second line o lala   |");
-	assert( dbox->image[3] == "`---------------------------------- ");
+	assert( ImageUtil::ImageLine2str( dbox->image[0] ) ==
+			" ----------------------------------.");
+	assert( ImageUtil::ImageLine2str( dbox->image[1] ) ==
+			"| this is the first line of a box  |");
+	assert( ImageUtil::ImageLine2str( dbox->image[2] ) == 
+			"| this is the second line o lala   |");
+	assert( ImageUtil::ImageLine2str( dbox->image[3] ) == 
+			"`---------------------------------- ");
 	delete dbox;
 }
 
@@ -34,9 +38,10 @@ void BoxTest::testTextField()
 			"Dear Julie,\n    Merry Christmas!\nYours,");
 
 	assert( ttf->image.size() == 4 );
-	assert( ttf->image[0] == "Dear Julie,   ");
-	assert( ttf->image[1] == "    Merry Chri");
-	assert( ttf->image[2] == "stmas!        ");
-	assert( ttf->image[3] == "Yours,        ");
+	assert( ImageUtil::ImageLine2str( ttf->image[0] ) == "Dear Julie,   ");
+	assert( ImageUtil::ImageLine2str( ttf->image[1] ) == 
+			"    Merry Chri");
+	assert( ImageUtil::ImageLine2str( ttf->image[2] ) == "stmas!        ");
+	assert( ImageUtil::ImageLine2str( ttf->image[3] ) == "Yours,        ");
 	delete ttf, delete ttf_2, delete ttf_3;
 }

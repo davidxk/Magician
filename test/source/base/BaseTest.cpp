@@ -18,9 +18,9 @@ void BaseTest::run()
 	Box box(Size(3, 6));
 	for(const auto& line: box.image)
 		assert(box.image.size()==3 && line.size()==6);
-	assert(box.image[0]== " ----.");
-	assert(box.image[1]== "|    |");
-	assert(box.image[2]== "`---- ");
+	assert(ImageUtil::ImageLine2str( box.image[0] ) == " ----.");
+	assert(ImageUtil::ImageLine2str( box.image[1] ) == "|    |");
+	assert(ImageUtil::ImageLine2str( box.image[2] ) == "`---- ");
 
 	//apply move Command 
 	Command cmd( Coord(10, 30) );

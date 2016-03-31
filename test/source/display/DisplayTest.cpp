@@ -40,19 +40,23 @@ void DisplayTest::testVManager()
 	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79), false);
 	aManager->addAction( mt );
 
-	vector<string> frame = vManager->getFrame();
+	Image frame = vManager->getFrame();
+	vector<string> vFrame;
+	vFrame.push_back( ImageUtil::ImageLine2str( frame[0] ) );
+	vFrame.push_back( ImageUtil::ImageLine2str( frame[1] ) );
 	assert( frame.size()==24 );
 	for(const auto& line: frame)
 		assert( line.size()==80 );
 
 	const regex patLine0("^234 *$");
 	const regex patLine1("(321)( *)");
-	assert( regex_match( frame[0].begin(), frame[0].end(), patLine0 ) );
-	assert( regex_match( frame[1].begin(), frame[1].end(), patLine1 ) );
+	assert( regex_match( vFrame[0].begin(), vFrame[0].end(), patLine0 ) );
+	assert( regex_match( vFrame[1].begin(), vFrame[1].end(), patLine1 ) );
 
 	sp->setPos( Coord::CoordXY(-1, 23) );
-	vector<string> frame_2 = vManager->getFrame();
-	assert( regex_match( frame_2[23].begin(), frame_2[23].end(), patLine0 ) );
+	Image frame_2 = vManager->getFrame();
+	string sFrame_2 = ImageUtil::ImageLine2str( frame_2[23] );
+	assert( regex_match( sFrame_2.begin(), sFrame_2.end(), patLine0 ) );
 }
 
 void DisplayTest::testDisplay()
@@ -62,10 +66,13 @@ void DisplayTest::testDisplay()
 	const regex blank(" +");
 	assert( dc.frameThis.size()==24 );
 	for(const auto& line: dc.frameThis)
-		assert(regex_match(line.begin(), line.end(), blank));
+	{
+		string sLine = ImageUtil::ImageLine2str( line );
+		assert(regex_match(sLine.begin(), sLine.end(), blank));
+	}
 
 	aManager->update();
-	vector<string> frameNext = vManager->getFrame();
+	Image frameNext = vManager->getFrame();
 	dc.setThisFrame( frameNext );
 	//assert( dc.getDiff().size()==15 );
 }

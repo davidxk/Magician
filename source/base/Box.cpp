@@ -23,7 +23,7 @@ void Box::getAsciiOutline()
 	//paint the outline
 	for(int i=0; i<height; i++)
 	{
-		string& line=image[i];
+		string line;
 		for(int j=0; j<width; j++)
 			if(j == 0)
 			{
@@ -42,6 +42,7 @@ void Box::getAsciiOutline()
 				if( i==0 || i==height-1 ) line += "-";	//upper and lower
 				else line += " ";	//middle
 			}
+		image[i] = ImageUtil::str2ImageLine( line );
 	} 
 	assert( image.size()==size.line);
 	assert( image[0].size()==size.column );

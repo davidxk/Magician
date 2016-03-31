@@ -3,7 +3,7 @@
 
 #include "user/Sprite.h"
 #include <vector>
-#include <string>
+#include "basic/ColoredChar.h"
 
 //Animation Sprite is initialized with a batch of images
 //It changes image on the commands of AnimAction
@@ -13,6 +13,6 @@ public:
 	AnimSprite(const string& fileName);
 	static AnimSprite* create(const string& fileName);
 	void putOn(int index);
-	vector<vector<string> > batch;
+	vector<Image> batch;
 };
 #endif

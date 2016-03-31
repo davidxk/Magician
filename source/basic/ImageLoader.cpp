@@ -5,7 +5,7 @@
 #include <string>
 #include "basic/MagicianMacros.h"
 
-vector<string> ImageLoader::load(const string& fileName)
+Image ImageLoader::load(const string& fileName)
 {
 	string path = magician::RES_PATH;
 	path += fileName;
@@ -13,15 +13,15 @@ vector<string> ImageLoader::load(const string& fileName)
 	if( fin.bad() ) cout<<"Error: File read fail! "<<endl;
 	
 	string line;
-	vector<string> image;
+	Image image;
 
 	while( getline(fin, line) )
-		image.push_back( line );
+		image.push_back( ImageUtil::str2ImageLine( line ) );
 	assert( image.size() );
 	return image;
 }
 
-vector<vector<string> > ImageLoader::loadBatch(const string& fileName)
+vector<Image> ImageLoader::loadBatch(const string& fileName)
 {
 	string path = magician::RES_PATH;
 	path += fileName;
@@ -29,8 +29,8 @@ vector<vector<string> > ImageLoader::loadBatch(const string& fileName)
 	if( fin.bad() ) cout<<"Error: File read fail! "<<endl;
 
 	string line;
-	vector<string> image;
-	vector<vector<string> > frames;
+	Image image;
+	vector<Image> frames;
 
 	int nFrame = 0, nLine = 0;
 	fin>>nFrame>>nLine; fin.get();
@@ -39,7 +39,7 @@ vector<vector<string> > ImageLoader::loadBatch(const string& fileName)
 		for(int j=0; j<nLine; j++)
 		{
 			getline(fin, line);
-			image.push_back( line );
+			image.push_back( ImageUtil::str2ImageLine( line ) );
 		}
 		frames.push_back( image );
 		image.clear();

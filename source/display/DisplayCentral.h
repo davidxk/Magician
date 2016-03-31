@@ -1,6 +1,7 @@
 #ifndef _DISPLAY_CENTRAL_H_
 #define _DISPLAY_CENTRAL_H_
 
+#include "basic/ColoredChar.h"
 #include "basic/PrintJob.h"
 #include "display/PsudoPrinter.h"
 #include <string>
@@ -13,14 +14,14 @@ class DisplayCentral
 {
 public:
 	DisplayCentral();
-	void update(const vector<string>& frameThis);
-	void setThisFrame(const vector<string>& frameThis);
-	void verifyFrame(const vector<string>& frame);
+	void update(const Image& frameThis);
+	void setThisFrame(const Image& frameThis);
+	void verifyFrame(const Image& frame);
 	vector<PrintJob> getDiff();
 	void print(const vector<PrintJob>& jobList);
 public:
 	Printer printer;
-	vector<string> frameLast;
-	vector<string> frameThis;
+	Image frameLast;
+	Image frameThis;
 };
 #endif

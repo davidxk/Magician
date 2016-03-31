@@ -24,6 +24,7 @@ Command.cpp \
 Singleton.cpp \
 Transition.cpp \
 VisibleObject.cpp \
+ColoredChar.cpp \
 ConsoleCoord.cpp \
 Coord.cpp \
 ImageLoader.cpp \

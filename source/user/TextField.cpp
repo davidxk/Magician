@@ -27,7 +27,7 @@ void TextField::setContent(const string& content)
 
 	image.resize( size.line );
 	for(int i=0; i<image.size(); i++)
-		image[i]=string( size.column, L' ' );
+		image[i]=ImageUtil::str2ImageLine( string( size.column, ' ' ) );
 
 	int cnt = 0; 
 	for(int i=0; i<size.line; i++)

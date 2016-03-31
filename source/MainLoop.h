@@ -15,6 +15,5 @@ public:
 private:
 	void checkMsg();
 	bool exit;
-	bool transitionReady;
 };
 #endif

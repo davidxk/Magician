@@ -18,7 +18,7 @@ void BasicTest::run()
 	//ConsoleCoord(-1, 2);
 	//ConsoleCoord(25, 2);
 	ConsoleCoord(20, 30);
-	PrintJob( ConsoleCoord(23, 50), L'a');
+	PrintJob( ConsoleCoord(23, 50), 'a');
 }
 
 void BasicTest::testSize()
@@ -64,14 +64,14 @@ void BasicTest::testCoord()
 void BasicTest::testImageLoader()
 {
 	//load image
-	vector<wstring> image = ImageLoader::load("graph/moon.txt");
+	vector<string> image = ImageLoader::load("graph/moon.txt");
 	assert( image.size() == 2 );
-	assert( image[0] == L"1234" && image[1] == L"4321" );
+	assert( image[0] == "1234" && image[1] == "4321" );
 
 	//load animation batch
-	vector<vector<wstring> > batch = ImageLoader::
+	vector<vector<string> > batch = ImageLoader::
 		loadBatch("batch/moon_batch.txt");
 	assert( batch.size() == 3 );
 	assert( batch[0].size()==1 && batch[1].size()==1 && batch[2].size()==1);
-	assert(batch[0][0]==L"1234"&&batch[1][0]==L"4444"&&batch[2][0]==L"4321");
+	assert(batch[0][0]=="1234"&&batch[1][0]=="4444"&&batch[2][0]=="4321");
 }

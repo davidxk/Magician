@@ -1,14 +1,14 @@
 #include "user/TextField.h"
 #include <cassert>
 
-TextField::TextField(const Size& size, const wstring& content): 
+TextField::TextField(const Size& size, const string& content): 
 	VisibleObject()
 {
 	setSize( size );
 	setContent( content );
 }
 
-TextField* TextField::create(const Size& size, const wstring& content)
+TextField* TextField::create(const Size& size, const string& content)
 {
 	return new TextField(size, content);
 }
@@ -19,7 +19,7 @@ void TextField::setSize(const Size& size)
 	updateCenter();
 }
 
-void TextField::setContent(const wstring& content)
+void TextField::setContent(const string& content)
 {
 	assert( content.size() );
 	assert( content.size() <= size.line * size.column );
@@ -27,7 +27,7 @@ void TextField::setContent(const wstring& content)
 
 	image.resize( size.line );
 	for(int i=0; i<image.size(); i++)
-		image[i]=wstring( size.column, L' ' );
+		image[i]=string( size.column, L' ' );
 
 	int cnt = 0; 
 	for(int i=0; i<size.line; i++)

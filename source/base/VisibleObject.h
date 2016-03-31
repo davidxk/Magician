@@ -15,7 +15,7 @@ public:
 	Coord pos;
 	Coord center;
 	Size size;
-	vector<wstring> image;
+	vector<string> image;
 	int zOrder;
 	bool isVisible;
 	bool inAction;

@@ -15,10 +15,10 @@ private:
 	vector<VisibleObject*> objList;
 	mutex mtx;
 public:
-	vector<wstring> getFrame();
+	vector<string> getFrame();
 	void addObject(VisibleObject* object);
 	//in future versions, a frame will know how to verify itself
-	void verify(vector<wstring>& frame);
+	void verify(vector<string>& frame);
 	~VisibleObjManager();
 };
 typedef Singleton<VisibleObjManager> sVisibleObjManager;

@@ -13,6 +13,6 @@ public:
 	AnimSprite(const string& fileName);
 	static AnimSprite* create(const string& fileName);
 	void putOn(int index);
-	vector<vector<wstring> > batch;
+	vector<vector<string> > batch;
 };
 #endif

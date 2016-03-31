@@ -5,15 +5,15 @@
 #include <string>
 #include "basic/MagicianMacros.h"
 
-vector<wstring> ImageLoader::load(const string& fileName)
+vector<string> ImageLoader::load(const string& fileName)
 {
 	string path = magician::RES_PATH;
 	path += fileName;
-	wifstream fin(path.c_str());
+	ifstream fin(path.c_str());
 	if( fin.bad() ) cout<<"Error: File read fail! "<<endl;
 	
-	wstring line;
-	vector<wstring> image;
+	string line;
+	vector<string> image;
 
 	while( getline(fin, line) )
 		image.push_back( line );
@@ -21,16 +21,16 @@ vector<wstring> ImageLoader::load(const string& fileName)
 	return image;
 }
 
-vector<vector<wstring> > ImageLoader::loadBatch(const string& fileName)
+vector<vector<string> > ImageLoader::loadBatch(const string& fileName)
 {
 	string path = magician::RES_PATH;
 	path += fileName;
-	wifstream fin(path);
+	ifstream fin(path);
 	if( fin.bad() ) cout<<"Error: File read fail! "<<endl;
 
-	wstring line;
-	vector<wstring> image;
-	vector<vector<wstring> > frames;
+	string line;
+	vector<string> image;
+	vector<vector<string> > frames;
 
 	int nFrame = 0, nLine = 0;
 	fin>>nFrame>>nLine; fin.get();

@@ -5,10 +5,10 @@ DisplayCentral::DisplayCentral()
 {
 	frameThis.resize( ConsoleCoord::MAX_LINES+1 );
 	for(int i=0; i<ConsoleCoord::MAX_LINES+1; i++)
-		frameThis[i]=wstring(ConsoleCoord::MAX_COLUMN+1, L' ');
+		frameThis[i]=string(ConsoleCoord::MAX_COLUMN+1, L' ');
 }
 
-void DisplayCentral::update(const vector<wstring>& frameNext)
+void DisplayCentral::update(const vector<string>& frameNext)
 {
 	setThisFrame( frameNext );
 	print( getDiff() );
@@ -18,7 +18,7 @@ void DisplayCentral::update(const vector<wstring>& frameNext)
 
 
 
-void DisplayCentral::setThisFrame(const vector<wstring>& frameNext)
+void DisplayCentral::setThisFrame(const vector<string>& frameNext)
 {
 	verifyFrame(frameNext);
 	frameLast = frameThis;
@@ -44,7 +44,7 @@ void DisplayCentral::print(const vector<PrintJob>& jobList)
 		printer.print(it);
 }
 
-void DisplayCentral::verifyFrame(const vector<wstring>& frame)
+void DisplayCentral::verifyFrame(const vector<string>& frame)
 {
 	assert( frame.size()==ConsoleCoord::MAX_LINES+1 );
 	for(const auto& line: frame)

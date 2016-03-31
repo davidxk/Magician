@@ -23,24 +23,24 @@ void Box::getAsciiOutline()
 	//paint the outline
 	for(int i=0; i<height; i++)
 	{
-		wstring& line=image[i];
+		string& line=image[i];
 		for(int j=0; j<width; j++)
 			if(j == 0)
 			{
-				if( i==0 ) line += L" ";	//upper left 
-				else if( i==height-1 ) line += L"`";	//lower left
-				else line += L"|";	//left
+				if( i==0 ) line += " ";	//upper left 
+				else if( i==height-1 ) line += "`";	//lower left
+				else line += "|";	//left
 			}
 			else if(j == width-1)
 			{
-				if( i==0 ) line += L".";	//upper right
-				else if( i==height-1 ) line += L" ";	//lower right
-				else line += L"|";	//right
+				if( i==0 ) line += ".";	//upper right
+				else if( i==height-1 ) line += " ";	//lower right
+				else line += "|";	//right
 			}
 			else
 			{
-				if( i==0 || i==height-1 ) line += L"-";	//upper and lower
-				else line += L" ";	//middle
+				if( i==0 || i==height-1 ) line += "-";	//upper and lower
+				else line += " ";	//middle
 			}
 	} 
 	assert( image.size()==size.line);

@@ -1,17 +1,17 @@
 #include "user/DiaBox.h"
 #include <cassert>
 
-DiaBox::DiaBox(const Size& size, const wstring& content): Box( size )
+DiaBox::DiaBox(const Size& size, const string& content): Box( size )
 {
 	setContent( content );
 }
 
-DiaBox* DiaBox::create(const Size& size, const wstring& content)
+DiaBox* DiaBox::create(const Size& size, const string& content)
 {
 	return new DiaBox(size, content);
 }
 
-void DiaBox::setContent(const wstring& content)
+void DiaBox::setContent(const string& content)
 {
 	this->content = content;
 	assert( content.size() <= (size.line-2) * (size.column-4) );

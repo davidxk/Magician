@@ -10,11 +10,11 @@ using namespace std;
 class TextField: public VisibleObject
 {
 public:
-	TextField(const Size& size, const wstring& content);
-	static TextField* create(const Size& size, const wstring& content);
+	TextField(const Size& size, const string& content);
+	static TextField* create(const Size& size, const string& content);
 	void setSize(const Size& size);
-	void setContent(const wstring& content);
+	void setContent(const string& content);
 public:
-	wstring content;
+	string content;
 };
 #endif

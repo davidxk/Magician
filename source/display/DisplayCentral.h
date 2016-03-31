@@ -2,7 +2,7 @@
 #define _DISPLAY_CENTRAL_H_
 
 #include "basic/PrintJob.h"
-#include "display/Printer.h"
+#include "display/PsudoPrinter.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -13,14 +13,14 @@ class DisplayCentral
 {
 public:
 	DisplayCentral();
-	void update(const vector<wstring>& frameThis);
-	void setThisFrame(const vector<wstring>& frameThis);
-	void verifyFrame(const vector<wstring>& frame);
+	void update(const vector<string>& frameThis);
+	void setThisFrame(const vector<string>& frameThis);
+	void verifyFrame(const vector<string>& frame);
 	vector<PrintJob> getDiff();
 	void print(const vector<PrintJob>& jobList);
 public:
 	Printer printer;
-	vector<wstring> frameLast;
-	vector<wstring> frameThis;
+	vector<string> frameLast;
+	vector<string> frameThis;
 };
 #endif

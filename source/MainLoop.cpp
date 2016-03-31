@@ -8,8 +8,7 @@
 #include "display/VisibleObjManager.h"
 #include "user/Scheduler.h"
 
-MainLoop::MainLoop():
-	exit( false ), transitionReady( false ) { }
+MainLoop::MainLoop(): exit( false ) { }
 
 void MainLoop::readyGo()
 {

@@ -40,18 +40,18 @@ void DisplayTest::testVManager()
 	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79), false);
 	aManager->addAction( mt );
 
-	vector<wstring> frame = vManager->getFrame();
+	vector<string> frame = vManager->getFrame();
 	assert( frame.size()==24 );
 	for(const auto& line: frame)
 		assert( line.size()==80 );
 
-	const wregex patLine0(L"^234 *$");
-	const wregex patLine1(L"(321)( *)");
+	const regex patLine0("^234 *$");
+	const regex patLine1("(321)( *)");
 	assert( regex_match( frame[0].begin(), frame[0].end(), patLine0 ) );
 	assert( regex_match( frame[1].begin(), frame[1].end(), patLine1 ) );
 
 	sp->setPos( Coord::CoordXY(-1, 23) );
-	vector<wstring> frame_2 = vManager->getFrame();
+	vector<string> frame_2 = vManager->getFrame();
 	assert( regex_match( frame_2[23].begin(), frame_2[23].end(), patLine0 ) );
 }
 
@@ -59,13 +59,13 @@ void DisplayTest::testDisplay()
 {
 	//test frame First init
 	DisplayCentral dc;
-	const wregex blank(L" +");
+	const regex blank(" +");
 	assert( dc.frameThis.size()==24 );
 	for(const auto& line: dc.frameThis)
 		assert(regex_match(line.begin(), line.end(), blank));
 
 	aManager->update();
-	vector<wstring> frameNext = vManager->getFrame();
+	vector<string> frameNext = vManager->getFrame();
 	dc.setThisFrame( frameNext );
 	//assert( dc.getDiff().size()==15 );
 }

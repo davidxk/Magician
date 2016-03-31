@@ -19,13 +19,13 @@ void VisibleObjManager::addObject(VisibleObject* object)
 		}*/
 }
 
-vector<wstring> VisibleObjManager::getFrame()
+vector<string> VisibleObjManager::getFrame()
 {
 	lock_guard<mutex> lock(mtx);
-	vector<wstring> map;
+	vector<string> map;
 	map.resize( ConsoleCoord::MAX_LINES+1 );
 	for(int i=0; i<map.size(); i++)
-		map[i]=wstring(ConsoleCoord::MAX_COLUMN+1, L' ');
+		map[i]=string(ConsoleCoord::MAX_COLUMN+1, L' ');
 	//verify( map );
 
 	for(const auto& obj: objList)
@@ -48,7 +48,7 @@ vector<wstring> VisibleObjManager::getFrame()
 	return map;
 }
 
-void VisibleObjManager::verify(vector<wstring>& frame)
+void VisibleObjManager::verify(vector<string>& frame)
 {
 	assert( frame.size()==ConsoleCoord::MAX_LINES+1 );
 	for(const auto& line: frame)

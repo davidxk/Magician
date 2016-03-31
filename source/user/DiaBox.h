@@ -8,10 +8,10 @@ using namespace std;
 class DiaBox: public Box
 {
 public:
-	DiaBox(const Size& size, const wstring& content);
-	static DiaBox* create(const Size& size, const wstring& content);
-	void setContent(const wstring& content);
+	DiaBox(const Size& size, const string& content);
+	static DiaBox* create(const Size& size, const string& content);
+	void setContent(const string& content);
 public:
-	wstring content;
+	string content;
 };
 #endif

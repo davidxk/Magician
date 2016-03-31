@@ -40,3 +40,9 @@
 
 # Audio
 *.mp3
+
+# Debug Info
+test.dSYM
+
+# Executable
+test

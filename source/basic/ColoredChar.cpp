@@ -3,12 +3,12 @@
 ColoredChar::ColoredChar(char aCh, Color aColor):
 	ch( aCh ), color(aColor) { }
 
-bool ColoredChar::operator==(const ColoredChar& cchar)
+bool ColoredChar::operator==(const ColoredChar& cchar) const
 {
 	return ch == cchar.ch && color == cchar.color;
 }
 
-bool ColoredChar::operator!=(const ColoredChar& cchar)
+bool ColoredChar::operator!=(const ColoredChar& cchar) const
 {
 	return ch != cchar.ch || color != cchar.color;
 }

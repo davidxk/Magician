@@ -11,5 +11,6 @@ void Printer::print(PrintJob pj)
 {
 	COORD pos={ (short)pj.cCoord.column, (short)pj.cCoord.line };
 	SetConsoleCursorPosition( hOut, pos );
-	cout<<pj.graph;
+	SetConsoleTextAttribute( hOut, (WORD)pj.graph.color );
+	cout<<pj.graph.ch;
 }

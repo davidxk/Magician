@@ -14,8 +14,8 @@ public:
 	char ch;
 	Color color;
 	ColoredChar(char aCh = ' ', Color aColor = 0);
-	bool operator==(const ColoredChar& cchar);
-	bool operator!=(const ColoredChar& cchar);
+	bool operator==(const ColoredChar& cchar) const;
+	bool operator!=(const ColoredChar& cchar) const;
 };
 
 typedef vector<ColoredChar> ImageLine;

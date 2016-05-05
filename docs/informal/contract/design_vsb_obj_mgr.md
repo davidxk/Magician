@@ -1,5 +1,5 @@
 ##Duty
-> Renders the current frame with visible objects. 
+> Holds the list of visible objects and renders the current frame accordingly. 
 
 * caller: MainLoop
 * duties: render frames

@@ -11,16 +11,18 @@ using namespace std;
 class MciPlayer
 {
 public:
-	void start(const string& fileName);
-	void go(const string& fileName);
+	void playInSeperateThread(const string& fileName);
+	void play(const string& fileName);
+
+private:
 	void open(const string& fileName);
-	void play();
+	void startPlay();
 	void close();
 	void pause();
 	void resume();
 	void stop();
 	DWORD miliLength;
-private:
+
 	MCIDEVICEID device;
 	void sendGenCommand(int nCommand, DWORD_PTR param1=0, DWORD_PTR parma2=0);
 	WCHAR* str2wchar(const string& str);

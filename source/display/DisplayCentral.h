@@ -15,11 +15,13 @@ class DisplayCentral
 public:
 	DisplayCentral();
 	void update(const Image& frameThis);
+
+private:
 	void setThisFrame(const Image& frameThis);
 	void verifyFrame(const Image& frame);
 	vector<PrintJob> getDiff();
 	void print(const vector<PrintJob>& jobList);
-public:
+
 	Printer printer;
 	Image frameLast;
 	Image frameThis;

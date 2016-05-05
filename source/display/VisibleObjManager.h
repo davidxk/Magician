@@ -8,18 +8,19 @@
 #include <vector>
 
 //Visible ObjManager maintains a list of all visible objects
-//In each update, it generates a frame accoring to the list
+//In each update, it generates a frame according to the list
 class VisibleObjManager
 {
-private:
-	vector<VisibleObject*> objList;
-	mutex mtx;
 public:
 	Image getFrame();
 	void addObject(VisibleObject* object);
 	//in future versions, a frame will know how to verify itself
 	void verify(Image& frame);
 	~VisibleObjManager();
+
+private:
+	vector<VisibleObject*> objList;
+	mutex mtx;
 };
 typedef Singleton<VisibleObjManager> sVisibleObjManager;
 #define vManager sVisibleObjManager::instance()

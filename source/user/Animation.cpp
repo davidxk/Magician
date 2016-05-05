@@ -26,8 +26,21 @@ void Animation::getCmdQueue()
 	{
 		if( i/cycle == frames ) break;
 		if( i % cycle == 0 )
-			cmdQueue.push( Command( i/cycle ) );
+			cmdQueue.push( AnimationCommand( i/cycle ) );
 		else 
 			cmdQueue.push( Command() );
 	}
+}
+
+
+
+
+//AnimationCommand
+AnimationCommand::AnimationCommand(int aIndex): index(aIndex) { }
+
+void AnimationCommand::apply(VisibleObject* vo)
+{
+	//assert vo is AnimSprite* type
+	AnimSprite* as = (AnimSprite*) vo;
+	as->putOn( index );
 }

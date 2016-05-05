@@ -1,4 +1,5 @@
 #include "user/MoveTo.h"
+#include "user/MoveBy.h"
 #include <cassert>
 #include "base/Command.h"
 #include "basic/TimeService.h"
@@ -38,12 +39,23 @@ void MoveTo::getCmdQueue()
 	//get vector segments from a whole vector
 	//(next-from) / (dest-from) = i / (duration / time_unit)
 	int steps = duration / TimeService::TIME_UNIT;
-	cmdQueue.push( Command(from) );
+	cmdQueue.push( MoveToCommand(from) );
 	Coord prev = from;
 	for(int i=1; i<=steps; i++)
 	{
 		Coord next = (dest-from) * i / steps + from;
-		cmdQueue.push( Command( (next-prev), Command::MOVE_BY ) );
+		cmdQueue.push( MoveByCommand( next-prev ) );
 		prev = next;
 	}
+}
+
+
+
+
+//MoveToCommand
+MoveToCommand::MoveToCommand(Coord aPos): pos(aPos) { }
+
+void MoveToCommand::apply(VisibleObject* vo)
+{
+	vo->pos = pos;
 }

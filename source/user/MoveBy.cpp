@@ -27,12 +27,23 @@ MoveBy* MoveBy::create(int duration, Coord aVect, bool isRepeat)
 void MoveBy::getCmdQueue()
 {
 	int steps = duration / TimeService::TIME_UNIT;
-	cmdQueue.push( Command( Coord(0, 0), Command::MOVE_BY ) );
+	cmdQueue.push( MoveByCommand( Coord(0, 0) ) );
 	Coord prev(0, 0);
 	for(int i=1; i<=steps; i++)
 	{
 		Coord next = vect * i / steps;
-		cmdQueue.push( Command(next-prev, Command::MOVE_BY) );
+		cmdQueue.push( MoveByCommand(next-prev) );
 		prev = next;
 	}
+}
+
+
+
+
+//MoveByCommand
+MoveByCommand::MoveByCommand(Coord aBy): by(aBy) { }
+
+void MoveByCommand::apply(VisibleObject* vo)
+{
+	vo->pos += by;
 }

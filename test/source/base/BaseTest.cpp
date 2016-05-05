@@ -23,8 +23,8 @@ void BaseTest::run()
 	assert(ImageUtil::ImageLine2str( box.image[2] ) == "`---- ");
 
 	//apply move Command 
-	Command cmd( Coord(10, 30) );
-	vo.setPos( Coord(1, 2) );
-	cmd.apply(&vo);
-	assert( vo.pos==Coord(10, 30) );
+	//Command cmd( Coord(10, 30) );
+	//vo.setPos( Coord(1, 2) );
+	//cmd.apply(&vo);
+	//assert( vo.pos==Coord(10, 30) );
 }

@@ -13,7 +13,7 @@ Vanish* Vanish::create(VisibleObject* host)
 
 void Vanish::getCmdQueue()
 {
-	cmdQueue.push( Command(Command::VANISH) );
+	cmdQueue.push( VanishCommand() );
 }
 
 
@@ -32,5 +32,19 @@ Appear* Appear::create(VisibleObject* host)
 
 void Appear::getCmdQueue()
 {
-	cmdQueue.push( Command(Command::APPEAR) );
+	cmdQueue.push( AppearCommand() );
+}
+
+
+
+
+//VanishCommand
+void VanishCommand::apply(VisibleObject* vo)
+{
+	vo->isVisible = false;
+}
+
+void AppearCommand::apply(VisibleObject* vo)
+{
+	vo->isVisible = true;
 }

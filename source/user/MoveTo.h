@@ -2,6 +2,7 @@
 #define _MOVE_TO_H_
 
 #include "base/Action.h"
+#include "base/Command.h"
 #include "base/VisibleObject.h"
 #include "basic/Coord.h"
 
@@ -19,5 +20,17 @@ public:
 protected:
 	Coord from;
 	Coord dest;
+};
+
+
+
+//MoveToCommand modifies a sprites position to a certain position
+class MoveToCommand: public Command
+{
+public:
+	MoveToCommand(Coord aPos);
+	virtual void apply(VisibleObject* vo);
+private:
+	Coord pos;
 };
 #endif

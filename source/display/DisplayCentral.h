@@ -16,7 +16,8 @@ public:
 	DisplayCentral();
 	void update(const Image& frameThis);
 
-private:
+	//For testability
+public:
 	void setThisFrame(const Image& frameThis);
 	void verifyFrame(const Image& frame);
 	vector<PrintJob> getDiff();

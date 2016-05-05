@@ -1,6 +1,5 @@
 #include "ActionManager.h"
 #include <cassert>
-#include "basic/TimeService.h"
 
 ActionManager::ActionManager() { }
 
@@ -12,29 +11,8 @@ void ActionManager::addAction(Action* action)
 	action->host->inAction = true;
 }
 
-void ActionManager::schedule(Action* action, int timepoint)
-{
-	lock_guard<mutex> lock(schedule_mtx);
-	verifyAction( action );
-	int cycle = timepoint / TimeService::TIME_UNIT;
-	if (scheduleList.find(cycle) != scheduleList.end())
-		scheduleList[ cycle ].push_back( action );
-	else 
-	{
-		vector<Action*> tmp;
-		tmp.push_back( action );
-		scheduleList.emplace( cycle, tmp );
-	}
-}
-
-void ActionManager::scheduleAfter(Action* action, int period)
-{
-	schedule( action, period + TimeService::getTime() );
-}
-
 void ActionManager::update()
 {
-	checkSchedule();
 	lock_guard<mutex> lock(mtx);
 	for(auto& action: actionList)
 	{
@@ -55,18 +33,6 @@ void ActionManager::update()
 		action->cmdQueue.pop();
 	}
 	actionList.remove(NULL);
-}
-
-void ActionManager::checkSchedule()
-{
-	lock_guard<mutex> lock(schedule_mtx);
-	int cntCycle = TimeService::getCycle();
-	if(scheduleList.find(cntCycle) != scheduleList.end())
-	{
-		for(const auto& action: scheduleList[cntCycle])
-			addAction( action );
-		scheduleList.erase( cntCycle );
-	}
 }
 
 void ActionManager::verifyAction(Action* action)
@@ -97,8 +63,4 @@ ActionManager::~ActionManager()
 {
 	for(const auto& action: actionList)
 		delete action;
-
-	for(const auto& list: scheduleList)
-		for(const auto& action: list.second)
-			delete action;
 }

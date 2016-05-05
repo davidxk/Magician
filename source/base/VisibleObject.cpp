@@ -51,12 +51,6 @@ void VisibleObject::runAction(Action* action)
 	aManager->addAction( action );
 }
 
-void VisibleObject::scheduleAction(Action* action, int timepoint)
-{
-	action->setHost( this );
-	aManager->schedule( action, timepoint );
-}
-
 void VisibleObject::pauseActions()
 {
 	aManager->pauseHost( this );

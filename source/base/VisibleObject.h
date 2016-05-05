@@ -29,7 +29,6 @@ public:
 	void updateCenter();
 
 	void runAction(Action* action);
-	void scheduleAction(Action* action, int timepoint);
 	void pauseActions();
 	void resumeActions();
 };

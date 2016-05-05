@@ -3,6 +3,7 @@
 //delete if runAction succeed
 #include "basic/TimeService.h"
 #include "display/ActionManager.h"
+#include "user/Scheduler.h"
 
 void Layer::addObject(VisibleObject* object)
 {
@@ -31,7 +32,9 @@ void Layer::scheduleAction(Action* action, int timepoint)
 		//obj->schedule( copy, timepoint );
 		copy->setHost( obj );
 		copy->initWithHost( obj );
-		aManager->schedule( copy, timepoint );
+		//Schedule runAction(Action*) with argument
+		//auto scheduledAction = std::bind(&VisibleObject::runAction, obj);
+		//gScheduler->scheduleAfter( scheduledAction, timepoint );
 	}
 	delete action;
 }

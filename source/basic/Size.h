@@ -3,6 +3,7 @@
 
 #include "basic/OrderedPair.h"
 
+//Size is never negative
 class Size: public OrderedPair
 {
 public:

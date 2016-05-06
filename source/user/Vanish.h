@@ -4,7 +4,7 @@
 #include "base/Action.h"
 #include "base/Command.h"
 
-//description of the class here
+//Vanish action instantly makes a sprite vanish
 class Vanish: public Action
 {
 public:
@@ -13,6 +13,7 @@ public:
 	void getCmdQueue();
 };
 
+//Appear action instantly makes a vinished sprite appear
 class Appear: public Action
 {
 public:

@@ -5,6 +5,8 @@
 #include "base/VisibleObject.h"
 #include <queue>
 
+//Action is the base class for all actions
+//Action base class provides basic services for all actions
 class Action
 {
 public:

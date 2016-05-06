@@ -8,7 +8,7 @@
 #include <vector>
 using namespace std;
 
-//description of the class here
+//A Scheduler provides delayed calling service of a given function
 class Scheduler
 {
 public:

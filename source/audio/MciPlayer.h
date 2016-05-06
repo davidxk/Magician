@@ -7,7 +7,7 @@
 #include <iostream>
 using namespace std;
 
-//description of the class here
+//A simple audio player supported only on Windows
 class MciPlayer
 {
 public:

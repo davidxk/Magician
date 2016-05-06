@@ -4,7 +4,8 @@
 #include "base/Action.h"
 #include "base/VisibleObject.h"
 
-//description of the class here
+//A Sleep action defines a period for doing nothing
+//Sleep action does not block any thread
 class Sleep: public Action
 {
 public:

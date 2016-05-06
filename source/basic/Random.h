@@ -3,7 +3,7 @@
 
 //include here
 
-//description of the class here
+//random is not part of the design yet
 class Random
 {
 public:

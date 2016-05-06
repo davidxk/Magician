@@ -4,6 +4,7 @@
 #include "basic/OrderedPair.h"
 #include "basic/Size.h"
 
+//Coord is a basic data structure provided for prevalent use
 class Coord: public OrderedPair
 {
 public:

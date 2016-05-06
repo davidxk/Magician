@@ -10,6 +10,8 @@ using namespace std;
 
 class Action;
 
+//All Visible Objects in the game is a child class of VisibleObject
+//VisibleObject base class is a fundamental data structure
 class VisibleObject
 {
 public:

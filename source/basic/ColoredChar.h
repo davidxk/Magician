@@ -7,7 +7,7 @@ using namespace std;
 
 typedef unsigned short Color;
 
-//description of the class here
+//ColoredChar adds color support to the system
 class ColoredChar
 {
 public:

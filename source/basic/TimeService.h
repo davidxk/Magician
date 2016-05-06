@@ -6,6 +6,8 @@
 #include <ratio>
 using namespace std;
 
+//TimeService provides global time service to all subsystems
+//All time related service should be found here
 class TimeService
 {
 private:

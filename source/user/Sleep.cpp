@@ -1,7 +1,7 @@
 #include "user/Sleep.h"
 #include "basic/MagicianMacros.h"
 
-Sleep::Sleep(VisibleObject* host, int duration): Action(host, duration, false)
+Sleep::Sleep(VisibleObject* host, int duration): Action(host, duration)
 {
 	getCmdQueue();
 }

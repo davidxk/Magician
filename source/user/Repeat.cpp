@@ -1,13 +1,27 @@
 #include "user/Repeat.h"
 #include <cassert>
 
-Repeat::Repeat(Action* action, int nTimes):
-	Action(action->host, action->duration * nTimes, true)
+const int Repeat::TIMES_FOREVER = 0;
+
+Repeat* Repeat::create(Action* action, int aTimes)
 {
+	assert( action != NULL );
+	return new Repeat(action, aTimes);
+}
+
+
+
+
+Repeat::Repeat(Action* action, int aTimes):
+	Action(action->host, action->duration * aTimes)
+{
+	if(times == TIMES_FOREVER)
+		this->isRepeat = true;
+
 	cmdQueue = action->cmdQueue;
-	counter = nTimes;
+	times = aTimes;
 	//add function here perhaps
-	for(int i=1; i<counter; i++)
+	for(int i=1; i<aTimes; i++)
 	{
 		queue<Command> tmp = action->cmdQueue;
 		while( !tmp.empty() )
@@ -18,17 +32,4 @@ Repeat::Repeat(Action* action, int nTimes):
 	}
 
 	delete action, action = NULL;
-}
-
-Repeat* Repeat::create(Action* action, int nTimes)
-{
-	assert( action != NULL );
-	return new Repeat(action, nTimes);
-}
-
-void Repeat::count()
-{
-	if( counter==0 )
-		isRepeat = false;
-	else counter--; 
 }

@@ -4,21 +4,21 @@
 #include "base/Command.h"
 #include "basic/TimeService.h"
 
-MoveTo::MoveTo(VisibleObject* host, int duration, Coord aFrom, Coord aDest, 
-	bool isRepeat): Action(host, duration, isRepeat), from(aFrom), dest(aDest) 
+MoveTo::MoveTo(VisibleObject* host, int duration, Coord aFrom, Coord aDest):
+	Action(host, duration), from(aFrom), dest(aDest) 
 { 
 	if( host ) getCmdQueue();
 }
 
-MoveTo* MoveTo::create(VisibleObject* host, int duration, Coord aDest, bool isRepeat)
+MoveTo* MoveTo::create(VisibleObject* host, int duration, Coord aDest)
 {
 	assert( host );
-	return new MoveTo(host, duration, host->pos, aDest, isRepeat);
+	return new MoveTo(host, duration, host->pos, aDest);
 }
 
-MoveTo* MoveTo::create(int duration, Coord aFrom, Coord aDest, bool isRepeat)
+MoveTo* MoveTo::create(int duration, Coord aFrom, Coord aDest)
 {
-	return new MoveTo(NULL, duration, aFrom, aDest, isRepeat);
+	return new MoveTo(NULL, duration, aFrom, aDest);
 }
 
 MoveTo* MoveTo::clone() const

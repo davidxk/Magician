@@ -1,7 +1,7 @@
 #include "user/Vanish.h"
 #include "base/Command.h"
 
-Vanish::Vanish(VisibleObject* host): Action(host, 0, false)
+Vanish::Vanish(VisibleObject* host): Action(host, 0)
 {
 	getCmdQueue();
 }
@@ -20,7 +20,7 @@ void Vanish::getCmdQueue()
 
 
 
-Appear::Appear(VisibleObject* host): Action(host, 0, false)
+Appear::Appear(VisibleObject* host): Action(host, 0)
 {
 	getCmdQueue();
 }

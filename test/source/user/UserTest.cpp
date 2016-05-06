@@ -14,12 +14,12 @@ void UserTest::run()
 
 	Sprite* sp = Sprite::create("graph/moon.txt");
 	vManager->addObject( sp );
-	MoveTo* mt = MoveTo::create(sp, 1000, Coord(23, 79), true);
+	MoveTo* mt = MoveTo::create(sp, 1000, Coord(23, 79));
 	aManager->addAction( mt );
 
 	AnimSprite* asp = AnimSprite::create("batch/moon_batch.txt");
 	vManager->addObject( asp );
-	Animation* anim = Animation::create(asp, 1000, true);
+	Animation* anim = Animation::create(asp, 1000);
 	aManager->addAction( anim );
 
 	std::thread refresh( &MainLoop::readyGo, &ml );

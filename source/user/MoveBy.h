@@ -8,10 +8,10 @@
 class MoveBy: public Action
 {
 public:
-	MoveBy(VisibleObject* host, int duration, Coord aVect, bool isRepeat);
+	MoveBy(VisibleObject* host, int duration, Coord aVect);
 	virtual MoveBy* clone() const override;
-	static MoveBy* create(VisibleObject* host, int duration, Coord aVect, bool isRepeat=false);
-	static MoveBy* create(int duration, Coord aVect, bool isRepeat=false);
+	static MoveBy* create(VisibleObject* host, int duration, Coord aVect);
+	static MoveBy* create(int duration, Coord aVect);
 	virtual void getCmdQueue() override;
 private:
 	Coord vect;

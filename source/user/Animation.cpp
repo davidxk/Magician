@@ -3,17 +3,17 @@
 #include "basic/MagicianMacros.h"
 #include "user/AnimSprite.h"
 
-Animation::Animation(VisibleObject* host, int duration, bool isRepeat):
-	Action(host, duration, isRepeat)
+Animation::Animation(VisibleObject* host, int duration):
+	Action(host, duration)
 { 
 	AnimSprite* as = (AnimSprite*) host;
 	frames = as->batch.size();
 	getCmdQueue();
 }
 
-Animation* Animation::create(VisibleObject* host, int duration, bool isRepeat)
+Animation* Animation::create(VisibleObject* host, int duration)
 {
-	return new Animation(host, duration, isRepeat);
+	return new Animation(host, duration);
 }
 
 void Animation::getCmdQueue()

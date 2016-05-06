@@ -37,7 +37,7 @@ void DisplayTest::testVManager()
 	Sprite* sp = Sprite::create("graph/moon.txt");
 	sp->setPos( Coord::CoordXY(-1, 0) );
 	vManager->addObject( sp );
-	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79), false);
+	MoveTo* mt = MoveTo::create(sp, 100, Coord(23, 79));
 	aManager->addAction( mt );
 
 	Image frame = vManager->getFrame();

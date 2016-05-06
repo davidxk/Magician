@@ -7,9 +7,12 @@
 class Repeat: public Action
 {
 public:
-	Repeat(Action* action, int nTimes);
-	static Repeat* create(Action* action, int nTimes);
-	void count();
-	int counter;
+	static Repeat* create(Action* action, int aTimes);
+
+	static const int TIMES_FOREVER;
+	int times;
+	
+private:
+	Repeat(Action* action, int aTimes);
 };
 #endif

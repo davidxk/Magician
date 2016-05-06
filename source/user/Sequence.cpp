@@ -1,8 +1,8 @@
 #include "user/Sequence.h"
 #include <cassert>
 
-Sequence::Sequence(Action* action_a, Action* action_b, bool isRepeat): 
-	Action(action_a->host, action_a->duration+action_b->duration, isRepeat)
+Sequence::Sequence(Action* action_a, Action* action_b): 
+	Action(action_a->host, action_a->duration+action_b->duration)
 {
 	cmdQueue = action_a->cmdQueue;
 	while( !action_b->cmdQueue.empty() )
@@ -15,8 +15,8 @@ Sequence::Sequence(Action* action_a, Action* action_b, bool isRepeat):
 	delete action_b, action_b = NULL;
 }
 
-Sequence* Sequence::create(Action* action_a, Action* action_b, bool isRepeat)
+Sequence* Sequence::create(Action* action_a, Action* action_b)
 {
 	assert(action_a && action_b) ;
-	return new Sequence(action_a, action_b, isRepeat);
+	return new Sequence(action_a, action_b);
 }

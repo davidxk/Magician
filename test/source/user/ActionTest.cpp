@@ -75,8 +75,8 @@ void ActionTest::testAnimation()
 
 void ActionTest::testSequence()
 {
-	MoveTo* rush = MoveTo::create(sp, 100, Coord(23, 79), false);
-	MoveTo* back = MoveTo::create(sp, 400, Coord(12, 30), false);
+	MoveTo* rush = MoveTo::create(sp, 100, Coord(23, 79));
+	MoveTo* back = MoveTo::create(sp, 400, Coord(12, 30));
 	int cmdLen = rush->cmdQueue.size() + back->cmdQueue.size();
 	Sequence* seq = Sequence::create(rush, back);
 
@@ -87,7 +87,7 @@ void ActionTest::testSequence()
 
 void ActionTest::testRepeat()
 {
-	MoveTo* rush = MoveTo::create(sp, 100, Coord(23, 79), false);
+	MoveTo* rush = MoveTo::create(sp, 100, Coord(23, 79));
 	int cmdLen = rush->cmdQueue.size() * 5;
 	Repeat* repe = Repeat::create(rush, 5);
 	

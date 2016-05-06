@@ -11,8 +11,8 @@
 class Animation: public Action
 {
 public:
-	Animation(VisibleObject* host, int duration, bool isRepeat=false);
-	static Animation* create(VisibleObject* host, int duration, bool isRepeat=false);
+	Animation(VisibleObject* host, int duration);
+	static Animation* create(VisibleObject* host, int duration);
 	virtual void getCmdQueue() override;
 private:
 	int frames;

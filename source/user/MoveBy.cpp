@@ -3,8 +3,8 @@
 #include "base/Command.h"
 #include "basic/TimeService.h"
 
-MoveBy::MoveBy(VisibleObject* host, int duration, Coord aVect, bool isRepeat):
-	Action(host, duration, isRepeat), vect(aVect)
+MoveBy::MoveBy(VisibleObject* host, int duration, Coord aVect):
+	Action(host, duration), vect(aVect)
 {
 	getCmdQueue();
 }
@@ -14,14 +14,14 @@ MoveBy* MoveBy::clone() const
 	return new MoveBy(*this);
 }
 
-MoveBy* MoveBy::create(VisibleObject* host, int duration, Coord aVect, bool isRepeat)
+MoveBy* MoveBy::create(VisibleObject* host, int duration, Coord aVect)
 {
-	return new MoveBy(host, duration, aVect, isRepeat);
+	return new MoveBy(host, duration, aVect);
 }
 
-MoveBy* MoveBy::create(int duration, Coord aVect, bool isRepeat)
+MoveBy* MoveBy::create(int duration, Coord aVect)
 {
-	return new MoveBy(NULL, duration, aVect, isRepeat);
+	return new MoveBy(NULL, duration, aVect);
 }
 
 void MoveBy::getCmdQueue()

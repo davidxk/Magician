@@ -20,7 +20,8 @@ AnimSprite* AnimSprite::create(const string& fileName)
 	return sp;
 }
 
-void AnimSprite::putOn(int index)
+void AnimSprite::setDisplayImage(int index)
 {
+	assert( index < batch.size() );
 	image = batch[index];
 }

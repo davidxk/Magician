@@ -56,6 +56,12 @@ Coord Coord::operator/(int nn) const
 	return Coord(line / nn, column / nn);
 }
 
+Coord Coord::operator/=(int nn)
+{
+	assert( nn != 0 );
+	return Coord(line /= nn, column /= nn);
+}
+
 bool Coord::operator==(const Coord& cc) const
 {
 	return cc.line==line && cc.column==column;

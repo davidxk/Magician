@@ -10,9 +10,12 @@
 class AnimSprite: public Sprite
 {
 public:
-	AnimSprite(const string& fileName);
 	static AnimSprite* create(const string& fileName);
-	void putOn(int index);
+	void setDisplayImage(int index);
+
 	vector<Image> batch;
+
+private:
+	AnimSprite(const string& fileName);
 };
 #endif

@@ -6,7 +6,7 @@
 #include <string>
 using namespace std;
 
-//description of the class here
+//A TextField with endline support
 class TextField: public VisibleObject
 {
 public:

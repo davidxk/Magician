@@ -42,5 +42,5 @@ void AnimationCommand::apply(VisibleObject* vo)
 {
 	//assert vo is AnimSprite* type
 	AnimSprite* as = (AnimSprite*) vo;
-	as->putOn( index );
+	as->setDisplayImage( index );
 }

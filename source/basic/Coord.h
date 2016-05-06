@@ -20,6 +20,7 @@ public:
 	Coord operator*(int nn) const;
 	Coord operator*=(int nn);
 	Coord operator/(int nn) const;
+	Coord operator/=(int nn);
 	bool operator==(const Coord& cc) const;
 	bool operator!=(const Coord& cc) const;
 };

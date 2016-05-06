@@ -3,7 +3,7 @@
 
 #include "base/Action.h"
 
-//description of the class here
+//Both finite and infinite repetition uses this action
 class Repeat: public Action
 {
 public:

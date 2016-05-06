@@ -3,7 +3,8 @@
 
 #include "base/Action.h"
 
-//description of the class here
+//Sequence action is implemented as the concatenation of command queues
+//Initiating a Sequence from an array of actions is yet to be implemented
 class Sequence: public Action
 {
 public:

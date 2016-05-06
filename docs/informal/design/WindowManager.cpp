@@ -9,3 +9,8 @@ void WindowManager::dispatchKeystroke()
 		win->respondKey( key );
 	}
 }
+
+void Window::respondKey(int key)
+{
+	// Call function at map[key]
+}

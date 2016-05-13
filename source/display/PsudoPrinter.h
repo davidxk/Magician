@@ -1,7 +1,7 @@
 #ifndef _PRINTER_H_
 #define _PRINTER_H_
 
-#include "basic/PrintJob.h"
+#include "display/PrintJob.h"
 #include <string>
 
 //Printer prints chars to a specified position

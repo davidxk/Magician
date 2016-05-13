@@ -4,9 +4,9 @@
 #include <iostream>
 #include "basic/ConsoleCoord.h"
 #include "basic/Coord.h"
-#include "basic/ImageLoader.h"
-#include "basic/PrintJob.h"
 #include "basic/Size.h"
+#include "display/PrintJob.h"
+#include "visible/ImageLoader.h"
 using namespace std;
 
 void BasicTest::run()

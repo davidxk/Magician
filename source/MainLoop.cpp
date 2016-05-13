@@ -4,9 +4,9 @@
 #include <thread>
 #include "basic/MagicianMacros.h"
 #include "basic/TimeService.h"
-#include "display/ActionManager.h"
+#include "action/ActionManager.h"
 #include "display/VisibleObjManager.h"
-#include "user/Scheduler.h"
+#include "basic/Scheduler.h"
 
 MainLoop::MainLoop(): exit( false ) { }
 

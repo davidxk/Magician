@@ -1,27 +1,27 @@
 #include "basic/MagicianMacros.h"
 #include "basic/Random.h"
-#include "basic/ImageLoader.h"
 
-#include "base/Transition.h"
+#include "basic/Transition.h"
 
 #include "audio/MciPlayer.h"
 
 //Sprites
-#include "user/DiaBox.h"
-#include "user/Sprite.h"
-#include "user/AnimSprite.h"
-#include "user/TextField.h"
+#include "visible/ImageLoader.h"
+#include "visible/DiaBox.h"
+#include "visible/Sprite.h"
+#include "visible/AnimSprite.h"
+#include "visible/TextField.h"
 //Actions
-#include "user/Animation.h"
-#include "user/MoveTo.h"
-#include "user/MoveBy.h"
-#include "user/Repeat.h"
-#include "user/Sequence.h"
-#include "user/Sleep.h"
-#include "user/Vanish.h"
+#include "action/Animation.h"
+#include "action/MoveTo.h"
+#include "action/MoveBy.h"
+#include "action/Repeat.h"
+#include "action/Sequence.h"
+#include "action/Sleep.h"
+#include "action/Vanish.h"
 //Layer
-#include "user/Layer.h"
-#include "user/Scheduler.h"
+#include "action/Layer.h"
+#include "basic/Scheduler.h"
 
-#include "display/ActionManager.h"
+#include "action/ActionManager.h"
 #include "display/VisibleObjManager.h"

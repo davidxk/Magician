@@ -1,14 +1,14 @@
 ## Const Path Variable
 src_path=$(proj_path)/source 
-basic_path=$(addsuffix /basic,$(src_path))
-base_path=$(addsuffix /base,$(src_path))
-display_path=$(addsuffix /display,$(src_path))
-user_path=$(addsuffix /user,$(src_path))
+action_path=$(addsuffix /action,$(src_path))
 audio_path=$(addsuffix /audio,$(src_path))
+basic_path=$(addsuffix /basic,$(src_path))
+display_path=$(addsuffix /display,$(src_path))
+visible_path=$(addsuffix /visible,$(src_path))
 
 ## Implicit Variable
-VPATH+=$(src_path) $(basic_path) $(base_path) $(user_path) \
-       $(display_path) $(audio_path)
+VPATH+=$(src_path) $(action_path) $(audio_path) $(basic_path) \
+       $(display_path) $(visible_path)
 CXXFLAGS+=-I $(src_path) 
 
 ## Source List

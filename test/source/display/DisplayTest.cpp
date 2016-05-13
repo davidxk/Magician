@@ -3,12 +3,12 @@
 #include <cassert>
 #include <iostream>
 #include <regex>
+#include "action/ActionManager.h"
+#include "action/MoveTo.h"
 #include "basic/MagicianMacros.h"
-#include "display/ActionManager.h"
 #include "display/DisplayCentral.h"
 #include "display/VisibleObjManager.h"
-#include "user/Sprite.h"
-#include "user/MoveTo.h"
+#include "visible/Sprite.h"
 using namespace std;
 
 void DisplayTest::run()

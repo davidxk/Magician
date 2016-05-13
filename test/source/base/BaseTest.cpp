@@ -2,10 +2,10 @@
 
 #include <cassert>
 #include <iostream>
-#include "base/Action.h"
-#include "base/Box.h"
-#include "base/Command.h"
-#include "base/VisibleObject.h"
+#include "action/Action.h"
+#include "action/Command.h"
+#include "display/VisibleObject.h"
+#include "visible/Box.h"
 using namespace std;
 
 void BaseTest::run()

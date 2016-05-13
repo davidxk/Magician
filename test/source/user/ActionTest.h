@@ -2,7 +2,7 @@
 #define _ACTION_TEST_H_
 
 #include "TestCase.h"
-#include "user/Sprite.h"
+#include "visible/Sprite.h"
 #include <iostream>
 
 //description of the class here

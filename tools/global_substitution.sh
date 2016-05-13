@@ -14,6 +14,6 @@ for each in $source; do
 	if [[ -n $(grep $pattern $each) ]]; then
 		backup=$each.bak
 		mv $each $backup;
-		sed s/$pattern/$string/g $backup > $each;
+		sed s@$pattern@$string@g $backup > $each;
 	fi
 done

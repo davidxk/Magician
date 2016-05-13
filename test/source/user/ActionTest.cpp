@@ -1,8 +1,8 @@
 #include "user/ActionTest.h"
-#include "user/MoveBy.h"
-#include "user/MoveTo.h"
-#include "user/Repeat.h"
-#include "user/Sequence.h"
+#include "action/MoveBy.h"
+#include "action/MoveTo.h"
+#include "action/Repeat.h"
+#include "action/Sequence.h"
 #include "basic/TimeService.h"
 #include <cassert>
 

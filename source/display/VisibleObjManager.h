@@ -1,8 +1,8 @@
 #ifndef _VISIBLE_OBJ_MANGER_H_
 #define _VISIBLE_OBJ_MANGER_H_
 
-#include "base/Singleton.cpp"
-#include "base/VisibleObject.h"
+#include "basic/Singleton.cpp"
+#include "display/VisibleObject.h"
 #include <mutex>
 #include <string>
 #include <vector>

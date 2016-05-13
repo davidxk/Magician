@@ -1,12 +1,12 @@
 #include "user/UserTest.h"
 #include <thread>
 #include "MainLoop.h"
-#include "display/ActionManager.h"
+#include "action/ActionManager.h"
 #include "display/VisibleObjManager.h"
-#include "user/Sprite.h"
-#include "user/MoveTo.h"
-#include "user/AnimSprite.h"
-#include "user/Animation.h"
+#include "visible/AnimSprite.h"
+#include "visible/Sprite.h"
+#include "action/MoveTo.h"
+#include "action/Animation.h"
 
 void UserTest::run()
 {

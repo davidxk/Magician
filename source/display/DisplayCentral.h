@@ -2,7 +2,7 @@
 #define _DISPLAY_CENTRAL_H_
 
 #include "basic/ColoredChar.h"
-#include "basic/PrintJob.h"
+#include "display/PrintJob.h"
 #include "display/PsudoPrinter.h"
 #include <string>
 #include <vector>

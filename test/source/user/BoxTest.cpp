@@ -2,8 +2,8 @@
 
 #include <cassert>
 #include "basic/Size.h"
-#include "user/DiaBox.h"
-#include "user/TextField.h"
+#include "visible/DiaBox.h"
+#include "visible/TextField.h"
 
 void BoxTest::run()
 {

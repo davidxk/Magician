@@ -11,9 +11,15 @@ if [[ -n $directory ]]; then cd $directory; fi
 source=$(ls | grep "h\|cpp")
 
 for each in $source; do
+	if [[ -d $each ]]; then
+		cd $each
+	fi
 	if [[ -n $(grep $pattern $each) ]]; then
 		backup=$each.bak
-		mv $each $backup;
-		sed s@$pattern@$string@g $backup > $each;
+		mv $each $backup
+		sed s@$pattern@$string@g $backup > $each
+	fi
+	if [[ -d $each ]]; then
+		cd ..
 	fi
 done

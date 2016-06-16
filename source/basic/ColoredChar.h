@@ -12,7 +12,8 @@ class ColoredChar
 {
 public:
 	char ch;
-	Color color;
+	Color foreColor;
+	Color backColor;
 	ColoredChar(char aCh = ' ', Color aColor = 0);
 	bool operator==(const ColoredChar& cchar) const;
 	bool operator!=(const ColoredChar& cchar) const;

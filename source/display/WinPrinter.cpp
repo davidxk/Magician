@@ -1,13 +1,13 @@
-#include "display/Printer.h"
+#include "display/WinPrinter.h"
 #include <iostream>
 using namespace std;
 
-Printer::Printer()
+WinPrinter::WinPrinter()
 {
 	hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
-void Printer::print(PrintJob pj)
+void WinPrinter::print(PrintJob pj)
 {
 	COORD pos={ (short)pj.cCoord.column, (short)pj.cCoord.line };
 	SetConsoleCursorPosition( hOut, pos );

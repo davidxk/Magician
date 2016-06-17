@@ -36,6 +36,7 @@ TimeService.cpp \
 ActionManager.cpp \
 DisplayCentral.cpp \
 Printer.cpp \
+Scene.cpp \
 VisibleObjManager.cpp \
 AnimSprite.cpp \
 Animation.cpp \

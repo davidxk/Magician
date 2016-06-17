@@ -1,6 +1,7 @@
 #ifndef _WIN_PRINTER_H_
 #define _WIN_PRINTER_H_
 
+#include "display/Printer.h"
 #include "display/PrintJob.h"
 #include <curses.h>
 

@@ -9,18 +9,8 @@
 
 int main()
 {
-	MainLoop ml;
-	std::thread refresh( &MainLoop::readyGo, std::ref( ml ) );
-	refresh.detach();
-
-	Logo logo;
-	CoverScene cover;
-	HelloWorld hello;
-	BackScene back;
-	LetterScene letter;
-
-	while(1)
-		std::this_thread::sleep_for( std::chrono::minutes( 1 ) );
+	CoverScene* cover = new CoverScene();
+	gMainLoop->runWithScene( cover );
 
 	return 0;
 }

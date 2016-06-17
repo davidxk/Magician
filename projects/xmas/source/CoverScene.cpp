@@ -2,9 +2,9 @@
 
 #include <chrono>
 #include <thread>
-#include "Magician.h"
+#include "HelloWorld.h"
 
-CoverScene::CoverScene()
+void CoverScene::initScene()
 {
 	const int num39 = ConsoleCoord::MAX_COLUMN / 2;
 	const int num11 = ConsoleCoord::MAX_LINES / 2;
@@ -17,6 +17,12 @@ CoverScene::CoverScene()
 	vManager->addObject( word );
 
 	const int sleepTime = 5000;
-	std::this_thread::sleep_for( std::chrono::milliseconds(sleepTime) );
-	Transition::releasePrev();
+	auto trans = std::bind(&CoverScene::changeScene, this);
+	gScheduler->schedule( trans, 5000 );
+}
+
+void CoverScene::changeScene()
+{
+	HelloWorld* hello = new HelloWorld();
+	gMainLoop->replaceScene(hello);
 }

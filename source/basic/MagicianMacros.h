@@ -1,6 +1,6 @@
 #ifndef _MAGICIAN_MACROS_H_
 #define _MAGICIAN_MACROS_H_
-#define TEST
+//#define TEST
 
 #include <iostream>
 

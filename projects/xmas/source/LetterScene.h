@@ -1,12 +1,12 @@
 #ifndef _LETTER_SCENE_H_
 #define _LETTER_SCENE_H_
 
-//include here
+#include "Magician.h"
 
 //description of the class here
-class LetterScene
+class LetterScene: public Scene
 {
 public:
-	LetterScene();
+	void initScene();
 };
 #endif

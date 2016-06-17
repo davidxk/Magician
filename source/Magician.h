@@ -1,3 +1,4 @@
+#include "MainLoop.h"
 #include "basic/MagicianMacros.h"
 #include "basic/Random.h"
 
@@ -24,6 +25,7 @@
 //Layer
 #include "action/Layer.h"
 #include "basic/Scheduler.h"
+#include "display/Scene.h"
 
 #include "action/ActionManager.h"
 #include "display/VisibleObjManager.h"

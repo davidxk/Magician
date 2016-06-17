@@ -25,7 +25,7 @@ void UnixPrinter::print(PrintJob pj)
 	refresh();
 }
 
-~UnixPrinter()
+UnixPrinter::~UnixPrinter()
 {
 	attroff(COLOR_PAIR(1));
 	endwin();

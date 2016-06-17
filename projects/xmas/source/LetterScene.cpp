@@ -1,10 +1,9 @@
 #include "LetterScene.h"
-#include "Magician.h"
 #include <fstream>
 #include <string>
 using namespace std;
 
-LetterScene::LetterScene()
+void LetterScene::initScene()
 {
 	Sprite* paper = Sprite::create("cover/parchment.txt");
 	vManager->addObject( paper );

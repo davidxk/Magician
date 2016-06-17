@@ -4,13 +4,13 @@
 #include "Magician.h"
 
 //description of the class here
-class HelloWorld
+class HelloWorld: public Scene
 {
 public:
-	HelloWorld();
-	~HelloWorld();
+	void initScene();
 private:
 	void playBGM();
+	void changeScene();
 	void initXmasTree();
 	void initSnowMan();
 	void initShack();

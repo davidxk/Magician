@@ -7,7 +7,7 @@ TARFLAGS+=-std=c++11 -lncurses
 tmp_2:=$(subst MciPlayer.cpp,,$(sources))
 tmp_3:=$(subst Logo.cpp,,$(tmp_2))
 tmp_4:=$(subst Magician.h,,$(tmp_3))
-sources:=$(tmp_4)
+sources:=$(tmp_4) UnixPrinter.cpp
 
 ## .o & .d List
 objects=$(subst .cpp,.o,$(sources))

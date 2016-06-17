@@ -1,12 +1,13 @@
 #ifndef _COVER_SCENE_H_
 #define _COVER_SCENE_H_
 
-//include here
+#include "Magician.h"
 
 //description of the class here
-class CoverScene
+class CoverScene: public Scene
 {
 public:
-	CoverScene();
+	void initScene();
+	void changeScene();
 };
 #endif

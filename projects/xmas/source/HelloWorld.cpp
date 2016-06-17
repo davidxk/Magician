@@ -1,8 +1,10 @@
 #include "HelloWorld.h"
+
 #include <chrono>
 #include <thread>
+#include "BackScene.h"
 
-void HelloWorld::init()
+void HelloWorld::initScene()
 {
 	playBGM();
 	
@@ -15,9 +17,9 @@ void HelloWorld::init()
 
 	initLayerAction();
 
-	gScheduler->schedule()
-	std::this_thread::sleep_for( std::chrono::milliseconds(goOutPoint) );
-	Transition::releasePrev();
+	auto trans = std::bind(&HelloWorld::changeScene, this);
+	gScheduler->schedule( trans, goOutPoint );
+	//Transition::releasePrev();
 }
 
 void HelloWorld::playBGM()
@@ -28,8 +30,8 @@ void HelloWorld::playBGM()
 
 void HelloWorld::changeScene()
 {
-	CoverScene* cover = new CoverScene();
-	sMainloop->replaceScene(cover);
+	BackScene* back = new BackScene();
+	gMainLoop->replaceScene(back);
 }
 
 void HelloWorld::initXmasTree()
@@ -169,8 +171,4 @@ void HelloWorld::addSnowFlake()
 	MoveTo* mb = MoveTo::create( snowFlake, stdDure/num24*distance, 
 			snowFlake->pos + Coord::CoordXY( 0, distance ) );
 	snowFlake->runAction( mb );
-}
-
-HelloWorld::~HelloWorld()
-{
 }

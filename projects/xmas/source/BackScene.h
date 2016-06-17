@@ -1,12 +1,13 @@
 #ifndef _BACK_SCENE_H_
 #define _BACK_SCENE_H_
 
-//include here
+#include "Magician.h"
 
 //description of the class here
-class BackScene
+class BackScene: public Scene
 {
 public:
-	BackScene();
+	void initScene();
+	void changeScene();
 };
 #endif

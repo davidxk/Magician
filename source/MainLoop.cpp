@@ -17,7 +17,7 @@ void MainLoop::runWithScene(Scene* scene)
 	{
 		runningScene = nextScene;
 		nextScene = nullptr;
-		runningScene->init();
+		runningScene->initScene();
 		loopScene();
 		cleanupScene(runningScene);
 	}

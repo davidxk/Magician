@@ -3,7 +3,9 @@
 
 #include "basic/Transition.h"
 
+#ifdef WIN
 #include "audio/MciPlayer.h"
+#endif
 
 //Sprites
 #include "visible/ImageLoader.h"

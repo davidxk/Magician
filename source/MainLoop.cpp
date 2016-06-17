@@ -8,14 +8,40 @@
 #include "display/VisibleObjManager.h"
 #include "basic/Scheduler.h"
 
-MainLoop::MainLoop(): exit( false ) { }
+MainLoop::MainLoop(): exitScene( false ) { }
 
-void MainLoop::readyGo()
+void MainLoop::runWithScene(Scene* scene)
+{
+	nextScene = scene;
+	while( nextScene )
+	{
+		runningScene = nextScene;
+		nextScene = nullptr;
+		runningScene->init();
+		loopScene();
+		cleanupScene(runningScene);
+	}
+}
+
+void MainLoop::replaceScene(Scene* scene)
+{
+	exitScene = true;
+	nextScene = scene;
+}
+
+void MainLoop::end()
+{
+	exitScene = true;
+	nextScene = nullptr;
+}
+
+
+
+void MainLoop::loopScene()
 {
 	TimeService::gameBegin();
-	while( !exit )
+	while( !exitScene )
 	{
-		checkMsg();
 		update();
 		TimeService::updateTime();
 		std::this_thread::sleep_until( TimeService::getNextFrameTime() );
@@ -29,9 +55,12 @@ void MainLoop::update()
 	dc.update( vManager->getFrame() );
 }
 
-void MainLoop::checkMsg()
+void MainLoop::cleanupScene(Scene* scene)
 {
-
+	delete scene;
+	sVisibleObjManager::release();
+	sActionManager::release();
+	sScheduler::release();
 }
 
 MainLoop::~MainLoop()

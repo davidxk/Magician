@@ -6,7 +6,7 @@
 #include <windows.h>
 
 //WinPrinter is a Win32 implemention of Printer base-class
-class WinPrinter
+class WinPrinter: public Printer
 {
 public:
 	WinPrinter();

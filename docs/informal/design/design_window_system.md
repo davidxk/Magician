@@ -1,3 +1,32 @@
+#Interactive System
+Apparently, the interactive system is quite a complex one which encompasses a range of subsystems. Box, Window, Menu, KeyDispatcher, etc. Let's see what they do in details. 
+
+##KeyDispatcher
+* A KeyDispatcher listens to the key strokes in a while loop on a separate thread with system specific APIs. 
+* After translating the key stroke into standard code, it then dispatches the key stroke to the registered KeyListener. Use a registration stack. When one is out of use, it can be simply popped out of the stack) 
+* The respond function of the KeyListener is called upon to respond to the given key stroke. A mapped function object is triggered in this very thread. (Scheduling the action on the clock thread is also considered. The implementation seems tricky) All data modification must be done with great caution of collapsing with other threads. 
+(A solution to this problem is to add lock to all read and write operations on all data. ) 
+
+##Menu
+A Menu is a KeyListener. 
+A Menu is inited with an array of strings as its items. Its each item relates to a certain function. 
+A Menu base class defines the default action of up, down, forward and back keys. When a menu is created, it registers itself to the KeyDispatcher registration stack and popps itself out when destroyed. 
+
+##Table
+A Table is a VisibleObject. 
+A Table prints its contents in a given sized matrix. 
+
+##Box
+A Box is a VisibleObject. 
+
+
+
+
+
+
+
+
+#Appendix: Former Thoughts
 ##Intro
 Menus are controllers that reads the keystroke from the keyboard and responds in accordance. The thing about Menus is that only one box can be in charge at a given point of time, so we must come up with a way to arrange for the cooperation of the Menus. Here is my solution. 
 

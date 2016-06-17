@@ -14,7 +14,7 @@ public:
 	char ch;
 	Color foreColor;
 	Color backColor;
-	ColoredChar(char aCh = ' ', Color aColor = 0);
+	ColoredChar(char aCh = ' ', Color aForeColor= 0, Color aBackColor = 7);
 	bool operator==(const ColoredChar& cchar) const;
 	bool operator!=(const ColoredChar& cchar) const;
 };
@@ -25,7 +25,7 @@ typedef vector<ImageLine> Image;
 class ImageUtil
 {
 public:
-	static ImageLine str2ImageLine(const string& str, Color color = 0);
+	static ImageLine str2ImageLine(const string& str, Color foreColor = 0, Color backColor = 7);
 	static string ImageLine2str(const ImageLine& line);
 };
 #endif

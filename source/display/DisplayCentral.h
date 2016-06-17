@@ -3,7 +3,8 @@
 
 #include "basic/ColoredChar.h"
 #include "display/PrintJob.h"
-#include "display/PsudoPrinter.h"
+#include "display/Printer.h"
+
 #include <string>
 #include <vector>
 using namespace std;
@@ -14,6 +15,7 @@ class DisplayCentral
 {
 public:
 	DisplayCentral();
+	~DisplayCentral();
 	void update(const Image& frameThis);
 
 	//For testability
@@ -23,7 +25,7 @@ public:
 	vector<PrintJob> getDiff();
 	void print(const vector<PrintJob>& jobList);
 
-	Printer printer;
+	Printer* printer;
 	Image frameLast;
 	Image frameThis;
 };

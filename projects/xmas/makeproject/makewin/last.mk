@@ -12,7 +12,7 @@ $(exec): $(objects)
 	$(CXX) $(objects) -o $(exec) $(CXXFLAGS) 
 
 ## Includes
-include makefile.include 
+include ../makefile.include 
 
 ##Clean
 .PHONY: clean

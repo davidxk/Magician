@@ -7,13 +7,18 @@ class MainLoop
 {
 public:
 	MainLoop();
-	void readyGo();
-	void update();
+	void runWithScene(Scene* scene);
+	void replaceScene(Scene* scene);
+	void end();
 	~MainLoop();
 
 	DisplayCentral dc;
 private:
+	void loopScene();
+	void update();
 	void checkMsg();
-	bool exit;
+	Scene* runningScene;
+	Scene* nextScene;
+	bool exitScene;
 };
 #endif

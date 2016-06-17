@@ -2,7 +2,7 @@
 #include <chrono>
 #include <thread>
 
-HelloWorld::HelloWorld()
+void HelloWorld::init()
 {
 	playBGM();
 	
@@ -15,14 +15,21 @@ HelloWorld::HelloWorld()
 
 	initLayerAction();
 
+	gScheduler->schedule()
 	std::this_thread::sleep_for( std::chrono::milliseconds(goOutPoint) );
 	Transition::releasePrev();
 }
 
 void HelloWorld::playBGM()
 {
-	MciPlayer mci;
-	mci.start("bgm/we_wish_you_a_merry_christmas_12.mp3");
+	//MciPlayer mci;
+	//mci.start("bgm/we_wish_you_a_merry_christmas_12.mp3");
+}
+
+void HelloWorld::changeScene()
+{
+	CoverScene* cover = new CoverScene();
+	sMainloop->replaceScene(cover);
 }
 
 void HelloWorld::initXmasTree()
@@ -30,7 +37,8 @@ void HelloWorld::initXmasTree()
 	AnimSprite* xmasTree = AnimSprite::create("snowy/tree_batch.txt");
 	vManager->addObject( xmasTree );
 	mainLayer.addObject( xmasTree );
-	Animation* blink = Animation::create( xmasTree, 1000, true );
+	Animation* blink = Animation::create( xmasTree, 1000 );
+	blink->isRepeat = true;
 	aManager->addAction( blink );
 }
 
@@ -39,7 +47,8 @@ void HelloWorld::initSnowMan()
 	AnimSprite* snowMan = AnimSprite::create("snowy/snow_man_batch.txt");
 	vManager->addObject( snowMan );
 	mainLayer.addObject( snowMan );
-	Animation* wave = Animation::create( snowMan, 1000, true );
+	Animation* wave = Animation::create( snowMan, 1000 );
+	wave->isRepeat = true;
 	aManager->addAction( wave );
 	snowMan->setPos( Coord(12, 42) );
 
@@ -61,7 +70,8 @@ void HelloWorld::initShack()
 	vManager->addObject( smoke );
 	mainLayer.addObject( smoke );
 
-	Animation* sway = Animation::create( smoke, 500, true);
+	Animation* sway = Animation::create( smoke, 500 );
+	sway->isRepeat = true;
 	aManager->addAction( sway );
 }
 
@@ -86,7 +96,8 @@ void HelloWorld::initSanta()
 	mainLayer.addObject( hat );
 	hat->setPos( santaPos+Coord(0,22) );
 
-	Animation* flutter = Animation::create(hat, 500, true);
+	Animation* flutter = Animation::create(hat, 500);
+	flutter->isRepeat = true;
 	aManager->addAction( flutter );
 	
 	AnimSprite* eye = AnimSprite::create("snowy/eye_batch.txt");
@@ -96,7 +107,8 @@ void HelloWorld::initSanta()
 
 	Animation* blink = Animation::create(eye, 250);
 	Repeat* rep = Repeat::create( blink, 2 );
-	Sequence* seq = Sequence::create( rep, Sleep::create(eye,3200), true );
+	Sequence* seq = Sequence::create( rep, Sleep::create(eye,3200) );
+	seq->isRepeat = true;
 	aManager->addAction( seq );
 
 	AnimSprite* arm = AnimSprite::create("snowy/arm_batch.txt");
@@ -104,11 +116,12 @@ void HelloWorld::initSanta()
 	mainLayer.addObject( arm );
 	arm->setPos( santaPos+Coord(2,28) );
 
-	Animation* wave = Animation::create(arm, 450, true);
+	Animation* wave = Animation::create(arm, 450);
 	Repeat* re = Repeat::create( wave, 5 );
 	Sequence* se_0 = Sequence::create( Appear::create(arm), re );
    	Sequence* se_1 = Sequence::create( se_0, Vanish::create( arm ) );
-	Sequence* sequ = Sequence::create( se_1, Sleep::create(arm,6500),true );
+	Sequence* sequ = Sequence::create( se_1, Sleep::create(arm,6500) );
+	sequ->isRepeat = true;
 	aManager->addAction( sequ );
 }
 
@@ -154,7 +167,7 @@ void HelloWorld::addSnowFlake()
 	const int num24 = ConsoleCoord::MAX_LINES + 1;
 	const int distance = Random::randomRange(num24 * 2, num24 * 2.5);
 	MoveTo* mb = MoveTo::create( snowFlake, stdDure/num24*distance, 
-			snowFlake->pos + Coord::CoordXY( 0, distance ), true);
+			snowFlake->pos + Coord::CoordXY( 0, distance ) );
 	snowFlake->runAction( mb );
 }
 

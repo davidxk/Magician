@@ -11,8 +11,7 @@ VPATH+=$(test_src_path) $(test_basic_path) $(test_base_path) \
 CXXFLAGS+=-I $(test_src_path)
 
 ## Source List
-tmp_1:=$(subst Printer.cpp,PsudoPrinter.cpp,$(sources))
-tmp_2:=$(subst MciPlayer.cpp,,$(tmp_1))
+tmp_2:=$(subst MciPlayer.cpp,,$(sources))
 tmp_3:=$(subst Logo.cpp,,$(tmp_2))
 tmp_4:=$(subst Magician.h,,$(tmp_3))
 sources:=$(tmp_4)

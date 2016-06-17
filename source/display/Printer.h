@@ -9,7 +9,7 @@ class Printer
 {
 public:
 	Printer();
-	virtual void print(PrintJob pj) { };
-	virtual ~Printer() { };
+	virtual void print(PrintJob pj);
+	virtual ~Printer();
 };
 #endif

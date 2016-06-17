@@ -5,7 +5,7 @@
 #include <curses.h>
 
 //UnixPrinter is a Unix implemention of Printer base-class
-class UnixPrinter
+class UnixPrinter: public Printer
 {
 public:
 	UnixPrinter();

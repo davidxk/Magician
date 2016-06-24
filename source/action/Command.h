@@ -10,6 +10,7 @@ class Command
 {
 public:
 	Command() { }
-	virtual void apply(VisibleObject* vo) { }
+	virtual Command* clone() { return new Command(*this); }
+	virtual void apply(VisibleObject* vo);
 };
 #endif

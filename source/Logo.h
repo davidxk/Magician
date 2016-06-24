@@ -2,12 +2,13 @@
 #define _LOGO_H_
 
 #include "Magician.h"
+#include "display/Scene.h"
 
 //description of the class here
-class Logo
+class Logo: public Scene
 {
 public:
-	Logo();
+	virtual void initScene();
 private:
 	void initHat();
 	void initAnim();

@@ -4,6 +4,7 @@
 UnixPrinter::UnixPrinter()
 {
 	initscr();
+	curs_set(0);
 	hasColor = has_colors();
 	if( hasColor )
 		start_color();
@@ -11,8 +12,8 @@ UnixPrinter::UnixPrinter()
 
 void UnixPrinter::print(PrintJob pj)
 {
-	int yy = pj.cCoord.column;
-	int xx = pj.cCoord.line;
+	int xx = pj.cCoord.column;
+	int yy = pj.cCoord.line;
 	char ch = pj.graph.ch;
 
 	if( hasColor )

@@ -1,5 +1,7 @@
-#include "ActionManager.h"
+#include "action/ActionManager.h"
 #include <cassert>
+#include "action/Command.h"
+#include "basic/MagicianMacros.h"
 
 ActionManager::ActionManager() { }
 
@@ -26,10 +28,12 @@ void ActionManager::update()
 			continue;
 		}
 
-		action->cmdQueue.front().apply( action->host );
+		action->cmdQueue.front()->apply( action->host );
 
 		if(action->isRepeat) 
 			action->cmdQueue.push( action->cmdQueue.front() );
+		// Figure out a way if memory leaks
+		//else delete action->cmdQueue.front();
 		action->cmdQueue.pop();
 	}
 	actionList.remove(NULL);

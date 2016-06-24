@@ -15,5 +15,5 @@ void Sleep::getCmdQueue()
 {
 	int steps = duration/magician::TIME_UNIT;
 	for(int i=0; i<=steps; i++)
-		cmdQueue.push( Command() );
+		cmdQueue.push( new Command() );
 }

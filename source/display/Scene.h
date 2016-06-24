@@ -6,6 +6,6 @@
 class Scene
 {
 public:
-	void initScene();
+	virtual void initScene();
 };
 #endif

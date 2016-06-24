@@ -14,6 +14,7 @@ public:
 	Animation(VisibleObject* host, int duration);
 	static Animation* create(VisibleObject* host, int duration);
 	virtual void getCmdQueue() override;
+	void setFrames(int frames);
 private:
 	int frames;
 };
@@ -25,6 +26,7 @@ class AnimationCommand: public Command
 {
 public:
 	AnimationCommand(int aIndex);
+	virtual Command* clone() { return new AnimationCommand(*this); }
 	virtual void apply(VisibleObject* vo);
 private:
 	int index;

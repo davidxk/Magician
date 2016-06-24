@@ -51,6 +51,12 @@ void VisibleObject::runAction(Action* action)
 	aManager->addAction( action );
 }
 
+void VisibleObject::runActionWithObject(Object* obj)
+{
+	Action* action = (Action*) obj;
+	runAction( action );
+}
+
 void VisibleObject::pauseActions()
 {
 	aManager->pauseHost( this );

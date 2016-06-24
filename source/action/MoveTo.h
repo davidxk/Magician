@@ -14,7 +14,7 @@ public:
 	MoveTo(VisibleObject* host, int duration, Coord aFrom, Coord aDest);
 	static MoveTo* create(int duration, Coord aFrom, Coord aDest);
 	static MoveTo* create(VisibleObject* host, int duration, Coord aDest);
-	virtual MoveTo* clone() const override;
+	virtual Action* clone() const override;
 	virtual void initWithHost(VisibleObject* host) override;
 	virtual void getCmdQueue() override;
 protected:
@@ -29,6 +29,7 @@ class MoveToCommand: public Command
 {
 public:
 	MoveToCommand(Coord aPos);
+	virtual Command* clone() { return new MoveToCommand(*this); }
 	virtual void apply(VisibleObject* vo);
 private:
 	Coord pos;

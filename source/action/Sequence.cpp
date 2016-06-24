@@ -7,7 +7,7 @@ Sequence::Sequence(Action* action_a, Action* action_b):
 	cmdQueue = action_a->cmdQueue;
 	while( !action_b->cmdQueue.empty() )
 	{
-		cmdQueue.push( action_b->cmdQueue.front() );
+		cmdQueue.push( action_b->cmdQueue.front()->clone() );
 		action_b->cmdQueue.pop();
 	}
 

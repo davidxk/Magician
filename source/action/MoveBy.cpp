@@ -9,7 +9,7 @@ MoveBy::MoveBy(VisibleObject* host, int duration, Coord aVect):
 	getCmdQueue();
 }
 
-MoveBy* MoveBy::clone() const
+Action* MoveBy::clone() const
 {
 	return new MoveBy(*this);
 }
@@ -27,12 +27,12 @@ MoveBy* MoveBy::create(int duration, Coord aVect)
 void MoveBy::getCmdQueue()
 {
 	int steps = duration / TimeService::TIME_UNIT;
-	cmdQueue.push( MoveByCommand( Coord(0, 0) ) );
+	cmdQueue.push( new MoveByCommand( Coord(0, 0) ) );
 	Coord prev(0, 0);
 	for(int i=1; i<=steps; i++)
 	{
 		Coord next = vect * i / steps;
-		cmdQueue.push( MoveByCommand(next-prev) );
+		cmdQueue.push( new MoveByCommand(next-prev) );
 		prev = next;
 	}
 }

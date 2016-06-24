@@ -11,8 +11,7 @@ public:
 	void addObject(VisibleObject* object);
 	//void addObject(VisibleObject* object, ...);
 	void runAction(Action* action);
-	void scheduleAction(Action* action, int timepoint);
-	void scheduleActionAfter(Action* action, int period);
+	void scheduleAction(Action* action, int period);
 	void pauseActions();
 	void resumeActions();
 	vector<VisibleObject*> objList;

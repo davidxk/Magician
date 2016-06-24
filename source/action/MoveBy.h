@@ -9,7 +9,7 @@ class MoveBy: public Action
 {
 public:
 	MoveBy(VisibleObject* host, int duration, Coord aVect);
-	virtual MoveBy* clone() const override;
+	virtual Action* clone() const override;
 	static MoveBy* create(VisibleObject* host, int duration, Coord aVect);
 	static MoveBy* create(int duration, Coord aVect);
 	virtual void getCmdQueue() override;
@@ -24,6 +24,7 @@ class MoveByCommand: public Command
 {
 public:
 	MoveByCommand(Coord aBy);
+	virtual Command* clone() { return new MoveByCommand(*this); }
 	virtual void apply(VisibleObject* vo);
 private:
 	Coord by;

@@ -23,10 +23,10 @@ Repeat::Repeat(Action* action, int aTimes):
 	//add function here perhaps
 	for(int i=1; i<aTimes; i++)
 	{
-		queue<Command> tmp = action->cmdQueue;
+		queue<Command*> tmp = action->cmdQueue;
 		while( !tmp.empty() )
 		{
-			cmdQueue.push( tmp.front() );
+			cmdQueue.push( tmp.front()->clone() );
 			tmp.pop();
 		}
 	}

@@ -25,7 +25,7 @@ typedef vector<ImageLine> Image;
 class ImageUtil
 {
 public:
-	static ImageLine str2ImageLine(const string& str, Color foreColor = 0, Color backColor = 7);
+	static ImageLine str2ImageLine(const string& str, Color foreColor = 7, Color backColor = 0);
 	static string ImageLine2str(const ImageLine& line);
 };
 #endif

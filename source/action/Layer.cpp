@@ -24,7 +24,7 @@ void Layer::runAction(Action* action)
 	delete action;
 }
 
-void Layer::scheduleAction(Action* action, int timepoint)
+void Layer::scheduleAction(Action* action, int period)
 {
 	for(const auto& obj: objList)
 	{
@@ -33,15 +33,11 @@ void Layer::scheduleAction(Action* action, int timepoint)
 		copy->setHost( obj );
 		copy->initWithHost( obj );
 		//Schedule runAction(Action*) with argument
-		//auto scheduledAction = std::bind(&VisibleObject::runAction, obj);
-		//gScheduler->scheduleAfter( scheduledAction, timepoint );
+		function<void(Object*)> scheduledAction = std::bind(
+				&VisibleObject::runActionWithObject, obj, placeholders::_1);
+		gScheduler->schedule( scheduledAction, copy, period );
 	}
 	delete action;
-}
-
-void Layer::scheduleActionAfter(Action* action, int period)
-{
-	scheduleAction( action, period + TimeService::getTime() );
 }
 
 void Layer::pauseActions()

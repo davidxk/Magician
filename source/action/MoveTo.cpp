@@ -10,6 +10,11 @@ MoveTo::MoveTo(VisibleObject* host, int duration, Coord aFrom, Coord aDest):
 	if( host ) getCmdQueue();
 }
 
+Action* MoveTo::clone() const
+{
+	return new MoveTo(*this);
+}
+
 MoveTo* MoveTo::create(VisibleObject* host, int duration, Coord aDest)
 {
 	assert( host );
@@ -19,11 +24,6 @@ MoveTo* MoveTo::create(VisibleObject* host, int duration, Coord aDest)
 MoveTo* MoveTo::create(int duration, Coord aFrom, Coord aDest)
 {
 	return new MoveTo(NULL, duration, aFrom, aDest);
-}
-
-MoveTo* MoveTo::clone() const
-{
-	return new MoveTo(*this);
 }
 
 void MoveTo::initWithHost(VisibleObject* host)
@@ -39,12 +39,12 @@ void MoveTo::getCmdQueue()
 	//get vector segments from a whole vector
 	//(next-from) / (dest-from) = i / (duration / time_unit)
 	int steps = duration / TimeService::TIME_UNIT;
-	//cmdQueue.push( MoveToCommand(from) );
+	cmdQueue.push( new MoveToCommand(from) );
 	Coord prev = from;
 	for(int i=1; i<=steps; i++)
 	{
 		Coord next = (dest-from) * i / steps + from;
-		cmdQueue.push( MoveByCommand( next-prev ) );
+		cmdQueue.push( new MoveByCommand( next-prev ) );
 		prev = next;
 	}
 }

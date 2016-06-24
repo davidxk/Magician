@@ -26,12 +26,16 @@ void Animation::getCmdQueue()
 	{
 		if( i/cycle == frames ) break;
 		if( i % cycle == 0 )
-			cmdQueue.push( AnimationCommand( i/cycle ) );
+			cmdQueue.push( new AnimationCommand( i/cycle ) );
 		else 
-			cmdQueue.push( Command() );
+			cmdQueue.push( new Command() );
 	}
 }
 
+void Animation::setFrames(int frames)
+{
+	this->frames = frames;
+}
 
 
 

@@ -12,6 +12,8 @@ int TimeService::cntTime = 0;
 void TimeService::gameBegin()
 {
 	begin = chrono::system_clock::now();
+	cntCycle = 0;
+	cntTime = 0;
 }
 
 void TimeService::updateTime()

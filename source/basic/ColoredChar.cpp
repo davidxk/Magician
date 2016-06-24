@@ -12,7 +12,7 @@ bool ColoredChar::operator==(const ColoredChar& cchar) const
 bool ColoredChar::operator!=(const ColoredChar& cchar) const
 {
 	return ch != cchar.ch || foreColor != cchar.foreColor ||
-	   backColor == cchar.backColor;
+	   backColor != cchar.backColor;
 }
 
 

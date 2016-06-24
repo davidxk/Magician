@@ -28,11 +28,13 @@ class VanishCommand: public Command
 {
 public:
 	virtual void apply(VisibleObject* vo);
+	virtual Command* clone() { return new VanishCommand(*this); }
 };
 
 class AppearCommand: public Command
 {
 public:
 	virtual void apply(VisibleObject* vo);
+	virtual Command* clone() { return new AppearCommand(*this); }
 };
 #endif

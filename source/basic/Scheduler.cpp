@@ -1,33 +1,59 @@
 #include "basic/Scheduler.h"
 #include "basic/TimeService.h"
 
-void Scheduler::schedule(function<void ()> func, int timepoint)
+void Scheduler::schedule(function<void ()> func, int period)
 {
-	lock_guard<mutex> lock(mtx);
+	//lock_guard<mutex> lock(mtx);
+	int timepoint = period + TimeService::getTime();
 	int cycle = timepoint / TimeService::TIME_UNIT;
-	if (scheduleList.find(cycle) != scheduleList.end())
-		scheduleList[ cycle ].push_back( func );
+	if (voidList.find(cycle) != voidList.end())
+		voidList[ cycle ].push_back( func );
 	else 
 	{
 		vector<function<void()> > tmp;
 		tmp.push_back( func );
-		scheduleList.emplace( cycle, tmp );
+		voidList.emplace( cycle, tmp );
 	}
 }
 
 void Scheduler::scheduleAfter(function<void ()> func, int period)
 {
-	schedule( func, period + TimeService::getTime() );
+	schedule( func, period );
+}
+
+void Scheduler::schedule(function<void (Object*)> func, Object* arg, int period)
+{
+	//lock_guard<mutex> lock(mtx);
+	FunctionWithArg funcWithArg;
+	funcWithArg.func = func, funcWithArg.arg = arg;
+
+	int timepoint = period + TimeService::getTime();
+	int cycle = period / TimeService::TIME_UNIT;
+	if (objList.find(cycle) != objList.end())
+		objList[ cycle ].push_back( funcWithArg );
+	else 
+	{
+		vector<FunctionWithArg> tmp;
+		tmp.push_back( funcWithArg );
+		objList.emplace( cycle, tmp );
+	}
 }
 
 void Scheduler::checkSchedule()
 {
-	lock_guard<mutex> lock(mtx);
+	//lock_guard<mutex> lock(mtx);
 	int cntCycle = TimeService::getCycle();
-	if(scheduleList.find(cntCycle) != scheduleList.end())
+	if(voidList.find(cntCycle) != voidList.end())
 	{
-		for(const auto& func: scheduleList[cntCycle])
+		for(const auto& func: voidList[cntCycle])
 			func();
-		scheduleList.erase( cntCycle );
+		voidList.erase( cntCycle );
+	}
+	else if(objList.find(cntCycle) != objList.end())
+	{
+		for(const auto& funcWithArg: objList[cntCycle])
+			if( funcWithArg.func )
+				funcWithArg.func( funcWithArg.arg );
+		objList.erase( cntCycle );
 	}
 }

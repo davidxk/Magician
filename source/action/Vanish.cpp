@@ -13,7 +13,7 @@ Vanish* Vanish::create(VisibleObject* host)
 
 void Vanish::getCmdQueue()
 {
-	cmdQueue.push( VanishCommand() );
+	cmdQueue.push( new VanishCommand() );
 }
 
 
@@ -32,7 +32,7 @@ Appear* Appear::create(VisibleObject* host)
 
 void Appear::getCmdQueue()
 {
-	cmdQueue.push( AppearCommand() );
+	cmdQueue.push( new AppearCommand() );
 }
 
 

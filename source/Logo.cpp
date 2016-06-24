@@ -3,7 +3,7 @@
 #include <chrono>
 #include <thread>
 
-Logo::Logo()
+void Logo::initScene()
 {
 	initHat();
 	auto animGo = std::bind(&Logo::initAnim, this);
@@ -71,7 +71,7 @@ void Logo::logoFlyIn()
 
 void Logo::scheduleTransition()
 {
-	int sleepTime = getTotalTime();
-	std::this_thread::sleep_for( std::chrono::milliseconds(sleepTime) );
-	Transition::releasePrev();
+	//int sleepTime = getTotalTime();
+	//std::this_thread::sleep_for( std::chrono::milliseconds(sleepTime) );
+	//Transition::releasePrev();
 }

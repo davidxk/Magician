@@ -14,10 +14,10 @@ public:
 	void cleanupScene(Scene* scene);
 	void end();
 	~MainLoop();
+	void loopScene();
 
 	DisplayCentral dc;
 private:
-	void loopScene();
 	void update();
 	void checkMsg();
 	Scene* runningScene;

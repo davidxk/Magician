@@ -2,22 +2,23 @@
 #define _ACTION_H_
 
 #include "action/Command.h"
+#include "basic/Object.h"
 #include "display/VisibleObject.h"
 #include <queue>
 
 //Action is the base class for all actions
 //Action base class provides basic services for all actions
-class Action
+class Action: public Object
 {
 public:
 	VisibleObject* host;
 	int duration;
 	bool isRepeat;
 	bool isPause;
-	std::queue<Command> cmdQueue;
+	std::queue<Command*> cmdQueue;
 
 	Action(VisibleObject* aHost, int aDuration, bool aIsRepeat = false);
-	virtual Action* clone() const { return NULL; };
+	virtual Action* clone() const;
 	void pause();
 	void resume();
 	void stop();

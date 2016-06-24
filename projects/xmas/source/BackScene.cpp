@@ -10,7 +10,7 @@ void BackScene::initScene()
 	frame->setPos( Coord(1, 0) );
 	vManager->addObject( frame );
 
-	const int sleepTime = 7000;
+	const int sleepTime = 1000; //7000
 
 	//const int num39 = ConsoleCoord::MAX_COLUMN / 2;
 	//const int num11 = ConsoleCoord::MAX_LINES / 2;

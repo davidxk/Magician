@@ -7,7 +7,7 @@
 class HelloWorld: public Scene
 {
 public:
-	void initScene();
+	virtual void initScene();
 private:
 	void playBGM();
 	void changeScene();

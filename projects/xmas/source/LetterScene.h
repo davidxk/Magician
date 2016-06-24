@@ -7,6 +7,6 @@
 class LetterScene: public Scene
 {
 public:
-	void initScene();
+	virtual void initScene();
 };
 #endif

@@ -1,12 +1,12 @@
 ## Implicit Variable
 CXX=g++
-CXXFLAGS+=-std=c++11 
-TARFLAGS+=-std=c++11 -lncurses
+CXXFLAGS+=-std=c++11 -g3
+TARFLAGS+=-std=c++11 -lncurses -g3
 
 # Platform Specific
 tmp_2:=$(subst MciPlayer.cpp,,$(sources))
-tmp_3:=$(subst Logo.cpp,,$(tmp_2))
-tmp_4:=$(subst Magician.h,,$(tmp_3))
+#tmp_3:=$(subst Logo.cpp,,$(tmp_2))
+tmp_4:=$(subst Magician.h,,$(tmp_2))
 sources:=$(tmp_4) UnixPrinter.cpp
 
 ## .o & .d List

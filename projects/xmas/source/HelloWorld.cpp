@@ -13,7 +13,8 @@ void HelloWorld::initScene()
 	initSnowMan();
 	initShack();
 	initSanta();
-	initSnow();
+	auto snow = std::bind(&HelloWorld::initSnow, this);
+	gScheduler->schedule( snow, 1000 ); //5000
 
 	initLayerAction();
 
@@ -79,8 +80,6 @@ void HelloWorld::initShack()
 
 void HelloWorld::initSanta()
 {
-	Layer santaLayer;
-
 	Sprite* santa = Sprite::create("snowy/santa_sleigh.txt");
 	vManager->addObject( santa );
 	mainLayer.addObject( santa );
@@ -129,7 +128,6 @@ void HelloWorld::initSanta()
 
 void HelloWorld::initSnow()
 {
-	std::this_thread::sleep_for(std::chrono::seconds( 5 ));
 	addSnowScreen();
 	auto addSnowFunc = std::bind(&HelloWorld::addSnowScreen, this);
 	gScheduler->scheduleAfter( addSnowFunc, stdDure );
@@ -139,10 +137,10 @@ void HelloWorld::initSnow()
 void HelloWorld::initLayerAction()
 {
 	MoveBy* moveLeft = MoveBy::create( 5000, Coord::CoordXY(-65, 0));
-	mainLayer.scheduleActionAfter(moveLeft, lookRightPoint);
+	mainLayer.scheduleAction(moveLeft, lookRightPoint);
 
 	MoveBy* moveUp = MoveBy::create( 5000, Coord::CoordXY(0, 37));
-	mainLayer.scheduleActionAfter(moveUp, lookUpPoint);
+	mainLayer.scheduleAction(moveUp, lookUpPoint);
 }
 
 
@@ -168,7 +166,8 @@ void HelloWorld::addSnowFlake()
 
 	const int num24 = ConsoleCoord::MAX_LINES + 1;
 	const int distance = Random::randomRange(num24 * 2, num24 * 2.5);
-	MoveTo* mb = MoveTo::create( snowFlake, stdDure/num24*distance, 
+	Action* mb = MoveTo::create( snowFlake, stdDure/num24*distance, 
 			snowFlake->pos + Coord::CoordXY( 0, distance ) );
+	mb->isRepeat = true;
 	snowFlake->runAction( mb );
 }

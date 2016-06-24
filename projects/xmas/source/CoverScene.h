@@ -7,7 +7,7 @@
 class CoverScene: public Scene
 {
 public:
-	void initScene();
+	virtual void initScene();
 	void changeScene();
 };
 #endif

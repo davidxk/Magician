@@ -28,7 +28,7 @@ void Scheduler::schedule(function<void (Object*)> func, Object* arg, int period)
 	funcWithArg.func = func, funcWithArg.arg = arg;
 
 	int timepoint = period + TimeService::getTime();
-	int cycle = period / TimeService::TIME_UNIT;
+	int cycle = timepoint / TimeService::TIME_UNIT;
 	if (objList.find(cycle) != objList.end())
 		objList[ cycle ].push_back( funcWithArg );
 	else 

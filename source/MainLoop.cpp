@@ -40,7 +40,12 @@ void MainLoop::end()
 
 void MainLoop::loopScene()
 {
+	// Init
 	TimeService::gameBegin();
+	std::thread keyread( &KeyDispatcher::loop, &kd );
+	keyread.detach();
+
+	// Loop
 	while( !exitScene )
 	{
 		update();
@@ -62,6 +67,7 @@ void MainLoop::cleanupScene(Scene* scene)
 	sVisibleObjManager::release();
 	sActionManager::release();
 	sScheduler::release();
+	kd.clearStack();
 }
 
 MainLoop::~MainLoop()

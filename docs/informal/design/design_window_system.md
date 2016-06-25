@@ -7,6 +7,9 @@ Apparently, the interactive system is quite a complex one which encompasses a ra
 * The respond function of the KeyListener is called upon to respond to the given key stroke. A mapped function object is triggered in this very thread. (Scheduling the action on the clock thread is also considered. The implementation seems tricky) All data modification must be done with great caution of collapsing with other threads. 
 (A solution to this problem is to add lock to all read and write operations on all data. ) 
 
+##KeyListener
+KeyListener is the base class for all class that wishes to respond to key strokes. No user friendly function class has yet been defined for this scope. 
+
 ##Menu
 A Menu is a KeyListener. 
 A Menu is inited with an array of strings as its items. Its each item relates to a certain function. 

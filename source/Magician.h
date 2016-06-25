@@ -1,13 +1,13 @@
 #include "MainLoop.h"
+
+//Basics
 #include "basic/MagicianMacros.h"
 #include "basic/Random.h"
-
 #include "basic/Transition.h"
-
+//Audio
 #ifdef WIN
 #include "audio/MciPlayer.h"
 #endif
-
 //Sprites
 #include "visible/ImageLoader.h"
 #include "visible/DiaBox.h"
@@ -25,7 +25,8 @@
 //Layer
 #include "action/Layer.h"
 #include "basic/Scheduler.h"
+#include "control/KeyListener.h"
 #include "display/Scene.h"
-
+//Managers
 #include "action/ActionManager.h"
 #include "display/VisibleObjManager.h"

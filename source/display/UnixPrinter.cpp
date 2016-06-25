@@ -1,5 +1,5 @@
 #include "display/UnixPrinter.h"
-#include <curses.h>
+#include <ncurses.h>
 
 UnixPrinter::UnixPrinter()
 {

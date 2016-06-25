@@ -10,6 +10,7 @@
 + Printer->print(list<PrintJob>)
 + No user thread needed
 - KeyDispatcher implementation
+- scroll unfold animation
 - each scene with its own managers
 - rewrite tests
 - Window system design

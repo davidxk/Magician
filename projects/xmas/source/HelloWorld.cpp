@@ -6,6 +6,8 @@
 
 void HelloWorld::initScene()
 {
+	responder = new Responder();
+	gMainLoop->getKeyDispatcher()->pushListener( responder );
 	playBGM();
 	
 	//init Sprites with Animation
@@ -21,6 +23,11 @@ void HelloWorld::initScene()
 	auto trans = std::bind(&HelloWorld::changeScene, this);
 	gScheduler->schedule( trans, goOutPoint );
 	//Transition::releasePrev();
+}
+
+HelloWorld::~HelloWorld()
+{
+	delete responder;
 }
 
 void HelloWorld::playBGM()

@@ -3,7 +3,6 @@
 
 #include "display/Printer.h"
 #include "display/PrintJob.h"
-#include <curses.h>
 #include <vector>
 
 //UnixPrinter is a Unix implemention of Printer base-class

@@ -7,6 +7,6 @@ include ../game.mk
 ## Add main Entrance
 main=main.cpp 
 sources+=$(main)
-exec=game
+exec=game.exe
 
 include last.mk

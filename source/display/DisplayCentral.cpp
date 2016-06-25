@@ -65,8 +65,7 @@ vector<PrintJob> DisplayCentral::getDiff()
 
 void DisplayCentral::print(const vector<PrintJob>& jobList)
 {
-	for(const auto& it: jobList)
-		printer->print(it);
+	printer->print( jobList );
 }
 
 void DisplayCentral::verifyFrame(const Image& frame)

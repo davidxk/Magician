@@ -12,6 +12,28 @@ UnixPrinter::UnixPrinter()
 
 void UnixPrinter::print(PrintJob pj)
 {
+	virtualPrint( pj );
+	refresh();
+}
+
+void UnixPrinter::print(std::vector<PrintJob> jobList)
+{
+	for(const auto& it: jobList)
+		virtualPrint( it );
+	refresh();
+}
+
+UnixPrinter::~UnixPrinter()
+{
+	attroff(COLOR_PAIR(1));
+	endwin();
+}
+
+
+
+
+void UnixPrinter::virtualPrint(PrintJob pj)
+{
 	int xx = pj.cCoord.column;
 	int yy = pj.cCoord.line;
 	char ch = pj.graph.ch;
@@ -23,11 +45,4 @@ void UnixPrinter::print(PrintJob pj)
 	}
 
 	mvaddch(yy, xx, ch);
-	refresh();
-}
-
-UnixPrinter::~UnixPrinter()
-{
-	attroff(COLOR_PAIR(1));
-	endwin();
 }

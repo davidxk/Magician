@@ -25,7 +25,7 @@ public:
 	void resumeHost(VisibleObject* host);
 	~ActionManager();
 
-private:
+protected: // For testability
 	void verifyAction(Action* action);
 	list<Action*> actionList;
 	mutex mtx;

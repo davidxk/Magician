@@ -10,7 +10,7 @@
 + Printer->print(list<PrintJob>)
 + No user thread needed
 + KeyDispatcher implementation
-- rewrite tests
++ rewrite tests
 - design class Frame
 - Window system design
 - add feature zOrder

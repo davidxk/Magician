@@ -13,4 +13,23 @@ public:
 	static Sleep* create(VisibleObject* host, int duration);
 	void getCmdQueue();
 };
+
+class Wait: public Action
+{
+public:
+	Wait(VisibleObject* host, int duration);
+	static Wait* create(VisibleObject* host, int duration);
+	void getCmdQueue();
+};
+
+class WaitCommand: public Command
+{
+public:
+	WaitCommand(int cycles, Action* wait);
+	virtual void apply(VisibleObject* vo);
+	virtual Command* clone() { return new WaitCommand(*this); }
+private:
+	int cntCycle;
+	Action* action;
+};
 #endif

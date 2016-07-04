@@ -18,7 +18,7 @@ public:
 	void verify(Image& frame);
 	~VisibleObjManager();
 
-private:
+protected: // For testability
 	vector<VisibleObject*> objList;
 	mutex mtx;
 };

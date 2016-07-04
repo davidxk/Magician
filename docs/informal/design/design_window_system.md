@@ -15,6 +15,35 @@ A Menu is a KeyListener.
 A Menu is inited with an array of strings as its items. Its each item relates to a certain function. 
 A Menu base class defines the default action of up, down, forward and back keys. When a menu is created, it registers itself to the KeyDispatcher registration stack and popps itself out when destroyed. 
 
+###Functions
+* Render the image with box and labels
+* respond to key events
+* identify called item
+* highlight cursor item
+* define highlight color scheme
+
+###Implementation
+* Rendering: Local rendering as one image VS vManager central rendering as VOs
+* Highlight: Local highlight as one image VS item self-highlight
+
+The second choice suggest that an item should be composed of a label object. The same label object may related to class TextField. 
+The second choice appears to be the better design, for the highlighting part of function is simplified to identifying the called item and delegating the item to highlight itself. Vertical or Horizontal, the highlighting function is all the same. 
+In this design, mechanisms for vo grouping and zOrder feature is needed. 
+
+###Vertical Menu
+Behaviour:
+* DOWN: highlight next line, unhighlight prev line
+* UP  : highlight prev line, unhighlight next line
+* ENTR: trigger cur item
+* ESC : destroy Menu
+
+###Horizontal Menu
+Behaviour:
+* LEFT: highlight label to the left, unhighlight label to the right
+* RIGH: highlight label to the right, unhighlight label to the left
+* ENTR: trigger cur item
+* ESC : destroy Menu
+
 ##Table
 A Table is a VisibleObject. 
 A Table prints its contents in a given sized matrix. 

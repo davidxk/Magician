@@ -8,7 +8,7 @@ int main()
 	Scene* hello = new HelloWorld();
 	Scene* cover = new CoverScene();
 	Scene* logo = new Logo();
-	gMainLoop->runWithScene( cover );
+	gMainLoop->runWithScene( logo );
 
 	return 0;
 }

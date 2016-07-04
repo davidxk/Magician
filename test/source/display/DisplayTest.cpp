@@ -20,6 +20,7 @@ void DisplayTest::run()
 
 void DisplayTest::testSprite()
 {
+	// Test Sprite
 	Sprite* sp = Sprite::create("graph/moon.txt");
 	assert( sp->image.size() == 2 );
 	assert( sp->image[0].size()==4 );

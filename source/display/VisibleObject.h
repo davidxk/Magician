@@ -24,6 +24,8 @@ public:
 	bool isVisible;
 	bool inAction;
 	//bool isColored;
+
+public:
 	VisibleObject();
 	void verify();
 	void addToManager();

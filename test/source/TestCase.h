@@ -4,6 +4,7 @@
 #include <cassert>
 #include <iostream>
 
+// A Test Case tests on a class
 class TestCase
 {
 public:

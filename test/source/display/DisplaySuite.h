@@ -8,5 +8,6 @@ class DisplaySuite: public TestSuite
 {
 public:
 	DisplaySuite();
+	virtual std::string suiteName() override { return "Display"; }
 };
 #endif

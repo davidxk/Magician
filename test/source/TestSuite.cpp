@@ -3,11 +3,13 @@
 
 void TestSuite::runThisSuite()
 {
+	std::cout<<"Running test suite: "<<suiteName()<<std::endl;
 	for(const auto& it: testCases)
 	{
 		it->run();
-		std::cout<<"Finish running case: "<<it->testName()<<std::endl;
+		std::cout<<"+ Finish running case: "<<it->testName()<<std::endl;
 	}
+	std::cout<<std::endl;
 }
 
 void TestSuite::addTestCase(TestCase* testcase)

@@ -14,7 +14,7 @@ class VisibleObjManager
 public:
 	Image getFrame();
 	void addObject(VisibleObject* object);
-	//in future versions, a frame will know how to verify itself
+	//in future versions, a frame will, perhaps, know how to verify itself
 	void verify(Image& frame);
 	~VisibleObjManager();
 

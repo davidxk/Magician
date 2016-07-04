@@ -17,7 +17,5 @@ public:
 	ConsoleCoord(int line = MIN_LINES, int column = MIN_COLUMN);
 	void setLine(int line);
 	void setColume(int column);
-	ConsoleCoord operator+(const ConsoleCoord& cc);
-	ConsoleCoord operator+(const Size& cc);
 };
 #endif

@@ -19,6 +19,17 @@ public:
 	bool operator!=(const ColoredChar& cchar) const;
 };
 
+
+
+
+//ColorPair defines a foreground and background color pair for printing
+class ColorPair
+{
+public:
+	Color foreColor;
+	Color backColor;
+};
+
 typedef vector<ColoredChar> ImageLine;
 typedef vector<ImageLine> Image;
 

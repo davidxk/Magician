@@ -1,7 +1,11 @@
 #include "display/DisplaySuite.h"
-#include "display/DisplayTest.h"
+#include "display/DisplayCentralTest.h"
+#include "display/VisibleObjectTest.h"
+#include "display/VisibleObjManagerTest.h"
 
 DisplaySuite::DisplaySuite()
 {
-	addTestCase(new DisplayTest);
+	addTestCase(new DisplayCentralTest);
+	addTestCase(new VisibleObjectTest);
+	addTestCase(new VisibleObjManagerTest);
 }

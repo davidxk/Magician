@@ -8,7 +8,10 @@ Apparently, the interactive system is quite a complex one which encompasses a ra
 (A solution to this problem is to add lock to all read and write operations on all data. ) 
 
 ##KeyListener
-KeyListener is the base class for all class that wishes to respond to key strokes. No user friendly function class has yet been defined for this scope. 
+KeyListener is an interface that all key respondent class should implement.
+
+##Cursor
+A Cursor object is a sprite that moves as controled by "awsd" keys. It is used to select objects on the screen. 
 
 ##Menu
 A Menu is a KeyListener. 

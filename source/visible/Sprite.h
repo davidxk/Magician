@@ -9,7 +9,7 @@ class Sprite: public VisibleObject
 public:
 	static Sprite* create(const string& fileName);
 	Sprite() { }
-private:
+protected:
 	Sprite(const string& fileName);
 };
 #endif

@@ -7,6 +7,6 @@ typedef char Key;
 class KeyListener
 {
 public:
-	virtual void respond(Key key);
+	virtual void respond(Key key) = 0;
 };
 #endif

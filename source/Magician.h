@@ -26,6 +26,8 @@
 #include "action/Layer.h"
 #include "basic/Scheduler.h"
 #include "control/KeyListener.h"
+#include "control/AnimCursor.h"
+#include "control/Cursor.h"
 #include "display/Scene.h"
 //Managers
 #include "action/ActionManager.h"

@@ -27,7 +27,14 @@ void VisibleObject::addToManager()
 
 void VisibleObject::setPos(const Coord cc)
 {
+	//lock_guard<mutex> lock(mtx);
 	this->pos = cc;
+}
+
+Coord VisibleObject::getPos() const
+{
+	//lock_guard<mutex> lock(mtx);
+	return pos;
 }
 
 void VisibleObject::setCenterPos(const Coord cc)

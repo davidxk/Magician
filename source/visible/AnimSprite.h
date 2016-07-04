@@ -15,7 +15,7 @@ public:
 
 	vector<Image> batch;
 
-private:
+protected:
 	AnimSprite(const string& fileName);
 };
 #endif

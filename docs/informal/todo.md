@@ -11,6 +11,8 @@
 + No user thread needed
 + KeyDispatcher implementation
 + rewrite tests
+- node system
+- transparent color
 - design class Frame
 - Window system design
 - add feature zOrder

@@ -5,9 +5,7 @@
 #include "basic/ConsoleCoord.h"
 #include "basic/Coord.h"
 #include "basic/Object.h"
-#include <vector>
-#include <string>
-using namespace std;
+#include <mutex>
 
 class Action;
 
@@ -24,12 +22,14 @@ public:
 	bool isVisible;
 	bool inAction;
 	//bool isColored;
+	mutex mtx;
 
 public:
 	VisibleObject();
 	void verify();
 	void addToManager();
 	void setPos(const Coord cc);
+	Coord getPos() const;
 	void setCenterPos(const Coord cc);
 	void updateCenter();
 

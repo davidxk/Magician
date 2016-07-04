@@ -24,6 +24,8 @@ Box.cpp \
 Command.cpp \
 Singleton.cpp \
 Transition.cpp \
+AnimCursor.cpp \
+Cursor.cpp \
 KeyDispatcher.cpp \
 KeyListener.cpp \
 VisibleObject.cpp \

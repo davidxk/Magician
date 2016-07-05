@@ -1,5 +1,4 @@
 #include "display/VisibleObject.h"
-
 #include <cassert>
 #include "action/ActionManager.h"
 #include "display/VisibleObjManager.h"
@@ -49,6 +48,27 @@ void VisibleObject::updateCenter()
 
 
 
+
+void VisibleObject::setForeColor(Color foreColor)
+{
+	for(auto& line: image)
+		for(auto& cchar: line)
+			cchar.setForeColor( foreColor );
+}
+
+void VisibleObject::setBackColor(Color backColor)
+{
+	for(auto& line: image)
+		for(auto& cchar: line)
+			cchar.setBackColor( backColor );
+}
+
+void VisibleObject::setColor(Color foreColor, Color backColor)
+{
+	for(auto& line: image)
+		for(auto& cchar: line)
+			cchar.setColor( foreColor, backColor );
+}
 
 void VisibleObject::runAction(Action* action)
 {

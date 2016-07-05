@@ -32,6 +32,9 @@ public:
 	Coord getPos() const;
 	void setCenterPos(const Coord cc);
 	void updateCenter();
+	void setForeColor(Color foreColor);
+	void setBackColor(Color backColor);
+	void setColor(Color foreColor, Color backColor);
 
 	void runAction(Action* action);
 	void runActionWithObject(Object* obj);

@@ -12,12 +12,12 @@
 + KeyDispatcher implementation
 + rewrite tests
 - node system
+- each scene with its own managers
 - transparent color
 - design class Frame
 - Window system design
 - add feature zOrder
 - scroll unfold animation
-- each scene with its own managers
 
 #Makefile compatibility
 * add makewin directory with win.mk adding WinPrinter to $(sources)

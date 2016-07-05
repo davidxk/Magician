@@ -3,6 +3,22 @@
 ColoredChar::ColoredChar(char aCh, Color aForeColor, Color aBackColor):
 	ch( aCh ), foreColor(aForeColor), backColor(aBackColor) { }
 
+void ColoredChar::setForeColor(Color foreColor)
+{
+	this->foreColor = foreColor;
+}
+
+void ColoredChar::setBackColor(Color backColor)
+{
+	this->backColor = backColor;
+}
+
+void ColoredChar::setColor(Color foreColor, Color backColor)
+{
+	this->foreColor = foreColor;
+	this->backColor = backColor;
+}
+
 bool ColoredChar::operator==(const ColoredChar& cchar) const
 {
 	return ch == cchar.ch && foreColor == cchar.foreColor &&

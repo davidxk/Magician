@@ -1,42 +1,56 @@
 #include "display/Node.h"
 #include "action/ActionManager.h"
 
-void Node::setPos(const Coord cc)
-{
-	VisibleObject::setPos( cc );
+Node::Node(): parent(NULL), zOrder(0), inAction(false) { }
 
-	Coord delta = cc - pos;
+Node::~Node()
+{
+	for(const auto& child: children)
+		delete child;
+}
+
+void Node::movePos(const Coord delta)
+{
+	pos += delta;
 	for(auto& child: children)
 		child->movePos( delta );
+}
+
+
+
+
+void Node::setPos(const Coord cc)
+{
+	Coord delta = cc - pos;
+	movePos( delta );
 }
 
 void Node::setForeColor(Color foreColor)
 {
 	VisibleObject::setForeColor( foreColor );
-	for(auto& child: children)
+	for(const auto& child: children)
 		child->setForeColor( foreColor );
 }
 
 void Node::setBackColor(Color backColor)
 {
 	VisibleObject::setBackColor( backColor );
-	for(auto& child: children)
+	for(const auto& child: children)
 		child->setBackColor( backColor );
 }
 
 void Node::setColor(Color foreColor, Color backColor)
 {
 	VisibleObject::setColor( foreColor, backColor );
-	for(auto& child: children)
+	for(const auto& child: children)
 		child->setColor( foreColor, backColor );
 }
 
-
-
-
-void Node::movePos(const Coord cc)
+void Node::highlight()
 {
-	pos += cc;
+	VisibleObject::highlight();
+	for(const auto& child: children)
+		child->highlight();
 }
 
 
@@ -52,6 +66,26 @@ int Node::getZOrder() const
 	return zOrder;
 }
 
+void Node::setInAction(bool inAction)
+{
+	this->inAction = inAction;
+}
+
+bool Node::getInAction() const
+{
+	return inAction;
+}
+
+void Node::setParent(Node* node)
+{
+	this->parent = node;
+}
+
+Node* Node::getParent() const
+{
+	return parent;
+}
+
 void Node::setName(const std::string& name)
 {
 	this->name = name;
@@ -61,6 +95,9 @@ std::string Node::getName() const
 {
 	return name;
 }
+
+
+
 
 Node* Node::findChildByName(const std::string& name)
 {
@@ -83,32 +120,29 @@ void Node::removeChildByName(const std::string& name)
 
 void Node::addChild(Node* node)
 {
-	//children.push_back( node );
-	for(auto it = children.begin(); it != children.end(); it++)
+	if( children.empty() || node->getZOrder() >= children.back()->getZOrder())
+		children.push_back( node );
+	else for(auto it = children.begin(); it != children.end(); it++)
 		if((*it)->getZOrder() > node->getZOrder())
+		{
 			children.insert( it, node );
+			break;
+		}
+
 	node->setParent( this );
 }
 
-void Node::removeChild(Node* node)
+void Node::removeChild(Node* node, bool cleanup)
 {
 	children.remove( node );
 	node->setParent( NULL );
+	if( cleanup )
+		delete node;
 }
 
 list<Node*> Node::getChildren() const
 {
 	return children;
-}
-
-void Node::setParent(Node* node)
-{
-	this->parent = node;
-}
-
-Node* Node::getParent() const
-{
-	return parent;
 }
 
 

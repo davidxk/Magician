@@ -39,12 +39,12 @@ void Appear::getCmdQueue()
 
 
 //VanishCommand
-void VanishCommand::apply(Node* vo)
+void VanishCommand::apply(Node* node)
 {
-	vo->isVisible = false;
+	node->setIsVisible( false );
 }
 
-void AppearCommand::apply(Node* vo)
+void AppearCommand::apply(Node* node)
 {
-	vo->isVisible = true;
+	node->setIsVisible( true );
 }

@@ -18,7 +18,7 @@ Action* MoveTo::clone() const
 MoveTo* MoveTo::create(Node* host, int duration, Coord aDest)
 {
 	assert( host );
-	return new MoveTo(host, duration, host->pos, aDest);
+	return new MoveTo(host, duration, host->getPos(), aDest);
 }
 
 MoveTo* MoveTo::create(int duration, Coord aFrom, Coord aDest)
@@ -29,7 +29,7 @@ MoveTo* MoveTo::create(int duration, Coord aFrom, Coord aDest)
 void MoveTo::initWithHost(Node* host)
 {
 	assert( host );
-	this->from = host->pos;
+	this->from = host->getPos();
 	while( !cmdQueue.empty() ) cmdQueue.pop();
 	getCmdQueue();
 }
@@ -55,7 +55,7 @@ void MoveTo::getCmdQueue()
 //MoveToCommand
 MoveToCommand::MoveToCommand(Coord aPos): pos(aPos) { }
 
-void MoveToCommand::apply(Node* vo)
+void MoveToCommand::apply(Node* node)
 {
-	vo->pos = pos;
+	node->setPos( pos );
 }

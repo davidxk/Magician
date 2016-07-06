@@ -4,7 +4,7 @@
 #include "display/VisibleObjManager.h"
 
 VisibleObject::VisibleObject():
-	zOrder(0), isVisible(true), inAction(false) { }
+	isVisible(true) { }
 
 void VisibleObject::verify()
 {
@@ -41,6 +41,31 @@ void VisibleObject::setCenterPos(const Coord cc)
 	setPos( cc - center );
 }
 
+Coord VisibleObject::getCenterPos() const
+{
+	return center;
+}
+
+void VisibleObject::setIsVisible(bool isVisible)
+{
+	this->isVisible = isVisible;
+}
+
+bool VisibleObject::getIsVisible() const
+{
+	return isVisible;
+}
+
+Image VisibleObject::getImage() const
+{
+	return image;
+}
+
+Size VisibleObject::getSize() const
+{
+	return size;
+}
+
 void VisibleObject::updateCenter()
 {
 	center = ( pos + size )/2;
@@ -68,4 +93,11 @@ void VisibleObject::setColor(Color foreColor, Color backColor)
 	for(auto& line: image)
 		for(auto& cchar: line)
 			cchar.setColor( foreColor, backColor );
+}
+
+void VisibleObject::highlight()
+{
+	for(auto& line: image)
+		for(auto& cchar: line)
+			cchar.setColor( 7-cchar.foreColor, 7-cchar.backColor );
 }

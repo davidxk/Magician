@@ -1,4 +1,6 @@
 #include "display/NodeManager.h"
+#include <cassert>
+#include <cmath>
 
 Image NodeManager::getFrame(const Node* node)
 {
@@ -7,13 +9,6 @@ Image NodeManager::getFrame(const Node* node)
 
 	verify( frame );
 	return frame;
-}
-
-void NodeManager::releaseTree(const Node* node)
-{
-	for(const auto& child: node->getChildren())
-		releaseTree( child );
-	delete node;
 }
 
 void NodeManager::paintTree(const Node* node, Image& frame)
@@ -25,9 +20,9 @@ void NodeManager::paintTree(const Node* node, Image& frame)
 
 void NodeManager::paintNode(const VisibleObject* obj, Image& frame)
 {
-	if( !node->isVisible ) return;
-	Coord lower = obj->pos;
-	Coord upper = obj->pos + obj->size;
+	if( !obj->getIsVisible() ) return;
+	Coord lower = obj->getPos();
+	Coord upper = obj->getPos() + obj->getSize();
 	int lineLower = (int)fmax( ConsoleCoord::MIN_LINES, lower.line );
 	int lineUpper = (int)fmin( ConsoleCoord::MAX_LINES+1, upper.line );
 	int colLower = (int)fmax( ConsoleCoord::MIN_COLUMN, lower.column );
@@ -35,7 +30,7 @@ void NodeManager::paintNode(const VisibleObject* obj, Image& frame)
 
 	for(int i=lineLower; i<lineUpper; i++)
 		for(int j=colLower; j<colUpper; j++)
-			frame[i][j] = obj->image[ i-lower.line ]
+			frame[i][j] = obj->getImage()[ i-lower.line ]
 				[ j-lower.column ];
 }
 

@@ -11,14 +11,12 @@
 //VisibleObject base class is a fundamental data structure
 class VisibleObject: public Object
 {
-public:
+protected:
 	Coord pos;
 	Coord center;
 	Size size;
 	Image image;
-	int zOrder;
 	bool isVisible;
-	bool inAction;
 	//bool isColored;
 	mutex mtx;
 
@@ -28,10 +26,17 @@ public:
 	void addToManager();
 	Coord getPos() const;
 	void setCenterPos(const Coord cc);
+	Coord getCenterPos() const;
+	void setIsVisible(bool isVisible);
+	bool getIsVisible() const;
+	Image getImage() const;
+	Size getSize() const;
 	void updateCenter();
+
 	virtual void setPos(const Coord cc);
 	virtual void setForeColor(Color foreColor);
 	virtual void setBackColor(Color backColor);
 	virtual void setColor(Color foreColor, Color backColor);
+	virtual void highlight();
 };
 #endif

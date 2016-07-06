@@ -9,3 +9,6 @@ A Layer provides the following operations:
 * run action
 * set position
 * schedule action
+
+#Memory Management
+Memory Management is useful because there is absolutely no way to know if a pointer has been freed. So I might want to try smart pointer in the future. 

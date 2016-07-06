@@ -40,6 +40,7 @@ TimeService.cpp \
 ActionManager.cpp \
 DisplayCentral.cpp \
 Node.cpp \
+NodeManager.cpp \
 Printer.cpp \
 Scene.cpp \
 VisibleObject.cpp \

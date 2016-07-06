@@ -26,10 +26,10 @@ Image VisibleObjManager::getFrame()
 
 	for(const auto& obj: objList)
 	{
-		if( !obj->isVisible ) continue;
+		if( !obj->getIsVisible() ) continue;
 
-		Coord lower = obj->pos;
-		Coord upper = obj->pos + obj->size;
+		Coord lower = obj->getPos();
+		Coord upper = obj->getPos() + obj->getSize();
 		int lineLower = (int)fmax( ConsoleCoord::MIN_LINES, lower.line );
 		int lineUpper = (int)fmin( ConsoleCoord::MAX_LINES+1, upper.line );
 		int colLower = (int)fmax( ConsoleCoord::MIN_COLUMN, lower.column );
@@ -37,7 +37,7 @@ Image VisibleObjManager::getFrame()
 
 		for(int i=lineLower; i<lineUpper; i++)
 			for(int j=colLower; j<colUpper; j++)
-				frame[i][j] = obj->image[ i-lower.line ]
+				frame[i][j] = obj->getImage()[ i-lower.line ]
 					[ j-lower.column ];
 	}
 	verify( frame );

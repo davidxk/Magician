@@ -24,7 +24,7 @@ void Action::stop()
 {
 	while( !cmdQueue.empty() )
 		cmdQueue.pop();
-	host->inAction = false;
+	host->setInAction( false );
 }
 
 

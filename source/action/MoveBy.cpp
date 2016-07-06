@@ -43,7 +43,7 @@ void MoveBy::getCmdQueue()
 //MoveByCommand
 MoveByCommand::MoveByCommand(Coord aBy): by(aBy) { }
 
-void MoveByCommand::apply(Node* vo)
+void MoveByCommand::apply(Node* node)
 {
-	vo->pos += by;
+	node->movePos( by );
 }

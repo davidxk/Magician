@@ -10,7 +10,6 @@ class NodeManager
 {
 public:
 	Image getFrame(const Node* node);
-	void releaseTree(const Node* node);
 protected:
 	void paintTree(const Node* node, Image& frame);
 	void paintNode(const VisibleObject* obj, Image& frame);

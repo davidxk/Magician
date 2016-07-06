@@ -10,7 +10,7 @@ void ActionManager::addAction(Action* action)
 	lock_guard<mutex> lock(mtx);
 	verifyAction( action );
 	actionList.push_back( action );
-	action->host->inAction = true;
+	action->host->setInAction( true );
 }
 
 void ActionManager::update()
@@ -23,7 +23,7 @@ void ActionManager::update()
 
 		if(action->cmdQueue.empty())
 		{
-			action->host->inAction = false;
+			action->host->setInAction( false );
 			delete action;
 			actionList.erase( it );
 			action = NULL;

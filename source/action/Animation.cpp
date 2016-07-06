@@ -3,7 +3,7 @@
 #include "basic/MagicianMacros.h"
 #include "visible/AnimSprite.h"
 
-Animation::Animation(VisibleObject* host, int duration):
+Animation::Animation(Node* host, int duration):
 	Action(host, duration)
 { 
 	AnimSprite* as = (AnimSprite*) host;
@@ -11,7 +11,7 @@ Animation::Animation(VisibleObject* host, int duration):
 	getCmdQueue();
 }
 
-Animation* Animation::create(VisibleObject* host, int duration)
+Animation* Animation::create(Node* host, int duration)
 {
 	return new Animation(host, duration);
 }
@@ -42,7 +42,7 @@ void Animation::setFrames(int frames)
 //AnimationCommand
 AnimationCommand::AnimationCommand(int aIndex): index(aIndex) { }
 
-void AnimationCommand::apply(VisibleObject* vo)
+void AnimationCommand::apply(Node* vo)
 {
 	//assert vo is AnimSprite* type
 	AnimSprite* as = (AnimSprite*) vo;

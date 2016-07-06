@@ -5,7 +5,7 @@
 #include "action/ActionManager.h"
 #include "basic/Scheduler.h"
 
-void Layer::addObject(VisibleObject* object)
+void Layer::addObject(Node* object)
 {
 	assert( object != NULL );
 	objList.push_back( object );
@@ -34,7 +34,7 @@ void Layer::scheduleAction(Action* action, int period)
 		copy->initWithHost( obj );
 		//Schedule runAction(Action*) with argument
 		function<void(Object*)> scheduledAction = std::bind(
-				&VisibleObject::runActionWithObject, obj, placeholders::_1);
+				&Node::runActionWithObject, obj, placeholders::_1);
 		gScheduler->schedule( scheduledAction, copy, period );
 	}
 	delete action;

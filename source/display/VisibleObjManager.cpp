@@ -22,12 +22,7 @@ void VisibleObjManager::addObject(VisibleObject* object)
 Image VisibleObjManager::getFrame()
 {
 	lock_guard<mutex> lock(mtx);
-	Image map;
-	map.resize( ConsoleCoord::MAX_LINES+1 );
-	for(int i=0; i<map.size(); i++)
-		map[i]=ImageUtil::str2ImageLine( string(ConsoleCoord::MAX_COLUMN+1,
-					' ') );
-	//verify( map );
+	Image frame = getEmptyFrame();
 
 	for(const auto& obj: objList)
 	{
@@ -38,15 +33,25 @@ Image VisibleObjManager::getFrame()
 		int lineLower = (int)fmax( ConsoleCoord::MIN_LINES, lower.line );
 		int lineUpper = (int)fmin( ConsoleCoord::MAX_LINES+1, upper.line );
 		int colLower = (int)fmax( ConsoleCoord::MIN_COLUMN, lower.column );
-		int colUpper = (int)fmin( ConsoleCoord::MAX_COLUMN+1, upper.column );
+		int colUpper = (int)fmin( ConsoleCoord::MAX_COLUMN+1,upper.column );
 
 		for(int i=lineLower; i<lineUpper; i++)
 			for(int j=colLower; j<colUpper; j++)
-				map[i][j] = obj->image[ i-lower.line ]
+				frame[i][j] = obj->image[ i-lower.line ]
 					[ j-lower.column ];
 	}
-	verify( map );
-	return map;
+	verify( frame );
+	return frame;
+}
+
+Image VisibleObjManager::getEmptyFrame()
+{
+	Image frame;
+	frame.resize( ConsoleCoord::MAX_LINES+1 );
+	for(int i=0; i<frame.size(); i++)
+		frame[i]=ImageUtil::str2ImageLine( 
+				string(ConsoleCoord::MAX_COLUMN+1, ' ') );
+	return frame;
 }
 
 void VisibleObjManager::verify(Image& frame)

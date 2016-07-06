@@ -1,6 +1,6 @@
 #include "action/Command.h"
 
-void Command::apply(VisibleObject* vo)
+void Command::apply(Node* vo)
 {
 
 }

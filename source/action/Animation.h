@@ -3,7 +3,7 @@
 
 #include "action/Action.h"
 #include "action/Command.h"
-#include "display/VisibleObject.h"
+#include "display/Node.h"
 #include "basic/Coord.h"
 
 //An Animation action asks the sprite to put on different frames
@@ -11,8 +11,8 @@
 class Animation: public Action
 {
 public:
-	Animation(VisibleObject* host, int duration);
-	static Animation* create(VisibleObject* host, int duration);
+	Animation(Node* host, int duration);
+	static Animation* create(Node* host, int duration);
 	virtual void getCmdQueue() override;
 	void setFrames(int frames);
 private:
@@ -27,7 +27,7 @@ class AnimationCommand: public Command
 public:
 	AnimationCommand(int aIndex);
 	virtual Command* clone() { return new AnimationCommand(*this); }
-	virtual void apply(VisibleObject* vo);
+	virtual void apply(Node* vo);
 private:
 	int index;
 };

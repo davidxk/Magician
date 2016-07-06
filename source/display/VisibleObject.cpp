@@ -69,27 +69,3 @@ void VisibleObject::setColor(Color foreColor, Color backColor)
 		for(auto& cchar: line)
 			cchar.setColor( foreColor, backColor );
 }
-
-void VisibleObject::runAction(Action* action)
-{
-	action->setHost( this );
-	if( action->host != this ) 
-		action->initWithHost( this );
-	aManager->addAction( action );
-}
-
-void VisibleObject::runActionWithObject(Object* obj)
-{
-	Action* action = (Action*) obj;
-	runAction( action );
-}
-
-void VisibleObject::pauseActions()
-{
-	aManager->pauseHost( this );
-}
-
-void VisibleObject::resumeActions()
-{
-	aManager->resumeHost( this );
-}

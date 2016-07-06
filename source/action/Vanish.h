@@ -8,8 +8,8 @@
 class Vanish: public Action
 {
 public:
-	Vanish(VisibleObject* host);
-	static Vanish* create(VisibleObject* host);
+	Vanish(Node* host);
+	static Vanish* create(Node* host);
 	void getCmdQueue();
 };
 
@@ -17,8 +17,8 @@ public:
 class Appear: public Action
 {
 public:
-	Appear(VisibleObject* host);
-	static Appear* create(VisibleObject* host);
+	Appear(Node* host);
+	static Appear* create(Node* host);
 	void getCmdQueue();
 };
 
@@ -27,14 +27,14 @@ public:
 class VanishCommand: public Command
 {
 public:
-	virtual void apply(VisibleObject* vo);
+	virtual void apply(Node* vo);
 	virtual Command* clone() { return new VanishCommand(*this); }
 };
 
 class AppearCommand: public Command
 {
 public:
-	virtual void apply(VisibleObject* vo);
+	virtual void apply(Node* vo);
 	virtual Command* clone() { return new AppearCommand(*this); }
 };
 #endif

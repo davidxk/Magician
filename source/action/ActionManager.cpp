@@ -16,19 +16,21 @@ void ActionManager::addAction(Action* action)
 void ActionManager::update()
 {
 	lock_guard<mutex> lock(mtx);
-	for(auto& action: actionList)
+	for(auto it = actionList.begin(); it != actionList.end(); it++)
 	{
+		Action* action = *it;
 		if(action->isPause) continue;
 
 		if(action->cmdQueue.empty())
 		{
 			action->host->inAction = false;
 			delete action;
+			actionList.erase( it );
 			action = NULL;
 			continue;
 		}
 
-		action->cmdQueue.front()->apply( action->host );
+		applyTree( action->host, action );
 
 		if(action->isRepeat) 
 			action->cmdQueue.push( action->cmdQueue.front() );
@@ -36,7 +38,13 @@ void ActionManager::update()
 		//else delete action->cmdQueue.front();
 		action->cmdQueue.pop();
 	}
-	actionList.remove(NULL);
+}
+
+void ActionManager::applyTree(Node* node, Action* action)
+{
+	for(auto& child: node->getChildren())
+		applyTree( child, action );
+	action->cmdQueue.front()->apply( node );
 }
 
 void ActionManager::verifyAction(Action* action)
@@ -47,7 +55,7 @@ void ActionManager::verifyAction(Action* action)
 
 
 
-void ActionManager::pauseHost(VisibleObject* host)
+void ActionManager::pauseHost(Node* host)
 {
 	lock_guard<mutex> lock(mtx);
 	for(auto& action: actionList)
@@ -55,7 +63,7 @@ void ActionManager::pauseHost(VisibleObject* host)
 			action->isPause = true;
 }
 
-void ActionManager::resumeHost(VisibleObject* host)
+void ActionManager::resumeHost(Node* host)
 {
 	lock_guard<mutex> lock(mtx);
 	for(auto& action: actionList)

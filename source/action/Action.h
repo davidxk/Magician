@@ -3,7 +3,7 @@
 
 #include "action/Command.h"
 #include "basic/Object.h"
-#include "display/VisibleObject.h"
+#include "display/Node.h"
 #include <queue>
 
 //Action is the base class for all actions
@@ -11,20 +11,20 @@
 class Action: public Object
 {
 public:
-	VisibleObject* host;
+	Node* host;
 	int duration;
 	bool isRepeat;
 	bool isPause;
 	std::queue<Command*> cmdQueue;
 
-	Action(VisibleObject* aHost, int aDuration, bool aIsRepeat = false);
+	Action(Node* aHost, int aDuration, bool aIsRepeat = false);
 	virtual Action* clone() const;
 	void pause();
 	void resume();
 	void stop();
 	void addToManager();
-	void setHost(VisibleObject* host);
-	virtual void initWithHost(VisibleObject* host) { }
+	void setHost(Node* host);
+	virtual void initWithHost(Node* host) { }
 	//virtual ~Action() { }
 protected:
 	//Called within constructor

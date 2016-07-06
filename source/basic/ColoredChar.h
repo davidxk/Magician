@@ -16,7 +16,7 @@ public:
 	Color backColor;
 	ColoredChar(char aCh = ' ', Color aForeColor= 0, Color aBackColor = 7);
 	void setForeColor(Color foreColor);
-	void setForeColor(Color backColor);
+	void setBackColor(Color backColor);
 	void setColor(Color foreColor, Color backColor);
 	bool operator==(const ColoredChar& cchar) const;
 	bool operator!=(const ColoredChar& cchar) const;

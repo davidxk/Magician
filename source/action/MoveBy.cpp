@@ -3,7 +3,7 @@
 #include "action/Command.h"
 #include "basic/TimeService.h"
 
-MoveBy::MoveBy(VisibleObject* host, int duration, Coord aVect):
+MoveBy::MoveBy(Node* host, int duration, Coord aVect):
 	Action(host, duration), vect(aVect)
 {
 	getCmdQueue();
@@ -14,7 +14,7 @@ Action* MoveBy::clone() const
 	return new MoveBy(*this);
 }
 
-MoveBy* MoveBy::create(VisibleObject* host, int duration, Coord aVect)
+MoveBy* MoveBy::create(Node* host, int duration, Coord aVect)
 {
 	return new MoveBy(host, duration, aVect);
 }
@@ -43,7 +43,7 @@ void MoveBy::getCmdQueue()
 //MoveByCommand
 MoveByCommand::MoveByCommand(Coord aBy): by(aBy) { }
 
-void MoveByCommand::apply(VisibleObject* vo)
+void MoveByCommand::apply(Node* vo)
 {
 	vo->pos += by;
 }

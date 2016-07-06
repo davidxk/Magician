@@ -2,23 +2,23 @@
 #define _SLEEP_H_
 
 #include "action/Action.h"
-#include "display/VisibleObject.h"
+#include "display/Node.h"
 
 //A Sleep action defines a period for doing nothing
 //Sleep action does not block any thread
 class Sleep: public Action
 {
 public:
-	Sleep(VisibleObject* host, int duration);
-	static Sleep* create(VisibleObject* host, int duration);
+	Sleep(Node* host, int duration);
+	static Sleep* create(Node* host, int duration);
 	void getCmdQueue();
 };
 
 class Wait: public Action
 {
 public:
-	Wait(VisibleObject* host, int duration);
-	static Wait* create(VisibleObject* host, int duration);
+	Wait(Node* host, int duration);
+	static Wait* create(Node* host, int duration);
 	void getCmdQueue();
 };
 
@@ -26,7 +26,7 @@ class WaitCommand: public Command
 {
 public:
 	WaitCommand(int cycles, Action* wait);
-	virtual void apply(VisibleObject* vo);
+	virtual void apply(Node* vo);
 	virtual Command* clone() { return new WaitCommand(*this); }
 private:
 	int cntCycle;

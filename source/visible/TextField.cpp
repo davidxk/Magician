@@ -2,7 +2,7 @@
 #include <cassert>
 
 TextField::TextField(const Size& size, const string& content): 
-	VisibleObject()
+	Node()
 {
 	setSize( size );
 	setContent( content );

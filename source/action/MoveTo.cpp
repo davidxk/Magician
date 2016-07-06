@@ -4,7 +4,7 @@
 #include "action/Command.h"
 #include "basic/TimeService.h"
 
-MoveTo::MoveTo(VisibleObject* host, int duration, Coord aFrom, Coord aDest):
+MoveTo::MoveTo(Node* host, int duration, Coord aFrom, Coord aDest):
 	Action(host, duration), from(aFrom), dest(aDest) 
 { 
 	if( host ) getCmdQueue();
@@ -15,7 +15,7 @@ Action* MoveTo::clone() const
 	return new MoveTo(*this);
 }
 
-MoveTo* MoveTo::create(VisibleObject* host, int duration, Coord aDest)
+MoveTo* MoveTo::create(Node* host, int duration, Coord aDest)
 {
 	assert( host );
 	return new MoveTo(host, duration, host->pos, aDest);
@@ -26,7 +26,7 @@ MoveTo* MoveTo::create(int duration, Coord aFrom, Coord aDest)
 	return new MoveTo(NULL, duration, aFrom, aDest);
 }
 
-void MoveTo::initWithHost(VisibleObject* host)
+void MoveTo::initWithHost(Node* host)
 {
 	assert( host );
 	this->from = host->pos;
@@ -55,7 +55,7 @@ void MoveTo::getCmdQueue()
 //MoveToCommand
 MoveToCommand::MoveToCommand(Coord aPos): pos(aPos) { }
 
-void MoveToCommand::apply(VisibleObject* vo)
+void MoveToCommand::apply(Node* vo)
 {
 	vo->pos = pos;
 }

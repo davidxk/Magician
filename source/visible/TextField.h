@@ -1,13 +1,13 @@
 #ifndef _TEXT_FIELD_H_
 #define _TEXT_FIELD_H_
 
-#include "display/VisibleObject.h"
+#include "display/Node.h"
 #include "basic/Size.h"
 #include <string>
 using namespace std;
 
 //A TextField object with endline support
-class TextField: public VisibleObject
+class TextField: public Node
 {
 public:
 	TextField(const Size& size, const string& content);

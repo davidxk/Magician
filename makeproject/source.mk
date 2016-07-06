@@ -28,7 +28,6 @@ AnimCursor.cpp \
 Cursor.cpp \
 KeyDispatcher.cpp \
 KeyListener.cpp \
-VisibleObject.cpp \
 ColoredChar.cpp \
 ConsoleCoord.cpp \
 Coord.cpp \
@@ -40,8 +39,10 @@ Size.cpp \
 TimeService.cpp \
 ActionManager.cpp \
 DisplayCentral.cpp \
+Node.cpp \
 Printer.cpp \
 Scene.cpp \
+VisibleObject.cpp \
 VisibleObjManager.cpp \
 AnimSprite.cpp \
 Animation.cpp \

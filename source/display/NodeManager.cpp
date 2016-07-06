@@ -1,0 +1,57 @@
+#include "display/NodeManager.h"
+
+Image NodeManager::getFrame(const Node* node)
+{
+	Image frame = getEmptyFrame();
+	paintTree( node, frame );
+
+	verify( frame );
+	return frame;
+}
+
+void NodeManager::releaseTree(const Node* node)
+{
+	for(const auto& child: node->getChildren())
+		releaseTree( child );
+	delete node;
+}
+
+void NodeManager::paintTree(const Node* node, Image& frame)
+{
+	paintNode( node, frame );
+	for(const auto& child: node->getChildren())
+		paintTree( child, frame );
+}
+
+void NodeManager::paintNode(const VisibleObject* obj, Image& frame)
+{
+	if( !node->isVisible ) return;
+	Coord lower = obj->pos;
+	Coord upper = obj->pos + obj->size;
+	int lineLower = (int)fmax( ConsoleCoord::MIN_LINES, lower.line );
+	int lineUpper = (int)fmin( ConsoleCoord::MAX_LINES+1, upper.line );
+	int colLower = (int)fmax( ConsoleCoord::MIN_COLUMN, lower.column );
+	int colUpper = (int)fmin( ConsoleCoord::MAX_COLUMN+1,upper.column );
+
+	for(int i=lineLower; i<lineUpper; i++)
+		for(int j=colLower; j<colUpper; j++)
+			frame[i][j] = obj->image[ i-lower.line ]
+				[ j-lower.column ];
+}
+
+Image NodeManager::getEmptyFrame()
+{
+	Image frame;
+	frame.resize( ConsoleCoord::MAX_LINES+1 );
+	for(int i=0; i<frame.size(); i++)
+		frame[i]=ImageUtil::str2ImageLine( 
+				string(ConsoleCoord::MAX_COLUMN+1, ' ') );
+	return frame;
+}
+
+void NodeManager::verify(Image& frame)
+{
+	assert( frame.size()==ConsoleCoord::MAX_LINES+1 );
+	for(const auto& line: frame)
+		assert( line.size()==ConsoleCoord::MAX_COLUMN+1 );
+}

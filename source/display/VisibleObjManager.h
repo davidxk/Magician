@@ -15,10 +15,12 @@ public:
 	Image getFrame();
 	void addObject(VisibleObject* object);
 	//in future versions, a frame will, perhaps, know how to verify itself
-	void verify(Image& frame);
 	~VisibleObjManager();
 
 protected: // For testability
+	Image getEmptyFrame();
+	void verify(Image& frame);
+
 	vector<VisibleObject*> objList;
 	mutex mtx;
 };

@@ -2,7 +2,7 @@
 #include <cassert>
 #include "action/ActionManager.h"
 
-Action::Action(VisibleObject* aHost, int aDuration, bool aIsRepeat):
+Action::Action(Node* aHost, int aDuration, bool aIsRepeat):
 	host(aHost), duration(aDuration), isRepeat(aIsRepeat), isPause(false) { }
 
 Action* Action::clone() const
@@ -36,7 +36,7 @@ void Action::addToManager()
 	aManager->addAction( this );
 }
 
-void Action::setHost(VisibleObject* host)
+void Action::setHost(Node* host)
 {
 	assert( host );
 	this->host = host;

@@ -1,12 +1,12 @@
 #include "action/Sleep.h"
 #include "basic/MagicianMacros.h"
 
-Sleep::Sleep(VisibleObject* host, int duration): Action(host, duration)
+Sleep::Sleep(Node* host, int duration): Action(host, duration)
 {
 	getCmdQueue();
 }
 
-Sleep* Sleep::create(VisibleObject* host, int duration)
+Sleep* Sleep::create(Node* host, int duration)
 {
 	return new Sleep(host, duration);
 }
@@ -22,12 +22,12 @@ void Sleep::getCmdQueue()
 
 
 // Wait class: better Sleep
-Wait::Wait(VisibleObject* host, int duration): Action(host, duration)
+Wait::Wait(Node* host, int duration): Action(host, duration)
 {
 	getCmdQueue();
 }
 
-Wait* Wait::create(VisibleObject* host, int duration)
+Wait* Wait::create(Node* host, int duration)
 {
 	return new Wait(host, duration);
 }
@@ -45,7 +45,7 @@ void Wait::getCmdQueue()
 WaitCommand::WaitCommand(int cycles, Action* wait): 
 	cntCycle( cycles ), action( wait ) { }
 
-void WaitCommand::apply(VisibleObject* vo)
+void WaitCommand::apply(Node* vo)
 {
 	if(cntCycle > 0)
 		cntCycle--;

@@ -3,7 +3,7 @@
 
 #include "action/Action.h"
 #include "basic/Singleton.cpp"
-#include "display/VisibleObject.h"
+#include "display/Node.h"
 #include <list>
 #include <mutex>
 #include <unordered_map>
@@ -17,16 +17,17 @@ class ActionManager
 public:
 	ActionManager();
 	void addAction(Action* action);
-	void addAction(Action* action, VisibleObject* host);
+	void addAction(Action* action, Node* host);
 	//void removeAction(Action* action);
 	//updates sprites' attributes in vManager
 	void update();
-	void pauseHost(VisibleObject* host);
-	void resumeHost(VisibleObject* host);
+	void pauseHost(Node* host);
+	void resumeHost(Node* host);
 	~ActionManager();
 
 protected: // For testability
 	void verifyAction(Action* action);
+	void applyTree(Node* node, Action* action);
 	list<Action*> actionList;
 	mutex mtx;
 };

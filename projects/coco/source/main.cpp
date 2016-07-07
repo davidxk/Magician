@@ -1,5 +1,4 @@
-#include "MainLoop.h"
-#include "Logo.h"
+#include "Magician.h"
 #include "HelloWorld.h"
 
 int main()

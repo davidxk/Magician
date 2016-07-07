@@ -16,8 +16,9 @@ CXXFLAGS+=-I $(src_path)
 #ls -R | perl ls_r_parse.pl
 #s/.*\/\([A-Z].\)$/\1 \\/
 #g/\.h$/d
-sources+= Logo.cpp \
-MainLoop.cpp \
+#MainLoop.cpp 
+sources+= Director.cpp \
+Logo.cpp \
 MciPlayer.cpp \
 Action.cpp \
 Box.cpp \

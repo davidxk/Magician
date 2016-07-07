@@ -33,7 +33,7 @@ DisplayCentral::~DisplayCentral()
 	delete printer;
 }
 
-void DisplayCentral::update(const Image& frameNext)
+void DisplayCentral::printFrame(const Image& frameNext)
 {
 	setThisFrame( frameNext );
 	print( getDiff() );

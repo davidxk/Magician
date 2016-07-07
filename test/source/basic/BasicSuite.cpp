@@ -6,6 +6,7 @@
 #include "basic/OrderedPairTest.h"
 #include "basic/RandomTest.h"
 #include "basic/SizeTest.h"
+#include "basic/TimeServiceTest.h"
 
 BasicSuite::BasicSuite()
 {
@@ -15,4 +16,5 @@ BasicSuite::BasicSuite()
 	addTestCase(new SizeTest);
 	addTestCase(new CoordTest);
 	addTestCase(new ConsoleCoordTest);
+	addTestCase(new TimeServiceTest);
 }

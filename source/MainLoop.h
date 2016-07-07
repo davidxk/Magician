@@ -2,6 +2,7 @@
 #define _MAIN_LOOP_H_
 
 #include "basic/Singleton.cpp"
+#include "basic/TimeService.h"
 #include "control/KeyDispatcher.h"
 #include "display/DisplayCentral.h"
 #include "display/Scene.h"
@@ -18,6 +19,7 @@ public:
 	void loopScene(); // For testing
 
 	KeyDispatcher* getKeyDispatcher() { return &kd; }
+	TimeService* getTimeService() { return &ts; }
 private:
 	void update();
 	void checkMsg();
@@ -27,6 +29,7 @@ private:
 
 	DisplayCentral dc;
 	KeyDispatcher kd;
+	TimeService ts;
 };
 typedef Singleton<MainLoop> sMainLoop;
 #define gMainLoop sMainLoop::instance()

@@ -1,4 +1,6 @@
-#include "MainLoop.h"
+//#include "MainLoop.h"
+#include "Director.h"
+#include "Logo.h"
 
 //Basics
 #include "basic/MagicianMacros.h"

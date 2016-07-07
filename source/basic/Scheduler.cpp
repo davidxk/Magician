@@ -1,10 +1,11 @@
+#include "Director.h"
 #include "basic/Scheduler.h"
 #include "basic/TimeService.h"
 
 void Scheduler::schedule(function<void ()> func, int period)
 {
 	//lock_guard<mutex> lock(mtx);
-	int timepoint = period + TimeService::getTime();
+	int timepoint = period + gDirector->getTimeService()->getTime();
 	int cycle = timepoint / TimeService::TIME_UNIT;
 	if (voidList.find(cycle) != voidList.end())
 		voidList[ cycle ].push_back( func );
@@ -27,7 +28,7 @@ void Scheduler::schedule(function<void (Object*)> func, Object* arg, int period)
 	FunctionWithArg funcWithArg;
 	funcWithArg.func = func, funcWithArg.arg = arg;
 
-	int timepoint = period + TimeService::getTime();
+	int timepoint = period + gDirector->getTimeService()->getTime();
 	int cycle = timepoint / TimeService::TIME_UNIT;
 	if (objList.find(cycle) != objList.end())
 		objList[ cycle ].push_back( funcWithArg );
@@ -42,7 +43,7 @@ void Scheduler::schedule(function<void (Object*)> func, Object* arg, int period)
 void Scheduler::checkSchedule()
 {
 	//lock_guard<mutex> lock(mtx);
-	int cntCycle = TimeService::getCycle();
+	int cntCycle = gDirector->getTimeService()->getCycle();
 	if(voidList.find(cntCycle) != voidList.end())
 	{
 		for(const auto& func: voidList[cntCycle])

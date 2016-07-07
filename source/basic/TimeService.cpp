@@ -1,39 +1,43 @@
 #include "basic/TimeService.h"
 
 const int TimeService::TIME_UNIT = 50;
-const chrono::duration<int,std::ratio<1,1000> > TIME_UNIT_CHRONO = 
-	chrono::milliseconds( TimeService::TIME_UNIT );
-chrono::system_clock::time_point TimeService::begin = chrono::system_clock::now();
-int TimeService::cntCycle = 0;
-int TimeService::cntTime = 0;
+const chrono::duration<int,std::ratio<1,1000> > TimeService::TIME_UNIT_CHRONO = 
+       chrono::milliseconds( TimeService::TIME_UNIT );
 
-
-
-void TimeService::gameBegin()
+void TimeService::sceneBegin()
 {
 	begin = chrono::system_clock::now();
 	cntCycle = 0;
-	cntTime = 0;
+}
+
+void TimeService::scenePause()
+{
+	pauseStartTime = chrono::system_clock::now();
+}
+
+void TimeService::sceneResume()
+{
+	chrono::system_clock::time_point pauseEndTime = chrono::system_clock::now();
+	chrono::system_clock::duration deltaTime = pauseEndTime - pauseStartTime;
+	begin += deltaTime;
 }
 
 void TimeService::updateTime()
 {
 	cntCycle++;
-	cntTime += TIME_UNIT;
 }
 
 chrono::system_clock::time_point TimeService::getNextFrameTime()
 {
-	return begin + chrono::milliseconds( cntTime );
+	return begin + chrono::milliseconds( cntCycle * TIME_UNIT );
 }
-
 
 
 
 
 int TimeService::getTime()
 {
-	return cntTime;
+	return cntCycle * TIME_UNIT;
 }
 
 int TimeService::getCycle()

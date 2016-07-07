@@ -11,8 +11,14 @@
 + No user thread needed
 + KeyDispatcher implementation
 + rewrite tests
-- node system
++ node system
++ time service pause support
 - each scene with its own managers
+- delete MainLoop class
+- count down Repeat
+- mover cursor
+- test Wait
+- time service rename
 - transparent color
 - design class Frame
 - Window system design

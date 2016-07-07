@@ -11,20 +11,22 @@ using namespace std;
 class TimeService
 {
 private:
-	static int cntCycle;
-	static int cntTime;
-	static chrono::system_clock::time_point begin;
+	int cntCycle = 0;
+	chrono::system_clock::time_point begin;
+	chrono::system_clock::time_point pauseStartTime;
 public:
 	static const int TIME_UNIT;
 	static const chrono::duration<int,std::ratio<1,1000> > TIME_UNIT_CHRONO;
 
-	static void gameBegin();
-	static void updateTime();
-	static chrono::system_clock::time_point getNextFrameTime();
+	void sceneBegin();
+	void scenePause();
+	void sceneResume();
+	void updateTime();
+	chrono::system_clock::time_point getNextFrameTime();
 
-	static int getTime();
-	static int getCycle();
-	static int getTimeUnit();
+	int getTime();
+	int getCycle();
+	int getTimeUnit();
 };
 
 #endif

@@ -16,7 +16,7 @@ class DisplayCentral
 public:
 	DisplayCentral();
 	~DisplayCentral();
-	void update(const Image& frameThis);
+	void printFrame(const Image& frameThis);
 
 protected: // For testability
 	void setThisFrame(const Image& frameThis);

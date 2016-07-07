@@ -1,9 +1,7 @@
 #include "MainLoop.h"
 
-#include <chrono>
 #include <thread>
 #include "basic/MagicianMacros.h"
-#include "basic/TimeService.h"
 #include "action/ActionManager.h"
 #include "display/VisibleObjManager.h"
 #include "basic/Scheduler.h"
@@ -41,7 +39,7 @@ void MainLoop::end()
 void MainLoop::loopScene()
 {
 	// Init
-	TimeService::gameBegin();
+	ts.sceneBegin();
 	std::thread keyread( &KeyDispatcher::loop, &kd );
 	keyread.detach();
 
@@ -49,8 +47,8 @@ void MainLoop::loopScene()
 	while( !exitScene )
 	{
 		update();
-		TimeService::updateTime();
-		std::this_thread::sleep_until( TimeService::getNextFrameTime() );
+		ts.updateTime();
+		std::this_thread::sleep_until( ts.getNextFrameTime() );
 	}
 }
 
@@ -58,7 +56,7 @@ void MainLoop::update()
 {
 	gScheduler->checkSchedule();
 	aManager->update();
-	dc.update( vManager->getFrame() );
+	dc.printFrame( vManager->getFrame() );
 }
 
 void MainLoop::cleanupScene(Scene* scene)

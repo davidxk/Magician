@@ -9,6 +9,7 @@
 KeyDispatcher::KeyDispatcher()
 {
 #ifndef WIN
+	initscr();
 	noecho();
 	cbreak();
 #endif

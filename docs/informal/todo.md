@@ -13,16 +13,16 @@
 + rewrite tests
 + node system
 + time service pause support
-- each scene with its own managers
-- delete MainLoop class
++ each scene with its own managers
++ delete MainLoop class
+- test feature zOrder
 - count down Repeat
-- mover cursor
 - test Wait
-- time service rename
 - transparent color
+- mover cursor
+- time service rename
 - design class Frame
 - Window system design
-- add feature zOrder
 - scroll unfold animation
 
 #Makefile compatibility

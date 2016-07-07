@@ -1,6 +1,6 @@
 #include "action/Action.h"
 #include <cassert>
-#include "action/ActionManager.h"
+#include "Director.h"
 
 Action::Action(Node* aHost, int aDuration, bool aIsRepeat):
 	host(aHost), duration(aDuration), isRepeat(aIsRepeat), isPause(false) { }
@@ -33,7 +33,7 @@ void Action::stop()
 
 void Action::addToManager()
 {
-	aManager->addAction( this );
+	gDirector->getActionManager()->addAction( this );
 }
 
 void Action::setHost(Node* host)

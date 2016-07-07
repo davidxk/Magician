@@ -2,7 +2,6 @@
 #define _LOGO_H_
 
 #include "Magician.h"
-#include "display/Scene.h"
 
 //description of the class here
 class Logo: public Scene

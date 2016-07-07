@@ -16,7 +16,6 @@ CXXFLAGS+=-I $(src_path)
 #ls -R | perl ls_r_parse.pl
 #s/.*\/\([A-Z].\)$/\1 \\/
 #g/\.h$/d
-#MainLoop.cpp 
 sources+= Director.cpp \
 Logo.cpp \
 MciPlayer.cpp \
@@ -24,7 +23,6 @@ Action.cpp \
 Box.cpp \
 Command.cpp \
 Singleton.cpp \
-Transition.cpp \
 AnimCursor.cpp \
 Cursor.cpp \
 KeyDispatcher.cpp \
@@ -45,11 +43,9 @@ NodeManager.cpp \
 Printer.cpp \
 Scene.cpp \
 VisibleObject.cpp \
-VisibleObjManager.cpp \
 AnimSprite.cpp \
 Animation.cpp \
 DiaBox.cpp \
-Layer.cpp \
 MoveBy.cpp \
 MoveTo.cpp \
 Repeat.cpp \

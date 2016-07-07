@@ -25,7 +25,7 @@
 #include "action/Sleep.h"
 #include "action/Vanish.h"
 //Layer
-#include "action/Layer.h"
+//#include "action/Layer.h"
 #include "basic/Scheduler.h"
 #include "control/KeyListener.h"
 #include "control/AnimCursor.h"
@@ -33,4 +33,4 @@
 #include "display/Scene.h"
 //Managers
 #include "action/ActionManager.h"
-#include "display/VisibleObjManager.h"
+//#include "display/VisibleObjManager.h"

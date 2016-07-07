@@ -37,4 +37,9 @@ protected:
 };
 typedef Singleton<Director> sDirector;
 #define gDirector sDirector::instance()
+#define gMainLoop gDirector
+#define vManager this
+#define addObject addChild
+#define aManager gDirector->getActionManager()
+#define gScheduler gDirector->getScheduler()
 #endif

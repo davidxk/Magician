@@ -35,15 +35,13 @@ void ActionManager::update()
 		if(action->isRepeat) 
 			action->cmdQueue.push( action->cmdQueue.front() );
 		// Figure out a way if memory leaks
-		//else delete action->cmdQueue.front();
+		else delete action->cmdQueue.front();
 		action->cmdQueue.pop();
 	}
 }
 
 void ActionManager::applyTree(Node* node, Action* action)
 {
-	for(auto& child: node->getChildren())
-		applyTree( child, action );
 	action->cmdQueue.front()->apply( node );
 }
 

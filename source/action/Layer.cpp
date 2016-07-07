@@ -1,9 +1,7 @@
 #include "action/Layer.h"
 #include <cassert>
 //delete if runAction succeed
-#include "basic/TimeService.h"
-#include "action/ActionManager.h"
-#include "basic/Scheduler.h"
+#include "Director.h"
 
 void Layer::addObject(Node* object)
 {

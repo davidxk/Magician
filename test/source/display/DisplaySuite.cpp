@@ -3,7 +3,6 @@
 #include "display/NodeManagerTest.h"
 #include "display/NodeTest.h"
 #include "display/VisibleObjectTest.h"
-#include "display/VisibleObjManagerTest.h"
 
 DisplaySuite::DisplaySuite()
 {
@@ -11,5 +10,4 @@ DisplaySuite::DisplaySuite()
 	addTestCase(new VisibleObjectTest);
 	addTestCase(new NodeTest);
 	addTestCase(new NodeManagerTest);
-	addTestCase(new VisibleObjManagerTest);
 }

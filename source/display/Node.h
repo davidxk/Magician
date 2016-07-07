@@ -18,6 +18,7 @@ public:
 	void movePos(const Coord cc);
 
 	virtual void setPos(const Coord cc) override;
+	virtual void setIsVisible(bool isVisible) override;
 	virtual void setForeColor(Color foreColor) override;
 	virtual void setBackColor(Color backColor) override;
 	virtual void setColor(Color foreColor, Color backColor) override;

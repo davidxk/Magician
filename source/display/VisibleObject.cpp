@@ -1,7 +1,5 @@
 #include "display/VisibleObject.h"
 #include <cassert>
-#include "action/ActionManager.h"
-#include "display/VisibleObjManager.h"
 
 VisibleObject::VisibleObject():
 	isVisible(true) { }
@@ -17,11 +15,6 @@ void VisibleObject::verify()
 	assert(size.line == image.size());
 	for(const auto& it: image)
 		assert(size.column == it.size());
-}
-
-void VisibleObject::addToManager()
-{
-	vManager->addObject( this );
 }
 
 void VisibleObject::setPos(const Coord cc)

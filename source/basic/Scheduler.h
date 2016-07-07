@@ -24,8 +24,6 @@ private:
 	unordered_map<int,vector<FunctionWithArg> > objList;
 	mutex mtx;
 };
-typedef Singleton<Scheduler> sScheduler;
-#define gScheduler sScheduler::instance()
 
 
 

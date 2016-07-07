@@ -1,5 +1,5 @@
 #include "display/Node.h"
-#include "action/ActionManager.h"
+#include "Director.h"
 
 Node::Node(): parent(NULL), zOrder(0), inAction(false) { }
 
@@ -23,6 +23,13 @@ void Node::setPos(const Coord cc)
 {
 	Coord delta = cc - pos;
 	movePos( delta );
+}
+
+void Node::setIsVisible(bool isVisible)
+{
+	VisibleObject::setIsVisible( isVisible );
+	for(const auto& child: children)
+		child->setIsVisible( isVisible );
 }
 
 void Node::setForeColor(Color foreColor)
@@ -153,7 +160,7 @@ void Node::runAction(Action* action)
 	action->setHost( this );
 	if( action->host != this ) 
 		action->initWithHost( this );
-	aManager->addAction( action );
+	gDirector->getActionManager()->addAction( action );
 }
 
 void Node::runActionWithObject(Object* obj)
@@ -164,10 +171,10 @@ void Node::runActionWithObject(Object* obj)
 
 void Node::pauseActions()
 {
-	aManager->pauseHost( this );
+	gDirector->getActionManager()->pauseHost( this );
 }
 
 void Node::resumeActions()
 {
-	aManager->resumeHost( this );
+	gDirector->getActionManager()->resumeHost( this );
 }

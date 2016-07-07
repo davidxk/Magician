@@ -30,11 +30,14 @@ private:
 	void addSnowFlake();
 	void addSnowScreen();
 
+	void runMoveLeft();
+	void runMoveUp();
+
 	const int stdDure = 4000;
 	const int lookRightPoint = 9300;
 	const int lookUpPoint = 18700;
 	const int goOutPoint = 37000;
-	Layer mainLayer;
+	Node* mainLayer = new Node();
 	Responder* responder;
 };
 #endif

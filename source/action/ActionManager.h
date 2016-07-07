@@ -31,6 +31,4 @@ protected: // For testability
 	list<Action*> actionList;
 	mutex mtx;
 };
-typedef Singleton<ActionManager> sActionManager;
-#define aManager sActionManager::instance()
 #endif

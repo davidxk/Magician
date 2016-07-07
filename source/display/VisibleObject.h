@@ -23,17 +23,16 @@ protected:
 public:
 	VisibleObject();
 	void verify();
-	void addToManager();
-	Coord getPos() const;
 	void setCenterPos(const Coord cc);
 	Coord getCenterPos() const;
-	void setIsVisible(bool isVisible);
+	Coord getPos() const;
 	bool getIsVisible() const;
 	Image getImage() const;
 	Size getSize() const;
 	void updateCenter();
 
 	virtual void setPos(const Coord cc);
+	virtual void setIsVisible(bool isVisible);
 	virtual void setForeColor(Color foreColor);
 	virtual void setBackColor(Color backColor);
 	virtual void setColor(Color foreColor, Color backColor);

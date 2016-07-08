@@ -15,7 +15,6 @@ public:
 	Scene();
 	virtual void initScene();
 	void addChild(Node* node);
-	Node* getRoot() const { return root; }
 	void pause();
 	void resume();
 
@@ -30,7 +29,5 @@ protected:
 	Scheduler schduler;
 	TimeService timeService;
 	KeyDispatcher keyDisptcher;
-
-	Node* root;
 };
 #endif

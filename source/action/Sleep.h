@@ -26,7 +26,7 @@ class WaitCommand: public Command
 {
 public:
 	WaitCommand(int cycles, Action* wait);
-	virtual void apply(Node* vo);
+	virtual void apply(Node* node);
 	virtual Command* clone() { return new WaitCommand(*this); }
 private:
 	int cntCycle;

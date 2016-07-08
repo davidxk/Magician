@@ -41,3 +41,12 @@ void Action::setHost(Node* host)
 	assert( host );
 	this->host = host;
 }
+
+Action::~Action()
+{
+	while( !cmdQueue.empty() )
+	{
+		delete cmdQueue.front();
+		cmdQueue.pop();
+	}
+}

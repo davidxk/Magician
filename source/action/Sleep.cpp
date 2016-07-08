@@ -22,7 +22,7 @@ void Sleep::getCmdQueue()
 
 
 // Wait class: better Sleep
-Wait::Wait(Node* host, int duration): Action(host, duration)
+Wait::Wait(Node* host, int duration): Action(host, duration, true)
 {
 	getCmdQueue();
 }
@@ -35,6 +35,8 @@ Wait* Wait::create(Node* host, int duration)
 void Wait::getCmdQueue()
 {
 	int cycles = duration/magician::TIME_UNIT;
+	if( cycles == 0 ) 
+		return;
 	cmdQueue.push( new WaitCommand( cycles, this ) );
 }
 
@@ -45,9 +47,9 @@ void Wait::getCmdQueue()
 WaitCommand::WaitCommand(int cycles, Action* wait): 
 	cntCycle( cycles ), action( wait ) { }
 
-void WaitCommand::apply(Node* vo)
+void WaitCommand::apply(Node* node)
 {
-	if(cntCycle > 0)
+	if(cntCycle > 1)
 		cntCycle--;
 	else
 		action->isRepeat = false;

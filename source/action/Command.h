@@ -10,6 +10,7 @@ class Command
 {
 public:
 	Command() { }
+	virtual ~Command() { }
 	virtual Command* clone() { return new Command(*this); }
 	virtual void apply(Node* vo);
 };

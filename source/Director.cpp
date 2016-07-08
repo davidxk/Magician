@@ -72,5 +72,5 @@ void Director::update()
 {
 	getScheduler()->checkSchedule();
 	getActionManager()->update();
-	dc.printFrame( getNodeManager()->getFrame( sceneStack.top()->getRoot() ) );
+	dc.printFrame( getNodeManager()->getFrame( getNodeManager()->getRoot() ) );
 }

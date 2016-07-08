@@ -25,7 +25,7 @@ public:
 	void addToManager();
 	void setHost(Node* host);
 	virtual void initWithHost(Node* host) { }
-	//virtual ~Action() { }
+	virtual ~Action();
 protected:
 	//Called within constructor
 	virtual void getCmdQueue() { };

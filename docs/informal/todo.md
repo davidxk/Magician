@@ -15,9 +15,9 @@
 + time service pause support
 + each scene with its own managers
 + delete MainLoop class
-- test feature zOrder
-- count down Repeat
-- test Wait
++ test feature zOrder
++ test Wait
++ count down Repeat
 - transparent color
 - mover cursor
 - time service rename

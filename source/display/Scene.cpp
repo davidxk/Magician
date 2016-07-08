@@ -1,6 +1,9 @@
 #include "display/Scene.h"
 
-Scene::Scene(): root( new Node() ) { }
+Scene::Scene()
+{
+
+}
 
 void Scene::initScene()
 {
@@ -9,7 +12,7 @@ void Scene::initScene()
 
 void Scene::addChild(Node* node)
 {
-	root->addChild( node );
+	nodeManager.getRoot()->addChild( node );
 }
 
 void Scene::pause()

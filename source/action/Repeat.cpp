@@ -9,19 +9,16 @@ Repeat* Repeat::create(Action* action, int aTimes)
 	return new Repeat(action, aTimes);
 }
 
-
-
-
 Repeat::Repeat(Action* action, int aTimes):
 	Action(action->host, action->duration * aTimes)
 {
-	if(times == TIMES_FOREVER)
-		this->isRepeat = true;
-
-	cmdQueue = action->cmdQueue;
 	times = aTimes;
+
+	if(times == TIMES_FOREVER)
+		this->isRepeat = true, aTimes = 1;
+
 	//add function here perhaps
-	for(int i=1; i<aTimes; i++)
+	for(int i=0; i<aTimes; i++)
 	{
 		queue<Command*> tmp = action->cmdQueue;
 		while( !tmp.empty() )
@@ -32,4 +29,58 @@ Repeat::Repeat(Action* action, int aTimes):
 	}
 
 	delete action, action = NULL;
+}
+
+
+
+
+const int Again::TIMES_FOREVER = 0;
+
+Again* Again::create(Action* action, int aTimes)
+{
+	assert( action != NULL );
+	return new Again(action, aTimes);
+}
+
+Again::Again(Action* action, int aTimes):
+	Action(action->host, action->duration * aTimes, true)
+{
+	if(times == TIMES_FOREVER)
+	{
+		this->isRepeat = true;
+		while( !action->cmdQueue.empty() )
+		{
+			cmdQueue.push( action->cmdQueue.front()->clone() );
+			action->cmdQueue.pop();
+		}
+	}
+
+	times = aTimes;
+	//add function here perhaps
+	queue<Command*>& que = action->cmdQueue;
+	cmdQueue.push( new AgainCommand( times, this, que.front() ) );
+	que.pop();
+	while( !que.empty() )
+	{
+		cmdQueue.push( que.front() );
+		que.pop();
+	}
+
+	delete action, action = NULL;
+}
+
+
+
+
+// Again Command
+AgainCommand::AgainCommand(int times, Action* again, Command* last): 
+	cntTimes( times ), action( again ), lastCmd( last ) { }
+
+void AgainCommand::apply(Node* node)
+{
+	lastCmd->apply( node );
+	if(cntTimes > 1)
+		cntTimes--;
+	else
+		action->isRepeat = false;
 }

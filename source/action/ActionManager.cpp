@@ -40,19 +40,6 @@ void ActionManager::update()
 	}
 }
 
-void ActionManager::applyTree(Node* node, Action* action)
-{
-	action->cmdQueue.front()->apply( node );
-}
-
-void ActionManager::verifyAction(Action* action)
-{
-	assert( action != NULL );
-	assert( action->host != NULL );
-}
-
-
-
 void ActionManager::pauseHost(Node* host)
 {
 	lock_guard<mutex> lock(mtx);
@@ -73,4 +60,18 @@ ActionManager::~ActionManager()
 {
 	for(const auto& action: actionList)
 		delete action;
+}
+
+
+
+
+void ActionManager::applyTree(Node* node, Action* action)
+{
+	action->cmdQueue.front()->apply( node );
+}
+
+void ActionManager::verifyAction(Action* action)
+{
+	assert( action != NULL );
+	assert( action->host != NULL );
 }

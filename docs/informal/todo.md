@@ -18,6 +18,11 @@
 + test feature zOrder
 + test Wait
 + count down Repeat
++ jump action
+- try better fps
+- vector left right move
+- collision detection
+- call func action
 - transparent color
 - mover cursor
 - time service rename

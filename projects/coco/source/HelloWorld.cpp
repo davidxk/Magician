@@ -1,4 +1,5 @@
 #include "HelloWorld.h"
+#include "Coco.h"
 
 void HelloWorld::initScene()
 {
@@ -7,7 +8,7 @@ void HelloWorld::initScene()
 	addChild( cursor );
 	gDirector->getKeyDispatcher()->pushListener( cursor );
 
-	AnimCursor* coco = new AnimCursor("coco_batch.txt");
+	Coco* coco = new Coco("coco_batch.txt");
 	coco->setCenterPos( Coord(20, 20) );
 	addChild( coco );
 	gDirector->getKeyDispatcher()->pushListener( coco );

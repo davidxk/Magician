@@ -8,5 +8,6 @@ CXXFLAGS+=-I $(coco_src)	# End
 
 ## Source List
 src_list_1=HelloWorld.cpp\
+		   Coco.cpp \
 
 sources+=$(src_list_1)

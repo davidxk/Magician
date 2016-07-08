@@ -18,6 +18,7 @@
 #include "visible/TextField.h"
 //Actions
 #include "action/Animation.h"
+#include "action/Jump.h"
 #include "action/MoveTo.h"
 #include "action/MoveBy.h"
 #include "action/Repeat.h"

@@ -20,6 +20,7 @@ sources+= Director.cpp \
 Logo.cpp \
 MciPlayer.cpp \
 Action.cpp \
+Jump.cpp \
 Box.cpp \
 Command.cpp \
 Singleton.cpp \

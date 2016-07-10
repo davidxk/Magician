@@ -19,6 +19,9 @@
 + test Wait
 + count down Repeat
 + jump action
++ anti memery leak
+- proj demo
+- vertical menu
 - try better fps
 - vector left right move
 - collision detection

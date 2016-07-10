@@ -7,6 +7,7 @@
 void HelloWorld::initScene()
 {
 	responder = new Responder();
+	mainLayer = new Node();
 	gMainLoop->getKeyDispatcher()->pushListener( responder );
 	playBGM();
 	
@@ -90,7 +91,6 @@ void HelloWorld::initSanta()
 	Coord santaPos = finalPos;
 	//santa->setPos( startPos );
 	//MoveTo* flyin = MoveTo::create(santa, 3000, finalPos);
-	//aManager->scheduleAfter( flyin, lookUpPoint+2000 );
 	santa->setPos( santaPos );
 
 	AnimSprite* hat = AnimSprite::create("snowy/hat_batch.txt");
@@ -128,7 +128,7 @@ void HelloWorld::initSnow()
 {
 	addSnowScreen();
 	auto addSnowFunc = std::bind(&HelloWorld::addSnowScreen, this);
-	gScheduler->scheduleAfter( addSnowFunc, stdDure );
+	gScheduler->schedule( addSnowFunc, stdDure );
 	//gScheduler->schedule( addSnowFunc, 2*stdDure );
 }
 
@@ -167,8 +167,8 @@ void HelloWorld::addSnowScreen()
 void HelloWorld::addSnowFlake()
 {
 	Sprite* snowFlake = Sprite::create("snowy/snow_flake.txt");
-	vManager->addObject( snowFlake );
-	//mainLayer->addChild( snowFlake );
+	snowFlake->setZOrder( 1 );
+	mainLayer->addChild( snowFlake );
 
 	int xx = Random::randomPositive( ConsoleCoord::MAX_COLUMN+1 );
 	int yy = Random::randomNegative( - (ConsoleCoord::MAX_LINES+1) );

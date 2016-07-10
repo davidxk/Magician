@@ -1,6 +1,6 @@
 #include "action/Animation.h"
 #include <cassert>
-#include "basic/MagicianMacros.h"
+#include "basic/TimeService.h"
 #include "visible/AnimSprite.h"
 
 Animation::Animation(Node* host, int duration):
@@ -18,7 +18,7 @@ Animation* Animation::create(Node* host, int duration)
 
 void Animation::getCmdQueue()
 {
-	int steps = duration/magician::TIME_UNIT;
+	int steps = duration/TimeService::TIME_UNIT;
 	assert( steps > frames );
 
 	int cycle = steps / frames;

@@ -37,7 +37,7 @@ private:
 	const int lookRightPoint = 9300;
 	const int lookUpPoint = 18700;
 	const int goOutPoint = 37000;
-	Node* mainLayer = new Node();
+	Node* mainLayer;
 	Responder* responder;
 };
 #endif

@@ -7,11 +7,13 @@ Sequence::Sequence(Action* action_a, Action* action_b):
 	while( !action_a->cmdQueue.empty() )
 	{
 		cmdQueue.push( action_a->cmdQueue.front()->clone() );
+		delete action_a->cmdQueue.front();
 		action_a->cmdQueue.pop();
 	}
 	while( !action_b->cmdQueue.empty() )
 	{
 		cmdQueue.push( action_b->cmdQueue.front()->clone() );
+		delete action_b->cmdQueue.front();
 		action_b->cmdQueue.pop();
 	}
 

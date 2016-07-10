@@ -20,7 +20,6 @@ Jump* Jump::create(Node* host, int tall, float heightOverTall)
 	Jump* jump = new Jump(host, tt * 2);
 	jump->setAttributes(gg, hh, tt, vv);
 	jump->getCmdQueue();
-	//cout<<gg<<' '<<hh<<' '<<tt<<' '<<vv<<endl;
 	return jump;
 }
 
@@ -70,7 +69,6 @@ void Jump::getCmdQueue()
 		stk.pop();
 	}
 }
-
 
 void Jump::findHoverSegment(int& leftEnd, int& rightEnd)
 {

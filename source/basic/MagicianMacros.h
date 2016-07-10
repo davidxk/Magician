@@ -19,7 +19,6 @@
 //#define TEST
 
 namespace magician{
-	const int TIME_UNIT = 50;
 	const std::string RES_PATH = "../../resources/";
 	const std::string LOG_PATH ="mglog.txt";
 }

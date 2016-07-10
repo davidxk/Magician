@@ -5,7 +5,7 @@ Node::Node(): parent(NULL), zOrder(0), inAction(false) { }
 
 Node::~Node()
 {
-	for(const auto& child: children)
+	for(Node* child: children)
 		delete child;
 }
 
@@ -119,8 +119,9 @@ void Node::removeChildByName(const std::string& name)
 	for(auto it = children.begin(); it != children.end(); it++)
 		if((*it)->getName() == name)
 		{
-			children.erase( it );
 			(*it)->setParent( NULL );
+			delete (*it);
+			children.erase( it );
 			break;
 		}
 }

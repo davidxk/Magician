@@ -16,7 +16,6 @@ class Scheduler
 {
 public:
 	void schedule(function<void()> func, int period);
-	void scheduleAfter(function<void()> func, int period);
 	void schedule(function<void (Object*)> func, Object* arg, int period);
 	void checkSchedule();
 private:

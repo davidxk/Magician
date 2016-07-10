@@ -24,8 +24,8 @@ void ActionManager::update()
 		if(action->cmdQueue.empty())
 		{
 			action->host->setInAction( false );
-			delete action;
-			actionList.erase( it );
+			delete (*it);
+			it = actionList.erase( it );
 			action = NULL;
 			continue;
 		}

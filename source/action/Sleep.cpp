@@ -1,5 +1,5 @@
 #include "action/Sleep.h"
-#include "basic/MagicianMacros.h"
+#include "basic/TimeService.h"
 
 Sleep::Sleep(Node* host, int duration): Action(host, duration)
 {
@@ -13,7 +13,7 @@ Sleep* Sleep::create(Node* host, int duration)
 
 void Sleep::getCmdQueue()
 {
-	int steps = duration/magician::TIME_UNIT;
+	int steps = duration/TimeService::TIME_UNIT;
 	for(int i=0; i<=steps; i++)
 		cmdQueue.push( new Command() );
 }
@@ -34,7 +34,7 @@ Wait* Wait::create(Node* host, int duration)
 
 void Wait::getCmdQueue()
 {
-	int cycles = duration/magician::TIME_UNIT;
+	int cycles = duration/TimeService::TIME_UNIT;
 	if( cycles == 0 ) 
 		return;
 	cmdQueue.push( new WaitCommand( cycles, this ) );

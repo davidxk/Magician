@@ -45,14 +45,16 @@ Again* Again::create(Action* action, int aTimes)
 Again::Again(Action* action, int aTimes):
 	Action(action->host, action->duration * aTimes, true)
 {
-	if(times == TIMES_FOREVER)
+	if(aTimes == TIMES_FOREVER)
 	{
 		this->isRepeat = true;
 		while( !action->cmdQueue.empty() )
 		{
-			cmdQueue.push( action->cmdQueue.front()->clone() );
+			cmdQueue.push( action->cmdQueue.front() );
 			action->cmdQueue.pop();
 		}
+		delete action, action = NULL;
+		return;
 	}
 
 	times = aTimes;

@@ -17,11 +17,6 @@ void Scheduler::schedule(function<void ()> func, int period)
 	}
 }
 
-void Scheduler::scheduleAfter(function<void ()> func, int period)
-{
-	schedule( func, period );
-}
-
 void Scheduler::schedule(function<void (Object*)> func, Object* arg, int period)
 {
 	//lock_guard<mutex> lock(mtx);

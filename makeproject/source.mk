@@ -46,6 +46,7 @@ Scene.cpp \
 VisibleObject.cpp \
 AnimSprite.cpp \
 Animation.cpp \
+CallFunc.cpp \
 DiaBox.cpp \
 MoveBy.cpp \
 MoveTo.cpp \

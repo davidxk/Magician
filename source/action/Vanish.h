@@ -27,14 +27,14 @@ public:
 class VanishCommand: public Command
 {
 public:
-	virtual void apply(Node* vo);
+	virtual void apply(Node* node);
 	virtual Command* clone() { return new VanishCommand(*this); }
 };
 
 class AppearCommand: public Command
 {
 public:
-	virtual void apply(Node* vo);
+	virtual void apply(Node* node);
 	virtual Command* clone() { return new AppearCommand(*this); }
 };
 #endif

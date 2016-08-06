@@ -20,12 +20,13 @@
 + count down Repeat
 + jump action
 + anti memery leak
++ call func action
 - proj demo
+- action shake
 - vertical menu
 - try better fps
 - vector left right move
 - collision detection
-- call func action
 - transparent color
 - mover cursor
 - time service rename

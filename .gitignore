@@ -42,7 +42,8 @@
 *.mp3
 
 # Debug Info
-test.dSYM
+*.dSYM*
+*.plist
 
 # Executable
 test

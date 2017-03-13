@@ -25,3 +25,21 @@ void AnimSprite::setDisplayImage(int index)
 	assert( index < batch.size() );
 	image = batch[index];
 }
+
+void AnimSprite::setForeColor(Color foreColor)
+{
+	VisibleObject::setForeColor(foreColor);
+	for(auto& image: batch)
+		for(auto& line: image)
+			for(auto& cchar: line)
+				cchar.setForeColor( foreColor );
+}
+
+void AnimSprite::setBackColor(Color backColor)
+{
+	VisibleObject::setBackColor(backColor);
+	for(auto& image: batch)
+		for(auto& line: image)
+			for(auto& cchar: line)
+				cchar.setBackColor( backColor );
+}

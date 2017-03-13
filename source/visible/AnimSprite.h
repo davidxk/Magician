@@ -12,6 +12,8 @@ class AnimSprite: public Sprite
 public:
 	static AnimSprite* create(const string& fileName);
 	void setDisplayImage(int index);
+	virtual void setForeColor(Color foreColor);
+	virtual void setBackColor(Color backColor);
 
 	vector<Image> batch;
 

@@ -40,8 +40,10 @@ void UnixPrinter::virtualPrint(PrintJob pj)
 
 	if( hasColor )
 	{
-		init_pair(1, pj.graph.foreColor, pj.graph.backColor);
-		attron(COLOR_PAIR(1));
+		int cid = pj.graph.foreColor + COLORS * pj.graph.backColor;
+		cid %= COLOR_PAIRS;
+		init_pair(cid, pj.graph.foreColor, pj.graph.backColor);
+		attron(COLOR_PAIR(cid));
 	}
 
 	mvaddch(yy, xx, ch);

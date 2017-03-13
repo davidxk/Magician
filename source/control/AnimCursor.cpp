@@ -4,21 +4,31 @@ AnimCursor::AnimCursor(const string& fileName): AnimSprite( fileName ) { }
 
 void AnimCursor::respond(Key key)
 {
-	const int up = 0, down = 1, left = 2, right = 3;
-	Coord coords[]= { Coord::CoordXY(0, -1), Coord::CoordXY(0, 1),
-		Coord::CoordXY(-1, 0), Coord::CoordXY(1, 0) };
-
-	int index;
+	Direction dirc;
 	Coord currentPosition = getPos();
 	switch( key )
 	{
-		case 'a': index = left; break;
-		case 's': index = down; break;
-		case 'd': index = right; break;
-		case 'w': index = up; break;
+		case 'a': case 'h':
+			dirc = LEFT; break;
+		case 's': case 'j':
+			dirc = DOWN; break;
+		case 'd': case 'l':
+			dirc = RIGHT; break;
+		case 'w': case 'k':
+			dirc = UP; break;
 		default: return;
 	}
-	currentPosition += coords[ index ]; 
+	AnimCursor::move( dirc );
+	setDisplayImage( dirc );
+}
+
+void AnimCursor::move(Direction dirc)
+{
+	const Coord coords[]= { Coord::CoordXY(0, -1), Coord::CoordXY(0, 1),
+		Coord::CoordXY(-1, 0), Coord::CoordXY(1, 0) };
+
+	Coord currentPosition = getPos();
+	currentPosition += coords[ dirc ]; 
 	setPos( currentPosition );
-	setDisplayImage( index );
+	setPos( currentPosition );
 }

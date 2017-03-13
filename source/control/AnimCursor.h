@@ -10,5 +10,7 @@ class AnimCursor: public KeyListener, public AnimSprite
 public:
 	AnimCursor(const string& fileName);
 	void respond(Key key);
+	enum Direction { UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 };
+	virtual void move(Direction dirc);
 };
 #endif

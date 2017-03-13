@@ -47,3 +47,7 @@
 
 # Executable
 test
+*.out
+
+# Ctags
+tags

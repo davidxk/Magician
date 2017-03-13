@@ -8,7 +8,6 @@ void Coco::respond(Key key)
 	Jump* jump;
 	switch( key )
 	{
-		case 'j': 
 		case ' ': 
 			jump = Jump::create(this, getSize().line, 3.0);
 			this->runAction(jump);

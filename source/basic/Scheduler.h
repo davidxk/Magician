@@ -2,7 +2,7 @@
 #define _SCHEDULER_H_
 
 #include "basic/Object.h"
-#include "basic/Singleton.cpp"
+#include "basic/Singleton.h"
 #include <functional>
 #include <mutex>
 #include <unordered_map>

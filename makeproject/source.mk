@@ -18,16 +18,13 @@ CXXFLAGS+=-I $(src_path)
 #g/\.h$/d
 sources+= Director.cpp \
 Logo.cpp \
-MciPlayer.cpp \
 Action.cpp \
 Jump.cpp \
 Box.cpp \
 Command.cpp \
-Singleton.cpp \
 AnimCursor.cpp \
 Cursor.cpp \
 KeyDispatcher.cpp \
-KeyListener.cpp \
 ColoredChar.cpp \
 ConsoleCoord.cpp \
 Coord.cpp \
@@ -57,3 +54,5 @@ Sleep.cpp \
 Sprite.cpp \
 TextField.cpp \
 Vanish.cpp \
+
+win_src=$(source) MciPlayer.cpp

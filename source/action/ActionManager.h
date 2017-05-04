@@ -2,7 +2,7 @@
 #define _ACTION_MANAGER_H_
 
 #include "action/Action.h"
-#include "basic/Singleton.cpp"
+#include "basic/Singleton.h"
 #include "display/Node.h"
 #include <list>
 #include <mutex>

@@ -2,7 +2,7 @@
 #define _DIRECTOR_H_
 
 #include <stack>
-#include "basic/Singleton.cpp"
+#include "basic/Singleton.h"
 #include "display/DisplayCentral.h"
 #include "display/Scene.h"
 

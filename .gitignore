@@ -47,7 +47,6 @@
 *.plist
 
 # Executable
-test
 *.out
 
 # Ctags

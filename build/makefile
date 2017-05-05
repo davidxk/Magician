@@ -1,36 +1,32 @@
 # Provide project path
-proj_path=../../../..
+proj_path=..
 
 # Set main and executable
-exec=game.out
-main=main.cpp
+target=libmagician.a
 
 # Set compile options
 CXX=g++
-CXXFLAGS+=-Wall -std=c++11 -g3 -fno-inline
-TARFLAGS+=-lncurses -L $(proj_path) -lmagician
+CXXFLAGS+=-Wall -std=c++11
 
 ## ------------------~~ Dividing Line ~~--------------------
 
 # Include project source
-include ../game.mk
-buil_path=$(proj_path)/build
-
+include source.mk
 # List of obj Filese
-sources+=$(main)
 VPATH+=$(OBJECT_DIR)
 objects=$(subst .cpp,.o,$(sources))
+objects+= UnixPrinter.o
 dir_obj=$(addprefix $(OBJECT_DIR)/,$(objects))
 
 # Target Directories
-this_path=../..
+this_path=..
 TARGET_DIR=$(this_path)
 OBJECT_DIR=$(this_path)/build/.obj
 DEPEND_DIR=$(this_path)/build/.d
 
 # Recipe
-$(exec): $(objects)
-	$(CXX) $(CXXFLAGS) -o $(TARGET_DIR)/$(exec) $(dir_obj) $(TARFLAGS)
+$(target): $(objects)
+	ar cr $(TARGET_DIR)/$(target) $(dir_obj)
 
 
 # Includes
@@ -57,5 +53,4 @@ $(DEPEND_DIR)/%.d: ;
 clean: 
 	rm -r -f $(OBJECT_DIR)
 	rm -r -f $(DEPEND_DIR)
-	rm -f $(TARGET_DIR)/$(exec)
-
+	rm -f $(TARGET_DIR)/$(target)

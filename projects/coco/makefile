@@ -1,4 +1,4 @@
-test.out:
+game.out:
 	pushd build/; make; popd
 
 .PHONY: clean

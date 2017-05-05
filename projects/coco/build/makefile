@@ -2,8 +2,8 @@
 proj_path=../../..
 
 # Set main and executable
-exec=test.out
-main=test.cpp 
+exec=game.out
+main=main.cpp
 
 # Set compile options
 CXX=g++
@@ -13,7 +13,7 @@ TARFLAGS+=-lncurses -L $(proj_path) -lmagician
 ## ------------------~~ Dividing Line ~~--------------------
 
 # Include project source
-include tests.mk
+include game.mk
 buil_path=$(proj_path)/build
 
 # List of obj Filese
@@ -23,7 +23,7 @@ objects=$(subst .cpp,.o,$(sources))
 dir_obj=$(addprefix $(OBJECT_DIR)/,$(objects))
 
 # Target Directories
-this_path=../..
+this_path=..
 TARGET_DIR=$(this_path)
 OBJECT_DIR=$(this_path)/build/.obj
 DEPEND_DIR=$(this_path)/build/.d
@@ -58,3 +58,4 @@ clean:
 	rm -r -f $(OBJECT_DIR)
 	rm -r -f $(DEPEND_DIR)
 	rm -f $(TARGET_DIR)/$(exec)
+

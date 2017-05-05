@@ -1,11 +1,11 @@
 .PHONY: test lib clean
 lib:
-	pushd makeproject/; make; popd
+	pushd build/; make; popd
 
 test:
-	pushd test/makeproject/makeunix/; make -f Makefile.mk; popd
-	test/test.out
+	pushd test/; make; ./test.out; popd > /dev/null
 
 clean:
 	rm -f libmagician.a
-	pushd makeproject/; make clean; popd
+	pushd build/; make clean; popd
+	pushd test/; make clean; popd

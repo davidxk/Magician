@@ -4,6 +4,7 @@
 #include "basic/BasicSuite.h"
 #include "display/DisplaySuite.h"
 #include "visible/VisibleSuite.h"
+#include <iostream>
 
 TestRoot::TestRoot()
 {
@@ -15,8 +16,14 @@ TestRoot::TestRoot()
 
 void TestRoot::runAll()
 {
+	int cntPass = 0;
+	int cntTest = 0;
 	for(const auto& it: testSuites)
-		it->runThisSuite();
+	{
+		cntPass += it->runThisSuite();
+		cntTest += it->getTestCaseNum();
+	}
+	std::cout<<"Summary: "<<cntPass<<" pass out of "<<cntTest<<std::endl;
 }
 
 TestRoot::~TestRoot()

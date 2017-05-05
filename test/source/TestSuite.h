@@ -8,10 +8,13 @@
 class TestSuite
 {
 public:
-	void runThisSuite();
+	int runThisSuite();
 	virtual std::string suiteName() { return "default name"; }
+	int getTestCaseNum();
 	void addTestCase(TestCase* testcase);
 	virtual ~TestSuite();
+private:
+	bool runTestProc(TestCase* it);
 	std::vector<TestCase*> testCases;
 };
 #endif

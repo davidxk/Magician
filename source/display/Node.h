@@ -14,7 +14,7 @@ class Node: public VisibleObject
 {
 public:
 	Node();
-	~Node();
+	virtual ~Node();
 	void movePos(const Coord cc);
 
 	virtual void setPos(const Coord cc) override;

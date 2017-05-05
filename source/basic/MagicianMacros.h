@@ -19,7 +19,7 @@
 //#define TEST
 
 namespace magician{
-	const std::string RES_PATH = "../../resources/";
+	const std::string RES_PATH = "resources/";
 	const std::string LOG_PATH ="mglog.txt";
 }
 #endif

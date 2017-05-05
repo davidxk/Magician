@@ -5,7 +5,6 @@ AnimCursor::AnimCursor(const string& fileName): AnimSprite( fileName ) { }
 void AnimCursor::respond(Key key)
 {
 	Direction dirc;
-	Coord currentPosition = getPos();
 	switch( key )
 	{
 		case 'a': case 'h':

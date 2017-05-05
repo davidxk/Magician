@@ -23,6 +23,7 @@ public:
 	Scheduler* getScheduler() { return &schduler; }
 	TimeService* getTimeService() { return &timeService; }
 	KeyDispatcher* getKeyDispatcher() { return &keyDisptcher; }
+	virtual ~Scene() { }
 protected:
 	NodeManager nodeManager;
 	ActionManager actionManager;

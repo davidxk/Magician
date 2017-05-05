@@ -87,7 +87,7 @@ void HelloWorld::initSanta()
 	mainLayer->addChild( santa );
 
 	Coord finalPos = Coord( -34,85 );
-	Coord startPos = finalPos + Coord(-12,40);
+	//Coord startPos = finalPos + Coord(-12,40);
 	Coord santaPos = finalPos;
 	//santa->setPos( startPos );
 	//MoveTo* flyin = MoveTo::create(santa, 3000, finalPos);

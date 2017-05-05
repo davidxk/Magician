@@ -8,7 +8,7 @@ test_visible_path=$(addsuffix /visible,$(test_src_path))
 ## Implicit Variable
 VPATH+=$(test_src_path) $(test_basic_path) $(test_action_path) \
        $(test_display_path) $(test_visible_path) 
-CXXFLAGS+=-I $(test_src_path)
+CXXFLAGS+=-I $(test_src_path) -I $(proj_path)/source
 
 test_suites=BasicSuite.cpp \
 			ActionSuite.cpp \
@@ -44,4 +44,4 @@ test_cases=ColoredCharTest.cpp \
 		   VanishTest.cpp \
 		   WaitTest.cpp
 
-sources+=$(test_base) $(test_suites) $(test_cases)
+sources:=$(test_base) $(test_suites) $(test_cases)

@@ -14,7 +14,7 @@ public:
 	char ch;
 	Color foreColor;
 	Color backColor;
-	ColoredChar(char aCh = ' ', Color aForeColor= 0, Color aBackColor = 7);
+	ColoredChar(char aCh = ' ', Color aForeColor= 7, Color aBackColor = 0);
 	void setForeColor(Color foreColor);
 	void setBackColor(Color backColor);
 	void setColor(Color foreColor, Color backColor);

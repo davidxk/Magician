@@ -8,5 +8,8 @@ class LetterScene: public Scene
 {
 public:
 	virtual void initScene();
+	void changeScene();
+
+	const int goOutPoint = 5000;
 };
 #endif

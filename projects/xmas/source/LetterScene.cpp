@@ -21,4 +21,12 @@ void LetterScene::initScene()
 			ImageLine2str(letter) );
 	ttf->setPos( Coord(2, 13) );
 	vManager->addObject( ttf );
+
+	auto trans = std::bind(&LetterScene::changeScene, this);
+	gScheduler->schedule( trans, goOutPoint );
+}
+
+void LetterScene::changeScene()
+{
+	gDirector->popScene();
 }

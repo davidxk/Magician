@@ -8,6 +8,7 @@ void Director::pushScene(Scene* scene)
 		sceneStack.push( scene );
 		exitScene = false;
 		mainloop();
+		cleanupGame();
 	}
 	else
 	{
@@ -66,6 +67,11 @@ void Director::mainloop()
 		loopTopScene();
 		cleanupTopScene();
 	}
+}
+
+void Director::cleanupGame()
+{
+	dc.destroyPrinter();
 }
 
 void Director::update()

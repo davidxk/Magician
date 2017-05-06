@@ -28,7 +28,7 @@ DisplayCentral::DisplayCentral()
 #endif
 }
 
-DisplayCentral::~DisplayCentral()
+void DisplayCentral::destroyPrinter()
 {
 	delete printer;
 }

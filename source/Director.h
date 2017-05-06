@@ -29,6 +29,7 @@ protected:
 	void loopTopScene();
 	void cleanupTopScene();
 	void mainloop();
+	void cleanupGame();
 	void update();
 
 	bool exitScene;

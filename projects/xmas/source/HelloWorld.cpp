@@ -8,7 +8,7 @@ void HelloWorld::initScene()
 {
 	responder = new Responder();
 	mainLayer = new Node();
-	gMainLoop->getKeyDispatcher()->pushListener( responder );
+	gDirector->getKeyDispatcher()->pushListener( responder );
 	playBGM();
 	
 	//init Sprites with Animation
@@ -40,7 +40,7 @@ void HelloWorld::playBGM()
 void HelloWorld::changeScene()
 {
 	BackScene* back = new BackScene();
-	gMainLoop->replaceScene(back);
+	gDirector->replaceScene(back);
 }
 
 void HelloWorld::initXmasTree()

@@ -8,7 +8,7 @@ main=main.cpp
 # Set compile options
 CXX=g++
 CXXFLAGS+=-Wall -std=c++11 -g3 -fno-inline
-TARFLAGS+=-L $(proj_path) -lmagician -lncurses
+TARFLAGS+=-L $(proj_path) -lmagician -lncurses -lpthread
 
 ## ------------------~~ Dividing Line ~~--------------------
 

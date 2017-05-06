@@ -38,7 +38,7 @@ POSTCOMPILE = mv -f $(DEPEND_DIR)/$*.Td $(DEPEND_DIR)/$*.d
 OUTPUT_OPTION = -o $(OBJECT_DIR)/$@
 %.o : %.cpp
 %.o : %.cpp $(DEPEND_DIR)/%.d
-	@if ! [[ -d $(OBJECT_DIR) ]]; then mkdir $(OBJECT_DIR); fi
+	@if ! [ -d $(OBJECT_DIR) ]; then mkdir $(OBJECT_DIR); fi
 	$(COMPILE.cc) $(OUTPUT_OPTION) $<
 	@$(POSTCOMPILE)
 

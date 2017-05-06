@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 default:
 	pushd build/; make; popd
 

@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 .PHONY: test lib clean
 lib:
 	pushd build/; make; popd

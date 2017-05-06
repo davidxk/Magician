@@ -40,6 +40,7 @@ Node.cpp \
 NodeManager.cpp \
 Printer.cpp \
 Scene.cpp \
+SequentialScene.cpp \
 VisibleObject.cpp \
 AnimSprite.cpp \
 Animation.cpp \

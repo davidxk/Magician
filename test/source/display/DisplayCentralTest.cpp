@@ -19,6 +19,7 @@ void DisplayCentralTest::testSetThisFrame()
 	//dc.setThisFrame( frameSecond );
 	//assert( dc.frameLast == frameFirst );
 	//assert( dc.frameThis == frameSecond );
+	dc.destroyPrinter();
 }
 
 void DisplayCentralTest::testGetDiff()
@@ -31,4 +32,5 @@ void DisplayCentralTest::testGetDiff()
 	//dc.setThisFrame( frameSecond );
 	//Make Diff
 	//assert( dc.getDiff() == ??? );
+	dc.destroyPrinter();
 }

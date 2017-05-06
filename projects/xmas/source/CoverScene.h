@@ -4,7 +4,7 @@
 #include "Magician.h"
 
 //description of the class here
-class CoverScene: public Scene
+class CoverScene: public SequentialScene
 {
 public:
 	virtual void initScene();

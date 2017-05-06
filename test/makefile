@@ -1,4 +1,4 @@
-test.out:
+default:
 	pushd build/; make; popd
 
 .PHONY: clean

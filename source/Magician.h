@@ -27,3 +27,4 @@
 #include "control/AnimCursor.h"
 #include "control/Cursor.h"
 #include "display/Scene.h"
+#include "display/SequentialScene.h"

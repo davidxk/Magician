@@ -4,10 +4,14 @@
 
 int main()
 {
+	SequentialScene* logo = new Logo();
+	SequentialScene* cover = new CoverScene();
 	Scene* hello = new HelloWorld();
-	//Scene* cover = new CoverScene();
-	//Scene* logo = new Logo();
-	gDirector->runWithScene( hello );
+
+	logo->setNextScene( cover );
+	cover->setNextScene( hello );
+
+	gDirector->runWithScene( logo );
 
 	return 0;
 }

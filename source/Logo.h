@@ -4,7 +4,7 @@
 #include "Magician.h"
 
 //description of the class here
-class Logo: public Scene
+class Logo: public SequentialScene
 {
 public:
 	virtual void initScene();
@@ -12,7 +12,6 @@ private:
 	void initHat();
 	void initAnim();
 	void logoFlyIn();
-	void scheduleTransition();
 	int getAnimTime();
 	int getTotalTime();
 

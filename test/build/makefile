@@ -29,9 +29,11 @@ OBJECT_DIR=$(this_path)/build/.obj
 DEPEND_DIR=$(this_path)/build/.d
 
 # Recipe
-$(exec): $(objects)
+$(exec): $(objects) libmagician.a
 	$(CXX) $(CXXFLAGS) -o $(TARGET_DIR)/$(exec) $(dir_obj) $(TARFLAGS)
 
+libmagician.a:
+	@echo Recompiling test ...
 
 # Includes
 $(shell mkdir -p $(DEPEND_DIR) >/dev/null)

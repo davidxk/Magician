@@ -17,13 +17,13 @@ public:
 	void addChild(Node* node);
 	void pause();
 	void resume();
+	virtual ~Scene() { }
 
 	NodeManager* getNodeManager() { return &nodeManager; }
 	ActionManager* getActionManager() { return &actionManager; }
 	Scheduler* getScheduler() { return &schduler; }
 	TimeService* getTimeService() { return &timeService; }
 	KeyDispatcher* getKeyDispatcher() { return &keyDisptcher; }
-	virtual ~Scene() { }
 protected:
 	NodeManager nodeManager;
 	ActionManager actionManager;

@@ -17,7 +17,7 @@ void CoverScene::initScene()
 	word->setCenterPos( Coord(num11+6, num39) );
 	vManager->addObject( word );
 
-	const int sleepTime = 1000; //5000
+	const int sleepTime = 5000;
 	auto trans = std::bind(&CoverScene::changeScene, this);
 	gScheduler->schedule( trans, sleepTime );
 }

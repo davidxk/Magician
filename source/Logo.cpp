@@ -11,7 +11,9 @@ void Logo::initScene()
 	auto logoFly = std::bind(&Logo::logoFlyIn, this);
 	gScheduler->schedule(logoFly, getAnimTime());
 	//initAnim();
-	scheduleTransition();
+	
+	auto trans = std::bind(&Logo::changeScene, this);
+	gScheduler->schedule( trans, getTotalTime() );
 }
 
 int Logo::getAnimTime()
@@ -67,11 +69,4 @@ void Logo::logoFlyIn()
 	MoveBy* flyin = MoveBy::create(logo, DURE_FLYIN, Coord::CoordXY(0, -15));
 	Sequence* waitFlyin = Sequence::create( wait, flyin );
 	logo->runAction(waitFlyin);
-}
-
-void Logo::scheduleTransition()
-{
-	//int sleepTime = getTotalTime();
-	//std::this_thread::sleep_for( std::chrono::milliseconds(sleepTime) );
-	//Transition::releasePrev();
 }

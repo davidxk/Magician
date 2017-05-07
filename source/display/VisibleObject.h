@@ -18,7 +18,6 @@ protected:
 	Image image;
 	bool isVisible;
 	//bool isColored;
-	mutex mtx;
 
 public:
 	VisibleObject();

@@ -14,8 +14,6 @@ AnimSprite::AnimSprite(const string& fileName)
 
 AnimSprite* AnimSprite::create(const string& fileName)
 {
-	//vector<VisibleObject*>& list = vManager->objList;
-	//list.push_back( sp );
 	AnimSprite* sp = new AnimSprite(fileName);
 	return sp;
 }

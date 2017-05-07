@@ -21,7 +21,6 @@ public:
 private:
 	unordered_map<int,vector<function<void()> > > voidList;
 	unordered_map<int,vector<FunctionWithArg> > objList;
-	mutex mtx;
 };
 
 

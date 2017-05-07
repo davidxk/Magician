@@ -3,11 +3,12 @@
 
 #include "Magician.h"
 
-//description of the class here
+// This is the Logo Scene that comes with *Magician*
 class Logo: public SequentialScene
 {
 public:
 	virtual void initScene();
+	virtual void changeScene();
 private:
 	void initHat();
 	void initAnim();

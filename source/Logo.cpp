@@ -16,6 +16,14 @@ void Logo::initScene()
 	gScheduler->schedule( trans, getTotalTime() );
 }
 
+void Logo::changeScene()
+{
+	if(nextScene == NULL)
+		gDirector->popScene();
+	else
+		SequentialScene::changeScene();
+}
+
 int Logo::getAnimTime()
 {
 	return HAT_PAUSE + N_WAVE * DURE_WAVE + DURE_JUMP + PAUSE_TIME;

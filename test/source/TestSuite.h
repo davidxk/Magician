@@ -15,6 +15,7 @@ public:
 	virtual ~TestSuite();
 private:
 	bool runTestProc(TestCase* it);
+	void printErrorMsg(char* buf, const int BUFLEN);
 	std::vector<TestCase*> testCases;
 };
 #endif

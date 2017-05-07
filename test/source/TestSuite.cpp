@@ -1,5 +1,7 @@
 #include "TestSuite.h"
 #include <iostream>
+#include <cstdio>
+#include <cstring>
 #include <sys/wait.h>
 #include <unistd.h>
 
@@ -36,11 +38,28 @@ bool TestSuite::runTestProc(TestCase* it)
 			return true;
 	}
 	const int BUFLEN = 256;
-	char buf[BUFLEN];
-	read(pp[0], buf, BUFLEN);
+	char buf[BUFLEN + 1];
+	int len_read = read(pp[0], buf, BUFLEN);
+	buf[len_read] = '\0';
 	std::cout<<"+ CASE FAIL: "<<it->testName()<<std::endl;
+	printErrorMsg(buf, BUFLEN);
 	return false;
 }
+
+void TestSuite::printErrorMsg(char* buf, const int BUFLEN)
+{
+	const unsigned LINEBUFLEN = 64;
+	char linebuf[LINEBUFLEN + 1];
+	linebuf[ LINEBUFLEN ] = '\0';
+	unsigned i = 0;
+	while(i < strlen(buf))
+	{
+		strncpy(linebuf, buf + i, LINEBUFLEN);
+		printf("    %s\n", linebuf);
+		i += LINEBUFLEN;
+	}
+}
+
 
 void TestSuite::addTestCase(TestCase* testcase)
 {

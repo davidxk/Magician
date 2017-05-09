@@ -15,6 +15,7 @@ public:
 	Scene();
 	virtual void initScene();
 	void addChild(Node* node);
+	void addKeyListener(KeyListener* listener);
 	void pause();
 	void resume();
 	virtual ~Scene() { }
@@ -23,12 +24,12 @@ public:
 	ActionManager* getActionManager() { return &actionManager; }
 	Scheduler* getScheduler() { return &schduler; }
 	TimeService* getTimeService() { return &timeService; }
-	KeyDispatcher* getKeyDispatcher() { return &keyDisptcher; }
+	KeyDispatcher* getKeyDispatcher() { return &keyDispatcher; }
 protected:
 	NodeManager nodeManager;
 	ActionManager actionManager;
 	Scheduler schduler;
 	TimeService timeService;
-	KeyDispatcher keyDisptcher;
+	KeyDispatcher keyDispatcher;
 };
 #endif

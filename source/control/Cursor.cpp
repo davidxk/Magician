@@ -13,10 +13,14 @@ void Cursor::respond(Key key)
 	Coord currentPosition = getPos();
 	switch( key )
 	{
-		case 'a': currentPosition += VEC_LEFT; break;
-		case 's': currentPosition += VEC_DOWN; break;
-		case 'd': currentPosition += VEC_RIGHT; break;
-		case 'w': currentPosition += VEC_UP; break;
+		case 'a': case 'h':
+			currentPosition += VEC_LEFT; break;
+		case 's': case 'j':
+			currentPosition += VEC_DOWN; break;
+		case 'd': case 'l':
+			currentPosition += VEC_RIGHT; break;
+		case 'w': case 'k':
+			currentPosition += VEC_UP; break;
 	}
 	setPos( currentPosition );
 }

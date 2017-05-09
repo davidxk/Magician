@@ -15,6 +15,11 @@ void Scene::addChild(Node* node)
 	nodeManager.getRoot()->addChild( node );
 }
 
+void Scene::addKeyListener(KeyListener* listener)
+{
+	keyDispatcher.pushListener(listener);
+}
+
 void Scene::pause()
 {
 	timeService.scenePause();

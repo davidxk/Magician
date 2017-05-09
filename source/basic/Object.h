@@ -2,5 +2,9 @@
 #define _OBJECT_H_
 
 // Base class of all class user accessible classes
-class Object { };
+class Object
+{
+public:
+	virtual ~Object() { }
+};
 #endif

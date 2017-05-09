@@ -26,6 +26,7 @@ public:
 	Coord getCenterPos() const;
 	Coord getPos() const;
 	bool getIsVisible() const;
+	void setImage(const Image image);
 	Image getImage() const;
 	Size getSize() const;
 	void updateCenter();

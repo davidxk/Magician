@@ -10,7 +10,7 @@ void VisibleObject::verify()
 	//Only registered objects are printed
 	assert(size.line > 0);
 	assert(size.column > 0);
-	assert( center==( pos + size )/2 );
+	assert( center==( pos + pos + size )/2 );
 
 	assert(size.line == image.size());
 	for(const auto& it: image)
@@ -21,6 +21,7 @@ void VisibleObject::setPos(const Coord cc)
 {
 	//lock_guard<mutex> lock(mtx);
 	this->pos = cc;
+	updateCenter();
 }
 
 Coord VisibleObject::getPos() const
@@ -31,7 +32,7 @@ Coord VisibleObject::getPos() const
 
 void VisibleObject::setCenterPos(const Coord cc)
 {
-	setPos( cc - center );
+	setPos( pos + cc - center );
 }
 
 Coord VisibleObject::getCenterPos() const
@@ -49,6 +50,14 @@ bool VisibleObject::getIsVisible() const
 	return isVisible;
 }
 
+void VisibleObject::setImage(const Image image)
+{
+	this->image = image;
+	size = Size( image.size(), image[0].size() );
+	updateCenter();
+	verify();
+}
+
 Image VisibleObject::getImage() const
 {
 	return image;
@@ -61,7 +70,7 @@ Size VisibleObject::getSize() const
 
 void VisibleObject::updateCenter()
 {
-	center = ( pos + size )/2;
+	center = ( pos + pos + size )/2;
 }
 
 

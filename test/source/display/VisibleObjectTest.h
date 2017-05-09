@@ -11,5 +11,6 @@ public:
 	virtual std::string testName() override { return "Visible Object Test"; }
 private:
 	void testSetPos();
+	void testSetCenterPos();
 };
 #endif

@@ -38,9 +38,9 @@ Image NodeManager::getEmptyFrame()
 {
 	Image frame;
 	frame.resize( ConsoleCoord::MAX_LINES+1 );
-	for(int i=0; i<frame.size(); i++)
-		frame[i]=ImageUtil::str2ImageLine( 
-				string(ConsoleCoord::MAX_COLUMN+1, ' ') );
+	for(auto& line: frame)
+		line = ImageUtil::str2ImageLine(
+				string(ConsoleCoord::MAX_COLUMN + 1, ' ') );
 	return frame;
 }
 

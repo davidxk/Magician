@@ -1,6 +1,7 @@
 #ifndef _DIRECTOR_H_
 #define _DIRECTOR_H_
 
+#include <cassert>
 #include <stack>
 #include "basic/Singleton.h"
 #include "display/DisplayCentral.h"
@@ -14,6 +15,8 @@ public:
 	void pushScene(Scene* scene);
 	void popScene();
 	void replaceScene(Scene* scene);
+	Scene* getRunningScene() const {
+		assert(!sceneStack.empty()); return sceneStack.top(); }
 
 	NodeManager* getNodeManager() const {
 		return sceneStack.top()->getNodeManager(); }

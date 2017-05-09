@@ -1,4 +1,5 @@
 #include "control/KeyDispatcher.h"
+#include "Director.h"
 
 #if defined(WIN)
 #include <conio.h>
@@ -15,23 +16,26 @@ KeyDispatcher::KeyDispatcher()
 #endif
 }
 
-Key KeyDispatcher::translate(int ch)
+Key translate(int ch)
 {
 	return (char)ch;
 }
 
-int KeyDispatcher::readkey()
+int readkey()
 {
 	return getch();
 }
 
-void KeyDispatcher::loop()
+void loop()
 {
 	int ch;
+	Key key;
 	while(1)
 	{
 		ch = readkey();
-		Key key = translate( ch );
+		key = translate( ch );
+		auto dispatcher = gDirector->getKeyDispatcher();
+		auto listenerStack = dispatcher->listenerStack;
 		if( !listenerStack.empty() )
 			listenerStack.top()->respond( key );
 	}

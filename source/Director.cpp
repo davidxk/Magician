@@ -39,8 +39,6 @@ void Director::loopTopScene()
 {
 	// Init
 	getTimeService()->sceneBegin();
-	std::thread keyread( &KeyDispatcher::loop, getKeyDispatcher() );
-	keyread.detach();
 
 	// Loop
 	while( !exitScene )
@@ -60,6 +58,8 @@ void Director::cleanupTopScene()
 
 void Director::mainloop()
 {
+	std::thread keyread( loop );
+	keyread.detach();
 	while( !sceneStack.empty() )
 	{
 		sceneStack.top()->initScene();

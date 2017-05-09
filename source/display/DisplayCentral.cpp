@@ -13,10 +13,10 @@
 DisplayCentral::DisplayCentral()
 {
 	// Init frameThis
-	frameThis.resize( ConsoleCoord::MAX_LINES+1 );
-	for(int i=0; i<ConsoleCoord::MAX_LINES+1; i++)
-		frameThis[i] = ImageUtil::str2ImageLine( string(ConsoleCoord::
-					MAX_COLUMN+1, ' ') );
+	frameThis.resize( ConsoleCoord::MAX_LINES + 1 );
+	for(auto& line: frameThis)
+		line = ImageUtil::str2ImageLine( string(ConsoleCoord::
+					MAX_COLUMN + 1, ' ') );
 
 	// Conditional init printer according to platform
 #if defined(TEST)
@@ -55,8 +55,8 @@ vector<PrintJob> DisplayCentral::getDiff()
 	verifyFrame(frameThis);
 	//get frame last and frame this
 	vector<PrintJob> pjList;
-	for(int i=0; i<frameThis.size(); i++)
-		for(int j=0; j<frameThis[i].size(); j++)
+	for(unsigned i=0; i<frameThis.size(); i++)
+		for(unsigned j=0; j<frameThis[i].size(); j++)
 			if(frameLast[i][j] != frameThis[i][j])
 				pjList.push_back(PrintJob(ConsoleCoord(i,j), frameThis[i][j]));
 	//else if(colorLast[i][j] != colorThis[i][j])

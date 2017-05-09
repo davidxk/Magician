@@ -2,6 +2,8 @@
 
 Cursor::Cursor(const string& fileName): Sprite( fileName ) { }
 
+Cursor::Cursor(const Image image): Sprite( image ) { }
+
 void Cursor::respond(Key key)
 {
 	const Coord VEC_LEFT = Coord::CoordXY(-1, 0); 

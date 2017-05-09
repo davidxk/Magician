@@ -9,8 +9,19 @@ Sprite::Sprite(const string& fileName): Node()
 	verify();
 }
 
+Sprite::Sprite(const Image image): Node()
+{
+	setImage( image );
+}
+
 Sprite* Sprite::create(const string& fileName)
 {
 	Sprite* sp = new Sprite(fileName);
+	return sp;
+}
+
+Sprite* Sprite::create(const Image image)
+{
+	Sprite* sp = new Sprite(image);
 	return sp;
 }

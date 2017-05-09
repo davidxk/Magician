@@ -9,6 +9,7 @@ class Cursor: public KeyListener, public Sprite
 {
 public:
 	Cursor(const string& fileName);
+	Cursor(const Image image);
 	void respond(Key key);
 };
 #endif

@@ -3,7 +3,8 @@ subsystem=
 
 # List of Source files
 sources+=HelloWorld.cpp \
-		 MazeGenerator.cpp
+		 MazeGenerator.cpp \
+		 RPGCursorHero.cpp
 
 # ------------------~~ Dividing Line ~~--------------------
 src_path=$(proj_path)/source

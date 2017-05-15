@@ -4,12 +4,6 @@
 #include "Magician.h"
 #include <vector>
 
-class Hero: public Cursor
-{
-public:
-
-}
-
 //description of the class here
 class HelloWorld: public Scene
 {

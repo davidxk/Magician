@@ -4,23 +4,37 @@ Cursor::Cursor(const string& fileName): Sprite( fileName ) { }
 
 Cursor::Cursor(const Image image): Sprite( image ) { }
 
-void Cursor::respond(Key key)
+Cursor::Direction Cursor::getDirection(Key key)
 {
-	const Coord VEC_LEFT = Coord::CoordXY(-1, 0); 
-	const Coord VEC_RIGHT = Coord::CoordXY(1, 0); 
-	const Coord VEC_UP = Coord::CoordXY(0, -1); 
-	const Coord VEC_DOWN = Coord::CoordXY(0, 1); 
-	Coord currentPosition = getPos();
+	Direction dirc;
 	switch( key )
 	{
 		case 'a': case 'h':
-			currentPosition += VEC_LEFT; break;
+			dirc = LEFT; break;
 		case 's': case 'j':
-			currentPosition += VEC_DOWN; break;
+			dirc = DOWN; break;
 		case 'd': case 'l':
-			currentPosition += VEC_RIGHT; break;
+			dirc = RIGHT; break;
 		case 'w': case 'k':
-			currentPosition += VEC_UP; break;
+			dirc = UP; break;
+		default: return NONE;
 	}
-	setPos( currentPosition );
+	return dirc;
+}
+
+Coord Cursor::getNextPosition(Direction dirc)
+{
+	const Coord coords[]= { Coord::CoordXY(0, -1), Coord::CoordXY(0, 1),
+		Coord::CoordXY(-1, 0), Coord::CoordXY(1, 0) };
+
+	Coord currentPosition = getPos();
+	return currentPosition + coords[ dirc ]; 
+}
+
+void Cursor::respond(Key key)
+{
+	Direction dirc = getDirection( key );
+	if(dirc == NONE) return;
+	Coord nextPosition = getNextPosition( dirc );
+	setPos( nextPosition );
 }

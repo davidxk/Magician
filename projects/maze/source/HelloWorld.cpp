@@ -1,5 +1,6 @@
 #include "HelloWorld.h"
 #include "MazeGenerator.h"
+#include "RPGCursorHero.h"
 #include <cassert>
 
 void HelloWorld::initScene()
@@ -13,8 +14,9 @@ void HelloWorld::initScene()
 	auto line = ImageUtil::str2ImageLine("@");
 	Image curImg;
 	curImg.push_back(line);
-	Cursor* cursor = new Cursor(curImg);
+	RPGCursorHero* cursor = new RPGCursorHero(curImg);
 	cursor->setPos( mz->getPos() - Coord::CoordXY(0, 1) );
+	cursor->setMap( mzMatrix, mz->getPos() );
 	addChild(cursor);
 
 	addKeyListener( cursor );

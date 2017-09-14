@@ -74,6 +74,10 @@ Here is a list of classes that you will most often be dealing with.
  Scene  | game scene, initiates the elements of the scene
  Action | base class of a collection of action class
 
+And the relationship between them:
+
+<img src="docs/graphs/UserView.svg" width="70%" height="70%"/>
+
 ## Actions
 Here is a list of actions that you can use to create a lively game. 
 

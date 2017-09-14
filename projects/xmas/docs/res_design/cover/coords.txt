@@ -1,2 +1,0 @@
-words: 6, 0
-wreath: -4, 0

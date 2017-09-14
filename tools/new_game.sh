@@ -18,7 +18,9 @@ mkdir build docs resources "source"
 cd $proj_path
 temp_path=build/template
 cp $temp_path/root_makefile.mk $game_path/makefile
+cp $temp_path/root_makefile.mk $game_path/makefile
 cp $temp_path/build_makefile.mk $game_path/build/makefile
 cp $temp_path/game.mk $game_path/build/game.mk
 cp $temp_path/main.cpp "$game_path/source/main.cpp"
+cp $temp_path/HelloWorld.txt $game_path/resources/HelloWorld.txt
 cp -r $temp_path/logo $game_path/resources/

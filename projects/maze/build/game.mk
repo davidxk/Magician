@@ -3,6 +3,7 @@ subsystem=
 
 # List of Source files
 sources+=HelloWorld.cpp \
+		 Maze.cpp \
 		 MazeGenerator.cpp \
 		 RPGCursorHero.cpp
 

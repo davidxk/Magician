@@ -21,6 +21,6 @@ int RPGCursorHero::mine(const Coord& coord)
 void RPGCursorHero::respond(Key key)
 {
 	Coord nextPosition = getNextPosition( getDirection( key ) );
-	if( mine( nextPosition ) == 1 )
+	if( mine( nextPosition ) == 0 )
 		setPos( nextPosition );
 }

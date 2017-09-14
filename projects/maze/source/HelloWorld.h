@@ -9,6 +9,5 @@ class HelloWorld: public Scene
 {
 public:
 	void initScene();
-	Image makeMazeImage(const vector<vector<int> >& mzMatrix);
 };
 #endif

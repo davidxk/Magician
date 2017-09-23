@@ -76,7 +76,7 @@ Here is a list of classes that you will most often be dealing with.
 
 And the relationship between them:
 
-<img src="docs/graphs/UserView.svg" width="70%" height="70%"/>
+<img src="docs/graphs/UserView.svg" width="100%" height="100%"/>
 
 ## Actions
 Here is a list of actions that you can use to create a lively game. 

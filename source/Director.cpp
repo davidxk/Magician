@@ -79,4 +79,5 @@ void Director::update()
 	getScheduler()->checkSchedule();
 	getActionManager()->update();
 	dc.printFrame( getNodeManager()->getFrame( getNodeManager()->getRoot() ) );
+	sceneStack.top()->update();
 }

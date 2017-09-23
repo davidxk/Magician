@@ -15,9 +15,11 @@ public:
 	Scene();
 	virtual void initScene();
 	void addChild(Node* node);
+	Node* findChildByName(const std::string& name);
 	void addKeyListener(KeyListener* listener);
 	void pause();
 	void resume();
+	virtual void update() { }
 	virtual ~Scene() { }
 
 	NodeManager* getNodeManager() { return &nodeManager; }

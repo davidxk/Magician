@@ -9,5 +9,6 @@ class HelloWorld: public Scene
 {
 public:
 	void initScene();
+	void update();
 };
 #endif

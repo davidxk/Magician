@@ -70,9 +70,9 @@ Here is a list of classes that you will most often be dealing with.
 
 | class | description |
 |-------|-------------|
- Sprite | an image to be shown in the game scene
  Scene  | game scene, initiates the elements of the scene
- Action | base class of a collection of action class
+ Sprite | an image to be shown in the game scene
+ Action | actions that can be applied to Sprites
 
 And the relationship between them:
 
@@ -89,8 +89,9 @@ Jump    | jump action
 MoveBy  | move sprite by a given vector
 MoveTo  | move sprite to a given coordinate
 Repeat  | repeat an action for some given time
-Sequence| put actions in a sequence
-Sleep   | pause for some given time
+Sequence| combine a series actions into one action
+Sleep   | wait for some given time
 Vanish  | make sprite vanish instantly
 Appear  | make sprite appear instantly
+Blink   | make sprite blink for a given amount of time
 

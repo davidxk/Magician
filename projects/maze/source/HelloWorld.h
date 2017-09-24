@@ -8,7 +8,7 @@
 class HelloWorld: public Scene
 {
 public:
-	void initScene();
-	void update();
+	virtual void initScene() override;
+	virtual void update() override;
 };
 #endif

@@ -9,5 +9,6 @@ CXXFLAGS+=-I $(coco_src) -I $(proj_path)/source
 ## Source List
 src_list_1=HelloWorld.cpp\
 		   Coco.cpp \
+		   CollisionUtil.cpp
 
 sources+=$(src_list_1)

@@ -8,5 +8,6 @@ class HelloWorld: public Scene
 {
 public:
 	virtual void initScene() override;
+	virtual void update() override;
 };
 #endif

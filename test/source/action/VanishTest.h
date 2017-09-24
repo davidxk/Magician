@@ -20,6 +20,7 @@ public:
 private:
 	void testWithManager();
 	void testAppear();
+	void testBlink();
 };
 
 }

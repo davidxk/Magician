@@ -15,8 +15,7 @@ test_suites=BasicSuite.cpp \
 			DisplaySuite.cpp \
 			VisibleSuite.cpp \
 
-test_base=TestCase.cpp \
-		  TestSuite.cpp \
+test_base=TestSuite.cpp \
 		  TestRoot.cpp
 
 test_cases=ColoredCharTest.cpp \

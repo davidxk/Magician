@@ -18,12 +18,8 @@ vector<pair<Cell, Cell> > MazeGenerator::generate(int rows, int cols)
 	Cell start(0, 0);
 	stack<Cell> front;
 	front.push(start);
-	unordered_set<Cell, PairIntHash> visited;
-	vector<Cell> dircs;
-	dircs.push_back(Cell(0, -1));
-	dircs.push_back(Cell(+1, 0));
-	dircs.push_back(Cell(0, +1));
-	dircs.push_back(Cell(-1, 0));
+	unordered_set<Cell, PairIntHash> visited { start };
+	vector<Cell> dircs { Cell(0, -1), Cell(+1, 0), Cell(0, +1), Cell(-1, 0) };
 	vector<pair<Cell, Cell> > result;
 
 	int row, col;

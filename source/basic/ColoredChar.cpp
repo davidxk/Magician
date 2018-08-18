@@ -34,17 +34,25 @@ bool ColoredChar::operator!=(const ColoredChar& cchar) const
 
 
 
+
+Image ImageUtil::char2Image(const char ch, Color foreColor, Color backColor)
+{
+	return Image(1, ImageLine(1, ColoredChar(ch, foreColor, backColor)));
+}
+
+Image ImageUtil::vec2Image(const vector<char>& vec, Color foreColor, Color backColor)
+{
+	Image image;
+	for(const char ch: vec)
+		image.push_back(ImageLine(1, ch));
+	return image;
+}
+
 ImageLine ImageUtil::str2ImageLine(const string& str, Color foreColor, Color backColor)
 {
 	ImageLine line;
 	for(const auto& ch: str)
-	{
-		ColoredChar chr;
-		chr.ch = ch;
-		chr.foreColor = foreColor;
-		chr.backColor = backColor;
-		line.push_back( chr );
-	}
+		line.push_back( ColoredChar(ch, foreColor, backColor) );
 	return line;
 }
 

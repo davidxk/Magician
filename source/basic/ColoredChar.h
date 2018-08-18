@@ -39,6 +39,8 @@ typedef vector<ImageLine> Image;
 class ImageUtil
 {
 public:
+	static Image char2Image(const char ch, Color foreColor = 7, Color backColor = 0);
+	static Image vec2Image(const vector<char>& vec, Color foreColor = 7, Color backColor = 0);
 	static ImageLine str2ImageLine(const string& str, Color foreColor = 7, Color backColor = 0);
 	static string ImageLine2str(const ImageLine& line);
 };

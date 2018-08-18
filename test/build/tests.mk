@@ -32,6 +32,7 @@ test_cases=ColoredCharTest.cpp \
 		   AnimSpriteTest.cpp \
 		   BoxTest.cpp \
 		   DiaBoxTest.cpp \
+		   GeometryTest.cpp \
 		   ImageLoaderTest.cpp \
 		   SpriteTest.cpp \
 		   TextFieldTest.cpp \

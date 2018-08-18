@@ -9,10 +9,11 @@
 #include "basic/MagicianMacros.h"
 #include "basic/Random.h"
 //Sprites
-#include "visible/ImageLoader.h"
-#include "visible/DiaBox.h"
-#include "visible/Sprite.h"
 #include "visible/AnimSprite.h"
+#include "visible/DiaBox.h"
+#include "visible/Geometry.h"
+#include "visible/ImageLoader.h"
+#include "visible/Sprite.h"
 #include "visible/TextField.h"
 //Actions
 #include "action/Animation.h"

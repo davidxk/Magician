@@ -8,12 +8,14 @@
 class Cursor: public KeyListener, public Sprite
 {
 public:
-	Cursor(const string& fileName);
-	Cursor(const Image image);
+	static Cursor* create(const string& fileName){return new Cursor(fileName);}
+	static Cursor* create(const Image image) { return new Cursor(image); }
 	void respond(Key key);
 protected:
+	Cursor(const string& fileName);
+	Cursor(const Image image);
 	enum Direction { NONE = -1, UP = 0, DOWN = 1, LEFT = 2, RIGHT = 3 };
 	Direction getDirection(Key key);
-	Coord getNextPosition(Direction dirc);
+	virtual Coord getNextPosition(Direction dirc);
 };
 #endif

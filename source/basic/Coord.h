@@ -14,6 +14,7 @@ public:
 	Coord();
 	Coord(int aLine, int aColumn);
 	static Coord CoordXY(int xx, int yy);
+	static Coord Cartesian(int xx, int yy);
 
 	Coord operator+(const Size& cc) const;
 	Coord operator+(const Coord& cc) const;

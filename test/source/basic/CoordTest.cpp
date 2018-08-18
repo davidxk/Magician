@@ -7,6 +7,7 @@ void CoordTest::run()
 {
 	testConstructor();
 	testCoordXY();
+	testCartesian();
 	testOprEqNeq();
 	testOprAddSub();
 	testOprMulDiv();
@@ -27,6 +28,15 @@ void CoordTest::testCoordXY()
 	// XY stlye initialize
 	Coord coxy = Coord::CoordXY(75, -25);
 	assert( coxy.line==-25 && coxy.column==75 );
+}
+
+void CoordTest::testCartesian()
+{
+	// XY stlye initialize
+	Coord c1 = Coord::Cartesian(0, 0);
+	Coord c2 = Coord::Cartesian(79, 23);
+	Coord diff = c2 - c1;
+	assert( diff.line==-23 && diff.column==79 );
 }
 
 void CoordTest::testOprEqNeq()

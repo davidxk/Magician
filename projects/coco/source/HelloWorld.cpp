@@ -5,7 +5,7 @@
 void HelloWorld::initScene()
 {
 	//Cursor* cursor = Cursor::create("cursor.txt");
-	Cursor* cursor = new Cursor("cursor.txt");
+	Cursor* cursor = Cursor::create("cursor.txt");
 	addChild( cursor );
 	gDirector->getKeyDispatcher()->pushListener( cursor );
 

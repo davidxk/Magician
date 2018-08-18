@@ -11,6 +11,11 @@ Coord Coord::CoordXY(int xx, int yy)
 	return Coord(yy, xx);
 }
 
+Coord Coord::Cartesian(int xx, int yy)
+{
+	return Coord(23 - yy, xx);
+}
+
 Coord Coord::operator+(const Size& cc) const
 {
 	return Coord(line + cc.line, column + cc.column);

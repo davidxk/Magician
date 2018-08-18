@@ -9,7 +9,7 @@
 
 class Action;
 
-//description of the class here
+//Node class makes it possible to organize Visible Objects in a tree structure
 class Node: public VisibleObject
 {
 public:

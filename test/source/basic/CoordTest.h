@@ -12,6 +12,7 @@ public:
 private:
 	void testConstructor();
 	void testCoordXY();
+	void testCartesian();
 	void testOprEqNeq();
 	void testOprAddSub();
 	void testOprMulDiv();

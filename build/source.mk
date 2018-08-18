@@ -55,5 +55,6 @@ Sleep.cpp \
 Sprite.cpp \
 TextField.cpp \
 Vanish.cpp \
+Geometry.cpp
 
 win_src=$(source) MciPlayer.cpp

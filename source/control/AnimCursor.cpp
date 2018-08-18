@@ -2,6 +2,12 @@
 
 AnimCursor::AnimCursor(const string& fileName): AnimSprite( fileName ) { }
 
+AnimCursor* create(const string& fileName)
+{
+	AnimCursor* sp =  new AnimCursor(fileName);
+	return sp;
+}
+
 void AnimCursor::respond(Key key)
 {
 	Direction dirc;

@@ -37,7 +37,7 @@ $(exec): $(objects)
 $(shell mkdir -p $(DEPEND_DIR) >/dev/null)
 DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPEND_DIR)/$*.Td
 
-COMPILE.cc = $(CXX) $(DEPFLAGS) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+COMPILE.cc = $(CXX) $(DEPFLAGS) $(CXXFLAGS) -c
 POSTCOMPILE = mv -f $(DEPEND_DIR)/$*.Td $(DEPEND_DIR)/$*.d
 OUTPUT_OPTION = -o $(OBJECT_DIR)/$@
 %.o : %.cpp

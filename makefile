@@ -1,8 +1,11 @@
 SHELL=/bin/bash
 
-.PHONY: test lib clean
-lib:
+.PHONY: dynamic static test clean
+dynamic:
 	pushd build/; make; popd
+
+static:
+	pushd build/; make libmagician.a; popd
 
 test:
 	pushd test/; make; ./test.out; popd > /dev/null

@@ -6,7 +6,11 @@ exec=test.out
 main=test.cpp 
 
 # Set compile options
-CXX=g++
+ifeq (, $(shell which ccache))
+	CXX=g++
+else
+	CXX=ccache g++
+endif
 CXXFLAGS+=-Wall -std=c++11 -g3 -fno-inline
 TARFLAGS+=-lncurses -L $(proj_path) -lmagician -lncurses
 

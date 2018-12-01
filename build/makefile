@@ -5,7 +5,11 @@ proj_path=..
 name=magician
 
 # Set compile options
-CXX=g++
+ifeq (, $(shell which ccache))
+	CXX=g++
+else
+	CXX=ccache g++
+endif
 CXXFLAGS+=-Wall -std=c++11
 
 ## ------------------~~ Dividing Line ~~--------------------
@@ -77,4 +81,4 @@ $(DEPEND_DIR)/%.d: ;
 clean: 
 	rm -r -f $(OBJECT_DIR)
 	rm -r -f $(DEPEND_DIR)
-	rm -f $(TARGET_DIR)/$(target)
+	rm -f $(TARGET_DIR)/$(static) $(TARGET_DIR)/$(dynamic)

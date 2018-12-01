@@ -2,13 +2,13 @@ SHELL=/bin/bash
 
 .PHONY: dynamic static test clean
 dynamic:
-	pushd build/; make; popd
+	pushd build/; make -j; popd
 
 static:
-	pushd build/; make libmagician.a; popd
+	pushd build/; make -j libmagician.a; popd
 
 test:
-	pushd test/; make; ./test.out; popd > /dev/null
+	pushd test/; make -j; ./test.out; popd > /dev/null
 
 clean:
 	rm -f libmagician.a

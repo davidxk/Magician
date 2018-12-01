@@ -1,7 +1,7 @@
 SHELL=/bin/bash
 
 default:
-	pushd build/; make; popd
+	pushd build/; make -j; popd
 
 .PHONY: clean
 clean:
